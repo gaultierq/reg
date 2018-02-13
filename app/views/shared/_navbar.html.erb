@@ -1,0 +1,41 @@
+<div data-controller="navbar" class="uk-offcanvas-content">
+  <nav class="uk-navbar-container uk-margin" uk-navbar>
+    <div class="uk-navbar-left">
+      <%= link_to root_path, class: 'uk-navbar-item uk-logo' do %>
+        REG
+      <% end %>
+
+      <ul class="uk-navbar-nav uk-visible@m">
+        <li>
+          <%= link_to industrial_units_path, data: { target: 'navbar.link' } do %>
+            Unité Industrielle
+          <% end %>
+        </li>
+      </ul>
+    </div>
+
+    <div class="uk-navbar-right">
+      <%= link_to '#', class: 'uk-navbar-toggle uk-hidden@m', data: { action: 'navbar#toggle' } do %>
+        <span uk-navbar-toggle-icon></span>
+      <% end %>
+    </div>
+  </nav>
+
+  <%= yield %>
+
+  <div id="offcanvas-navbar" uk-offcanvas="mode: push">
+    <div class="uk-offcanvas-bar">
+
+      <button class="uk-offcanvas-close" type="button" uk-close></button>
+
+      <ul class="uk-nav uk-nav-default">
+        <li class="uk-nav-header">General</li>
+        <li>
+          <%= link_to industrial_units_path do %>
+            Unité Industrielle
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
