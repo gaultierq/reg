@@ -2,23 +2,22 @@
 
 <h1>Industrial Units</h1>
 
-<table>
-  <thead>
+<div class="uk-overflow-auto">
+  <table class="uk-table uk-table-striped uk-table-hover">
+    <thead>
     <tr>
       <th>Name</th>
       <th>Address</th>
       <th>Postcode</th>
       <th>City</th>
       <th>Country</th>
-      <th>Latitude</th>
-      <th>Longitude</th>
       <th>Additional information</th>
       <th>Process information</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
+    </thead>
 
-  <tbody>
+    <tbody>
     <% @industrial_units.each do |industrial_unit| %>
       <tr>
         <td><%= industrial_unit.name %></td>
@@ -26,8 +25,6 @@
         <td><%= industrial_unit.postcode %></td>
         <td><%= industrial_unit.city %></td>
         <td><%= industrial_unit.country %></td>
-        <td><%= industrial_unit.latitude %></td>
-        <td><%= industrial_unit.longitude %></td>
         <td><%= industrial_unit.additional_information %></td>
         <td><%= industrial_unit.process_information %></td>
         <td><%= link_to 'Show', industrial_unit %></td>
@@ -35,8 +32,9 @@
         <td><%= link_to 'Destroy', industrial_unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
 
 <br>
 
