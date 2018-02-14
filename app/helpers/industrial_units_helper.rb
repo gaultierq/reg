@@ -1,0 +1,2 @@
+module IndustrialUnitsHelper
+end

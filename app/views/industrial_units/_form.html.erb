@@ -1,0 +1,56 @@
+<%= form_with(model: industrial_unit, local: true, data: { controller: 'form', form_errors: industrial_unit.errors.messages.keys.join(',') }) do |form| %>
+  <fieldset class="uk-fieldset">
+
+    <% if industrial_unit.errors.any? %>
+      <div id="error_explanation" class="uk-alert-danger" uk-alert>
+        <a class="uk-alert-close" uk-close></a>
+        <h2><%= pluralize(industrial_unit.errors.count, "error") %> prohibited this industrial_unit from being saved:</h2>
+
+        <ul>
+          <% industrial_unit.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="uk-margin">
+      <%= form.label :name, class: 'uk-form-label' %>
+      <%= form.text_field :name, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :address, class: 'uk-form-label' %>
+      <%= form.text_field :address, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :postcode, class: 'uk-form-label' %>
+      <%= form.text_field :postcode, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :city, class: 'uk-form-label' %>
+      <%= form.text_field :city, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :country, class: 'uk-form-label' %>
+      <%= form.text_field :country, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :additional_information, class: 'uk-form-label' %>
+      <%= form.text_area :additional_information, class: 'uk-textarea', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :process_information, class: 'uk-form-label' %>
+      <%= form.text_area :process_information, class: 'uk-textarea', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.submit :save, class: 'uk-button uk-button-primary' %>
+    </div>
+  </fieldset>
+<% end %>

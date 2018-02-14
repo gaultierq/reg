@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @industrial_unit.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @industrial_unit.address %>
+</p>
+
+<p>
+  <strong>Postcode:</strong>
+  <%= @industrial_unit.postcode %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @industrial_unit.city %>
+</p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @industrial_unit.country %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @industrial_unit.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @industrial_unit.longitude %>
+</p>
+
+<p>
+  <strong>Additional information:</strong>
+  <%= @industrial_unit.additional_information %>
+</p>
+
+<p>
+  <strong>Process information:</strong>
+  <%= @industrial_unit.process_information %>
+</p>
+
+<%= link_to 'Edit', edit_industrial_unit_path(@industrial_unit) %> |
+<%= link_to 'Back', industrial_units_path %>
