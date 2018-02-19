@@ -3,25 +3,45 @@ import { DataTables } from "datatables.net"
 import $ from "jquery"
 
 export default class extends Controller {
-    static targets = [ "column" ]
+    get id() {
+        return this.data.get("id")
+    }
 
-    initialize() {
-        $("#" + this.context.scope.element.id).DataTable({
+    get url() {
+        return this.data.get("url")
+    }
+
+    get data_src() {
+        return this.data.get("data-src")
+    }
+
+    get columns() {
+        const columns = JSON.parse(this.data.get("columns"))
+        return _.map(columns, function(column) { return { data: column } })
+    }
+
+    connect() {
+        this.load()
+    }
+
+    disconnect() {
+        this.destroy()
+    }
+
+    load() {
+        $(this.id).DataTable({
             paging: false,
             info: false,
             searching: false,
             ajax: {
-                url: this.data.get("url"),
-                dataSrc: ''
+                url: this.url,
+                dataSrc: this.data_src
             },
-            columns: [
-                { data: "name" }
-            ]
+            columns: this.columns
         })
     }
 
-    disconnect() {
-        console.log("toto");
-        $("#" + this.context.scope.element.id).DataTable().destroy()
+    destroy() {
+        $(this.id).DataTable().destroy()
     }
 }
