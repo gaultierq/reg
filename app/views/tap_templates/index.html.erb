@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tap Templates</h1>
+
+<div class="">
+  <div data-controller="table" data-table-id="#table_id" data-table-columns='["id", "name", "article_number"]' data-table-url="<%= tap_templates_path(format: :json) %>">
+    <table id="table_id" class="stripe hover">
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>article number</th>
+      </tr>
+      </thead>
+    </table>
+  </div>
+</div>
+
+<br>
+
+<%= link_to 'New Tap Template', new_tap_template_path %>

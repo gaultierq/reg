@@ -1,0 +1,200 @@
+<%= form_with(model: tap_template, local: true, data: { controller: 'form', form_errors: tap_template.errors.messages.keys.join(',') }) do |form| %>
+  <fieldset class="uk-fieldset">
+
+    <% if tap_template.errors.any? %>
+      <div id="error_explanation" class="uk-alert-danger" uk-alert>
+        <h2><%= pluralize(tap_template.errors.count, "error") %> prohibited this tap_template from being saved:</h2>
+
+        <ul>
+          <% tap_template.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="uk-margin">
+      <%= form.label :name, class: 'uk-form-label' %>
+      <%= form.text_field :name, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :article_number, class: 'uk-form-label' %>
+      <%= form.text_field :article_number, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :dn, class: 'uk-form-label' %>
+      <%= form.text_field :dn, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :input_connection, class: 'uk-form-label' %>
+      <%= form.text_field :input_connection, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :output_connection, class: 'uk-form-label' %>
+      <%= form.text_field :output_connection, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :double_jacket_connection, class: 'uk-form-label' %>
+      <%= form.text_field :double_jacket_connection, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :inclination_input_offset_output, class: 'uk-form-label' %>
+      <%= form.text_field :inclination_input_offset_output, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :face_to_face, class: 'uk-form-label' %>
+      <%= form.text_field :face_to_face, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :maximal_pressure, class: 'uk-form-label' %>
+      <%= form.text_field :maximal_pressure, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :test_pressure, class: 'uk-form-label' %>
+      <%= form.text_field :test_pressure, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :maximum_temperature, class: 'uk-form-label' %>
+      <%= form.text_field :maximum_temperature, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :pressure_at_maximum_temperature, class: 'uk-form-label' %>
+      <%= form.text_field :pressure_at_maximum_temperature, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :minimum_temperature, class: 'uk-form-label' %>
+      <%= form.text_field :minimum_temperature, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :pressure_at_minimum_temperature, class: 'uk-form-label' %>
+      <%= form.text_field :pressure_at_minimum_temperature, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :fluid_nature, class: 'uk-form-label' %>
+      <%= form.number_field :fluid_nature, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :fluid_danger_group, class: 'uk-form-label' %>
+      <%= form.number_field :fluid_danger_group, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :unstable_gas, class: 'uk-form-label' %>
+      <%= form.check_box :unstable_gas, class: 'uk-checkbox', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :risk_category_according_to_DESP_2014_68, class: 'uk-form-label' %>
+      <%= form.number_field :risk_category_according_to_DESP_2014_68, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :manual_control, class: 'uk-form-label' %>
+      <%= form.text_field :manual_control, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :actuator, class: 'uk-form-label' %>
+      <%= form.text_field :actuator, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :pneumatic_actuator_pressure, class: 'uk-form-label' %>
+      <%= form.text_field :pneumatic_actuator_pressure, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :position_detector, class: 'uk-form-label' %>
+      <%= form.text_field :position_detector, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :open_position, class: 'uk-form-label' %>
+      <%= form.text_field :open_position, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :close_position, class: 'uk-form-label' %>
+      <%= form.text_field :close_position, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :piloting, class: 'uk-form-label' %>
+      <%= form.text_field :piloting, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :other_instrumentation, class: 'uk-form-label' %>
+      <%= form.text_field :other_instrumentation, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :shell, class: 'uk-form-label' %>
+      <%= form.text_field :shell, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :double_shell, class: 'uk-form-label' %>
+      <%= form.text_field :double_shell, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :shutter_cover, class: 'uk-form-label' %>
+      <%= form.text_field :shutter_cover, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :seat, class: 'uk-form-label' %>
+      <%= form.text_field :seat, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :cable_gland_packing, class: 'uk-form-label' %>
+      <%= form.text_field :cable_gland_packing, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :seals, class: 'uk-form-label' %>
+      <%= form.text_field :seals, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :atex, class: 'uk-form-label' %>
+      <%= form.text_field :atex, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :other_special_requirements, class: 'uk-form-label' %>
+      <%= form.text_field :other_special_requirements, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :other_controls, class: 'uk-form-label' %>
+      <%= form.text_field :other_controls, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :other, class: 'uk-form-label' %>
+      <%= form.text_field :other, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.submit :save, class: 'uk-button uk-button-primary' %>
+    </div>
+  </fieldset>
+<% end %>
