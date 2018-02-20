@@ -1,4 +1,6 @@
 class IndustrialUnit < ApplicationRecord
+  has_many :taps
+
   validates :address, presence: true
   validates :postcode, presence: true
   validates :city, presence: true
