@@ -4,6 +4,13 @@
 
 <div class="">
   <div data-controller="table" data-table-id="#table_id" data-table-columns='["id", "name", "full_address"]' data-table-url="<%= industrial_units_path(format: :json) %>">
+    <div class="uk-margin">
+      <div class="uk-search uk-search-default">
+        <span uk-search-icon></span>
+        <%= text_field_tag :search, nil, class: 'uk-search-input', placeholder: 'Search ...', data: { target: 'table.search', action: 'keyup->table#search' } %>
+      </div>
+    </div>
+
     <table id="table_id" class="stripe hover">
       <thead>
       <tr>

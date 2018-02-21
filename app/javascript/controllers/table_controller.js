@@ -3,6 +3,8 @@ import { DataTables } from "datatables.net"
 import $ from "jquery"
 
 export default class extends Controller {
+    static targets = [ "search" ]
+
     get id() {
         return this.data.get("id")
     }
@@ -20,7 +22,7 @@ export default class extends Controller {
         return _.map(columns, function(column) { return { data: column } })
     }
 
-    connect() {
+    initialize() {
         this.load()
     }
 
@@ -29,10 +31,12 @@ export default class extends Controller {
     }
 
     load() {
-        $(this.id).DataTable({
+        this.table = $(this.id).DataTable({
+            dom: "lrtip",
             paging: false,
             info: false,
-            searching: false,
+            searching: true,
+            bFilter: false,
             ajax: {
                 url: this.url,
                 dataSrc: this.data_src
@@ -42,6 +46,10 @@ export default class extends Controller {
     }
 
     destroy() {
-        $(this.id).DataTable().destroy()
+        this.table.destroy()
+    }
+
+    search() {
+        this.table.search(this.searchTarget.value).draw()
     }
 }
