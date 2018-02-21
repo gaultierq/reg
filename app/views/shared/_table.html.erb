@@ -1,0 +1,22 @@
+<div data-controller="table"
+     data-table-id="<%= '#' + locals[:id] %>"
+     data-table-dom="<%= locals[:dom] %>"
+     data-table-paging="<%= locals[:paging] %>"
+     data-table-info="<%= locals[:info] %>"
+     data-table-searching="<%= locals[:searching] %>"
+     data-table-columns='<%= locals[:columns] %>'
+     data-table-url="<%= locals[:url] %>">
+
+  <% if locals[:searching] || locals[:searching].nil? %>
+    <div class="uk-margin">
+      <div class="uk-search uk-search-default">
+        <span uk-search-icon></span>
+        <%= text_field_tag :search, nil, class: 'uk-search-input', placeholder: 'Search ...', data: { target: 'table.search', action: 'keyup->table#search' } %>
+      </div>
+    </div>
+  <% end %>
+
+  <table id="<%= locals[:id] %>" class="stripe hover">
+      <%= yield %>
+  </table>
+</div>

@@ -2,26 +2,16 @@
 
 <h1>Industrial Units</h1>
 
-<div class="">
-  <div data-controller="table" data-table-id="#table_id" data-table-columns='["id", "name", "full_address"]' data-table-url="<%= industrial_units_path(format: :json) %>">
-    <div class="uk-margin">
-      <div class="uk-search uk-search-default">
-        <span uk-search-icon></span>
-        <%= text_field_tag :search, nil, class: 'uk-search-input', placeholder: 'Search ...', data: { target: 'table.search', action: 'keyup->table#search' } %>
-      </div>
-    </div>
-
-    <table id="table_id" class="stripe hover">
-      <thead>
-      <tr>
-        <th>id</th>
-        <th>name</th>
-        <th>full address</th>
-      </tr>
-      </thead>
-    </table>
-  </div>
-</div>
+<%= render 'shared/table', locals: { id: 'industrial_units_table', dom: 'lrtip', paging: false,
+                     columns: %w[id name full_address], url: industrial_units_path(format: :json) } do %>
+  <thead>
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>full address</th>
+  </tr>
+  </thead>
+<% end %>
 
 <br>
 

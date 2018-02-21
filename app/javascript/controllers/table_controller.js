@@ -13,6 +13,31 @@ export default class extends Controller {
         return this.data.get("url")
     }
 
+    get dom() {
+        return this.data.get("dom")
+    }
+
+    get paging() {
+        if (this.data.get("paging") === 'false')
+            return false
+        else
+            return true
+    }
+
+    get info() {
+        if (this.data.get("info") === 'false')
+            return false
+        else
+            return true
+    }
+
+    get searching() {
+        if (this.data.get("searching") === 'false')
+            return false
+        else
+            return true
+    }
+
     get data_src() {
         return this.data.get("data-src")
     }
@@ -32,11 +57,10 @@ export default class extends Controller {
 
     load() {
         this.table = $(this.id).DataTable({
-            dom: "lrtip",
-            paging: false,
-            info: false,
-            searching: true,
-            bFilter: false,
+            dom: this.dom,
+            paging: this.paging,
+            info: this.info,
+            searching: this.searching,
             ajax: {
                 url: this.url,
                 dataSrc: this.data_src

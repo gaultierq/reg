@@ -2,26 +2,25 @@
 
 <h1>Taps</h1>
 
-<div class="">
-  <div data-controller="table" data-table-id="#table_id" data-table-columns='["id", "name", "rfid_number", "serial_number", "number_customer_tag", "manufacturing_date", "sales_number", "customer_order_number", "article_number", "industrial_unit_id"]' data-table-url="<%= taps_path(format: :json) %>">
-    <table id="table_id" class="stripe hover">
-      <thead>
-      <tr>
-        <th>id</th>
-        <th>Name</th>
-        <th>Rfid number</th>
-        <th>Serial number</th>
-        <th>Number customer tag</th>
-        <th>Manufacturing date</th>
-        <th>Sales number</th>
-        <th>Customer order number</th>
-        <th>Article number</th>
-        <th>Industrial unit</th>
-      </tr>
-      </thead>
-    </table>
-  </div>
-</div>
+<%= render 'shared/table', locals: { id: 'taps_table', dom: 'lrtip', paging: false,
+                                     columns: %w[id name rfid_number serial_number number_customer_tag manufacturing_date
+                                     sales_number customer_order_number article_number industrial_unit_id],
+                                     url: taps_path(format: :json) } do %>
+  <thead>
+  <tr>
+    <th>id</th>
+    <th>Name</th>
+    <th>Rfid number</th>
+    <th>Serial number</th>
+    <th>Number customer tag</th>
+    <th>Manufacturing date</th>
+    <th>Sales number</th>
+    <th>Customer order number</th>
+    <th>Article number</th>
+    <th>Industrial unit</th>
+  </tr>
+  </thead>
+<% end %>
 
 <br>
 

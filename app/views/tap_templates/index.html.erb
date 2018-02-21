@@ -2,19 +2,16 @@
 
 <h1>Tap Templates</h1>
 
-<div class="">
-  <div data-controller="table" data-table-id="#table_id" data-table-columns='["id", "name", "article_number"]' data-table-url="<%= tap_templates_path(format: :json) %>">
-    <table id="table_id" class="stripe hover">
-      <thead>
-      <tr>
-        <th>id</th>
-        <th>name</th>
-        <th>article number</th>
-      </tr>
-      </thead>
-    </table>
-  </div>
-</div>
+<%= render 'shared/table', locals: { id: 'tap_templates_table', dom: 'lrtip', paging: false,
+                                     columns: %w[id name article_number], url: tap_templates_path(format: :json) } do %>
+  <thead>
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>article number</th>
+  </tr>
+  </thead>
+<% end %>
 
 <br>
 
