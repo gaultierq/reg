@@ -26,9 +26,15 @@
       <td><%= tap_template.name %></td>
       <td><%= tap_template.article_number %></td>
       <td>
-        <%= link_to 'Show', tap_template %>
-        <%= link_to 'Edit', edit_tap_template_path(tap_template) %>
-        <%= link_to 'Destroy', tap_template, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to tap_template, class: 'uk-link-reset' do %>
+          <span uk-icon="search"></span>
+        <% end %>
+        <%= link_to edit_tap_template_path(tap_template), class: 'uk-link-reset' do %>
+          <span uk-icon="pencil"></span>
+        <% end %>
+        <%= link_to tap_template, method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-link-reset' do %>
+          <span uk-icon="trash"></span>
+        <% end %>
       </td>
     </tr>
   <% end %>

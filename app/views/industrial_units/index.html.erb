@@ -26,9 +26,15 @@
       <td><%= industrial_unit.name %></td>
       <td><%= industrial_unit.full_address %></td>
       <td>
-        <%= link_to 'Show', industrial_unit %>
-        <%= link_to 'Edit', edit_industrial_unit_path(industrial_unit) %>
-        <%= link_to 'Destroy', industrial_unit, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to industrial_unit, class: 'uk-link-reset' do %>
+          <span uk-icon="search"></span>
+        <% end %>
+        <%= link_to edit_industrial_unit_path(industrial_unit), class: 'uk-link-reset' do %>
+          <span uk-icon="pencil"></span>
+        <% end %>
+        <%= link_to industrial_unit, method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-link-reset' do %>
+          <span uk-icon="trash"></span>
+        <% end %>
       </td>
     </tr>
   <% end %>

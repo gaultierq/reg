@@ -40,9 +40,15 @@
         <td><%= tap.article_number %></td>
         <td><%= tap.industrial_unit&.name %></td>
         <td>
-          <%= link_to 'Show', tap %>
-          <%= link_to 'Edit', edit_tap_path(tap) %>
-          <%= link_to 'Destroy', tap, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to tap, class: 'uk-link-reset' do %>
+            <span uk-icon="search"></span>
+          <% end %>
+          <%= link_to edit_tap_path(tap), class: 'uk-link-reset' do %>
+            <span uk-icon="pencil"></span>
+          <% end %>
+          <%= link_to tap, method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-link-reset' do %>
+            <span uk-icon="trash"></span>
+          <% end %>
         </td>
       </tr>
     <% end %>
