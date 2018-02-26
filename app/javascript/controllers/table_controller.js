@@ -1,5 +1,5 @@
 import { Controller } from "stimulus"
-import { DataTables } from "datatables.net"
+import "datatables.net"
 import $ from "jquery"
 
 export default class extends Controller {

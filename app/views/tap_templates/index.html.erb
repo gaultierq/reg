@@ -1,8 +1,15 @@
 <%= render 'shared/notice' %>
 
-<h1>Tap Templates</h1>
+<div class="uk-flex-middle uk-margin-medium" uk-grid>
+  <div class="uk-width-expand@m">
+    <h1 class="uk-heading-primary">Tap Templates</h1>
+  </div>
+  <div class="uk-width-auto@m">
+    <%= link_to 'New Tap Template', new_tap_template_path, class: 'uk-button uk-button-primary' %>
+  </div>
+</div>
 
-<%= render 'shared/table', locals: { id: 'tap_templates_table', dom: 'lrtip', paging: false,
+<%= render 'shared/table', locals: { id: 'tap_templates_table', dom: 'lrtip', paging: false, info: false,
                                      columns: %w[id name article_number], url: tap_templates_path(format: :json) } do %>
   <thead>
   <tr>
@@ -12,7 +19,3 @@
   </tr>
   </thead>
 <% end %>
-
-<br>
-
-<%= link_to 'New Tap Template', new_tap_template_path %>

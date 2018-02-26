@@ -1,8 +1,15 @@
 <%= render 'shared/notice' %>
 
-<h1>Industrial Units</h1>
+<div class="uk-flex-middle uk-margin-medium" uk-grid>
+  <div class="uk-width-expand@m">
+    <h1 class="uk-heading-primary">Industrial Units</h1>
+  </div>
+  <div class="uk-width-auto@m">
+    <%= link_to 'New Industrial Unit', new_industrial_unit_path, class: 'uk-button uk-button-primary' %>
+  </div>
+</div>
 
-<%= render 'shared/table', locals: { id: 'industrial_units_table', dom: 'lrtip', paging: false,
+<%= render 'shared/table', locals: { id: 'industrial_units_table', dom: 'lrtip', paging: false, info: false,
                      columns: %w[id name full_address], url: industrial_units_path(format: :json) } do %>
   <thead>
   <tr>
@@ -12,7 +19,3 @@
   </tr>
   </thead>
 <% end %>
-
-<br>
-
-<%= link_to 'New Industrial Unit', new_industrial_unit_path %>

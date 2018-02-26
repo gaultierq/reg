@@ -1,8 +1,15 @@
 <%= render 'shared/notice' %>
 
-<h1>Taps</h1>
+<div class="uk-flex-middle uk-margin-medium" uk-grid>
+  <div class="uk-width-expand@m">
+    <h1 class="uk-heading-primary">Taps</h1>
+  </div>
+  <div class="uk-width-auto@m">
+    <%= link_to 'New Tap', new_tap_path, class: 'uk-button uk-button-primary' %>
+  </div>
+</div>
 
-<%= render 'shared/table', locals: { id: 'taps_table', dom: 'lrtip', paging: false,
+<%= render 'shared/table', locals: { id: 'taps_table', dom: 'lrtip', paging: false, info: false,
                                      columns: %w[id name rfid_number serial_number number_customer_tag manufacturing_date
                                      sales_number customer_order_number article_number industrial_unit_id],
                                      url: taps_path(format: :json) } do %>
@@ -21,7 +28,3 @@
   </tr>
   </thead>
 <% end %>
-
-<br>
-
-<%= link_to 'New Tap', new_tap_path %>

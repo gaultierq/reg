@@ -10,7 +10,7 @@
 
   <% if locals[:searching] || locals[:searching].nil? %>
     <div class="uk-margin uk-flex-right" uk-grid>
-      <div class="uk-width-1-3">
+      <div class=" uk-width-1-1@s uk-width-1-3@m">
         <div class="uk-search uk-search-default uk-width-1-1">
           <span uk-search-icon></span>
           <%= text_field_tag :search, nil, class: 'uk-search-input', placeholder: 'Search ...', data: { target: 'table.search', action: 'keyup->table#search' } %>
@@ -19,7 +19,9 @@
     </div>
   <% end %>
 
-  <table id="<%= locals[:id] %>" class="stripe hover">
+  <div class="uk-overflow-auto">
+    <table id="<%= locals[:id] %>" class="stripe hover uk-text-nowrap">
       <%= yield %>
-  </table>
+    </table>
+  </div>
 </div>
