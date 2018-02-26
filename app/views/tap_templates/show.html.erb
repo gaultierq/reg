@@ -1,184 +1,201 @@
 <%= render 'shared/notice' %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @tap_template.name %>
-</p>
+<div class="uk-flex-middle uk-margin-medium" uk-grid>
+  <div class="uk-width-expand@m">
+    <h1 class="uk-heading-primary"><%= @tap_template.name %></h1>
+  </div>
+  <div class="uk-width-auto@m">
+    <%= link_to 'Edit', edit_tap_template_path, class: 'uk-button uk-button-primary' %>
+    <%= link_to 'Destroy', @tap_template, method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-button uk-button-primary' %>
+  </div>
+</div>
 
-<p>
-  <strong>Article number:</strong>
-  <%= @tap_template.article_number %>
-</p>
+<div class="uk-overflow-auto">
+  <table class="uk-table uk-table-striped">
+    <tbody>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Name</td>
+      <td><%= @tap_template.name %></td>
+    </tr>
 
-<p>
-  <strong>Dn:</strong>
-  <%= @tap_template.dn %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Article number</td>
+      <td><%= @tap_template.article_number %></td>
+    </tr>
 
-<p>
-  <strong>Input connection:</strong>
-  <%= @tap_template.input_connection %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Dn</td>
+      <td><%= @tap_template.dn %></td>
+    </tr>
 
-<p>
-  <strong>Output connection:</strong>
-  <%= @tap_template.output_connection %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Input connection</td>
+      <td><%= @tap_template.input_connection %></td>
+    </tr>
 
-<p>
-  <strong>Double jacket connection:</strong>
-  <%= @tap_template.double_jacket_connection %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Output connection</td>
+      <td><%= @tap_template.output_connection %></td>
+    </tr>
 
-<p>
-  <strong>Inclination input offset output:</strong>
-  <%= @tap_template.inclination_input_offset_output %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Double jacket connection</td>
+      <td><%= @tap_template.double_jacket_connection %></td>
+    </tr>
 
-<p>
-  <strong>Face to face:</strong>
-  <%= @tap_template.face_to_face %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Inclination input offset output</td>
+      <td><%= @tap_template.inclination_input_offset_output %></td>
+    </tr>
 
-<p>
-  <strong>Maximal pressure:</strong>
-  <%= @tap_template.maximal_pressure %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Face to face</td>
+      <td><%= @tap_template.face_to_face %></td>
+    </tr>
 
-<p>
-  <strong>Test pressure:</strong>
-  <%= @tap_template.test_pressure %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Maximal pressure</td>
+      <td><%= @tap_template.maximal_pressure %></td>
+    </tr>
 
-<p>
-  <strong>Maximum temperature:</strong>
-  <%= @tap_template.maximum_temperature %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Test pressure</td>
+      <td><%= @tap_template.test_pressure %></td>
+    </tr>
 
-<p>
-  <strong>Pressure at maximum temperature:</strong>
-  <%= @tap_template.pressure_at_maximum_temperature %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Maximum temperature</td>
+      <td><%= @tap_template.maximum_temperature %></td>
+    </tr>
 
-<p>
-  <strong>Minimum temperature:</strong>
-  <%= @tap_template.minimum_temperature %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pressure at maximum temperature</td>
+      <td><%= @tap_template.pressure_at_maximum_temperature %></td>
+    </tr>
 
-<p>
-  <strong>Pressure at minimum temperature:</strong>
-  <%= @tap_template.pressure_at_minimum_temperature %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Minimum temperature</td>
+      <td><%= @tap_template.minimum_temperature %></td>
+    </tr>
 
-<p>
-  <strong>Fluid nature:</strong>
-  <%= @tap_template.fluid_nature %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pressure at minimum temperature</td>
+      <td><%= @tap_template.pressure_at_minimum_temperature %></td>
+    </tr>
 
-<p>
-  <strong>Fluid danger group:</strong>
-  <%= @tap_template.fluid_danger_group %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Fluid nature</td>
+      <td><%= @tap_template.fluid_nature %></td>
+    </tr>
 
-<p>
-  <strong>Unstable gas:</strong>
-  <%= @tap_template.unstable_gas %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Fluid danger group</td>
+      <td><%= @tap_template.fluid_danger_group %></td>
+    </tr>
 
-<p>
-  <strong>Risk category according to desp 2014 68:</strong>
-  <%= @tap_template.risk_category_according_to_DESP_2014_68 %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Unstable gas</td>
+      <td><%= @tap_template.unstable_gas %></td>
+    </tr>
 
-<p>
-  <strong>Manual control:</strong>
-  <%= @tap_template.manual_control %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Risk category according to desp 2014 68</td>
+      <td><%= @tap_template.risk_category_according_to_DESP_2014_68 %></td>
+    </tr>
 
-<p>
-  <strong>Actuator:</strong>
-  <%= @tap_template.actuator %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Manual control</td>
+      <td><%= @tap_template.manual_control %></td>
+    </tr>
 
-<p>
-  <strong>Pneumatic actuator pressure:</strong>
-  <%= @tap_template.pneumatic_actuator_pressure %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Actuator</td>
+      <td><%= @tap_template.actuator %></td>
+    </tr>
 
-<p>
-  <strong>Position detector:</strong>
-  <%= @tap_template.position_detector %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pneumatic actuator pressure</td>
+      <td><%= @tap_template.pneumatic_actuator_pressure %></td>
+    </tr>
 
-<p>
-  <strong>Open position:</strong>
-  <%= @tap_template.open_position %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position detector</td>
+      <td><%= @tap_template.position_detector %></td>
+    </tr>
 
-<p>
-  <strong>Close position:</strong>
-  <%= @tap_template.close_position %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Open position</td>
+      <td><%= @tap_template.open_position %></td>
+    </tr>
 
-<p>
-  <strong>Piloting:</strong>
-  <%= @tap_template.piloting %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Close position</td>
+      <td><%= @tap_template.close_position %></td>
+    </tr>
 
-<p>
-  <strong>Other instrumentation:</strong>
-  <%= @tap_template.other_instrumentation %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Piloting</td>
+      <td><%= @tap_template.piloting %></td>
+    </tr>
 
-<p>
-  <strong>Shell:</strong>
-  <%= @tap_template.shell %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Other instrumentation</td>
+      <td><%= @tap_template.other_instrumentation %></td>
+    </tr>
 
-<p>
-  <strong>Double shell:</strong>
-  <%= @tap_template.double_shell %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Shell</td>
+      <td><%= @tap_template.shell %></td>
+    </tr>
 
-<p>
-  <strong>Shutter cover:</strong>
-  <%= @tap_template.shutter_cover %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Double shell</td>
+      <td><%= @tap_template.double_shell %></td>
+    </tr>
 
-<p>
-  <strong>Seat:</strong>
-  <%= @tap_template.seat %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Shutter cover</td>
+      <td><%= @tap_template.shutter_cover %></td>
+    </tr>
 
-<p>
-  <strong>Cable gland packing:</strong>
-  <%= @tap_template.cable_gland_packing %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Seat</td>
+      <td><%= @tap_template.seat %></td>
+    </tr>
 
-<p>
-  <strong>Seals:</strong>
-  <%= @tap_template.seals %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Cable gland packing</td>
+      <td><%= @tap_template.cable_gland_packing %></td>
+    </tr>
 
-<p>
-  <strong>Atex:</strong>
-  <%= @tap_template.atex %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Seals</td>
+      <td><%= @tap_template.seals %></td>
+    </tr>
 
-<p>
-  <strong>Other special requirements:</strong>
-  <%= @tap_template.other_special_requirements %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Atex</td>
+      <td><%= @tap_template.atex %></td>
+    </tr>
 
-<p>
-  <strong>Other controls:</strong>
-  <%= @tap_template.other_controls %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Other special requirements</td>
+      <td><%= @tap_template.other_special_requirements %></td>
+    </tr>
 
-<p>
-  <strong>Other:</strong>
-  <%= @tap_template.other %>
-</p>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Other controls</td>
+      <td><%= @tap_template.other_controls %></td>
+    </tr>
 
-<%= link_to 'Edit', edit_tap_template_path(@tap_template) %> |
-<%= link_to 'Back', tap_templates_path %>
+    <tr>
+      <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Other</td>
+      <td><%= @tap_template.other %></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="uk-margin">
+  <%= link_to 'Back', tap_templates_path, class: 'uk-button uk-button-default' %>
+</div>
