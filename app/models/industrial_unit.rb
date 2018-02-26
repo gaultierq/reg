@@ -1,5 +1,5 @@
 class IndustrialUnit < ApplicationRecord
-  has_many :taps
+  has_many :taps, dependent: :destroy
 
   validates :address, presence: true
   validates :postcode, presence: true
