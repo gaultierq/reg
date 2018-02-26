@@ -27,13 +27,13 @@
       <td><%= tap_template.article_number %></td>
       <td>
         <%= link_to tap_template, class: 'uk-link-reset' do %>
-          <span uk-icon="search"></span>
+          <span uk-icon="search" uk-tooltip="Show"></span>
         <% end %>
         <%= link_to edit_tap_template_path(tap_template), class: 'uk-link-reset' do %>
-          <span uk-icon="pencil"></span>
+          <span uk-icon="pencil" uk-tooltip="Edit"></span>
         <% end %>
         <%= link_to tap_template, method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-link-reset' do %>
-          <span uk-icon="trash"></span>
+          <span uk-icon="trash" uk-tooltip="Destroy"></span>
         <% end %>
       </td>
     </tr>

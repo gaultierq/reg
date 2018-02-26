@@ -27,30 +27,30 @@
   </thead>
 
   <tbody>
-    <% @taps.each do |tap| %>
-      <tr>
-        <td><%= tap.id %></td>
-        <td><%= tap.name %></td>
-        <td><%= tap.rfid_number %></td>
-        <td><%= tap.serial_number %></td>
-        <td><%= tap.number_customer_tag %></td>
-        <td><%= tap.manufacturing_date %></td>
-        <td><%= tap.sales_number %></td>
-        <td><%= tap.customer_order_number %></td>
-        <td><%= tap.article_number %></td>
-        <td><%= tap.industrial_unit&.name %></td>
-        <td>
-          <%= link_to tap, class: 'uk-link-reset' do %>
-            <span uk-icon="search"></span>
-          <% end %>
-          <%= link_to edit_tap_path(tap), class: 'uk-link-reset' do %>
-            <span uk-icon="pencil"></span>
-          <% end %>
-          <%= link_to tap, method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-link-reset' do %>
-            <span uk-icon="trash"></span>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
+  <% @taps.each do |tap| %>
+    <tr>
+      <td><%= tap.id %></td>
+      <td><%= tap.name %></td>
+      <td><%= tap.rfid_number %></td>
+      <td><%= tap.serial_number %></td>
+      <td><%= tap.number_customer_tag %></td>
+      <td><%= tap.manufacturing_date %></td>
+      <td><%= tap.sales_number %></td>
+      <td><%= tap.customer_order_number %></td>
+      <td><%= tap.article_number %></td>
+      <td><%= tap.industrial_unit&.name %></td>
+      <td>
+        <%= link_to tap, class: 'uk-link-reset' do %>
+          <span uk-icon="search"></span>
+        <% end %>
+        <%= link_to edit_tap_path(tap), class: 'uk-link-reset' do %>
+          <span uk-icon="pencil"></span>
+        <% end %>
+        <%= link_to tap, method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-link-reset' do %>
+          <span uk-icon="trash"></span>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
   </tbody>
 <% end %>

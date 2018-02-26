@@ -27,13 +27,13 @@
       <td><%= industrial_unit.full_address %></td>
       <td>
         <%= link_to industrial_unit, class: 'uk-link-reset' do %>
-          <span uk-icon="search"></span>
+          <span uk-icon="search" uk-tooltip="Show"></span>
         <% end %>
         <%= link_to edit_industrial_unit_path(industrial_unit), class: 'uk-link-reset' do %>
-          <span uk-icon="pencil"></span>
+          <span uk-icon="pencil" uk-tooltip="Edit"></span>
         <% end %>
         <%= link_to industrial_unit, method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-link-reset' do %>
-          <span uk-icon="trash"></span>
+          <span uk-icon="trash" uk-tooltip="Destroy"></span>
         <% end %>
       </td>
     </tr>
