@@ -1,5 +1,6 @@
 import { Controller } from "stimulus"
 import "datatables.net"
+import "datatables.net-responsive"
 import $ from "jquery"
 
 export default class extends Controller {
@@ -7,10 +8,6 @@ export default class extends Controller {
 
     get id() {
         return this.data.get("id")
-    }
-
-    get url() {
-        return this.data.get("url")
     }
 
     get dom() {
@@ -38,13 +35,15 @@ export default class extends Controller {
             return true
     }
 
-    get data_src() {
-        return this.data.get("data-src")
+    get ordering() {
+        if (this.data.get("ordering") === 'false')
+            return false
+        else
+            return true
     }
 
-    get columns() {
-        const columns = JSON.parse(this.data.get("columns"))
-        return _.map(columns, function(column) { return { data: column } })
+    get order() {
+        return this.data.get("order") || [0, "desc"]
     }
 
     initialize() {
@@ -61,11 +60,8 @@ export default class extends Controller {
             paging: this.paging,
             info: this.info,
             searching: this.searching,
-            ajax: {
-                url: this.url,
-                dataSrc: this.data_src
-            },
-            columns: this.columns
+            ordering: this.ordering,
+            order: this.order
         })
     }
 

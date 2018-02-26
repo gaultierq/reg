@@ -4,7 +4,7 @@ class TapsController < ApplicationController
   # GET /taps
   # GET /taps.json
   def index
-    @taps = Tap.all
+    @taps = Tap.includes(:industrial_unit).all
   end
 
   # GET /taps/1

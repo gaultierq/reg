@@ -9,13 +9,28 @@
   </div>
 </div>
 
-<%= render 'shared/table', locals: { id: 'industrial_units_table', dom: 'lrtip', paging: false, info: false,
-                     columns: %w[id name full_address], url: industrial_units_path(format: :json) } do %>
+<%= render 'shared/table', locals: { id: 'industrial_units_table', dom: 'lrtip', paging: false, info: false } do %>
   <thead>
   <tr>
     <th>id</th>
     <th>name</th>
     <th>full address</th>
+    <th data-orderable="false">Actions</th>
   </tr>
   </thead>
+
+  <tbody>
+  <% @industrial_units.each do |industrial_unit| %>
+    <tr>
+      <td><%= industrial_unit.id %></td>
+      <td><%= industrial_unit.name %></td>
+      <td><%= industrial_unit.full_address %></td>
+      <td>
+        <%= link_to 'Show', industrial_unit %>
+        <%= link_to 'Edit', edit_industrial_unit_path(industrial_unit) %>
+        <%= link_to 'Destroy', industrial_unit, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
 <% end %>

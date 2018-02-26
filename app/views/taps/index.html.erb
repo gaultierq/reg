@@ -9,10 +9,7 @@
   </div>
 </div>
 
-<%= render 'shared/table', locals: { id: 'taps_table', dom: 'lrtip', paging: false, info: false,
-                                     columns: %w[id name rfid_number serial_number number_customer_tag manufacturing_date
-                                     sales_number customer_order_number article_number industrial_unit_id],
-                                     url: taps_path(format: :json) } do %>
+<%= render 'shared/table', locals: { id: 'taps_table', dom: 'lrtip', paging: false, info: false } do %>
   <thead>
   <tr>
     <th>id</th>
@@ -25,6 +22,29 @@
     <th>Customer order number</th>
     <th>Article number</th>
     <th>Industrial unit</th>
+    <th data-orderable="false">Actions</th>
   </tr>
   </thead>
+
+  <tbody>
+    <% @taps.each do |tap| %>
+      <tr>
+        <td><%= tap.id %></td>
+        <td><%= tap.name %></td>
+        <td><%= tap.rfid_number %></td>
+        <td><%= tap.serial_number %></td>
+        <td><%= tap.number_customer_tag %></td>
+        <td><%= tap.manufacturing_date %></td>
+        <td><%= tap.sales_number %></td>
+        <td><%= tap.customer_order_number %></td>
+        <td><%= tap.article_number %></td>
+        <td><%= tap.industrial_unit&.name %></td>
+        <td>
+          <%= link_to 'Show', tap %>
+          <%= link_to 'Edit', edit_tap_path(tap) %>
+          <%= link_to 'Destroy', tap, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 <% end %>

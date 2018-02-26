@@ -9,13 +9,28 @@
   </div>
 </div>
 
-<%= render 'shared/table', locals: { id: 'tap_templates_table', dom: 'lrtip', paging: false, info: false,
-                                     columns: %w[id name article_number], url: tap_templates_path(format: :json) } do %>
+<%= render 'shared/table', locals: { id: 'tap_templates_table', dom: 'lrtip', paging: false, info: false } do %>
   <thead>
   <tr>
     <th>id</th>
     <th>name</th>
     <th>article number</th>
+    <th data-orderable="false">Actions</th>
   </tr>
   </thead>
+
+  <tbody>
+  <% @tap_templates.each do |tap_template| %>
+    <tr>
+      <td><%= tap_template.id %></td>
+      <td><%= tap_template.name %></td>
+      <td><%= tap_template.article_number %></td>
+      <td>
+        <%= link_to 'Show', tap_template %>
+        <%= link_to 'Edit', edit_tap_template_path(tap_template) %>
+        <%= link_to 'Destroy', tap_template, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
 <% end %>
