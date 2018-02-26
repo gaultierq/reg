@@ -41,13 +41,13 @@
       <td><%= tap.industrial_unit&.name %></td>
       <td>
         <%= link_to tap, class: 'uk-link-reset' do %>
-          <span uk-icon="search"></span>
+          <span uk-icon="search", uk-tooltip="Show"></span>
         <% end %>
         <%= link_to edit_tap_path(tap), class: 'uk-link-reset' do %>
-          <span uk-icon="pencil"></span>
+          <span uk-icon="pencil", uk-tooltip="Edit"></span>
         <% end %>
         <%= link_to tap, method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-link-reset' do %>
-          <span uk-icon="trash"></span>
+          <span uk-icon="trash", uk-tooltip="Destroy"></span>
         <% end %>
       </td>
     </tr>
