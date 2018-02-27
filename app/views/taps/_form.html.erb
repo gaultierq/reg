@@ -32,9 +32,21 @@
       <%= form.number_field :number_customer_tag, class: 'uk-input', data: { target: 'form.input' } %>
     </div>
 
-    <div class="uk-margin">
+    <div class="uk-margin" data-controller="date-select">
       <%= form.label :manufacturing_date, class: 'uk-form-label' %>
-      <%= form.date_select :manufacturing_date, data: { target: 'form.input' } %>
+      <%= form.hidden_field :manufacturing_date, data: { target: 'date-select.date' } %>
+
+      <div uk-grid>
+        <div class="uk-width-1-1@s uk-width-1-3@m">
+          <%= select_day nil, { include_blank: true }, { class: 'uk-select', data: { target: 'date-select.day', action: 'date-select#date' } } %>
+        </div>
+        <div class="uk-width-1-1@s uk-width-1-3@m">
+          <%= select_month nil, { include_blank: true }, { class: 'uk-select', data: { target: 'date-select.month', action: 'date-select#date' } } %>
+        </div>
+        <div class="uk-width-1-1@s uk-width-1-3@m">
+          <%= select_year nil, { include_blank: true }, { class: 'uk-select', data: { target: 'date-select.year', action: 'date-select#date' } } %>
+        </div>
+      </div>
     </div>
 
     <div class="uk-margin">
@@ -134,12 +146,12 @@
 
     <div class="uk-margin">
       <%= form.label :fluid_nature, class: 'uk-form-label' %>
-      <%= form.number_field :fluid_nature, class: 'uk-input', data: { target: 'form.input' } %>
+      <%= form.select :fluid_nature, [ ['Liquide', 0], ['Gaz', 1] ], { include_blank: true }, { class: 'uk-select', data: { target: 'form.input' } } %>
     </div>
 
     <div class="uk-margin">
       <%= form.label :fluid_danger_group, class: 'uk-form-label' %>
-      <%= form.number_field :fluid_danger_group, class: 'uk-input', data: { target: 'form.input' } %>
+      <%= form.select :fluid_danger_group, [ ['I', 0], ['II', 1] ], { include_blank: true}, { class: 'uk-select', data: { target: 'form.input' } } %>
     </div>
 
     <div class="uk-margin">
@@ -148,8 +160,8 @@
     </div>
 
     <div class="uk-margin">
-      <%= form.label :risk_category_according_to_DESP_2014_68, class: 'uk-form-label' %>
-      <%= form.number_field :risk_category_according_to_DESP_2014_68, class: 'uk-input', data: { target: 'form.input' } %>
+      <%= form.label :risk_category, class: 'uk-form-label' %>
+      <%= form.select :risk_category, [ ['Article 4&3', 0], ['I', 1], ['II', 2], ['III', 3], ['IV', 4] ], { include_blank: true }, { class: 'uk-select',  data: { target: 'form.input' } } %>
     </div>
 
     <div class="uk-margin">
@@ -247,7 +259,8 @@
       <%= form.text_field :other, class: 'uk-input', data: { target: 'form.input' } %>
     </div>
 
-    <div class="uk-margin">
+    <div class="uk-margin-medium">
+      <%= link_to 'Back', taps_path, class: 'uk-button uk-button-default' %>
       <%= form.submit :save, class: 'uk-button uk-button-primary' %>
     </div>
   </fieldset>

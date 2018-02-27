@@ -27,7 +27,7 @@ FactoryBot.define do
     fluid_nature 1
     fluid_danger_group 1
     unstable_gas false
-    risk_category_according_to_DESP_2014_68 1
+    risk_category 1
     manual_control "MyString"
     actuator "MyString"
     pneumatic_actuator_pressure 1.5

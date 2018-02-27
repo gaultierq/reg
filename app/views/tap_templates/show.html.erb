@@ -6,7 +6,7 @@
   </div>
   <div class="uk-width-auto@m">
     <%= link_to 'Edit', edit_tap_template_path, class: 'uk-button uk-button-primary' %>
-    <%= link_to 'Destroy', @tap_template, method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-button uk-button-primary' %>
+    <%= link_to 'Destroy', @tap_template, method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-button uk-button-danger' %>
   </div>
 </div>
 
@@ -100,7 +100,7 @@
 
     <tr>
       <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Risk category according to desp 2014 68</td>
-      <td><%= @tap_template.risk_category_according_to_DESP_2014_68 %></td>
+      <td><%= @tap_template.risk_category %></td>
     </tr>
 
     <tr>

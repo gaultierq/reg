@@ -48,7 +48,8 @@
       <%= form.text_area :process_information, class: 'uk-textarea', data: { target: 'form.input' } %>
     </div>
 
-    <div class="uk-margin">
+    <div class="uk-margin-medium">
+      <%= link_to 'Back', industrial_units_path, class: 'uk-button uk-button-default' %>
       <%= form.submit :save, class: 'uk-button uk-button-primary' %>
     </div>
   </fieldset>

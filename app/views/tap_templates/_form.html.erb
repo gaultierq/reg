@@ -79,13 +79,13 @@
     </div>
 
     <div class="uk-margin">
-      <%= form.label :pressure_at_minimum_temperature, class: 'uk-form-label' %>
-      <%= form.text_field :pressure_at_minimum_temperature, class: 'uk-input', data: { target: 'form.input' } %>
+      <%= form.label :fluid_nature, class: 'uk-form-label' %>
+      <%= form.select :fluid_nature, [ ['Liquide', 0], ['Gaz', 1] ], { include_blank: true }, { class: 'uk-select', data: { target: 'form.input' } } %>
     </div>
 
     <div class="uk-margin">
-      <%= form.label :fluid_nature, class: 'uk-form-label' %>
-      <%= form.number_field :fluid_nature, class: 'uk-input', data: { target: 'form.input' } %>
+      <%= form.label :fluid_danger_group, class: 'uk-form-label' %>
+      <%= form.select :fluid_danger_group, [ ['I', 0], ['II', 1] ], { include_blank: true}, { class: 'uk-select', data: { target: 'form.input' } } %>
     </div>
 
     <div class="uk-margin">
@@ -99,8 +99,8 @@
     </div>
 
     <div class="uk-margin">
-      <%= form.label :risk_category_according_to_DESP_2014_68, class: 'uk-form-label' %>
-      <%= form.number_field :risk_category_according_to_DESP_2014_68, class: 'uk-input', data: { target: 'form.input' } %>
+      <%= form.label :risk_category, class: 'uk-form-label' %>
+      <%= form.select :risk_category, [ ['Article 4&3', 0], ['I', 1], ['II', 2], ['III', 3], ['IV', 4] ], { include_blank: true }, { class: 'uk-select',  data: { target: 'form.input' } } %>
     </div>
 
     <div class="uk-margin">
@@ -193,7 +193,8 @@
       <%= form.text_field :other, class: 'uk-input', data: { target: 'form.input' } %>
     </div>
 
-    <div class="uk-margin">
+    <div class="uk-margin-medium">
+      <%= link_to 'Back', tap_templates_path, class: 'uk-button uk-button-default' %>
       <%= form.submit :save, class: 'uk-button uk-button-primary' %>
     </div>
   </fieldset>

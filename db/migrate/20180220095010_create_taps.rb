@@ -28,7 +28,7 @@ class CreateTaps < ActiveRecord::Migration[5.2]
       t.integer :fluid_nature
       t.integer :fluid_danger_group
       t.boolean :unstable_gas
-      t.integer :risk_category_according_to_DESP_2014_68
+      t.integer :risk_category
       t.string :manual_control
       t.string :actuator
       t.float :pneumatic_actuator_pressure

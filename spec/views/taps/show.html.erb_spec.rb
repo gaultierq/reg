@@ -29,7 +29,7 @@ RSpec.describe "taps/show", type: :view do
       :fluid_nature => 12,
       :fluid_danger_group => 13,
       :unstable_gas => false,
-      :risk_category_according_to_DESP_2014_68 => 14,
+      :risk_category => 14,
       :manual_control => "Manual Control",
       :actuator => "Actuator",
       :pneumatic_actuator_pressure => 15.5,

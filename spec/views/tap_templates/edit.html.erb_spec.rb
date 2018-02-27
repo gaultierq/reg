@@ -20,7 +20,7 @@ RSpec.describe "tap_templates/edit", type: :view do
       :fluid_nature => 1,
       :fluid_danger_group => 1,
       :unstable_gas => false,
-      :risk_category_according_to_DESP_2014_68 => 1,
+      :risk_category => 1,
       :manual_control => "MyString",
       :actuator => "MyString",
       :pneumatic_actuator_pressure => 1.5,
@@ -81,7 +81,7 @@ RSpec.describe "tap_templates/edit", type: :view do
 
       assert_select "input[name=?]", "tap_template[unstable_gas]"
 
-      assert_select "input[name=?]", "tap_template[risk_category_according_to_DESP_2014_68]"
+      assert_select "input[name=?]", "tap_template[risk_category]"
 
       assert_select "input[name=?]", "tap_template[manual_control]"
 

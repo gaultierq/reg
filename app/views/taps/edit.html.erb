@@ -1,6 +1,11 @@
-<h1>Editing Tap</h1>
+<div class="uk-flex-middle uk-margin-medium" uk-grid>
+  <div class="uk-width-expand@m">
+    <h1 class="uk-heading-primary">Editing Tap</h1>
+  </div>
+  <div class="uk-width-auto@m">
+    <%= link_to 'Show', @tap, class: 'uk-button uk-button-primary' %>
+    <%= link_to 'Destroy', @tap, method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-button uk-button-danger' %>
+  </div>
+</div>
 
 <%= render 'form', tap: @tap %>
-
-<%= link_to 'Show', @tap %> |
-<%= link_to 'Back', taps_path %>
