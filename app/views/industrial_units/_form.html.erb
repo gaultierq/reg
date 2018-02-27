@@ -1,6 +1,5 @@
 <%= form_with(model: industrial_unit, local: true, data: { controller: 'form', form_errors: industrial_unit.errors.messages.keys.join(',') }) do |form| %>
   <fieldset class="uk-fieldset">
-
     <% if industrial_unit.errors.any? %>
       <div id="error_explanation" class="uk-alert-danger" uk-alert>
         <h2><%= pluralize(industrial_unit.errors.count, "error") %> prohibited this industrial_unit from being saved:</h2>

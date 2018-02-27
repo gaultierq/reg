@@ -1,5 +1,5 @@
 <div data-controller="navbar" class="uk-offcanvas-content">
-  <nav class="uk-navbar-container uk-margin" uk-navbar>
+  <nav class="uk-navbar-container uk-margin tm-navbar" uk-sticky uk-navbar>
     <div class="uk-navbar-left">
       <%= link_to root_path, class: 'uk-navbar-item uk-logo' do %>
         REG
@@ -31,9 +31,7 @@
     </div>
   </nav>
 
-  <div class="uk-container uk-margin">
-    <%= yield %>
-  </div>
+  <%= yield %>
 
   <div id="offcanvas-navbar" uk-offcanvas="mode: push">
     <div class="uk-offcanvas-bar">

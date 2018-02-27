@@ -1,44 +1,48 @@
-<%= render 'shared/notice' %>
+<div class="uk-section uk-section-default">
+  <div class="uk-container">
+    <%= render 'shared/notice' %>
 
-<div class="uk-flex-middle uk-margin-medium" uk-grid>
-  <div class="uk-width-expand@m">
-    <h1 class="uk-heading-primary">Tap Templates</h1>
-  </div>
-  <div class="uk-width-auto@m">
-    <%= link_to 'New Tap Template', new_tap_template_path, class: 'uk-button uk-button-primary' %>
+    <div class="uk-flex-middle uk-margin-medium" uk-grid>
+      <div class="uk-width-expand@m">
+        <h1 class="uk-heading-primary">Tap Templates</h1>
+      </div>
+      <div class="uk-width-auto@m">
+        <%= link_to 'New Tap Template', new_tap_template_path, class: 'uk-button uk-button-primary' %>
+      </div>
+    </div>
+
+    <%= render 'shared/table', locals: { id: 'tap_templates_table', dom: 'lrtip', paging: false, info: false } do %>
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>article number</th>
+        <th data-orderable="false">Actions</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @tap_templates.each do |tap_template| %>
+        <tr>
+          <td><%= tap_template.id %></td>
+          <td><%= tap_template.name %></td>
+          <td><%= tap_template.article_number %></td>
+          <td>
+            <ul class="uk-iconnav uk-flex-nowrap">
+              <%= link_to tap_template do %>
+                <span uk-icon="search", uk-tooltip="Show"></span>
+              <% end %>
+              <%= link_to edit_tap_template_path(tap_template) do %>
+                <span uk-icon="pencil", uk-tooltip="Edit"></span>
+              <% end %>
+              <%= link_to tap_template, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <span uk-icon="trash", uk-tooltip="Destroy"></span>
+              <% end %>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    <% end %>
   </div>
 </div>
-
-<%= render 'shared/table', locals: { id: 'tap_templates_table', dom: 'lrtip', paging: false, info: false } do %>
-  <thead>
-  <tr>
-    <th>id</th>
-    <th>name</th>
-    <th>article number</th>
-    <th data-orderable="false">Actions</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @tap_templates.each do |tap_template| %>
-    <tr>
-      <td><%= tap_template.id %></td>
-      <td><%= tap_template.name %></td>
-      <td><%= tap_template.article_number %></td>
-      <td>
-        <ul class="uk-iconnav uk-flex-nowrap">
-          <%= link_to tap_template do %>
-            <span uk-icon="search", uk-tooltip="Show"></span>
-          <% end %>
-          <%= link_to edit_tap_template_path(tap_template) do %>
-            <span uk-icon="pencil", uk-tooltip="Edit"></span>
-          <% end %>
-          <%= link_to tap_template, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <span uk-icon="trash", uk-tooltip="Destroy"></span>
-          <% end %>
-        </ul>
-      </td>
-    </tr>
-  <% end %>
-  </tbody>
-<% end %>
