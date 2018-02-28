@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :taps
   resources :tap_templates
-  root to: 'industrial_units#index'
+  resources :industrial_units do
+    resources :taps, only: :index
+  end
 
-  resources :industrial_units
+  root to: 'industrial_units#index'
 end
