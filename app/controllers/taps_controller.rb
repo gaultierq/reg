@@ -14,7 +14,7 @@ class TapsController < ApplicationController
 
   # GET /taps/new
   def new
-    @tap = Tap.new
+    @tap = Tap.new(TapTemplate.find_by_id(params[:tap_template_id])&.attributes)
   end
 
   # GET /taps/1/edit

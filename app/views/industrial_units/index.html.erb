@@ -30,7 +30,6 @@
       <thead>
       <tr>
         <th>id</th>
-        <th>Name</th>
         <th>Rfid number</th>
         <th>Serial number</th>
         <th>Number customer tag</th>
@@ -38,7 +37,7 @@
         <th>Sales number</th>
         <th>Customer order number</th>
         <th>Article number</th>
-        <th>Industrial unit</th>
+        <th>Industrial Unit</th>
         <th data-orderable="false">Actions</th>
       </tr>
       </thead>
@@ -48,7 +47,6 @@
         <% industrial_unit.taps.filter(params.slice(:industrial_unit)).each do |tap| %>
           <tr>
             <td><%= tap.id %></td>
-            <td><%= tap.name %></td>
             <td><%= tap.rfid_number %></td>
             <td><%= tap.serial_number %></td>
             <td><%= tap.number_customer_tag %></td>

@@ -46,11 +46,13 @@ export default class extends Controller {
         return this.data.get("order") || [0, "desc"]
     }
 
-    initialize() {
+    connect() {
+        console.log("load")
         this.load()
     }
 
     disconnect() {
+        console.log("destroy")
         this.destroy()
     }
 
@@ -66,7 +68,7 @@ export default class extends Controller {
     }
 
     destroy() {
-        this.table.destroy()
+        this.table.destroy(true)
     }
 
     search() {
