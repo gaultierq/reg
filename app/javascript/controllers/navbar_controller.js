@@ -5,7 +5,7 @@ export default class extends Controller {
 
     connect() {
         this.linkTargets.forEach((el, i) => {
-            el.classList.toggle("active", el.pathname === "/" + window.location.pathname.split("/")[1] ||
+            el.classList.toggle("active", el.pathname === "/" + window.location.pathname.split("/")[2] ||
                 (window.location.pathname === "/" && i === 0))
         })
     }
