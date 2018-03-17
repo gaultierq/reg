@@ -47,13 +47,8 @@ export default class extends Controller {
     }
 
     connect() {
-        console.log("load")
+        Turbolinks.clearCache()
         this.load()
-    }
-
-    disconnect() {
-        console.log("destroy")
-        this.destroy()
     }
 
     load() {
@@ -65,10 +60,6 @@ export default class extends Controller {
             ordering: this.ordering,
             order: this.order
         })
-    }
-
-    destroy() {
-        this.table.destroy(true)
     }
 
     search() {
