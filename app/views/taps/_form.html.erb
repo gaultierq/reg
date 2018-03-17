@@ -70,7 +70,8 @@
 
           <div class="uk-margin">
             <%= form.label :industrial_unit_id, class: 'uk-form-label' %>
-            <%= form.text_field :industrial_unit_id, class: 'uk-input', data: { target: 'form.input' } %>
+            <%= form.select :industrial_unit_id, IndustrialUnit.all.collect { |industrial_unit| [ industrial_unit.name, industrial_unit.id ] },
+                            { include_blank: true }, { class: 'uk-select', data: { target: 'form.input' } } %>
           </div>
 
           <div class="uk-margin">
