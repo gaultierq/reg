@@ -53,12 +53,16 @@ export default class extends Controller {
 
     load() {
         this.table = $(this.id).DataTable({
+            responsive: true,
             dom: this.dom,
             paging: this.paging,
             info: this.info,
             searching: this.searching,
             ordering: this.ordering,
-            order: this.order
+            order: this.order,
+            columnDefs: [
+                { className: "dt-center", targets: "_all" }
+            ]
         })
     }
 

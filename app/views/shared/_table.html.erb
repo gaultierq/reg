@@ -18,9 +18,7 @@
     </div>
   <% end %>
 
-  <div class="uk-overflow-auto">
-    <table id="<%= locals[:id] %>" class="stripe hover uk-text-nowrap">
-      <%= yield %>
-    </table>
-  </div>
+  <table id="<%= locals[:id] %>" class="stripe hover row-border nowrap">
+    <%= yield %>
+  </table>
 </div>
