@@ -6,28 +6,41 @@
       <% end %>
 
       <ul class="uk-navbar-nav uk-visible@m">
-        <li>
-          <%= link_to industrial_units_path, data: { target: 'navbar.link' } do %>
-            Unité Industrielle
-          <% end %>
-        </li>
-        <li>
-          <%= link_to tap_templates_path, data: { target: 'navbar.link' } do %>
-            Template
-          <% end %>
-        </li>
-        <li>
-          <%= link_to taps_path, data: { target: 'navbar.link' } do %>
-            Robinet
-          <% end %>
-        </li>
+        <% if admin_signed_in? %>
+          <li>
+            <%= link_to industrial_units_path, data: { target: 'navbar.link' } do %>
+              Unité Industrielle
+            <% end %>
+          </li>
+          <li>
+            <%= link_to tap_templates_path, data: { target: 'navbar.link' } do %>
+              Template
+            <% end %>
+          </li>
+          <li>
+            <%= link_to taps_path, data: { target: 'navbar.link' } do %>
+              Robinet
+            <% end %>
+          </li>
+        <% end %>
       </ul>
     </div>
 
     <div class="uk-navbar-right">
-      <%= link_to '#', class: 'uk-navbar-toggle uk-hidden@m', data: { action: 'navbar#toggle' } do %>
-        <span uk-navbar-toggle-icon></span>
-      <% end %>
+      <ul class="uk-navbar-nav">
+        <% if admin_signed_in? %>
+          <li>
+            <%= link_to '#', class: 'uk-navbar-toggle uk-hidden@m', data: { action: 'navbar#toggle' } do %>
+              <span uk-navbar-toggle-icon></span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_admin_session_path, class: 'uk-visible@m', method: :delete do %>
+              Log out
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </nav>
 
@@ -53,6 +66,12 @@
         <li>
           <%= link_to taps_path, data: { target: 'navbar.link' } do %>
             Robinet
+          <% end %>
+        </li>
+        <li class="uk-nav-divider"></li>
+        <li>
+          <%= link_to destroy_admin_session_path, method: :delete do %>
+            Log out
           <% end %>
         </li>
       </ul>

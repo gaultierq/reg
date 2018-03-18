@@ -1,0 +1,37 @@
+<div class="uk-section">
+  <div class="uk-flex uk-flex-column uk-flex-middle uk-container">
+    <h2>Log in</h2>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'uk-width-medium' }) do |f| %>
+
+      <% unless flash[:alert].nil? %>
+        <div class="uk-alert-danger uk-text-center" uk-alert>
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+
+      <div class="uk-margin">
+        <%= f.label :email, class: 'uk-form-label' %>
+        <%= f.email_field :email, autofocus: true, class: 'uk-input' %>
+      </div>
+
+      <div class="uk-margin">
+        <%= f.label :password, class: 'uk-form-label' %>
+        <%= f.password_field :password, autocomplete: "off", class: 'uk-input' %>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="uk-margin">
+          <%= f.check_box :remember_me, class: 'uk-checkbox' %>
+          <%= f.label :remember_me, class: 'uk-form-label' %>
+        </div>
+      <% end -%>
+
+      <div class="uk-margin">
+        <%= f.submit "Log in", class: 'uk-button uk-button-primary uk-width-1-1' %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

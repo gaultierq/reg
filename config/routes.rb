@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  scope '/admin' do
+  devise_for :admins
+
+  scope '/admins' do
     resources :taps
     resources :tap_templates
     resources :industrial_units
