@@ -1,33 +1,30 @@
-<div class="uk-section">
-  <div class="uk-flex uk-flex-column uk-flex-middle uk-container">
-    <h2>Sign up</h2>
+<h2>Sign up</h2>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'uk-width-medium' }) do |f| %>
-      <div class="uk-alert-danger" uk-alert>
-        <%= devise_error_messages! %>
-      </div>
-
-      <div class="uk-margin">
-        <%= f.label :email, class: 'uk-form-label' %>
-        <%= f.email_field :email, autofocus: true, class: 'uk-input' %>
-      </div>
-
-      <div class="uk-margin">
-        <%= f.label :password, class: 'uk-form-label' %>
-        <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %>
-        <%= f.password_field :password, autocomplete: "off", class: 'uk-input' %>
-      </div>
-
-      <div class="uk-margin">
-        <%= f.label :password_confirmation, class: 'uk-form-label' %>
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'uk-input' %>
-      </div>
-
-      <div class="uk-margin-medium">
-        <%= f.submit "Sign up", class: 'uk-button uk-button-primary' %>
-      </div>
-    <% end %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'uk-width-medium' }) do |f| %>
+  <div class="uk-alert-danger" uk-alert>
+    <%= devise_error_messages! %>
   </div>
-</div>
+
+  <div class="uk-margin">
+    <%= f.label :email, class: 'uk-form-label' %>
+    <%= f.email_field :email, autofocus: true, class: 'uk-input' %>
+  </div>
+
+  <div class="uk-margin">
+    <%= f.label :password, class: 'uk-form-label' %>
+    <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "off", class: 'uk-input' %>
+  </div>
+
+  <div class="uk-margin">
+    <%= f.label :password_confirmation, class: 'uk-form-label' %>
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: 'uk-input' %>
+  </div>
+
+  <div class="uk-margin-medium">
+    <%= f.submit "Sign up", class: 'uk-button uk-button-primary' %>
+  </div>
+<% end %>
+

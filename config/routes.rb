@@ -1,16 +1,24 @@
 Rails.application.routes.draw do
+  constraints subdomain: 'admin' do
+    devise_for :admins
 
-  devise_for :admins
-  devise_for :technicians
+    scope module: 'admin' do
+      resources :taps
+      resources :tap_templates
+      resources :industrial_units
+    end
 
-  scope '/admins' do
-    resources :taps
-    resources :tap_templates
-    resources :industrial_units
+    get '/', to: 'admin/industrial_units#index'
   end
 
-  scope '/technician' do
+  constraints subdomain: 'technician' do
+    devise_for :technicians
+
+    scope module: 'technician' do
+    end
+
+    get '/', to: 'technician/taps#index'
   end
 
-  root to: 'industrial_units#index'
+  root 'admin/industrial_units#index'
 end

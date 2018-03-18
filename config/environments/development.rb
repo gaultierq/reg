@@ -7,6 +7,8 @@ Rails.application.configure do
     Bullet.rails_logger  = true
   end
 
+  config.action_dispatch.tld_length = 0
+
   # Verifies that versions and hashed value of the package contents in the project's package.json
     config.webpacker.check_yarn_integrity = true
   # Settings specified here will take precedence over those in config/application.rb.

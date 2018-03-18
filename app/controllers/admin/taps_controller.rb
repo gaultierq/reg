@@ -1,4 +1,4 @@
-class TapsController < ApplicationController
+class Admin::TapsController < Admin::ApplicationController
   before_action :set_tap, only: [:show, :edit, :update, :destroy]
 
   # GET /taps
