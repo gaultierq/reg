@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :admins
+  devise_for :technicians
 
   scope '/admins' do
     resources :taps
