@@ -2,10 +2,11 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :technicians
 
-  scope 'admin' do
+  scope module: 'admin' do
     resources :taps
     resources :tap_templates
     resources :industrial_units
+    resources :events
   end
 
   namespace :technician do
