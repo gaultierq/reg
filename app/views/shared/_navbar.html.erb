@@ -27,6 +27,11 @@
               Evenements
             <% end %>
           </li>
+          <li>
+            <%= link_to users_path, data: { target: 'navbar.link' } do %>
+              Utilisateurs
+            <% end %>
+          </li>
         <% end %>
       </ul>
     </div>
@@ -76,6 +81,11 @@
         <li>
           <%= link_to events_path, data: { target: 'navbar.link' } do %>
             Evenements
+          <% end %>
+        </li>
+        <li>
+          <%= link_to users_path, data: { target: 'navbar.link' } do %>
+            Utilisateurs
           <% end %>
         </li>
         <li class="uk-nav-divider"></li>

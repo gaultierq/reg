@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :tap_templates
     resources :industrial_units
     resources :events
+    resources :users, only: :index
   end
 
   namespace :technician do
