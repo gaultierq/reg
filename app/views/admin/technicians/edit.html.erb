@@ -1,0 +1,15 @@
+<div class="uk-section uk-section-default">
+  <div class="uk-container">
+    <div class="uk-flex-middle uk-margin-medium" uk-grid>
+      <div class="uk-width-expand@m">
+        <h1 class="uk-heading-primary">Editing Technician</h1>
+      </div>
+      <div class="uk-width-auto@m">
+        <%= link_to 'Show', admin_technician_path(@technician), class: 'uk-button uk-button-primary' %>
+        <%= link_to 'Destroy', admin_technician_path(@technician), method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-button uk-button-danger' %>
+      </div>
+    </div>
+
+    <%= render 'form', technician: @technician %>
+  </div>
+</div>

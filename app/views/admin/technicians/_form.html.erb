@@ -1,0 +1,34 @@
+<%= form_with(model: [:admin, @technician], local: true) do |form| %>
+  <fieldset class="uk-fieldset">
+    <% if @technician.errors.any? %>
+      <div id="error_explanation" class="uk-alert-danger" uk-alert>
+        <h2><%= pluralize(@technician.errors.count, "error") %> prohibited this technician from being saved:</h2>
+
+        <ul>
+          <% @technician.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="uk-margin">
+      <%= form.label :email, class: 'uk-form-label' %>
+      <%= form.email_field :email, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :password, class: 'uk-form-label' %>
+      <%= form.password_field :password, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :password_confirmation, class: 'uk-form-label' %>
+      <%= form.password_field :password_confirmation, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+    <div class="uk-margin-medium">
+      <%= form.submit class: 'uk-button uk-button-primary' %>
+    </div>
+  </fieldset>
+<% end %>
