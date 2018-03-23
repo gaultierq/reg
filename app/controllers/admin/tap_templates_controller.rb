@@ -24,7 +24,7 @@ class Admin::TapTemplatesController < Admin::ApplicationController
     @tap_template = TapTemplate.new(tap_template_params)
 
     if @tap_template.save
-      redirect_to @tap_template, notice: 'Tap template was successfully created.'
+      redirect_to admin_tap_template_path(@tap_template), notice: 'Tap template was successfully created.'
     else
       render :new
     end
@@ -33,7 +33,7 @@ class Admin::TapTemplatesController < Admin::ApplicationController
   # PATCH/PUT /tap_templates/1
   def update
     if @tap_template.update(tap_template_params)
-      redirect_to @tap_template, notice: 'Tap template was successfully updated.'
+      redirect_to admin_tap_template_path(@tap_template), notice: 'Tap template was successfully updated.'
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class Admin::TapTemplatesController < Admin::ApplicationController
   # DELETE /tap_templates/1
   def destroy
     @tap_template.destroy
-    redirect_to tap_templates_url, notice: 'Tap template was successfully destroyed.'
+    redirect_to admin_tap_templates_url, notice: 'Tap template was successfully destroyed.'
   end
 
   private

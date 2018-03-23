@@ -24,7 +24,7 @@ class Admin::TapsController < Admin::ApplicationController
     @tap = Tap.new(tap_params)
 
     if @tap.save
-      redirect_to @tap, notice: 'Tap was successfully created.'
+      redirect_to admin_tap_path(@tap), notice: 'Tap was successfully created.'
     else
       render :new
     end
@@ -33,7 +33,7 @@ class Admin::TapsController < Admin::ApplicationController
   # PATCH/PUT /taps/1
   def update
     if @tap.update(tap_params)
-      redirect_to @tap, notice: 'Tap was successfully updated.'
+      redirect_to admin_tap_path(@tap), notice: 'Tap was successfully updated.'
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class Admin::TapsController < Admin::ApplicationController
   # DELETE /taps/1
   def destroy
     @tap.destroy
-    redirect_to taps_url, notice: 'Tap was successfully destroyed.'
+    redirect_to admin_taps_url, notice: 'Tap was successfully destroyed.'
   end
 
   private
