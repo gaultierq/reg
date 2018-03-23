@@ -11,44 +11,90 @@
       </div>
     </div>
 
-    <%= render 'shared/table', locals: { id: 'events_table', dom: 'lrtip', paging: false, info: false } do %>
-      <thead>
-      <tr>
-        <th>id</th>
-        <th>tap</th>
-        <th>kind</th>
-        <th data-orderable="false">Actions</th>
-      </tr>
-      </thead>
-
-      <tbody>
-      <% @events.each do |event| %>
+    <div class="uk-section-small uk-padding-remove-top">
+      <h3 class="uk-heading-divider">Maintenances</h3>
+      <%= render 'shared/table', locals: { id: 'events_maintenance_table', dom: 'lrtip', paging: false, info: false } do %>
+        <thead>
         <tr>
-          <td><%= event.id %></td>
-          <td><%= event.tap.name %></td>
-          <td><%= event.kind %></td>
-          <td class="uk-flex uk-flex-center">
-            <ul class="uk-iconnav">
-              <li>
-                <%= link_to admin_events_path(event) do %>
-                  <span uk-icon="search", uk-tooltip="Show"></span>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to edit_admin_event_path(event) do %>
-                  <span uk-icon="pencil", uk-tooltip="Edit"></span>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to admin_event_path(event), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                  <span uk-icon="trash", uk-tooltip="Destroy"></span>
-                <% end %>
-              </li>
-            </ul>
-          </td>
+          <th>id</th>
+          <th>tap</th>
+          <th>kind</th>
+          <th data-orderable="false">Actions</th>
         </tr>
+        </thead>
+
+        <tbody>
+        <% @events.where(kind: :maintenance).each do |event| %>
+          <tr>
+            <td><%= event.id %></td>
+            <td><%= event.tap.name %></td>
+            <td><%= event.kind %></td>
+            <td class="uk-flex uk-flex-center">
+              <ul class="uk-iconnav">
+                <li>
+                  <%= link_to admin_events_path(event) do %>
+                    <span uk-icon="search", uk-tooltip="Show"></span>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to edit_admin_event_path(event) do %>
+                    <span uk-icon="pencil", uk-tooltip="Edit"></span>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to admin_event_path(event), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <span uk-icon="trash", uk-tooltip="Destroy"></span>
+                  <% end %>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
       <% end %>
-      </tbody>
-    <% end %>
+    </div>
+
+    <div class="uk-section-small">
+      <h3 class="uk-heading-divider">Incidents</h3>
+      <%= render 'shared/table', locals: { id: 'events_incidents_table', dom: 'lrtip', paging: false, info: false } do %>
+        <thead>
+        <tr>
+          <th>id</th>
+          <th>tap</th>
+          <th>kind</th>
+          <th data-orderable="false">Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @events.where(kind: :incident).each do |event| %>
+          <tr>
+            <td><%= event.id %></td>
+            <td><%= event.tap.name %></td>
+            <td><%= event.kind %></td>
+            <td class="uk-flex uk-flex-center">
+              <ul class="uk-iconnav">
+                <li>
+                  <%= link_to admin_events_path(event) do %>
+                    <span uk-icon="search", uk-tooltip="Show"></span>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to edit_admin_event_path(event) do %>
+                    <span uk-icon="pencil", uk-tooltip="Edit"></span>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to admin_event_path(event), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <span uk-icon="trash", uk-tooltip="Destroy"></span>
+                  <% end %>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      <% end %>
+    </div>
   </div>
 </div>
