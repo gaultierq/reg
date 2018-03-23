@@ -7,8 +7,8 @@
         <h1 class="uk-heading-primary"><%= @tap_template.name %></h1>
       </div>
       <div class="uk-width-auto@m">
-        <%= link_to 'Edit', edit_tap_template_path(@tap_template), class: 'uk-button uk-button-primary' %>
-        <%= link_to 'Destroy', @tap_template, method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-button uk-button-danger' %>
+        <%= link_to 'Edit', edit_admin_tap_template_path(@tap_template), class: 'uk-button uk-button-primary' %>
+        <%= link_to 'Destroy', admin_tap_template_path(@tap_template), method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-button uk-button-danger' %>
       </div>
     </div>
 
@@ -199,7 +199,7 @@
     </div>
 
     <div class="uk-margin">
-      <%= link_to 'Back', tap_templates_path, class: 'uk-button uk-button-default' %>
+      <%= link_to 'Back', admin_tap_templates_path, class: 'uk-button uk-button-default' %>
     </div>
   </div>
 </div>

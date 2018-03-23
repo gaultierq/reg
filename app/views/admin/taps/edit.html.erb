@@ -5,8 +5,8 @@
         <h1 class="uk-heading-primary">Editing Tap</h1>
       </div>
       <div class="uk-width-auto@m">
-        <%= link_to 'Show', @tap, class: 'uk-button uk-button-primary' %>
-        <%= link_to 'Destroy', @tap, method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-button uk-button-danger' %>
+        <%= link_to 'Show', admin_tap_path(@tap), class: 'uk-button uk-button-primary' %>
+        <%= link_to 'Destroy', admin_tap_path(@tap), method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-button uk-button-danger' %>
       </div>
     </div>
 

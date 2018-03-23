@@ -7,7 +7,7 @@
         <h1 class="uk-heading-primary">Tap Templates</h1>
       </div>
       <div class="uk-width-auto@m">
-        <%= link_to 'New Tap Template', new_tap_template_path, class: 'uk-button uk-button-primary' %>
+        <%= link_to 'New Tap Template', new_admin_tap_template_path, class: 'uk-button uk-button-primary' %>
       </div>
     </div>
 
@@ -30,17 +30,17 @@
           <td class="uk-flex uk-flex-center">
             <ul class="uk-iconnav">
               <li>
-                <%= link_to tap_template do %>
+                <%= link_to admin_tap_template_path(tap_template) do %>
                   <span uk-icon="search", uk-tooltip="Show"></span>
                 <% end %>
               </li>
               <li>
-                <%= link_to edit_tap_template_path(tap_template) do %>
+                <%= link_to edit_admin_tap_template_path(tap_template) do %>
                   <span uk-icon="pencil", uk-tooltip="Edit"></span>
                 <% end %>
               </li>
               <li>
-                <%= link_to tap_template, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <%= link_to admin_tap_template_path(tap_template), method: :delete, data: { confirm: 'Are you sure?' } do %>
                   <span uk-icon="trash", uk-tooltip="Destroy"></span>
                 <% end %>
               </li>

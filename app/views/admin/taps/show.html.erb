@@ -8,8 +8,8 @@
         <h1 class="uk-heading-primary"><%= @tap.name %></h1>
       </div>
       <div class="uk-width-auto@m">
-        <%= link_to 'Edit', edit_tap_path, class: 'uk-button uk-button-primary' %>
-        <%= link_to 'Destroy', @tap, method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-button uk-button-danger' %>
+        <%= link_to 'Edit', edit_admin_tap_path, class: 'uk-button uk-button-primary' %>
+        <%= link_to 'Destroy', admin_tap_path(@tap), method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-button uk-button-danger' %>
       </div>
     </div>
 
@@ -255,7 +255,7 @@
     </div>
 
     <div class="uk-margin">
-      <%= link_to 'Back', taps_path, class: 'uk-button uk-button-default' %>
+      <%= link_to 'Back', admin_taps_path, class: 'uk-button uk-button-default' %>
     </div>
   </div>
 </div>

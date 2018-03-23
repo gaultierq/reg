@@ -7,7 +7,7 @@
         <h1 class="uk-heading-primary">Events</h1>
       </div>
       <div class="uk-width-auto@m">
-        <%= link_to 'New Events', new_event_path, class: 'uk-button uk-button-primary' %>
+        <%= link_to 'New Events', new_admin_event_path, class: 'uk-button uk-button-primary' %>
       </div>
     </div>
 
@@ -30,17 +30,17 @@
           <td class="uk-flex uk-flex-center">
             <ul class="uk-iconnav">
               <li>
-                <%= link_to event do %>
+                <%= link_to admin_events_path(event) do %>
                   <span uk-icon="search", uk-tooltip="Show"></span>
                 <% end %>
               </li>
               <li>
-                <%= link_to edit_event_path(event) do %>
+                <%= link_to edit_admin_event_path(event) do %>
                   <span uk-icon="pencil", uk-tooltip="Edit"></span>
                 <% end %>
               </li>
               <li>
-                <%= link_to event, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <%= link_to admin_event_path(event), method: :delete, data: { confirm: 'Are you sure?' } do %>
                   <span uk-icon="trash", uk-tooltip="Destroy"></span>
                 <% end %>
               </li>

@@ -5,8 +5,8 @@
         <h1 class="uk-heading-primary">Editing Tap Template</h1>
       </div>
       <div class="uk-width-auto@m">
-        <%= link_to 'Show', @tap_template, class: 'uk-button uk-button-primary' %>
-        <%= link_to 'Destroy', @tap_template, method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-button uk-button-danger' %>
+        <%= link_to 'Show', admin_tap_template_path(@tap_template), class: 'uk-button uk-button-primary' %>
+        <%= link_to 'Destroy', admin_tap_template_path(@tap_template), method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-button uk-button-danger' %>
       </div>
     </div>
     <%= render 'form', tap_template: @tap_template %>

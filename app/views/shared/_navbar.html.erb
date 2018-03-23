@@ -8,27 +8,27 @@
       <ul class="uk-navbar-nav uk-visible@m">
         <% if admin_signed_in? %>
           <li>
-            <%= link_to industrial_units_path, data: { target: 'navbar.link' } do %>
+            <%= link_to admin_industrial_units_path, data: { target: 'navbar.link' } do %>
               Unité Industrielle
             <% end %>
           </li>
           <li>
-            <%= link_to tap_templates_path, data: { target: 'navbar.link' } do %>
+            <%= link_to admin_tap_templates_path, data: { target: 'navbar.link' } do %>
               Template
             <% end %>
           </li>
           <li>
-            <%= link_to taps_path, data: { target: 'navbar.link' } do %>
+            <%= link_to admin_taps_path, data: { target: 'navbar.link' } do %>
               Robinet
             <% end %>
           </li>
           <li>
-            <%= link_to events_path, data: { target: 'navbar.link' } do %>
+            <%= link_to admin_events_path, data: { target: 'navbar.link' } do %>
               Evenements
             <% end %>
           </li>
           <li>
-            <%= link_to users_path, data: { target: 'navbar.link' } do %>
+            <%= link_to admin_users_path, data: { target: 'navbar.link' } do %>
               Utilisateurs
             <% end %>
           </li>
@@ -64,27 +64,27 @@
       <ul class="uk-nav uk-nav-default">
         <li class="uk-nav-header">General</li>
         <li>
-          <%= link_to industrial_units_path, data: { target: 'navbar.link' } do %>
+          <%= link_to admin_industrial_units_path, data: { target: 'navbar.link' } do %>
             Unité Industrielle
           <% end %>
         </li>
         <li>
-          <%= link_to tap_templates_path, data: { target: 'navbar.link' } do %>
+          <%= link_to admin_tap_templates_path, data: { target: 'navbar.link' } do %>
             Template
           <% end %>
         </li>
         <li>
-          <%= link_to taps_path, data: { target: 'navbar.link' } do %>
+          <%= link_to admin_taps_path, data: { target: 'navbar.link' } do %>
             Robinet
           <% end %>
         </li>
         <li>
-          <%= link_to events_path, data: { target: 'navbar.link' } do %>
+          <%= link_to admin_events_path, data: { target: 'navbar.link' } do %>
             Evenements
           <% end %>
         </li>
         <li>
-          <%= link_to users_path, data: { target: 'navbar.link' } do %>
+          <%= link_to admin_users_path, data: { target: 'navbar.link' } do %>
             Utilisateurs
           <% end %>
         </li>

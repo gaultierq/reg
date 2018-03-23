@@ -1,10 +1,10 @@
 <%= render 'shared/sidebar', locals: { title: 'Unité industrielle' } do %>
   <% @industrial_units.each do |industrial_unit| %>
     <li class="uk-flex uk-flex-middle">
-      <%= link_to industrial_unit.name, industrial_units_path(industrial_unit: industrial_unit) %>
+      <%= link_to industrial_unit.name, admin_industrial_units_path(industrial_unit: industrial_unit) %>
       <ul class="uk-iconnav uk-margin-auto-left">
         <li>
-          <%= link_to industrial_unit do %>
+          <%= link_to admin_industrial_unit_path(industrial_unit) do %>
             <span uk-icon="icon: search; ratio: 0.60", uk-tooltip="Show"></span>
           <% end %>
         </li>
@@ -22,7 +22,7 @@
         <h1 class="uk-heading-primary">Industrial Units</h1>
       </div>
       <div class="uk-width-auto@m">
-        <%= link_to 'New Industrial Unit', new_industrial_unit_path, class: 'uk-button uk-button-primary' %>
+        <%= link_to 'New Industrial Unit', new_admin_industrial_unit_path, class: 'uk-button uk-button-primary' %>
       </div>
     </div>
 
@@ -63,7 +63,7 @@
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to edit_tap_path(tap) do %>
+                  <%= link_to edit_admin_tap_path(tap) do %>
                     <span uk-icon="pencil", uk-tooltip="Edit"></span>
                   <% end %>
                 </li>

@@ -1,4 +1,4 @@
-<%= form_with(model: tap, local: true, data: { controller: 'form', form_errors: tap.errors.messages.keys.join(',') }) do |form| %>
+<%= form_with(url: admin_taps_path, local: true, data: { controller: 'form', form_errors: tap.errors.messages.keys.join(',') }) do |form| %>
   <fieldset class="uk-fieldset">
     <% if tap.errors.any? %>
       <div id="error_explanation" class="uk-alert-danger" uk-alert>
@@ -321,7 +321,7 @@
     </ul>
 
     <div class="uk-margin-medium">
-      <%= link_to 'Back', taps_path, class: 'uk-button uk-button-default' %>
+      <%= link_to 'Back', admin_taps_path, class: 'uk-button uk-button-default' %>
       <%= form.submit :save, class: 'uk-button uk-button-primary' %>
     </div>
   </fieldset>
