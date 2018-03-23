@@ -2,7 +2,6 @@ class Admin::AdminsController < Admin::ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
 
   # GET /admins/1
-  # GET /admins/1.json
   def show
   end
 
@@ -16,43 +15,29 @@ class Admin::AdminsController < Admin::ApplicationController
   end
 
   # POST /admins
-  # POST /admins.json
   def create
     @admin = Admin.new(admin_params)
 
-    respond_to do |format|
-      if @admin.save
-        format.html { redirect_to admin_admin_path(@admin), notice: 'Admin was successfully created.' }
-        format.json { render :show, status: :created, location: @admin }
-      else
-        format.html { render :new }
-        format.json { render json: @admin.errors, status: :unprocessable_entity }
-      end
+    if @admin.save
+      redirect_to admin_admin_path(@admin), notice: 'Admin was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /admins/1
-  # PATCH/PUT /admins/1.json
   def update
-    respond_to do |format|
-      if @admin.update(admin_params)
-        format.html { redirect_to admin_admin_path(@admin), notice: 'Admin was successfully updated.' }
-        format.json { render :show, status: :ok, location: @admin }
-      else
-        format.html { render :edit }
-        format.json { render json: @admin.errors, status: :unprocessable_entity }
-      end
+    if @admin.update(admin_params)
+      redirect_to admin_admin_path(@admin), notice: 'Admin was successfully updated.'
+    else
+      render :edit
     end
   end
 
   # DELETE /admins/1
-  # DELETE /admins/1.json
   def destroy
     @admin.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_userss_url, notice: 'Admin was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to admin_users_url, notice: 'Admin was successfully destroyed.'
   end
 
   private

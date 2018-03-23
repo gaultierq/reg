@@ -2,13 +2,11 @@ class Admin::TapTemplatesController < Admin::ApplicationController
   before_action :set_tap_template, only: [:show, :edit, :update, :destroy]
 
   # GET /tap_templates
-  # GET /tap_templates.json
   def index
     @tap_templates = TapTemplate.all
   end
 
   # GET /tap_templates/1
-  # GET /tap_templates/1.json
   def show
   end
 
@@ -22,43 +20,29 @@ class Admin::TapTemplatesController < Admin::ApplicationController
   end
 
   # POST /tap_templates
-  # POST /tap_templates.json
   def create
     @tap_template = TapTemplate.new(tap_template_params)
 
-    respond_to do |format|
-      if @tap_template.save
-        format.html { redirect_to @tap_template, notice: 'Tap template was successfully created.' }
-        format.json { render :show, status: :created, location: @tap_template }
-      else
-        format.html { render :new }
-        format.json { render json: @tap_template.errors, status: :unprocessable_entity }
-      end
+    if @tap_template.save
+      redirect_to @tap_template, notice: 'Tap template was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /tap_templates/1
-  # PATCH/PUT /tap_templates/1.json
   def update
-    respond_to do |format|
-      if @tap_template.update(tap_template_params)
-        format.html { redirect_to @tap_template, notice: 'Tap template was successfully updated.' }
-        format.json { render :show, status: :ok, location: @tap_template }
-      else
-        format.html { render :edit }
-        format.json { render json: @tap_template.errors, status: :unprocessable_entity }
-      end
+    if @tap_template.update(tap_template_params)
+      redirect_to @tap_template, notice: 'Tap template was successfully updated.'
+    else
+      render :edit
     end
   end
 
   # DELETE /tap_templates/1
-  # DELETE /tap_templates/1.json
   def destroy
     @tap_template.destroy
-    respond_to do |format|
-      format.html { redirect_to tap_templates_url, notice: 'Tap template was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to tap_templates_url, notice: 'Tap template was successfully destroyed.'
   end
 
   private

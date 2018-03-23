@@ -2,7 +2,6 @@ class Admin::TechniciansController < Admin::ApplicationController
   before_action :set_technician, only: [:show, :edit, :update, :destroy]
 
   # GET /technicians/1
-  # GET /technicians/1.json
   def show
   end
 
@@ -16,43 +15,29 @@ class Admin::TechniciansController < Admin::ApplicationController
   end
 
   # POST /technicians
-  # POST /technicians.json
   def create
     @technician = Technician.new(technician_params)
 
-    respond_to do |format|
-      if @technician.save
-        format.html { redirect_to admin_technician_path(@technician), notice: 'Technician was successfully created.' }
-        format.json { render :show, status: :created, location: @technician }
-      else
-        format.html { render :new }
-        format.json { render json: @technician.errors, status: :unprocessable_entity }
-      end
+    if @technician.save
+      redirect_to admin_technician_path(@technician), notice: 'Technician was successfully created.'
+    else
+      render :new
     end
   end
 
   # PATCH/PUT /technicians/1
-  # PATCH/PUT /technicians/1.json
   def update
-    respond_to do |format|
-      if @technician.update(technician_params)
-        format.html { redirect_to admin_technician_path(@technician), notice: 'Technician was successfully updated.' }
-        format.json { render :show, status: :ok, location: @technician }
-      else
-        format.html { render :edit }
-        format.json { render json: @technician.errors, status: :unprocessable_entity }
-      end
+    if @technician.update(technician_params)
+      redirect_to admin_technician_path(@technician), notice: 'Technician was successfully updated.'
+    else
+      render :edit
     end
   end
 
   # DELETE /technicians/1
-  # DELETE /technicians/1.json
   def destroy
     @technician.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_users_url, notice: 'Technician was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to admin_users_url, notice: 'Technician was successfully destroyed.'
   end
 
   private
