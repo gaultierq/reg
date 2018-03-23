@@ -1,4 +1,4 @@
-<%= form_with(url: admin_events_path, local: true, data: { controller: 'form', form_errors: event.errors.messages.keys.join(',') }) do |form| %>
+<%= form_with(model: [:admin, @event], local: true, data: { controller: 'form', form_errors: event.errors.messages.keys.join(',') }) do |form| %>
   <fieldset class="uk-fieldset">
     <% if event.errors.any? %>
       <div id="error_explanation" class="uk-alert-danger" uk-alert>

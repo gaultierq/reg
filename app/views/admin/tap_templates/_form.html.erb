@@ -1,4 +1,4 @@
-<%= form_with(url: admin_tap_templates_path, local: true, data: { controller: 'form', form_errors: tap_template.errors.messages.keys.join(',') }) do |form| %>
+<%= form_with(model: [:admin, @tap_template], local: true, data: { controller: 'form', form_errors: tap_template.errors.messages.keys.join(',') }) do |form| %>
   <fieldset class="uk-fieldset">
 
     <% if tap_template.errors.any? %>

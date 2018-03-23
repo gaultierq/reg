@@ -1,4 +1,4 @@
-<%= form_with(url: admin_industrial_units_path, local: true, data: { controller: 'form', form_errors: industrial_unit.errors.messages.keys.join(',') }) do |form| %>
+<%= form_with(model: [:admin, @industrial_unit], local: true, data: { controller: 'form', form_errors: industrial_unit.errors.messages.keys.join(',') }) do |form| %>
   <fieldset class="uk-fieldset">
     <% if industrial_unit.errors.any? %>
       <div id="error_explanation" class="uk-alert-danger" uk-alert>
