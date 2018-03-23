@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :industrial_units
     resources :events
     resources :users, only: :index
+    resources :admins, except: :index
+    resources :technicians, except: :index
   end
 
   namespace :technician do
