@@ -16,6 +16,7 @@ gem 'turbolinks', '~> 5'
 gem 'mini_magick', '~> 4.8'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
+gem 'ffaker'
 
 group :production do
   gem 'pg'
@@ -26,7 +27,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'shoulda-matchers'
-  gem 'ffaker'
   gem 'simplecov'
   gem 'bullet'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
