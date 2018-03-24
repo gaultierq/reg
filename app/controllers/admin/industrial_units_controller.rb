@@ -24,7 +24,7 @@ class Admin::IndustrialUnitsController < Admin::ApplicationController
     @industrial_unit = IndustrialUnit.new(industrial_unit_params)
 
     if @industrial_unit.save
-      redirect_to admin_industrial_units_path(@industrial_unit), notice: 'Industrial unit was successfully created.'
+      redirect_to admin_industrial_unit_path(@industrial_unit), notice: 'Industrial unit was successfully created.'
     else
       render :new
     end
@@ -33,7 +33,7 @@ class Admin::IndustrialUnitsController < Admin::ApplicationController
   # PATCH/PUT /industrial_units/1
   def update
     if @industrial_unit.update(industrial_unit_params)
-      redirect_to admin_industrial_units_path(@industrial_unit), notice: 'Industrial unit was successfully updated.'
+      redirect_to admin_industrial_unit_path(@industrial_unit), notice: 'Industrial unit was successfully updated.'
     else
       render :edit
     end

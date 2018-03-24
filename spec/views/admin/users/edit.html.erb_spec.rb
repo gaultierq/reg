@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "admin/users/edit", type: :view do
+RSpec.describe "admin/peoples/edit", type: :view do
   before(:each) do
     @admin_user = assign(:admin_user, Admin::User.create!())
   end

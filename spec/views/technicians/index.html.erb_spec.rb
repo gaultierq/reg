@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe "technicians/index", type: :view do
+RSpec.describe "users/index", type: :view do
   before(:each) do
-    assign(:technicians, [
-      Technician.create!(),
-      Technician.create!()
+    assign(:users, [
+      User.create!(),
+      User.create!()
     ])
   end
 
-  it "renders a list of technicians" do
+  it "renders a list of users" do
     render
   end
 end

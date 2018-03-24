@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "admin/users/index", type: :view do
+RSpec.describe "admin/peoples/index", type: :view do
   before(:each) do
     assign(:admin_users, [
       Admin::User.create!(),
@@ -8,7 +8,7 @@ RSpec.describe "admin/users/index", type: :view do
     ])
   end
 
-  it "renders a list of admin/users" do
+  it "renders a list of admin/peoples" do
     render
   end
 end

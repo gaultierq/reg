@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Technician Taps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @taps.each do |tap| %>
+      <tr>
+        <td><%= link_to 'Show', technician_tap_path(tap) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

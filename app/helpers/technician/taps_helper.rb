@@ -1,0 +1,2 @@
+module Technician::TapsHelper
+end

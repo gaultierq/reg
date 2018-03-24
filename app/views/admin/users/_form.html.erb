@@ -1,11 +1,11 @@
-<%= form_with(model: [:admin, @technician], local: true) do |form| %>
+<%= form_with(model: [:admin, @user], local: true) do |form| %>
   <fieldset class="uk-fieldset">
-    <% if @technician.errors.any? %>
+    <% if @user.errors.any? %>
       <div id="error_explanation" class="uk-alert-danger" uk-alert>
-        <h2><%= pluralize(@technician.errors.count, "error") %> prohibited this technician from being saved:</h2>
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
         <ul>
-          <% @technician.errors.full_messages.each do |message| %>
+          <% @user.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
         </ul>
@@ -28,6 +28,7 @@
     </div>
 
     <div class="uk-margin-medium">
+      <%= link_to 'Back', admin_peoples_path, class: 'uk-button uk-button-default' %>
       <%= form.submit class: 'uk-button uk-button-primary' %>
     </div>
   </fieldset>

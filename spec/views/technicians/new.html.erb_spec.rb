@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe "technicians/new", type: :view do
+RSpec.describe "users/new", type: :view do
   before(:each) do
-    assign(:technician, Technician.new())
+    assign(:user, User.new())
   end
 
-  it "renders new technician form" do
+  it "renders new user form" do
     render
 
     assert_select "form[action=?][method=?]", technicians_path, "post" do

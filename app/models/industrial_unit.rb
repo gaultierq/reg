@@ -1,4 +1,6 @@
 class IndustrialUnit < ApplicationRecord
+  has_many :user_industrial_units
+  has_many :users, through: :user_industrial_units, dependent: :destroy
   has_many :taps, dependent: :destroy
 
   validates :address, presence: true

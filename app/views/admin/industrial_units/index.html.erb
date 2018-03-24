@@ -58,7 +58,7 @@
             <td class="uk-flex uk-flex-center">
               <ul class="uk-iconnav">
                 <li>
-                  <%= link_to tap do %>
+                  <%= link_to admin_tap_path(tap) do %>
                     <span uk-icon="search", uk-tooltip="Show"></span>
                   <% end %>
                 </li>
@@ -68,7 +68,7 @@
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to tap, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <%= link_to admin_tap_path(tap), method: :delete, data: { confirm: 'Are you sure?' } do %>
                     <span uk-icon="trash", uk-tooltip="Destroy"></span>
                   <% end %>
                 </li>

@@ -8,7 +8,7 @@
       </div>
       <div class="uk-width-auto@m">
         <%= link_to 'New Admin', new_admin_admin_path, class: 'uk-button uk-button-primary' %>
-        <%= link_to 'New Technician', new_admin_technician_path, class: 'uk-button uk-button-primary' %>
+        <%= link_to 'New User', new_admin_user_path, class: 'uk-button uk-button-primary' %>
       </div>
     </div>
 
@@ -65,24 +65,24 @@
         </thead>
 
         <tbody>
-        <% @technicians.each do |technician| %>
+        <% @users.each do |user| %>
           <tr>
-            <td><%= technician.id %></td>
-            <td><%= technician.email %></td>
+            <td><%= user.id %></td>
+            <td><%= user.email %></td>
             <td class="uk-flex uk-flex-center">
               <ul class="uk-iconnav">
                 <li>
-                  <%= link_to admin_technician_path(technician) do %>
+                  <%= link_to admin_user_path(user) do %>
                     <span uk-icon="search", uk-tooltip="Show"></span>
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to edit_admin_technician_path(technician) do %>
+                  <%= link_to edit_admin_user_path(user) do %>
                     <span uk-icon="pencil", uk-tooltip="Edit"></span>
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to admin_technician_path(technician), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <%= link_to admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } do %>
                     <span uk-icon="trash", uk-tooltip="Destroy"></span>
                   <% end %>
                 </li>

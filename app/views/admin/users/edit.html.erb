@@ -1,0 +1,15 @@
+<div class="uk-section uk-section-default">
+  <div class="uk-container">
+    <div class="uk-flex-middle uk-margin-medium" uk-grid>
+      <div class="uk-width-expand@m">
+        <h1 class="uk-heading-primary">Editing user</h1>
+      </div>
+      <div class="uk-width-auto@m">
+        <%= link_to 'Show', admin_user_path(@user), class: 'uk-button uk-button-primary' %>
+        <%= link_to 'Destroy', admin_user_path(@user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-button uk-button-danger' %>
+      </div>
+    </div>
+
+    <%= render 'form', user: @user %>
+  </div>
+</div>

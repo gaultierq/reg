@@ -37,7 +37,7 @@ class Admin::AdminsController < Admin::ApplicationController
   # DELETE /admins/1
   def destroy
     @admin.destroy
-    redirect_to admin_users_url, notice: 'Admin was successfully destroyed.'
+    redirect_to admin_peoples_url, notice: 'Admin was successfully destroyed.'
   end
 
   private
