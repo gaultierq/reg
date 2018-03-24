@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :admins, except: :index
     resources :technicians, except: :index
 
-    root 'industrial_unit#index'
+    root 'industrial_units#index'
   end
 
   namespace :technician do
