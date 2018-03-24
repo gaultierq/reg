@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :users, only: :index
     resources :admins, except: :index
     resources :technicians, except: :index
+
+    root 'industrial_unit#index'
   end
 
   namespace :technician do
