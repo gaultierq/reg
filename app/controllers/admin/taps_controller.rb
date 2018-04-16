@@ -3,7 +3,7 @@ class Admin::TapsController < Admin::ApplicationController
 
   # GET /taps
   def index
-    @taps = Tap.includes(:industrial_unit).all
+    @taps = Tap.includes(:industrial_unit).where(industrial_unit: nil).all
   end
 
   # GET /taps/1
