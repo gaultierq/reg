@@ -2,7 +2,7 @@ class Tap < ApplicationRecord
   include Filterable
 
   belongs_to :industrial_unit, optional: true
-  has_many :events
+  has_many :events, dependent: :destroy
 
   scope :industrial_unit, -> (industrial_unit_id) { where(industrial_unit_id: industrial_unit_id) }
 
