@@ -45,9 +45,24 @@
             <% end %>
           </li>
           <li>
-            <%= link_to destroy_admin_session_path, class: 'uk-visible@m', method: :delete do %>
-              Log out
+            <%= link_to '#', class: 'uk-margin-medium-right uk-visible@m' do %>
+              <span uk-icon="icon: user; ratio: 1.25"></span>
             <% end %>
+            <div uk-dropdown>
+              <ul class="uk-nav uk-dropdown-nav">
+                <li>
+                  <%= link_to edit_admin_admin_path(current_admin) do %>
+                    <span class="uk-margin-small-right" uk-icon="icon: settings"></span>Paramètres
+                  <% end %>
+                </li>
+                <li class="uk-nav-divider"></li>
+                <li>
+                  <%= link_to destroy_admin_session_path, method: :delete do %>
+                    <span class="uk-margin-small-right" uk-icon="icon: sign-out"></span>Log out
+                  <% end %>
+                </li>
+              </ul>
+            </div>
           </li>
         <% end %>
       </ul>
