@@ -48,14 +48,14 @@
       <thead>
       <tr>
         <th>id</th>
-        <th>Numéro RFID</th>
-        <th>Numéro de série</th>
-        <th>Number customer tag</th>
-        <th>Manufacturing date</th>
-        <th>Sales number</th>
-        <th>Customer order number</th>
-        <th>Article number</th>
-        <th>Industrial Unit</th>
+        <th>N° puce RFID</th>
+        <th>N° série REG</th>
+        <th>N° TAG client</th>
+        <th>Date de fabrication</th>
+        <th>N° vente REG</th>
+        <th>N° commande client</th>
+        <th>N° article</th>
+        <th>Unité industrielle</th>
         <th data-orderable="false">Actions</th>
       </tr>
       </thead>
@@ -77,17 +77,17 @@
               <ul class="uk-iconnav">
                 <li>
                   <%= link_to admin_tap_path(tap) do %>
-                    <span uk-icon="search", uk-tooltip="Show"></span>
+                    <span uk-icon="search", uk-tooltip="Détails"></span>
                   <% end %>
                 </li>
                 <li>
                   <%= link_to edit_admin_tap_path(tap) do %>
-                    <span uk-icon="pencil", uk-tooltip="Edit"></span>
+                    <span uk-icon="pencil", uk-tooltip="Modifier"></span>
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to admin_tap_path(tap), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                    <span uk-icon="trash", uk-tooltip="Destroy"></span>
+                  <%= link_to admin_tap_path(tap), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } do %>
+                    <span uk-icon="trash", uk-tooltip="Supprimer"></span>
                   <% end %>
                 </li>
               </ul>

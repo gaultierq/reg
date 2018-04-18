@@ -13,43 +13,43 @@
     <% end %>
 
     <div class="uk-margin">
-      <%= form.label :name, class: 'uk-form-label' %>
+      <%= form.label :name, "Nom", class: 'uk-form-label' %>
       <%= form.text_field :name, class: 'uk-input', data: { target: 'form.input' } %>
     </div>
 
     <div class="uk-margin">
-      <%= form.label :address, class: 'uk-form-label' %>
+      <%= form.label :address, "Adresse", class: 'uk-form-label' %>
       <%= form.text_field :address, class: 'uk-input', data: { target: 'form.input' } %>
     </div>
 
     <div class="uk-margin">
-      <%= form.label :postcode, class: 'uk-form-label' %>
+      <%= form.label :postcode, "Code Postal", class: 'uk-form-label' %>
       <%= form.text_field :postcode, class: 'uk-input', data: { target: 'form.input' } %>
     </div>
 
     <div class="uk-margin">
-      <%= form.label :city, class: 'uk-form-label' %>
+      <%= form.label :city, "Ville", class: 'uk-form-label' %>
       <%= form.text_field :city, class: 'uk-input', data: { target: 'form.input' } %>
     </div>
 
     <div class="uk-margin">
-      <%= form.label :country, class: 'uk-form-label' %>
+      <%= form.label :country, "Pays", class: 'uk-form-label' %>
       <%= form.text_field :country, class: 'uk-input', data: { target: 'form.input' } %>
     </div>
 
     <div class="uk-margin">
-      <%= form.label :additional_information, class: 'uk-form-label' %>
+      <%= form.label :additional_information, "Informations complémentaires", class: 'uk-form-label' %>
       <%= form.text_area :additional_information, class: 'uk-textarea', data: { target: 'form.input' } %>
     </div>
 
     <div class="uk-margin">
-      <%= form.label :process_information, class: 'uk-form-label' %>
+      <%= form.label :process_information, "Informations sur le process", class: 'uk-form-label' %>
       <%= form.text_area :process_information, class: 'uk-textarea', data: { target: 'form.input' } %>
     </div>
 
     <div class="uk-margin-medium">
-      <%= link_to 'Back', admin_industrial_units_path, class: 'uk-button uk-button-default' %>
-      <%= form.submit :save, class: 'uk-button uk-button-primary' %>
+      <%= link_to 'Retour', admin_industrial_units_path, class: 'uk-button uk-button-default' %>
+      <%= form.submit "Sauvegarder", class: 'uk-button uk-button-primary' %>
     </div>
   </fieldset>
 <% end %>

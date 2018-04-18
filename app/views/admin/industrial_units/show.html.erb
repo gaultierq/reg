@@ -7,8 +7,8 @@
         <h1 class="uk-heading-primary"><%= @industrial_unit.name %></h1>
       </div>
       <div class="uk-width-auto@m">
-        <%= link_to 'Edit', edit_admin_industrial_unit_path, class: 'uk-button uk-button-primary' %>
-        <%= link_to 'Destroy', admin_industrial_unit_path(@industrial_unit), method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-button uk-button-danger' %>
+        <%= link_to 'Modifier', edit_admin_industrial_unit_path, class: 'uk-button uk-button-primary' %>
+        <%= link_to 'Supprimer', admin_industrial_unit_path(@industrial_unit), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'uk-button uk-button-danger' %>
       </div>
     </div>
 
@@ -16,27 +16,27 @@
       <table class="uk-table uk-table-striped">
         <tbody>
         <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Name</td>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Nom</td>
           <td><%= @industrial_unit.name %></td>
         </tr>
 
         <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Address</td>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Adresse</td>
           <td><%= @industrial_unit.address %></td>
         </tr>
 
         <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Postcode</td>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Code Postal</td>
           <td><%= @industrial_unit.postcode %></td>
         </tr>
 
         <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">City</td>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Ville</td>
           <td><%= @industrial_unit.city %></td>
         </tr>
 
         <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Country</td>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pays</td>
           <td><%= @industrial_unit.country %></td>
         </tr>
 
@@ -51,12 +51,12 @@
         </tr>
 
         <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Additional information</td>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Informations complémentaires</td>
           <td><%= @industrial_unit.additional_information %></td>
         </tr>
 
         <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Process information</td>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Informations sur le process</td>
           <td><%= @industrial_unit.process_information %></td>
         </tr>
         </tbody>
@@ -64,7 +64,7 @@
     </div>
 
     <div class="uk-margin-medium">
-      <%= link_to 'Back', admin_industrial_units_path, class: 'uk-button uk-button-default' %>
+      <%= link_to 'Retour', admin_industrial_units_path, class: 'uk-button uk-button-default' %>
     </div>
   </div>
 </div>
