@@ -4,10 +4,10 @@
 
     <div class="uk-flex-middle uk-margin-medium" uk-grid>
       <div class="uk-width-expand@m">
-        <h1 class="uk-heading-primary">Taps</h1>
+        <h1 class="uk-heading-primary">Robinets</h1>
       </div>
       <div class="uk-width-auto@m">
-        <%= link_to 'New Tap', new_admin_tap_path, class: 'uk-button uk-button-primary' %>
+        <%= link_to 'Nouveau Robinet', new_admin_tap_path, class: 'uk-button uk-button-primary' %>
       </div>
     </div>
 
@@ -15,15 +15,15 @@
       <thead>
       <tr>
         <th>id</th>
-        <th>Name</th>
-        <th>Rfid number</th>
-        <th>Serial number</th>
-        <th>Number customer tag</th>
-        <th>Manufacturing date</th>
-        <th>Sales number</th>
-        <th>Customer order number</th>
-        <th>Article number</th>
-        <th>Industrial unit</th>
+        <th>Nom</th>
+        <th>N° puce RFID</th>
+        <th>N° série REG</th>
+        <th>N° TAG client</th>
+        <th>Date de fabrication</th>
+        <th>N° vente REG</th>
+        <th>N° commande client</th>
+        <th>N° article</th>
+        <th>Unité Industrielle</th>
         <th data-orderable="false">Actions</th>
       </tr>
       </thead>
@@ -45,17 +45,17 @@
             <ul class="uk-iconnav">
               <li>
                 <%= link_to admin_tap_path(tap) do %>
-                  <span uk-icon="search", uk-tooltip="Show"></span>
+                  <span uk-icon="search", uk-tooltip="Détails"></span>
                 <% end %>
               </li>
               <li>
                 <%= link_to edit_admin_tap_path(tap) do %>
-                  <span uk-icon="pencil", uk-tooltip="Edit"></span>
+                  <span uk-icon="pencil", uk-tooltip="Modifier"></span>
                 <% end %>
               </li>
               <li>
-                <%= link_to admin_tap_path(tap), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                  <span uk-icon="trash", uk-tooltip="Destroy"></span>
+                <%= link_to admin_tap_path(tap), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } do %>
+                  <span uk-icon="trash", uk-tooltip="Supprimer"></span>
                 <% end %>
               </li>
             </ul>

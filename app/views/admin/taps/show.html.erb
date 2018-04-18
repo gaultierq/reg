@@ -8,8 +8,8 @@
         <h1 class="uk-heading-primary"><%= @tap.name %></h1>
       </div>
       <div class="uk-width-auto@m">
-        <%= link_to 'Edit', edit_admin_tap_path, class: 'uk-button uk-button-primary' %>
-        <%= link_to 'Destroy', admin_tap_path(@tap), method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-button uk-button-danger' %>
+        <%= link_to 'Modifier', edit_admin_tap_path, class: 'uk-button uk-button-primary' %>
+        <%= link_to 'Supprimer', admin_tap_path(@tap), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'uk-button uk-button-danger' %>
       </div>
     </div>
 
@@ -21,77 +21,77 @@
             <table class="uk-table uk-table-striped">
               <tbody>
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Name</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Nom</td>
                 <td><%= @tap.name %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Rfid number</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° puce RFID</td>
                 <td><%= @tap.rfid_number %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Serial number</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° série REG</td>
                 <td><%= @tap.serial_number %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Number customer tag</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° TAG client</td>
                 <td><%= @tap.number_customer_tag %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Manufacturing date</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Date de fabrication</td>
                 <td><%= @tap.manufacturing_date %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Sales number</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° vente REG</td>
                 <td><%= @tap.sales_number %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Customer order number</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° commande client</td>
                 <td><%= @tap.customer_order_number %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Article number</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° article</td>
                 <td><%= @tap.article_number %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Industrial unit</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Unité Industrielle</td>
                 <td><%= @tap.industrial_unit %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Dn</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">DN</td>
                 <td><%= @tap.dn %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Input connection</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Raccordement entrée</td>
                 <td><%= @tap.input_connection %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Output connection</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Raccordement sortie</td>
                 <td><%= @tap.output_connection %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Double jacket connection</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Raccordement de double enveloppe</td>
                 <td><%= @tap.double_jacket_connection %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Inclination input offset output</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Inclinaison/décalage entrée/sortie</td>
                 <td><%= @tap.inclination_input_offset_output %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Face to face</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Face à face</td>
                 <td><%= @tap.face_to_face %></td>
               </tr>
               </tbody>
@@ -107,32 +107,32 @@
             <table class="uk-table uk-table-striped">
               <tbody>
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Maximal pressure</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression Maximale (PS) à 20°C (bar)</td>
                 <td><%= @tap.maximal_pressure %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Test pressure</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression d'épreuve à 20°C (bar)</td>
                 <td><%= @tap.test_pressure %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Maximum temperature</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Température maximum (°C)</td>
                 <td><%= @tap.maximum_temperature %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pressure at maximum temperature</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression à la température maximum (bar)</td>
                 <td><%= @tap.pressure_at_maximum_temperature %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Minimum temperature</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Température minimum (°C)</td>
                 <td><%= @tap.minimum_temperature %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pressure at minimum temperature</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression à la température minimum (bar)</td>
                 <td><%= @tap.pressure_at_minimum_temperature %></td>
               </tr>
               </tbody>
@@ -148,17 +148,17 @@
             <table class="uk-table uk-table-striped">
               <tbody>
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Fluid name</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Nom du fluide</td>
                 <td><%= @tap.fluid_name %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pressure</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression (bar)</td>
                 <td><%= @tap.pressure %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Temperature</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Température (°C)</td>
                 <td><%= @tap.temperature %></td>
               </tr>
               </tbody>
@@ -174,22 +174,22 @@
             <table class="uk-table uk-table-striped">
               <tbody>
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Fluid nature</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Nature du fluide</td>
                 <td><%= @tap.fluid_nature %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Fluid danger group</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Groupe de danger du  fluide</td>
                 <td><%= @tap.fluid_danger_group %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Unstable gas</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Gaz instable</td>
                 <td><%= @tap.unstable_gas %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Risk category according to desp 2014 68</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Catégorie de risque selon DESP 2014/68</td>
                 <td><%= @tap.risk_category %></td>
               </tr>
               </tbody>
@@ -205,17 +205,17 @@
             <table class="uk-table uk-table-striped">
               <tbody>
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Manual control</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Commande manuelle</td>
                 <td><%= @tap.manual_control %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Actuator</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Actionneur</td>
                 <td><%= @tap.actuator %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pneumatic actuator pressure</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression actionneur pneumatique</td>
                 <td><%= @tap.pneumatic_actuator_pressure %></td>
               </tr>
               </tbody>
@@ -231,27 +231,27 @@
             <table class="uk-table uk-table-striped">
               <tbody>
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position detector</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Détecteur de position</td>
                 <td><%= @tap.position_detector %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Open position</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position ouverte</td>
                 <td><%= @tap.open_position %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Close position</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position fermée</td>
                 <td><%= @tap.close_position %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Piloting</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pilotage</td>
                 <td><%= @tap.piloting %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Other instrumentation</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres instrumentation</td>
                 <td><%= @tap.other_instrumentation %></td>
               </tr>
               </tbody>
@@ -267,37 +267,37 @@
             <table class="uk-table uk-table-striped">
               <tbody>
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Shell</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Enveloppe</td>
                 <td><%= @tap.shell %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Double shell</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Double enveloppe</td>
                 <td><%= @tap.double_shell %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Shutter cover</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Obturateur (partie mobile)</td>
                 <td><%= @tap.shutter_cover %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Seat</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Siège (partie fixe)</td>
                 <td><%= @tap.seat %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Cable gland packing</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Garniture de presse étoupe</td>
                 <td><%= @tap.cable_gland_packing %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Seals</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Joints</td>
                 <td><%= @tap.seals %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Material certificates required</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Certificats matières demandés</td>
                 <td><%= @tap.material_certificates_required %></td>
               </tr>
               </tbody>
@@ -307,18 +307,18 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Exigances particulières<% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Exigences particulières<% end %>
         <div class="uk-accordion-content">
           <div class="uk-overflow-auto">
             <table class="uk-table uk-table-striped">
               <tbody>
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Atex</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">ATEX</td>
                 <td><%= @tap.atex %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Other special requirements</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres exigences particulières</td>
                 <td><%= @tap.other_special_requirements %></td>
               </tr>
               </tbody>
@@ -334,7 +334,7 @@
             <table class="uk-table uk-table-striped">
               <tbody>
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Other controls</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres contrôles</td>
                 <td><%= @tap.other_controls %></td>
               </tr>
               </tbody>
@@ -350,7 +350,7 @@
             <table class="uk-table uk-table-striped">
               <tbody>
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Other</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres</td>
                 <td><%= @tap.other %></td>
               </tr>
               </tbody>
@@ -360,14 +360,14 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Evènements<% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Évènements<% end %>
         <div class="uk-accordion-content">
           <div class="uk-overflow-auto">
             <table class="uk-table uk-table-striped">
               <thead>
               <th>id</th>
-              <th>kind</th>
-              <th>comment</th>
+              <th>type</th>
+              <th>commentaire</th>
               </thead>
               <tbody>
               <% @tap.events.each do |event| %>
@@ -385,7 +385,7 @@
     </ul>
 
     <div class="uk-margin-medium">
-      <%= link_to 'Back', admin_taps_path, class: 'uk-button uk-button-default' %>
+      <%= link_to 'Retour', admin_taps_path, class: 'uk-button uk-button-default' %>
     </div>
   </div>
 </div>

@@ -17,27 +17,27 @@
         <%= link_to '#', class: 'uk-accordion-title' do %>Identification de l'atelier<% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
-            <%= form.label :name, class: 'uk-form-label' %>
+            <%= form.label :name, "Nom", class: 'uk-form-label' %>
             <%= form.text_field :name, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :rfid_number, class: 'uk-form-label' %>
+            <%= form.label :rfid_number, "N° puce RFID", class: 'uk-form-label' %>
             <%= form.text_field :rfid_number, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :serial_number, class: 'uk-form-label' %>
+            <%= form.label :serial_number, "N° série REG", class: 'uk-form-label' %>
             <%= form.number_field :serial_number, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :number_customer_tag, class: 'uk-form-label' %>
+            <%= form.label :number_customer_tag, "N° TAG client", class: 'uk-form-label' %>
             <%= form.number_field :number_customer_tag, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin" data-controller="date-select">
-            <%= form.label :manufacturing_date, class: 'uk-form-label' %>
+            <%= form.label :manufacturing_date, "Date de fabrication", class: 'uk-form-label' %>
             <%= form.hidden_field :manufacturing_date, data: { target: 'date-select.date' } %>
 
             <div uk-grid>
@@ -54,53 +54,53 @@
           </div>
 
           <div class="uk-margin">
-            <%= form.label :sales_number, class: 'uk-form-label' %>
+            <%= form.label :sales_number, "N° vente REG", class: 'uk-form-label' %>
             <%= form.text_field :sales_number, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :customer_order_number, class: 'uk-form-label' %>
+            <%= form.label :customer_order_number, "N° commande client", class: 'uk-form-label' %>
             <%= form.text_field :customer_order_number, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :article_number, class: 'uk-form-label' %>
+            <%= form.label :article_number, "N° article", class: 'uk-form-label' %>
             <%= form.text_field :article_number, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :industrial_unit_id, class: 'uk-form-label' %>
+            <%= form.label :industrial_unit_id, "Unité Industrielle", class: 'uk-form-label' %>
             <%= form.select :industrial_unit_id, IndustrialUnit.all.collect { |industrial_unit| [ industrial_unit.name, industrial_unit.id ] },
                             { include_blank: true }, { class: 'uk-select', data: { target: 'form.input' } } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :dn, class: 'uk-form-label' %>
+            <%= form.label :dn, "DN", class: 'uk-form-label' %>
             <%= form.text_field :dn, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :input_connection, class: 'uk-form-label' %>
+            <%= form.label :input_connection, "Raccordement entrée", class: 'uk-form-label' %>
             <%= form.text_field :input_connection, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :output_connection, class: 'uk-form-label' %>
+            <%= form.label :output_connection, "Raccordement sortie", class: 'uk-form-label' %>
             <%= form.text_field :output_connection, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :double_jacket_connection, class: 'uk-form-label' %>
+            <%= form.label :double_jacket_connection, "Raccordement de double enveloppe", class: 'uk-form-label' %>
             <%= form.text_field :double_jacket_connection, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :inclination_input_offset_output, class: 'uk-form-label' %>
+            <%= form.label :inclination_input_offset_output, "Inclinaison/décalage entrée/sortie", class: 'uk-form-label' %>
             <%= form.text_field :inclination_input_offset_output, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :face_to_face, class: 'uk-form-label' %>
+            <%= form.label :face_to_face, "Face à face", class: 'uk-form-label' %>
             <%= form.text_field :face_to_face, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
@@ -111,32 +111,32 @@
         <%= link_to '#', class: 'uk-accordion-title' do %>Conditions de service / Limite d'utilisation<% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
-            <%= form.label :maximal_pressure, class: 'uk-form-label' %>
+            <%= form.label :maximal_pressure, "Pression Maximale (PS) à 20°C (bar)", class: 'uk-form-label' %>
             <%= form.text_field :maximal_pressure, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :test_pressure, class: 'uk-form-label' %>
+            <%= form.label :test_pressure, "Pression d'épreuve à 20°C (bar)", class: 'uk-form-label' %>
             <%= form.text_field :test_pressure, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :maximum_temperature, class: 'uk-form-label' %>
+            <%= form.label :maximum_temperature, "Température maximum (°C)", class: 'uk-form-label' %>
             <%= form.text_field :maximum_temperature, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :pressure_at_maximum_temperature, class: 'uk-form-label' %>
+            <%= form.label :pressure_at_maximum_temperature, "Pression à la température maximum (bar)", class: 'uk-form-label' %>
             <%= form.text_field :pressure_at_maximum_temperature, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :minimum_temperature, class: 'uk-form-label' %>
+            <%= form.label :minimum_temperature, "Température minimum (°C)", class: 'uk-form-label' %>
             <%= form.text_field :minimum_temperature, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :pressure_at_minimum_temperature, class: 'uk-form-label' %>
+            <%= form.label :pressure_at_minimum_temperature, "Pression à la température minimum (bar)", class: 'uk-form-label' %>
             <%= form.text_field :pressure_at_minimum_temperature, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
         </div>
@@ -146,17 +146,17 @@
         <%= link_to '#', class: 'uk-accordion-title' do %>Données déclarées par le client<% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
-            <%= form.label :fluid_name, class: 'uk-form-label' %>
+            <%= form.label :fluid_name, "Nom du fluide", class: 'uk-form-label' %>
             <%= form.text_field :fluid_name, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :pressure, class: 'uk-form-label' %>
+            <%= form.label :pressure, "Pression (bar)", class: 'uk-form-label' %>
             <%= form.text_field :pressure, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :temperature, class: 'uk-form-label' %>
+            <%= form.label :temperature, "Température (°C)", class: 'uk-form-label' %>
             <%= form.text_field :temperature, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
         </div>
@@ -166,22 +166,22 @@
         <%= link_to '#', class: 'uk-accordion-title' do %>Catégorie de risque selon DESP 2014/68<% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
-            <%= form.label :fluid_nature, class: 'uk-form-label' %>
+            <%= form.label :fluid_nature, "Nature du fluide", class: 'uk-form-label' %>
             <%= form.select :fluid_nature, [ ['Liquide', 0], ['Gaz', 1] ], { include_blank: true }, { class: 'uk-select', data: { target: 'form.input' } } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :fluid_danger_group, class: 'uk-form-label' %>
+            <%= form.label :fluid_danger_group, "Groupe de danger du  fluide", class: 'uk-form-label' %>
             <%= form.select :fluid_danger_group, [ ['I', 0], ['II', 1] ], { include_blank: true}, { class: 'uk-select', data: { target: 'form.input' } } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :unstable_gas, class: 'uk-form-label' %>
+            <%= form.label :unstable_gas, "Gaz instable", class: 'uk-form-label' %>
             <%= form.check_box :unstable_gas, class: 'uk-checkbox', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :risk_category, class: 'uk-form-label' %>
+            <%= form.label :risk_category, "Catégorie de risque selon DESP 2014/68", class: 'uk-form-label' %>
             <%= form.select :risk_category, [ ['Article 4&3', 0], ['I', 1], ['II', 2], ['III', 3], ['IV', 4] ], { include_blank: true }, { class: 'uk-select',  data: { target: 'form.input' } } %>
           </div>
         </div>
@@ -191,17 +191,17 @@
         <%= link_to '#', class: 'uk-accordion-title' do %>Actionnement - Système de manœuvre<% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
-            <%= form.label :manual_control, class: 'uk-form-label' %>
+            <%= form.label :manual_control, "Commande manuelle", class: 'uk-form-label' %>
             <%= form.text_field :manual_control, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :actuator, class: 'uk-form-label' %>
+            <%= form.label :actuator, "Actionneur", class: 'uk-form-label' %>
             <%= form.text_field :actuator, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :pneumatic_actuator_pressure, class: 'uk-form-label' %>
+            <%= form.label :pneumatic_actuator_pressure, "Pression actionneur pneumatique", class: 'uk-form-label' %>
             <%= form.text_field :pneumatic_actuator_pressure, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
         </div>
@@ -211,27 +211,27 @@
         <%= link_to '#', class: 'uk-accordion-title' do %>Instrumentation<% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
-            <%= form.label :position_detector, class: 'uk-form-label' %>
+            <%= form.label :position_detector, "Détecteur de position", class: 'uk-form-label' %>
             <%= form.text_field :position_detector, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :open_position, class: 'uk-form-label' %>
+            <%= form.label :open_position, "Position ouverte", class: 'uk-form-label' %>
             <%= form.text_field :open_position, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :close_position, class: 'uk-form-label' %>
+            <%= form.label :close_position, "Position fermée", class: 'uk-form-label' %>
             <%= form.text_field :close_position, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :piloting, class: 'uk-form-label' %>
+            <%= form.label :piloting, "Pilotage", class: 'uk-form-label' %>
             <%= form.text_field :piloting, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :other_instrumentation, class: 'uk-form-label' %>
+            <%= form.label :other_instrumentation, "Autres instrumentation", class: 'uk-form-label' %>
             <%= form.text_field :other_instrumentation, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
         </div>
@@ -241,52 +241,52 @@
         <%= link_to '#', class: 'uk-accordion-title' do %>Matériaux<% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
-            <%= form.label :shell, class: 'uk-form-label' %>
+            <%= form.label :shell, "Enveloppe", class: 'uk-form-label' %>
             <%= form.text_field :shell, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :double_shell, class: 'uk-form-label' %>
+            <%= form.label :double_shell, "Double enveloppe", class: 'uk-form-label' %>
             <%= form.text_field :double_shell, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :shutter_cover, class: 'uk-form-label' %>
+            <%= form.label :shutter_cover, "Obturateur (partie mobile)", class: 'uk-form-label' %>
             <%= form.text_field :shutter_cover, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :seat, class: 'uk-form-label' %>
+            <%= form.label :seat, "Siège (partie fixe)", class: 'uk-form-label' %>
             <%= form.text_field :seat, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :cable_gland_packing, class: 'uk-form-label' %>
+            <%= form.label :cable_gland_packing, "Garniture de presse étoupe", class: 'uk-form-label' %>
             <%= form.text_field :cable_gland_packing, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :seals, class: 'uk-form-label' %>
+            <%= form.label :seals, "Joints", class: 'uk-form-label' %>
             <%= form.text_field :seals, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :material_certificates_required, class: 'uk-form-label' %>
+            <%= form.label :material_certificates_required, "Certificats matières demandés", class: 'uk-form-label' %>
             <%= form.check_box :material_certificates_required, class: 'uk-checkbox', data: { target: 'form.input' } %>
           </div>
         </div>
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Exigances particulières<% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Exigences particulières<% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
-            <%= form.label :atex, class: 'uk-form-label' %>
+            <%= form.label :atex, "ATEX", class: 'uk-form-label' %>
             <%= form.text_field :atex, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :other_special_requirements, class: 'uk-form-label' %>
+            <%= form.label :other_special_requirements, "Autres exigences particulières", class: 'uk-form-label' %>
             <%= form.text_field :other_special_requirements, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
         </div>
@@ -296,7 +296,7 @@
         <%= link_to '#', class: 'uk-accordion-title' do %>Contrôles<% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
-            <%= form.label :other_controls, class: 'uk-form-label' %>
+            <%= form.label :other_controls, "Autres contrôles", class: 'uk-form-label' %>
             <%= form.text_field :other_controls, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
         </div>
@@ -306,7 +306,7 @@
         <%= link_to '#', class: 'uk-accordion-title' do %>Autres<% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
-            <%= form.label :other, class: 'uk-form-label' %>
+            <%= form.label :other, "Autres", class: 'uk-form-label' %>
             <%= form.text_field :other, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
         </div>
@@ -321,8 +321,8 @@
     </ul>
 
     <div class="uk-margin-medium">
-      <%= link_to 'Back', admin_taps_path, class: 'uk-button uk-button-default' %>
-      <%= form.submit :save, class: 'uk-button uk-button-primary' %>
+      <%= link_to 'Retour', admin_taps_path, class: 'uk-button uk-button-default' %>
+      <%= form.submit "Enregistrer", class: 'uk-button uk-button-primary' %>
     </div>
   </fieldset>
 <% end %>
