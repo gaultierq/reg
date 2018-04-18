@@ -22,6 +22,11 @@
       <%= form.select :kind, Event.kinds.keys, {}, { class: 'uk-select', data: { target: 'form.input' } } %>
     </div>
 
+    <div class="uk-margin">
+      <%= form.label :comment, class: 'uk-form-label' %>
+      <%= form.text_area :kind, class: 'uk-textarea', data: { target: 'form.input' } %>
+    </div>
+
     <div class="uk-margin-medium">
       <%= link_to 'Back', admin_events_path, class: 'uk-button uk-button-default' %>
       <%= form.submit :save, class: 'uk-button uk-button-primary' %>

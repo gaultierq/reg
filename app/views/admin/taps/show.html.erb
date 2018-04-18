@@ -358,6 +358,30 @@
           </div>
         </div>
       </li>
+
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Evènements<% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <thead>
+              <th>id</th>
+              <th>kind</th>
+              <th>comment</th>
+              </thead>
+              <tbody>
+              <% @tap.events.each do |event| %>
+                <tr>
+                  <td><%= event.id %></td>
+                  <td><%= event.kind %></td>
+                  <td><%= event.comment %></td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
     </ul>
 
     <div class="uk-margin-medium">

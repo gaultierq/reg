@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2018_03_24_134849) do
   create_table "events", force: :cascade do |t|
     t.integer "tap_id"
     t.integer "kind", default: 0, null: false
+    t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tap_id"], name: "index_events_on_tap_id"

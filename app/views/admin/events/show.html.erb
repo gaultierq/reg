@@ -19,6 +19,18 @@
           <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">id</td>
           <td><%= @event.id %></td>
         </tr>
+        <tr>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">kind</td>
+          <td><%= @event.kind %></td>
+        </tr>
+        <tr>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">tap</td>
+          <td><%= @event.tap&.name %></td>
+        </tr>
+        <tr>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">comment</td>
+          <td><%= @event.comment %></td>
+        </tr>
         </tbody>
       </table>
     </div>

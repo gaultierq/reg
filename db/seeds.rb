@@ -53,10 +53,10 @@ end
 
 # Maintenance
 200.times do |i|
-  Event.create(kind: "maintenance", tap_id: (i % 100) + 1)
+  Event.create(kind: "maintenance", comment: FFaker::Lorem.sentence, tap_id: (i % 100) + 1)
 end
 
 # Incident
 200.times do |i|
-  Event.create(kind: "incident", tap_id: (i % 100) + 1)
+  Event.create(kind: "incident", comment: FFaker::Lorem.sentence, tap_id: (i % 100) + 1)
 end
