@@ -2,7 +2,7 @@
   <fieldset class="uk-fieldset">
     <% if industrial_unit.errors.any? %>
       <div id="error_explanation" class="uk-alert-danger" uk-alert>
-        <h2><%= pluralize(industrial_unit.errors.count, "error") %> prohibited this industrial_unit from being saved:</h2>
+        <h2><%= t("errors.template.header", count: industrial_unit.errors.count, model: 'unité industrielle') %></h2>
 
         <ul>
           <% industrial_unit.errors.full_messages.each do |message| %>

@@ -3,7 +3,7 @@
 
     <% if tap_template.errors.any? %>
       <div id="error_explanation" class="uk-alert-danger" uk-alert>
-        <h2><%= pluralize(tap_template.errors.count, "error") %> prohibited this tap_template from being saved:</h2>
+        <h2><%= t("errors.template.header", count: tap_template.errors.count, model: 'modèle de robinet') %></h2>
 
         <ul>
           <% tap_template.errors.full_messages.each do |message| %>

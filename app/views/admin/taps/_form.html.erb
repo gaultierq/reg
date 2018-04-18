@@ -2,7 +2,7 @@
   <fieldset class="uk-fieldset">
     <% if tap.errors.any? %>
       <div id="error_explanation" class="uk-alert-danger" uk-alert>
-        <h2><%= pluralize(tap.errors.count, "error") %> prohibited this tap from being saved:</h2>
+        <h2><%= t("errors.template.header", count: tap.errors.count, model: 'robinet') %></h2>
 
         <ul>
           <% tap.errors.full_messages.each do |message| %>

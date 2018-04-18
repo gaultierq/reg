@@ -2,7 +2,7 @@
   <fieldset class="uk-fieldset">
     <% if admin.errors.any? %>
       <div id="error_explanation" class="uk-alert-danger" uk-alert>
-        <h2><%= pluralize(admin.errors.count, "error") %> prohibited this admin from being saved:</h2>
+        <h2><%= t("errors.template.header", count: admin.errors.count, model: 'admin') %></h2>
 
         <ul>
           <% admin.errors.full_messages.each do |message| %>
