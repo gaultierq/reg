@@ -1,14 +1,14 @@
 .tm-navbar {
-  background: linear-gradient(to left, #28a5f5, #1e87f0) !important;
+  background: #e8e5e5 !important;
 }
 .tm-navbar .uk-navbar-nav > li > a,
 .tm-navbar .uk-navbar-nav > li > a:focus {
-  color: rgba(255,255,255,0.8);
+  color: #0058a1;
 
   &:hover {
-    color: white;
+    color: #1e87f0;
   }
 }
 .tm-navbar .uk-navbar-nav > li > a.active {
-  color: white;
+  color: #1e87f0;
 }
