@@ -13,6 +13,6 @@ class User::TapsController < User::ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tap
-      @tap = current_user.taps.find(params[:id])
+      @tap = Tap.find(params[:id])
     end
 end

@@ -1,19 +1,20 @@
-<p id="notice"><%= notice %></p>
+<div class="uk-section uk-section-default">
+  <div class="uk-container">
+    <%= render 'shared/notice' %>
 
-<h1>Technician Taps</h1>
+    <div class="uk-flex-middle uk-margin-medium" uk-grid>
+      <div class="uk-width-expand@m">
+        <h1 class="uk-heading-primary">Taps</h1>
+      </div>
+    </div>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @taps.each do |tap| %>
-      <tr>
-        <td><%= link_to 'Show', technician_tap_path(tap) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div class="uk-grid-small" uk-grid>
+      <div class="uk-width-expand">
+        <%= text_field_tag :tap, '', class: 'uk-input' %>
+      </div>
+      <div>
+        <button class="uk-button uk-button-default">Show</button>
+      </div>
+    </div>
+  </div>
+</div>
