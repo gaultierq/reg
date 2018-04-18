@@ -4,11 +4,11 @@
 
     <div class="uk-flex-middle uk-margin-medium" uk-grid>
       <div class="uk-width-expand@m">
-        <h1 class="uk-heading-primary">Users</h1>
+        <h1 class="uk-heading-primary">Utilisateurs</h1>
       </div>
       <div class="uk-width-auto@m">
-        <%= link_to 'New Admin', new_admin_admin_path, class: 'uk-button uk-button-primary' %>
-        <%= link_to 'New User', new_admin_user_path, class: 'uk-button uk-button-primary' %>
+        <%= link_to 'Nouvel Admin', new_admin_admin_path, class: 'uk-button uk-button-primary' %>
+        <%= link_to 'Nouvel Utilisateur', new_admin_user_path, class: 'uk-button uk-button-primary' %>
       </div>
     </div>
 
@@ -18,8 +18,8 @@
         <thead>
         <tr>
           <th>id</th>
-          <th>email</th>
-          <th data-orderable="false">Actions</th>
+          <th>adresse email</th>
+          <th data-orderable="false">actions</th>
         </tr>
         </thead>
 
@@ -32,17 +32,17 @@
               <ul class="uk-iconnav">
                 <li>
                   <%= link_to admin_admin_path(admin) do %>
-                    <span uk-icon="search", uk-tooltip="Show"></span>
+                    <span uk-icon="search", uk-tooltip="Détails"></span>
                   <% end %>
                 </li>
                 <li>
                   <%= link_to edit_admin_admin_path(admin) do %>
-                    <span uk-icon="pencil", uk-tooltip="Edit"></span>
+                    <span uk-icon="pencil", uk-tooltip="Modifier"></span>
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to admin_admin_path(admin), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                    <span uk-icon="trash", uk-tooltip="Destroy"></span>
+                  <%= link_to admin_admin_path(admin), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } do %>
+                    <span uk-icon="trash", uk-tooltip="Supprimer"></span>
                   <% end %>
                 </li>
               </ul>
@@ -54,13 +54,13 @@
     </div>
 
     <div class="uk-section-small">
-      <h3 class="uk-heading-divider">Technicians</h3>
+      <h3 class="uk-heading-divider">Techniciens</h3>
       <%= render 'shared/table', locals: { id: 'technicians_table', dom: 'lrtip', paging: false, info: false } do %>
         <thead>
         <tr>
           <th>id</th>
-          <th>email</th>
-          <th data-orderable="false">Actions</th>
+          <th>adresse email</th>
+          <th data-orderable="false">actions</th>
         </tr>
         </thead>
 
@@ -73,17 +73,17 @@
               <ul class="uk-iconnav">
                 <li>
                   <%= link_to admin_user_path(user) do %>
-                    <span uk-icon="search", uk-tooltip="Show"></span>
+                    <span uk-icon="search", uk-tooltip="Détails"></span>
                   <% end %>
                 </li>
                 <li>
                   <%= link_to edit_admin_user_path(user) do %>
-                    <span uk-icon="pencil", uk-tooltip="Edit"></span>
+                    <span uk-icon="pencil", uk-tooltip="Modifier"></span>
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                    <span uk-icon="trash", uk-tooltip="Destroy"></span>
+                  <%= link_to admin_user_path(user), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } do %>
+                    <span uk-icon="trash", uk-tooltip="Supprimer"></span>
                   <% end %>
                 </li>
               </ul>

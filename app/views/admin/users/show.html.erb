@@ -7,8 +7,8 @@
         <h1 class="uk-heading-primary"><%= @user.email %></h1>
       </div>
       <div class="uk-width-auto@m">
-        <%= link_to 'Edit', edit_admin_user_path(@user), class: 'uk-button uk-button-primary' %>
-        <%= link_to 'Destroy', admin_user_path(@user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-button uk-button-danger' %>
+        <%= link_to 'Modifier', edit_admin_user_path(@user), class: 'uk-button uk-button-primary' %>
+        <%= link_to 'Supprimer', admin_user_path(@user), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'uk-button uk-button-danger' %>
       </div>
     </div>
 
@@ -16,12 +16,12 @@
       <table class="uk-table uk-table-striped">
         <tbody>
         <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Email</td>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Adresse email</td>
           <td><%= @user.email %></td>
         </tr>
 
         <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Encrypted Password</td>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Mot de passe encrypté</td>
           <td><%= @user.encrypted_password %></td>
         </tr>
         </tbody>
@@ -29,7 +29,7 @@
     </div>
 
     <div class="uk-margin-medium">
-      <%= link_to 'Back', admin_peoples_path, class: 'uk-button uk-button-default' %>
+      <%= link_to 'Retour', admin_peoples_path, class: 'uk-button uk-button-default' %>
     </div>
   </div>
 </div>

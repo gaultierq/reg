@@ -13,23 +13,23 @@
     <% end %>
 
     <div class="uk-margin">
-      <%= form.label :email, class: 'uk-form-label' %>
+      <%= form.label :email, "Adresse email", class: 'uk-form-label' %>
       <%= form.email_field :email, class: 'uk-input', data: { target: 'form.input' } %>
     </div>
 
     <div class="uk-margin">
-      <%= form.label :password, class: 'uk-form-label' %>
+      <%= form.label :password, "Mot de passe", class: 'uk-form-label' %>
       <%= form.password_field :password, class: 'uk-input', data: { target: 'form.input' } %>
     </div>
 
     <div class="uk-margin">
-      <%= form.label :password_confirmation, class: 'uk-form-label' %>
+      <%= form.label :password_confirmation, "Confirmation du mot de passe", class: 'uk-form-label' %>
       <%= form.password_field :password_confirmation, class: 'uk-input', data: { target: 'form.input' } %>
     </div>
 
     <div class="uk-margin-medium">
-      <%= link_to 'Back', admin_peoples_path, class: 'uk-button uk-button-default' %>
-      <%= form.submit class: 'uk-button uk-button-primary' %>
+      <%= link_to 'Retour', admin_peoples_path, class: 'uk-button uk-button-default' %>
+      <%= form.submit "Enregistrer", class: 'uk-button uk-button-primary' %>
     </div>
   </fieldset>
 <% end %>
