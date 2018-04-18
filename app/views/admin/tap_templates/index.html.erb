@@ -4,10 +4,10 @@
 
     <div class="uk-flex-middle uk-margin-medium" uk-grid>
       <div class="uk-width-expand@m">
-        <h1 class="uk-heading-primary">Tap Templates</h1>
+        <h1 class="uk-heading-primary">Modèles de Robinet</h1>
       </div>
       <div class="uk-width-auto@m">
-        <%= link_to 'New Tap Template', new_admin_tap_template_path, class: 'uk-button uk-button-primary' %>
+        <%= link_to 'Nouveau Modèle', new_admin_tap_template_path, class: 'uk-button uk-button-primary' %>
       </div>
     </div>
 
@@ -15,9 +15,9 @@
       <thead>
       <tr>
         <th>id</th>
-        <th>name</th>
-        <th>article number</th>
-        <th data-orderable="false">Actions</th>
+        <th>nom</th>
+        <th>N° article</th>
+        <th data-orderable="false">actions</th>
       </tr>
       </thead>
 
@@ -31,17 +31,17 @@
             <ul class="uk-iconnav">
               <li>
                 <%= link_to admin_tap_template_path(tap_template) do %>
-                  <span uk-icon="search", uk-tooltip="Show"></span>
+                  <span uk-icon="search", uk-tooltip="Détails"></span>
                 <% end %>
               </li>
               <li>
                 <%= link_to edit_admin_tap_template_path(tap_template) do %>
-                  <span uk-icon="pencil", uk-tooltip="Edit"></span>
+                  <span uk-icon="pencil", uk-tooltip="Modifier"></span>
                 <% end %>
               </li>
               <li>
-                <%= link_to admin_tap_template_path(tap_template), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                  <span uk-icon="trash", uk-tooltip="Destroy"></span>
+                <%= link_to admin_tap_template_path(tap_template), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } do %>
+                  <span uk-icon="trash", uk-tooltip="Supprimer"></span>
                 <% end %>
               </li>
             </ul>
