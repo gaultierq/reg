@@ -9,22 +9,22 @@
         <% if admin_signed_in? %>
           <li>
             <%= link_to admin_industrial_units_path, data: { target: 'navbar.link' } do %>
-              Unité Industrielle
+              Unités Industrielles
             <% end %>
           </li>
           <li>
             <%= link_to admin_tap_templates_path, data: { target: 'navbar.link' } do %>
-              Template
+              Modèles
             <% end %>
           </li>
           <li>
             <%= link_to admin_taps_path, data: { target: 'navbar.link' } do %>
-              Robinet
+              Robinets
             <% end %>
           </li>
           <li>
             <%= link_to admin_events_path, data: { target: 'navbar.link' } do %>
-              Evenements
+              Évènements
             <% end %>
           </li>
           <li>
@@ -46,7 +46,7 @@
           </li>
           <li>
             <%= link_to destroy_admin_session_path, class: 'uk-visible@m', method: :delete do %>
-              Log out
+              Déconnexion
             <% end %>
           </li>
         <% end %>
@@ -65,22 +65,22 @@
         <li class="uk-nav-header">General</li>
         <li>
           <%= link_to admin_industrial_units_path, data: { target: 'navbar.link' } do %>
-            Unité Industrielle
+            Unités Industrielles
           <% end %>
         </li>
         <li>
           <%= link_to admin_tap_templates_path, data: { target: 'navbar.link' } do %>
-            Template
+            Modèles
           <% end %>
         </li>
         <li>
           <%= link_to admin_taps_path, data: { target: 'navbar.link' } do %>
-            Robinet
+            Robinets
           <% end %>
         </li>
         <li>
           <%= link_to admin_events_path, data: { target: 'navbar.link' } do %>
-            Evenements
+            Évènements
           <% end %>
         </li>
         <li>
@@ -91,7 +91,7 @@
         <li class="uk-nav-divider"></li>
         <li>
           <%= link_to destroy_admin_session_path, method: :delete do %>
-            Log out
+            Déconnexion
           <% end %>
         </li>
       </ul>
