@@ -1,5 +1,4 @@
-<%= image_tag("logo.png", {:style => "width:40%"}) %>
-<h2>Log in</h2>
+<%= image_tag("logo.png", {:style => "width: 35%; padding-bottom: 2%"}) %>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'uk-width-large' }) do |f| %>
 
@@ -10,24 +9,24 @@
   <% end %>
 
   <div class="uk-margin">
-    <%= f.label :email, class: 'uk-form-label' %>
+    <%= f.label :email, "Adresse email", class: 'uk-form-label' %>
     <%= f.email_field :email, autofocus: true, class: 'uk-input' %>
   </div>
 
   <div class="uk-margin">
-    <%= f.label :password, class: 'uk-form-label' %>
+    <%= f.label :password, "Mot de passe", class: 'uk-form-label' %>
     <%= f.password_field :password, autocomplete: "off", class: 'uk-input' %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
     <div class="uk-margin">
       <%= f.check_box :remember_me, class: 'uk-checkbox' %>
-      <%= f.label :remember_me, class: 'uk-form-label' %>
+      <%= f.label :remember_me, "Se souvenir de moi", class: 'uk-form-label' %>
     </div>
   <% end -%>
 
   <div class="uk-margin">
-    <%= f.submit "Log in", class: 'uk-button uk-button-primary uk-width-1-1' %>
+    <%= f.submit "Se connecter", class: 'uk-button uk-button-primary uk-width-1-1' %>
   </div>
 <% end %>
 
