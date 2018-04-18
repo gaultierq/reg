@@ -4,10 +4,10 @@
 
     <div class="uk-flex-middle uk-margin-medium" uk-grid>
       <div class="uk-width-expand@m">
-        <h1 class="uk-heading-primary">Events</h1>
+        <h1 class="uk-heading-primary">Évènements</h1>
       </div>
       <div class="uk-width-auto@m">
-        <%= link_to 'New Events', new_admin_event_path, class: 'uk-button uk-button-primary' %>
+        <%= link_to 'Nouvel Évènement', new_admin_event_path, class: 'uk-button uk-button-primary' %>
       </div>
     </div>
 
@@ -17,9 +17,9 @@
         <thead>
         <tr>
           <th>id</th>
-          <th>tap</th>
-          <th>kind</th>
-          <th data-orderable="false">Actions</th>
+          <th>robinet</th>
+          <th>type</th>
+          <th data-orderable="false">actions</th>
         </tr>
         </thead>
 
@@ -33,17 +33,17 @@
               <ul class="uk-iconnav">
                 <li>
                   <%= link_to admin_event_path(event) do %>
-                    <span uk-icon="search", uk-tooltip="Show"></span>
+                    <span uk-icon="search", uk-tooltip="Détails"></span>
                   <% end %>
                 </li>
                 <li>
                   <%= link_to edit_admin_event_path(event) do %>
-                    <span uk-icon="pencil", uk-tooltip="Edit"></span>
+                    <span uk-icon="pencil", uk-tooltip="Modifier"></span>
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to admin_event_path(event), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                    <span uk-icon="trash", uk-tooltip="Destroy"></span>
+                  <%= link_to admin_event_path(event), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } do %>
+                    <span uk-icon="trash", uk-tooltip="Supprimer"></span>
                   <% end %>
                 </li>
               </ul>
@@ -60,9 +60,9 @@
         <thead>
         <tr>
           <th>id</th>
-          <th>tap</th>
-          <th>kind</th>
-          <th data-orderable="false">Actions</th>
+          <th>robinet</th>
+          <th>type</th>
+          <th data-orderable="false">actions</th>
         </tr>
         </thead>
 
@@ -76,17 +76,17 @@
               <ul class="uk-iconnav">
                 <li>
                   <%= link_to admin_events_path(event) do %>
-                    <span uk-icon="search", uk-tooltip="Show"></span>
+                    <span uk-icon="search", uk-tooltip="Détails"></span>
                   <% end %>
                 </li>
                 <li>
                   <%= link_to edit_admin_event_path(event) do %>
-                    <span uk-icon="pencil", uk-tooltip="Edit"></span>
+                    <span uk-icon="pencil", uk-tooltip="Modifier"></span>
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to admin_event_path(event), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                    <span uk-icon="trash", uk-tooltip="Destroy"></span>
+                  <%= link_to admin_event_path(event), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } do %>
+                    <span uk-icon="trash", uk-tooltip="Supprimer"></span>
                   <% end %>
                 </li>
               </ul>

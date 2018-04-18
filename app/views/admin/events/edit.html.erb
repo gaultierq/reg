@@ -2,11 +2,11 @@
   <div class="uk-container">
     <div class="uk-flex-middle uk-margin-medium" uk-grid>
       <div class="uk-width-expand@m">
-        <h1 class="uk-heading-primary">Editing Event</h1>
+        <h1 class="uk-heading-primary">Modification d'Évènement</h1>
       </div>
       <div class="uk-width-auto@m">
-        <%= link_to 'Show', admin_event_path(@event), class: 'uk-button uk-button-primary' %>
-        <%= link_to 'Destroy', admin_event_path(@event), method: :delete, data: { confirm: 'Are you sure?' }, class: 'uk-button uk-button-danger' %>
+        <%= link_to 'Détails', admin_event_path(@event), class: 'uk-button uk-button-primary' %>
+        <%= link_to 'Supprimer', admin_event_path(@event), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'uk-button uk-button-danger' %>
       </div>
     </div>
     <%= render 'form', event: @event %>

@@ -13,23 +13,23 @@
     <% end %>
 
     <div class="uk-margin">
-      <%= form.label :tap_id, class: 'uk-form-label' %>
+      <%= form.label :tap_id, "Robinet", class: 'uk-form-label' %>
       <%= form.select :tap_id, Tap.all.collect { |tap| [ tap.name, tap.id ] }, {}, { class: 'uk-select', data: { target: 'form.input' } } %>
     </div>
 
     <div class="uk-margin">
-      <%= form.label :kind, class: 'uk-form-label' %>
+      <%= form.label :kind, "Type", class: 'uk-form-label' %>
       <%= form.select :kind, Event.kinds.keys, {}, { class: 'uk-select', data: { target: 'form.input' } } %>
     </div>
 
     <div class="uk-margin">
-      <%= form.label :comment, class: 'uk-form-label' %>
+      <%= form.label :comment, "Commentaire", class: 'uk-form-label' %>
       <%= form.text_area :kind, class: 'uk-textarea', data: { target: 'form.input' } %>
     </div>
 
     <div class="uk-margin-medium">
-      <%= link_to 'Back', admin_events_path, class: 'uk-button uk-button-default' %>
-      <%= form.submit :save, class: 'uk-button uk-button-primary' %>
+      <%= link_to 'Retour', admin_events_path, class: 'uk-button uk-button-default' %>
+      <%= form.submit "Enregistrer", class: 'uk-button uk-button-primary' %>
     </div>
   </fieldset>
 <% end %>
