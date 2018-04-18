@@ -29,8 +29,8 @@ end
 end
 
 # Industrial unit
-10.times do
-  industrial_unit = IndustrialUnit.create(name: FFaker::Lorem.sentence, address: FFaker::AddressFR.street_address,
+10.times do |i|
+  industrial_unit = IndustrialUnit.create(name: "Unité Industriel n°#{i}", address: FFaker::AddressFR.street_address,
                                           city: FFaker::AddressFR.city, postcode: FFaker::AddressFR.postal_code, country: "France")
 
   UserIndustrialUnit.create(user_id: industrial_unit.id, industrial_unit_id: industrial_unit)
@@ -38,25 +38,25 @@ end
 end
 
 # Tap template
-10.times do
-  TapTemplate.create(name: FFaker::Lorem.sentence)
+10.times do |i|
+  TapTemplate.create(name: "Template n°#{i}")
 end
 
 # Tap
 100.times do |i|
   if i < 50
-    Tap.create(name: FFaker::Lorem.sentence)
+    Tap.create(name: "Robinet n°#{i}")
   else
-    Tap.create(name: FFaker::Lorem.sentence, industrial_unit_id: (i % 10) + 1)
+    Tap.create(name: "Robinet n°#{i}", industrial_unit_id: (i % 10) + 1)
   end
 end
 
 # Maintenance
 200.times do |i|
-  Event.create(kind: "maintenance", comment: FFaker::Lorem.sentence, tap_id: (i % 100) + 1)
+  Event.create(kind: "maintenance", comment: "RAS.", tap_id: (i % 100) + 1)
 end
 
 # Incident
 200.times do |i|
-  Event.create(kind: "incident", comment: FFaker::Lorem.sentence, tap_id: (i % 100) + 1)
+  Event.create(kind: "incident", comment: "Un incident c'est produit sur ce robinet. Après intervention tout est rentré dans l'ordre", tap_id: (i % 100) + 1)
 end
