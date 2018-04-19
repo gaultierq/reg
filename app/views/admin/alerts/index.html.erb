@@ -34,18 +34,18 @@
               <td class="uk-flex uk-flex-center">
                 <ul class="uk-iconnav">
                   <li>
-                    <%= link_to admin_alert_path(event) do %>
-                      <span uk-icon="search" , uk-tooltip="Détails"></span>
+                    <%= link_to admin_alert_path(alert) do %>
+                      <span uk-icon="search", uk-tooltip="Détails"></span>
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to edit_alert_path(event) do %>
-                      <span uk-icon="pencil" , uk-tooltip="Modifier"></span>
+                    <%= link_to edit_admin_alert_path(alert) do %>
+                      <span uk-icon="pencil", uk-tooltip="Modifier"></span>
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to admin_alert_path(event), method: :delete, data: {confirm: 'Êtes-vous sûr ?'} do %>
-                      <span uk-icon="trash" , uk-tooltip="Supprimer"></span>
+                    <%= link_to admin_alert_path(alert), method: :delete, data: {confirm: 'Êtes-vous sûr ?'} do %>
+                      <span uk-icon="trash", uk-tooltip="Supprimer"></span>
                     <% end %>
                   </li>
                 </ul>
@@ -79,17 +79,17 @@
             <td class="uk-flex uk-flex-center">
               <ul class="uk-iconnav">
                 <li>
-                  <%= link_to admin_alert_path(event) do %>
+                  <%= link_to admin_alert_path(alert) do %>
                     <span uk-icon="search" , uk-tooltip="Détails"></span>
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to edit_alert_path(event) do %>
+                  <%= link_to edit_admin_alert_path(alert) do %>
                     <span uk-icon="pencil" , uk-tooltip="Modifier"></span>
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to admin_alert_path(event), method: :delete, data: {confirm: 'Êtes-vous sûr ?'} do %>
+                  <%= link_to admin_alert_path(alert), method: :delete, data: {confirm: 'Êtes-vous sûr ?'} do %>
                     <span uk-icon="trash" , uk-tooltip="Supprimer"></span>
                   <% end %>
                 </li>
