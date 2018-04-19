@@ -30,7 +30,7 @@ end
 
 # Industrial unit
 10.times do |i|
-  industrial_unit = IndustrialUnit.create(name: "Unité Industriel n°#{i}", address: FFaker::AddressFR.street_address,
+  industrial_unit = IndustrialUnit.create(name: "Unité Industrielle n°#{i}", address: FFaker::AddressFR.street_address,
                                           city: FFaker::AddressFR.city, postcode: FFaker::AddressFR.postal_code, country: "France")
 
   industrial_unit.admin_industrial_units.create!(admin_id: (industrial_unit.id + 1))
@@ -40,7 +40,7 @@ end
 
 # Tap template
 10.times do |i|
-  TapTemplate.create name: "Template n°#{i}", article_number: "12345#{i}", dn: "98765#{i}"
+  TapTemplate.create name: "Modèle n°#{i}", article_number: "12345#{i}", dn: "98765#{i}"
 end
 
 # Tap
@@ -72,5 +72,5 @@ end
 
 # Incident
 200.times do |i|
-  Event.create(kind: "incident", comment: "Un incident c'est produit sur ce robinet. Après intervention tout est rentré dans l'ordre", tap_id: (i % 100) + 1)
+  Event.create(kind: "incident", comment: "Un incident s'est produit sur ce robinet. Après intervention tout est rentré dans l'ordre.", tap_id: (i % 100) + 1)
 end
