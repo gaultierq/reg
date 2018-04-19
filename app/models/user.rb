@@ -7,4 +7,11 @@ class User < ApplicationRecord
   has_many :taps, through: :industrial_units
 
   enum kind: { technician: 0, client: 1 }
+
+  scope :technician, -> { where(kind: :technician) }
+  scope :client, -> { where(kind: :client) }
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

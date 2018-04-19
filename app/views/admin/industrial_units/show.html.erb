@@ -59,6 +59,21 @@
           <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Informations sur le process</td>
           <td><%= @industrial_unit.process_information %></td>
         </tr>
+
+        <tr>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Commercial</td>
+          <td><%= @industrial_unit.admins.first.full_name %></td>
+        </tr>
+
+        <tr>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Technicien</td>
+          <td><%= @industrial_unit.users.find_by(kind: 'technician').full_name %></td>
+        </tr>
+
+        <tr>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Client</td>
+          <td><%= @industrial_unit.users.find_by(kind: 'client').full_name %></td>
+        </tr>
         </tbody>
       </table>
     </div>

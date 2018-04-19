@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_03_24_134849) do
+ActiveRecord::Schema.define(version: 2018_04_18_211421) do
+
+  create_table "admin_industrial_units", force: :cascade do |t|
+    t.integer "admin_id"
+    t.integer "industrial_unit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_admin_industrial_units_on_admin_id"
+    t.index ["industrial_unit_id"], name: "index_admin_industrial_units_on_industrial_unit_id"
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false

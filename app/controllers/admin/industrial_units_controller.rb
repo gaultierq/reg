@@ -13,6 +13,10 @@ class Admin::IndustrialUnitsController < Admin::ApplicationController
   # GET /industrial_units/new
   def new
     @industrial_unit = IndustrialUnit.new
+
+    @industrial_unit.admin_industrial_units.build
+    @industrial_unit.user_industrial_units.build(user: User.find_by(kind: 'technician'))
+    @industrial_unit.user_industrial_units.build(user: User.find_by(kind: 'client'))
   end
 
   # GET /industrial_units/1/edit
@@ -53,6 +57,7 @@ class Admin::IndustrialUnitsController < Admin::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def industrial_unit_params
-      params.require(:industrial_unit).permit(:name, :address, :postcode, :city, :country, :additional_information, :process_information)
+      params.require(:industrial_unit).permit(:name, :address, :postcode, :city, :country, :additional_information, :process_information,
+                                              user_industrial_units_attributes: :user_id, admin_industrial_units_attributes: :admin_id)
     end
 end

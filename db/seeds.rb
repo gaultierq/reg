@@ -33,21 +33,35 @@ end
   industrial_unit = IndustrialUnit.create(name: "Unité Industriel n°#{i}", address: FFaker::AddressFR.street_address,
                                           city: FFaker::AddressFR.city, postcode: FFaker::AddressFR.postal_code, country: "France")
 
-  UserIndustrialUnit.create(user_id: industrial_unit.id, industrial_unit_id: industrial_unit)
-  UserIndustrialUnit.create(user_id: (industrial_unit.id + 10), industrial_unit_id: industrial_unit)
+  industrial_unit.admin_industrial_units.create!(admin_id: (industrial_unit.id + 1))
+  industrial_unit.user_industrial_units.create!(user_id: industrial_unit.id)
+  industrial_unit.user_industrial_units.create!(user_id: (industrial_unit.id + 10))
 end
 
 # Tap template
 10.times do |i|
-  TapTemplate.create(name: "Template n°#{i}")
+  TapTemplate.create name: "Template n°#{i}", article_number: "12345#{i}", dn: "98765#{i}"
 end
 
 # Tap
 100.times do |i|
   if i < 50
-    Tap.create(name: "Robinet n°#{i}")
+    Tap.create(
+        name: "Robinet n°#{i}",
+        manufacturing_date: Time.now,
+    )
   else
-    Tap.create(name: "Robinet n°#{i}", industrial_unit_id: (i % 10) + 1)
+    Tap.create(
+        name: "Robinet n°#{i}",
+        rfid_number: "45678#{i}",
+        serial_number: "12345#{i}",
+        number_customer_tag: "09876#{i}",
+        manufacturing_date: Time.now,
+        sales_number: "67890#{i}",
+        customer_order_number: "34567#{i}",
+        industrial_unit_id: ((i % 10) + 1),
+        dn: "000234#{i}"
+    )
   end
 end
 
