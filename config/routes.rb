@@ -3,10 +3,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace  :admin do
-    resources :taps
+    resources :faucets
     resources :tap_templates
     resources :industrial_units
     resources :events
+    resources :alerts
     resources :peoples, only: :index
     resources :admins, except: :index
     resources :users, except: :index
@@ -15,9 +16,9 @@ Rails.application.routes.draw do
   end
 
   namespace :user do
-    resources :taps, only: [:index, :show]
+    resources :faucets, only: [:index, :show]
 
-    root 'taps#index'
+    root 'faucets#index'
   end
 
   root 'admin/industrial_units#index'

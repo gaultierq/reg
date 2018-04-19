@@ -1,4 +1,4 @@
-class Tap < ApplicationRecord
+class Faucet < ApplicationRecord
   include Filterable
 
   belongs_to :industrial_unit, optional: true

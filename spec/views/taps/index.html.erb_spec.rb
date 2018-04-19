@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe "taps/index", type: :view do
+RSpec.describe "faucets/index", type: :view do
   before(:each) do
-    assign(:taps, [
-      Tap.create!(
+    assign(:faucets, [
+        Faucet.create!(
         :name => "Name",
         :rfid_number => "Rfid Number",
         :serial_number => 2,
@@ -51,7 +51,7 @@ RSpec.describe "taps/index", type: :view do
         :other_controls => "Other Controls",
         :other => "Other"
       ),
-      Tap.create!(
+        Faucet.create!(
         :name => "Name",
         :rfid_number => "Rfid Number",
         :serial_number => 2,
@@ -102,7 +102,7 @@ RSpec.describe "taps/index", type: :view do
     ])
   end
 
-  it "renders a list of taps" do
+  it "renders a list of faucets" do
     render
     assert_select "tr>td", :text => "Name".to_s, :count => 2
     assert_select "tr>td", :text => "Rfid Number".to_s, :count => 2

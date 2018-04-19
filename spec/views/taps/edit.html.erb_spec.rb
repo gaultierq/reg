@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "taps/edit", type: :view do
+RSpec.describe "faucets/edit", type: :view do
   before(:each) do
-    @tap = assign(:tap, Tap.create!(
+    @tap = assign(:tap, Faucet.create!(
       :name => "MyString",
       :rfid_number => "MyString",
       :serial_number => 1,

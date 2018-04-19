@@ -5,11 +5,11 @@
 
     <div class="uk-flex-middle uk-margin-medium" uk-grid>
       <div class="uk-width-expand@m">
-        <h1 class="uk-heading-primary"><%= @tap.name %></h1>
+        <h1 class="uk-heading-primary"><%= @faucet.name %></h1>
       </div>
       <div class="uk-width-auto@m">
-        <%= link_to 'Modifier', edit_admin_tap_path, class: 'uk-button uk-button-primary' %>
-        <%= link_to 'Supprimer', admin_tap_path(@tap), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'uk-button uk-button-danger' %>
+        <%= link_to 'Modifier', edit_admin_faucet_path, class: 'uk-button uk-button-primary' %>
+        <%= link_to 'Supprimer', admin_faucet_path(@faucet), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'uk-button uk-button-danger' %>
       </div>
     </div>
 
@@ -22,77 +22,77 @@
               <tbody>
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Nom</td>
-                <td><%= @tap.name %></td>
+                <td><%= @faucet.name %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° puce RFID</td>
-                <td><%= @tap.rfid_number %></td>
+                <td><%= @faucet.rfid_number %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° série REG</td>
-                <td><%= @tap.serial_number %></td>
+                <td><%= @faucet.serial_number %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° TAG client</td>
-                <td><%= @tap.number_customer_tag %></td>
+                <td><%= @faucet.number_customer_tag %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Date de fabrication</td>
-                <td><%= @tap.manufacturing_date %></td>
+                <td><%= @faucet.manufacturing_date %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° vente REG</td>
-                <td><%= @tap.sales_number %></td>
+                <td><%= @faucet.sales_number %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° commande client</td>
-                <td><%= @tap.customer_order_number %></td>
+                <td><%= @faucet.customer_order_number %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° article</td>
-                <td><%= @tap.article_number %></td>
+                <td><%= @faucet.article_number %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Unité Industrielle</td>
-                <td><%= @tap.industrial_unit %></td>
+                <td><%= @faucet.industrial_unit %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">DN</td>
-                <td><%= @tap.dn %></td>
+                <td><%= @faucet.dn %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Raccordement entrée</td>
-                <td><%= @tap.input_connection %></td>
+                <td><%= @faucet.input_connection %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Raccordement sortie</td>
-                <td><%= @tap.output_connection %></td>
+                <td><%= @faucet.output_connection %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Raccordement de double enveloppe</td>
-                <td><%= @tap.double_jacket_connection %></td>
+                <td><%= @faucet.double_jacket_connection %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Inclinaison/décalage entrée/sortie</td>
-                <td><%= @tap.inclination_input_offset_output %></td>
+                <td><%= @faucet.inclination_input_offset_output %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Face à face</td>
-                <td><%= @tap.face_to_face %></td>
+                <td><%= @faucet.face_to_face %></td>
               </tr>
               </tbody>
             </table>
@@ -108,32 +108,32 @@
               <tbody>
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression Maximale (PS) à 20°C (bar)</td>
-                <td><%= @tap.maximal_pressure %></td>
+                <td><%= @faucet.maximal_pressure %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression d'épreuve à 20°C (bar)</td>
-                <td><%= @tap.test_pressure %></td>
+                <td><%= @faucet.test_pressure %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Température maximum (°C)</td>
-                <td><%= @tap.maximum_temperature %></td>
+                <td><%= @faucet.maximum_temperature %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression à la température maximum (bar)</td>
-                <td><%= @tap.pressure_at_maximum_temperature %></td>
+                <td><%= @faucet.pressure_at_maximum_temperature %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Température minimum (°C)</td>
-                <td><%= @tap.minimum_temperature %></td>
+                <td><%= @faucet.minimum_temperature %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression à la température minimum (bar)</td>
-                <td><%= @tap.pressure_at_minimum_temperature %></td>
+                <td><%= @faucet.pressure_at_minimum_temperature %></td>
               </tr>
               </tbody>
             </table>
@@ -149,17 +149,17 @@
               <tbody>
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Nom du fluide</td>
-                <td><%= @tap.fluid_name %></td>
+                <td><%= @faucet.fluid_name %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression (bar)</td>
-                <td><%= @tap.pressure %></td>
+                <td><%= @faucet.pressure %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Température (°C)</td>
-                <td><%= @tap.temperature %></td>
+                <td><%= @faucet.temperature %></td>
               </tr>
               </tbody>
             </table>
@@ -175,22 +175,22 @@
               <tbody>
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Nature du fluide</td>
-                <td><%= @tap.fluid_nature %></td>
+                <td><%= @faucet.fluid_nature %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Groupe de danger du  fluide</td>
-                <td><%= @tap.fluid_danger_group %></td>
+                <td><%= @faucet.fluid_danger_group %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Gaz instable</td>
-                <td><%= @tap.unstable_gas %></td>
+                <td><%= @faucet.unstable_gas %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Catégorie de risque selon DESP 2014/68</td>
-                <td><%= @tap.risk_category %></td>
+                <td><%= @faucet.risk_category %></td>
               </tr>
               </tbody>
             </table>
@@ -206,17 +206,17 @@
               <tbody>
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Commande manuelle</td>
-                <td><%= @tap.manual_control %></td>
+                <td><%= @faucet.manual_control %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Actionneur</td>
-                <td><%= @tap.actuator %></td>
+                <td><%= @faucet.actuator %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression actionneur pneumatique</td>
-                <td><%= @tap.pneumatic_actuator_pressure %></td>
+                <td><%= @faucet.pneumatic_actuator_pressure %></td>
               </tr>
               </tbody>
             </table>
@@ -232,27 +232,27 @@
               <tbody>
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Détecteur de position</td>
-                <td><%= @tap.position_detector %></td>
+                <td><%= @faucet.position_detector %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position ouverte</td>
-                <td><%= @tap.open_position %></td>
+                <td><%= @faucet.open_position %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position fermée</td>
-                <td><%= @tap.close_position %></td>
+                <td><%= @faucet.close_position %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pilotage</td>
-                <td><%= @tap.piloting %></td>
+                <td><%= @faucet.piloting %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres instrumentation</td>
-                <td><%= @tap.other_instrumentation %></td>
+                <td><%= @faucet.other_instrumentation %></td>
               </tr>
               </tbody>
             </table>
@@ -268,37 +268,37 @@
               <tbody>
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Enveloppe</td>
-                <td><%= @tap.shell %></td>
+                <td><%= @faucet.shell %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Double enveloppe</td>
-                <td><%= @tap.double_shell %></td>
+                <td><%= @faucet.double_shell %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Obturateur (partie mobile)</td>
-                <td><%= @tap.shutter_cover %></td>
+                <td><%= @faucet.shutter_cover %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Siège (partie fixe)</td>
-                <td><%= @tap.seat %></td>
+                <td><%= @faucet.seat %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Garniture de presse étoupe</td>
-                <td><%= @tap.cable_gland_packing %></td>
+                <td><%= @faucet.cable_gland_packing %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Joints</td>
-                <td><%= @tap.seals %></td>
+                <td><%= @faucet.seals %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Certificats matières demandés</td>
-                <td><%= @tap.material_certificates_required %></td>
+                <td><%= @faucet.material_certificates_required %></td>
               </tr>
               </tbody>
             </table>
@@ -314,12 +314,12 @@
               <tbody>
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">ATEX</td>
-                <td><%= @tap.atex %></td>
+                <td><%= @faucet.atex %></td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres exigences particulières</td>
-                <td><%= @tap.other_special_requirements %></td>
+                <td><%= @faucet.other_special_requirements %></td>
               </tr>
               </tbody>
             </table>
@@ -335,7 +335,7 @@
               <tbody>
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres contrôles</td>
-                <td><%= @tap.other_controls %></td>
+                <td><%= @faucet.other_controls %></td>
               </tr>
               </tbody>
             </table>
@@ -351,7 +351,7 @@
               <tbody>
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres</td>
-                <td><%= @tap.other %></td>
+                <td><%= @faucet.other %></td>
               </tr>
               </tbody>
             </table>
@@ -370,7 +370,7 @@
               <th>commentaire</th>
               </thead>
               <tbody>
-              <% @tap.events.each do |event| %>
+              <% @faucet.events.each do |event| %>
                 <tr>
                   <td><%= event.id %></td>
                   <td><%= event.kind %></td>
@@ -385,7 +385,7 @@
     </ul>
 
     <div class="uk-margin-medium">
-      <%= link_to 'Retour', admin_taps_path, class: 'uk-button uk-button-default' %>
+      <%= link_to 'Retour', admin_faucets_path, class: 'uk-button uk-button-default' %>
     </div>
   </div>
 </div>

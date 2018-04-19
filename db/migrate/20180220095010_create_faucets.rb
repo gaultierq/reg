@@ -1,6 +1,6 @@
-class CreateTaps < ActiveRecord::Migration[5.2]
+class CreateFaucets < ActiveRecord::Migration[5.2]
   def change
-    create_table :taps do |t|
+    create_table :faucets do |t|
       t.string :name
       t.string :rfid_number
       t.integer :serial_number

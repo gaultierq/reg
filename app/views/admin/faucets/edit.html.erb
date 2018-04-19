@@ -5,11 +5,11 @@
         <h1 class="uk-heading-primary">Modification de Robinet</h1>
       </div>
       <div class="uk-width-auto@m">
-        <%= link_to 'Détails', admin_tap_path(@tap), class: 'uk-button uk-button-primary' %>
-        <%= link_to 'Supprimer', admin_tap_path(@tap), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'uk-button uk-button-danger' %>
+        <%= link_to 'Détails', admin_faucet_path(@faucet), class: 'uk-button uk-button-primary' %>
+        <%= link_to 'Supprimer', admin_faucet_path(@faucet), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'uk-button uk-button-danger' %>
       </div>
     </div>
 
-    <%= render 'form', tap: @tap %>
+    <%= render 'form', faucet: @faucet %>
   </div>
 </div>

@@ -27,7 +27,7 @@
         <% @events.where(kind: :maintenance).each do |event| %>
           <tr>
             <td><%= event.id %></td>
-            <td><%= event.tap.name %></td>
+            <td><%= event.faucet.name %></td>
             <td><%= event.kind %></td>
             <td class="uk-flex uk-flex-center">
               <ul class="uk-iconnav">
@@ -70,7 +70,7 @@
         <% @events.where(kind: :incident).each do |event| %>
           <tr>
             <td><%= event.id %></td>
-            <td><%= event.tap.name %></td>
+            <td><%= event.faucet.name %></td>
             <td><%= event.kind %></td>
             <td class="uk-flex uk-flex-center">
               <ul class="uk-iconnav">

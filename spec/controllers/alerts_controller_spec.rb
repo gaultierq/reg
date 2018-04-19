@@ -23,10 +23,10 @@ require 'rails_helper'
 # removed from Rails core in Rails 5, but can be added back in via the
 # `rails-controller-testing` gem.
 
-RSpec.describe FaucetsController, type: :controller do
+RSpec.describe AlertsController, type: :controller do
 
   # This should return the minimal set of attributes required to create a valid
-  # Faucet. As you add validations to Faucet, be sure to
+  # Alert. As you add validations to Alert, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
@@ -38,12 +38,12 @@ RSpec.describe FaucetsController, type: :controller do
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # FaucetsController. Be sure to keep this updated too.
+  # AlertsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe "GET #index" do
     it "returns a success response" do
-      tap = Faucet.create! valid_attributes
+      alert = Alert.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_success
     end
@@ -51,8 +51,8 @@ RSpec.describe FaucetsController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
-      tap = Faucet.create! valid_attributes
-      get :show, params: {id: tap.to_param}, session: valid_session
+      alert = Alert.create! valid_attributes
+      get :show, params: {id: alert.to_param}, session: valid_session
       expect(response).to be_success
     end
   end
@@ -66,29 +66,29 @@ RSpec.describe FaucetsController, type: :controller do
 
   describe "GET #edit" do
     it "returns a success response" do
-      tap = Faucet.create! valid_attributes
-      get :edit, params: {id: tap.to_param}, session: valid_session
+      alert = Alert.create! valid_attributes
+      get :edit, params: {id: alert.to_param}, session: valid_session
       expect(response).to be_success
     end
   end
 
   describe "POST #create" do
     context "with valid params" do
-      it "creates a new Faucet" do
+      it "creates a new Alert" do
         expect {
-          post :create, params: {tap: valid_attributes}, session: valid_session
-        }.to change(Faucet, :count).by(1)
+          post :create, params: {alert: valid_attributes}, session: valid_session
+        }.to change(Alert, :count).by(1)
       end
 
-      it "redirects to the created tap" do
-        post :create, params: {tap: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(Faucet.last)
+      it "redirects to the created alert" do
+        post :create, params: {alert: valid_attributes}, session: valid_session
+        expect(response).to redirect_to(Alert.last)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {tap: invalid_attributes}, session: valid_session
+        post :create, params: {alert: invalid_attributes}, session: valid_session
         expect(response).to be_success
       end
     end
@@ -100,41 +100,41 @@ RSpec.describe FaucetsController, type: :controller do
         skip("Add a hash of attributes valid for your model")
       }
 
-      it "updates the requested tap" do
-        tap = Faucet.create! valid_attributes
-        put :update, params: {id: tap.to_param, tap: new_attributes}, session: valid_session
-        tap.reload
+      it "updates the requested alert" do
+        alert = Alert.create! valid_attributes
+        put :update, params: {id: alert.to_param, alert: new_attributes}, session: valid_session
+        alert.reload
         skip("Add assertions for updated state")
       end
 
-      it "redirects to the tap" do
-        tap = Faucet.create! valid_attributes
-        put :update, params: {id: tap.to_param, tap: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(tap)
+      it "redirects to the alert" do
+        alert = Alert.create! valid_attributes
+        put :update, params: {id: alert.to_param, alert: valid_attributes}, session: valid_session
+        expect(response).to redirect_to(alert)
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
-        tap = Faucet.create! valid_attributes
-        put :update, params: {id: tap.to_param, tap: invalid_attributes}, session: valid_session
+        alert = Alert.create! valid_attributes
+        put :update, params: {id: alert.to_param, alert: invalid_attributes}, session: valid_session
         expect(response).to be_success
       end
     end
   end
 
   describe "DELETE #destroy" do
-    it "destroys the requested tap" do
-      tap = Faucet.create! valid_attributes
+    it "destroys the requested alert" do
+      alert = Alert.create! valid_attributes
       expect {
-        delete :destroy, params: {id: tap.to_param}, session: valid_session
-      }.to change(Faucet, :count).by(-1)
+        delete :destroy, params: {id: alert.to_param}, session: valid_session
+      }.to change(Alert, :count).by(-1)
     end
 
-    it "redirects to the faucets list" do
-      tap = Faucet.create! valid_attributes
-      delete :destroy, params: {id: tap.to_param}, session: valid_session
-      expect(response).to redirect_to(taps_url)
+    it "redirects to the alerts list" do
+      alert = Alert.create! valid_attributes
+      delete :destroy, params: {id: alert.to_param}, session: valid_session
+      expect(response).to redirect_to(alerts_url)
     end
   end
 

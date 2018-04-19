@@ -1,14 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe "user/taps/index", type: :view do
+RSpec.describe "user/faucets/index", type: :view do
   before(:each) do
     assign(:technician_taps, [
-      User::Tap.create!(),
-      User::Tap.create!()
+      User::Faucet.create!(),
+      User::Faucet.create!()
     ])
   end
 
-  it "renders a list of user/taps" do
+  it "renders a list of user/faucets" do
     render
   end
 end

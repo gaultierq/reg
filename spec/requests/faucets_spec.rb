@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Taps", type: :request do
-  describe "GET /taps" do
+  describe "GET /faucets" do
     it "works! (now write some real specs)" do
       get taps_path
       expect(response).to have_http_status(200)

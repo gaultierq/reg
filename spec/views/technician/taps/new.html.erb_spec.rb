@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "user/taps/new", type: :view do
+RSpec.describe "user/faucets/new", type: :view do
   before(:each) do
-    assign(:technician_tap, User::Tap.new())
+    assign(:technician_tap, User::Faucet.new())
   end
 
   it "renders new technician_tap form" do

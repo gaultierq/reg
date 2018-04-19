@@ -3,7 +3,7 @@ class IndustrialUnit < ApplicationRecord
   has_many :users, through: :user_industrial_units, dependent: :destroy
   has_many :admin_industrial_units
   has_many :admins, through: :admin_industrial_units, dependent: :destroy
-  has_many :taps, dependent: :destroy
+  has_many :faucets, dependent: :destroy
 
   validates :address, presence: true
   validates :postcode, presence: true

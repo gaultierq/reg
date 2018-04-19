@@ -38,20 +38,20 @@ end
   industrial_unit.user_industrial_units.create!(user_id: (industrial_unit.id + 10))
 end
 
-# Tap template
+# Faucet template
 10.times do |i|
   TapTemplate.create name: "Modèle n°#{i}", article_number: "12345#{i}", dn: "98765#{i}"
 end
 
-# Tap
+# Faucet
 100.times do |i|
   if i < 50
-    Tap.create(
+    Faucet.create(
         name: "Robinet n°#{i}",
         manufacturing_date: Time.now,
     )
   else
-    Tap.create(
+    Faucet.create(
         name: "Robinet n°#{i}",
         rfid_number: "45678#{i}",
         serial_number: "12345#{i}",
@@ -67,10 +67,10 @@ end
 
 # Maintenance
 200.times do |i|
-  Event.create(kind: "maintenance", comment: "RAS.", tap_id: (i % 100) + 1)
+  Event.create(kind: "maintenance", comment: "RAS.", faucet_id: (i % 100) + 1)
 end
 
 # Incident
 200.times do |i|
-  Event.create(kind: "incident", comment: "Un incident s'est produit sur ce robinet. Après intervention tout est rentré dans l'ordre.", tap_id: (i % 100) + 1)
+  Event.create(kind: "incident", comment: "Un incident s'est produit sur ce robinet. Après intervention tout est rentré dans l'ordre.", faucet_id: (i % 100) + 1)
 end

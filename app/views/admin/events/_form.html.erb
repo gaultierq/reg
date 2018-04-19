@@ -13,8 +13,8 @@
     <% end %>
 
     <div class="uk-margin">
-      <%= form.label :tap_id, "Robinet", class: 'uk-form-label' %>
-      <%= form.select :tap_id, Tap.all.collect { |tap| [ tap.name, tap.id ] }, {}, { class: 'uk-select', data: { target: 'form.input' } } %>
+      <%= form.label :faucet_id, "Robinet", class: 'uk-form-label' %>
+      <%= form.select :faucet_id, Faucet.all.collect { |faucet| [faucet.name, faucet.id ] }, {}, {class: 'uk-select', data: {target: 'form.input' } } %>
     </div>
 
     <div class="uk-margin">

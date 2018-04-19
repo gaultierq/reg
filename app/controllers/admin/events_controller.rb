@@ -3,7 +3,7 @@ class Admin::EventsController < Admin::ApplicationController
 
   # GET /events
   def index
-    @events = Event.includes(:tap).all
+    @events = Event.includes(:faucet).all
   end
 
   # GET /events/1
@@ -53,6 +53,6 @@ class Admin::EventsController < Admin::ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:tap_id, :kind)
+      params.require(:event).permit(:faucet_id, :kind, :comment)
     end
 end

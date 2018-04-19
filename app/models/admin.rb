@@ -4,7 +4,7 @@ class Admin < ApplicationRecord
 
   has_many :admin_industrial_units
   has_many :industrial_units, through: :admin_industrial_units, dependent: :destroy
-  has_many :taps, through: :industrial_units
+  has_many :faucets, through: :industrial_units
 
   enum kind: { salesman: 0, administrator: 1 }
 

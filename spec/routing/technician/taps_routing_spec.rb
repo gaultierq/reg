@@ -1,38 +1,38 @@
 require "rails_helper"
 
-RSpec.describe User::TapsController, type: :routing do
+RSpec.describe User::FaucetsController, type: :routing do
   describe "routing" do
 
     it "routes to #index" do
-      expect(:get => "/user/taps").to route_to("technician/taps#index")
+      expect(:get => "/user/faucets").to route_to("technician/faucets#index")
     end
 
     it "routes to #new" do
-      expect(:get => "/user/taps/new").to route_to("technician/taps#new")
+      expect(:get => "/user/faucets/new").to route_to("technician/faucets#new")
     end
 
     it "routes to #show" do
-      expect(:get => "/user/taps/1").to route_to("technician/taps#show", :id => "1")
+      expect(:get => "/user/faucets/1").to route_to("technician/faucets#show", :id => "1")
     end
 
     it "routes to #edit" do
-      expect(:get => "/user/taps/1/edit").to route_to("technician/taps#edit", :id => "1")
+      expect(:get => "/user/faucets/1/edit").to route_to("technician/faucets#edit", :id => "1")
     end
 
     it "routes to #create" do
-      expect(:post => "/user/taps").to route_to("technician/taps#create")
+      expect(:post => "/user/faucets").to route_to("technician/faucets#create")
     end
 
     it "routes to #update via PUT" do
-      expect(:put => "/user/taps/1").to route_to("technician/taps#update", :id => "1")
+      expect(:put => "/user/faucets/1").to route_to("technician/faucets#update", :id => "1")
     end
 
     it "routes to #update via PATCH" do
-      expect(:patch => "/user/taps/1").to route_to("technician/taps#update", :id => "1")
+      expect(:patch => "/user/faucets/1").to route_to("technician/faucets#update", :id => "1")
     end
 
     it "routes to #destroy" do
-      expect(:delete => "/user/taps/1").to route_to("technician/taps#destroy", :id => "1")
+      expect(:delete => "/user/faucets/1").to route_to("technician/faucets#destroy", :id => "1")
     end
 
   end

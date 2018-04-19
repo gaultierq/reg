@@ -1,11 +1,11 @@
-<%= form_with(model: [:admin, @tap], local: true, data: { controller: 'form', form_errors: tap.errors.messages.keys.join(',') }) do |form| %>
+<%= form_with(model: [:admin, @faucet], local: true, data: { controller: 'form', form_errors: faucet.errors.messages.keys.join(',') }) do |form| %>
   <fieldset class="uk-fieldset">
-    <% if tap.errors.any? %>
+    <% if faucet.errors.any? %>
       <div id="error_explanation" class="uk-alert-danger" uk-alert>
-        <h2><%= t("errors.template.header", count: tap.errors.count, model: 'robinet') %></h2>
+        <h2><%= t("errors.template.header", count: faucet.errors.count, model: 'robinet') %></h2>
 
         <ul>
-          <% tap.errors.full_messages.each do |message| %>
+          <% faucet.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
         </ul>
@@ -321,7 +321,7 @@
     </ul>
 
     <div class="uk-margin-medium">
-      <%= link_to 'Retour', admin_taps_path, class: 'uk-button uk-button-default' %>
+      <%= link_to 'Retour', admin_faucets_path, class: 'uk-button uk-button-default' %>
       <%= form.submit "Enregistrer", class: 'uk-button uk-button-primary' %>
     </div>
   </fieldset>
