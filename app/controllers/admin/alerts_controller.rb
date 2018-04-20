@@ -1,9 +1,10 @@
 class Admin::AlertsController < Admin::ApplicationController
   before_action :set_alert, only: [:show, :edit, :update, :destroy]
+  layout "admin"
 
   # GET /alerts
   def index
-    @alerts = Alert.includes(:tap, :industrial_unit).all
+    @alerts = Alert.includes(:faucet, :industrial_unit).all
   end
 
   # GET /alerts/1
@@ -53,6 +54,6 @@ class Admin::AlertsController < Admin::ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def alert_params
-      params.require(:alert).permit(:industrial_unit_id, :tap_id, :kind, :date)
+      params.require(:alert).permit(:industrial_unit_id, :faucet_id, :kind, :date)
     end
 end
