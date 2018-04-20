@@ -1,4 +1,4 @@
-class User::FaucetsController < User::ApplicationController
+class User::FaucetsController < User::BaseController
   before_action :set_faucet, only: :show
 
   # GET /user/faucets

@@ -1,4 +1,4 @@
-class Admin::IndustrialUnitsController < Admin::ApplicationController
+class Admin::IndustrialUnitsController < Admin::BaseController
   before_action :set_industrial_unit, only: [:show, :edit, :update, :destroy]
 
   # GET /industrial_units
