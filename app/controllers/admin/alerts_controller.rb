@@ -1,6 +1,4 @@
-class Admin::AlertsController < Admin::ApplicationController
-  layout 'admin'
-  before_action :authenticate_admin!
+class Admin::AlertsController < Admin::MainController
   before_action :set_alert, only: [:show, :edit, :update, :destroy]
 
   # GET /alerts
