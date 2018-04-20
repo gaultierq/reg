@@ -1,4 +1,4 @@
-class Admin::PeoplesController < Admin::MainController
+class Admin::PeoplesController < Admin::ApplicationController
 
   # GET /admin/peoples
   def index

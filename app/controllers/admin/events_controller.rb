@@ -1,4 +1,4 @@
-class Admin::EventsController < Admin::MainController
+class Admin::EventsController < Admin::ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events

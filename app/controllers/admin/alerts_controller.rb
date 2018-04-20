@@ -1,4 +1,4 @@
-class Admin::AlertsController < Admin::MainController
+class Admin::AlertsController < Admin::ApplicationController
   before_action :set_alert, only: [:show, :edit, :update, :destroy]
 
   # GET /alerts

@@ -1,4 +1,4 @@
-class Admin::TapTemplatesController < Admin::MainController
+class Admin::TapTemplatesController < Admin::ApplicationController
   before_action :set_tap_template, only: [:show, :edit, :update, :destroy]
 
   # GET /tap_templates

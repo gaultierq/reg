@@ -1,4 +1,4 @@
-class Admin::FaucetsController < Admin::MainController
+class Admin::FaucetsController < Admin::ApplicationController
   before_action :set_faucet, only: [:show, :edit, :update, :destroy]
 
   # GET /faucets
