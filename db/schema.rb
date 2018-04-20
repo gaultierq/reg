@@ -43,13 +43,13 @@ ActiveRecord::Schema.define(version: 2018_04_18_211421) do
 
   create_table "alerts", force: :cascade do |t|
     t.integer "industrial_unit_id"
-    t.integer "tap_id"
+    t.integer "faucet_id"
     t.integer "kind", default: 0, null: false
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["faucet_id"], name: "index_alerts_on_faucet_id"
     t.index ["industrial_unit_id"], name: "index_alerts_on_industrial_unit_id"
-    t.index ["tap_id"], name: "index_alerts_on_tap_id"
   end
 
   create_table "events", force: :cascade do |t|
