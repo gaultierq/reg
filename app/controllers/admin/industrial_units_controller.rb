@@ -4,10 +4,19 @@ class Admin::IndustrialUnitsController < Admin::BaseController
   # GET /industrial_units
   def index
     @industrial_units = IndustrialUnit.all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @industrial_units.to_csv, filename: "industrial-units-#{Date.today}.csv" }
+    end
   end
 
   # GET /industrial_units/1
   def show
+    respond_to do |format|
+      format.html
+      format.csv { send_data @industrial_unit.to_csv, filename: "industrial-unit-#{@industrial_unit.name}-#{Date.today}.csv" }
+    end
   end
 
   # GET /industrial_units/new
