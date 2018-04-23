@@ -4,6 +4,11 @@ class Admin::FaucetsController < Admin::BaseController
   # GET /faucets
   def index
     @faucets = Faucet.includes(:industrial_unit).where(industrial_unit: nil).all
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @faucets.to_csv, filename: "Robinets non affectés #{Date.today}.csv" }
+    end
   end
 
   # GET /faucets/1

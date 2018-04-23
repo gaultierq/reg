@@ -3,8 +3,15 @@
     <%= render 'shared/notice' %>
 
     <div class="uk-flex-middle uk-margin-medium" uk-grid>
-      <div class="uk-width-expand@m">
+      <div class="uk-flex uk-flex-row uk-width-expand@m">
         <h1 class="uk-heading-primary">Robinets</h1>
+        <ul class="uk-iconnav">
+          <li>
+            <%= link_to admin_faucets_path(format: :csv) do %>
+              <span uk-icon="icon: download;" uk-tooltip="Exporter en CSV"></span>
+            <% end %>
+          </li>
+        </ul>
       </div>
       <div class="uk-width-auto@m">
         <%= link_to 'Nouveau Robinet', new_admin_faucet_path, class: 'uk-button uk-button-primary' %>
