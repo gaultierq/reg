@@ -4,10 +4,11 @@ class Admin::IndustrialUnitsController < Admin::BaseController
   # GET /industrial_units
   def index
     @industrial_units = IndustrialUnit.all
+    @industrial_units_csv = IndustrialUnit.filter(params.slice(:industrial_unit)).all
 
     respond_to do |format|
       format.html
-      format.csv { send_data @industrial_units.to_csv, filename: "industrial-units-#{Date.today}.csv" }
+      format.csv { send_data @industrial_units_csv.index_to_csv, filename: "Unité industrielles #{Date.today}.csv" }
     end
   end
 
@@ -15,7 +16,7 @@ class Admin::IndustrialUnitsController < Admin::BaseController
   def show
     respond_to do |format|
       format.html
-      format.csv { send_data @industrial_unit.to_csv, filename: "industrial-unit-#{@industrial_unit.name}-#{Date.today}.csv" }
+      format.csv { send_data @industrial_unit.show_to_csv, filename: "#{@industrial_unit.name} #{Date.today}.csv" }
     end
   end
 
