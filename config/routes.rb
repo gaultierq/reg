@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace  :admin do
-    resources :faucets
+    resources :faucets do
+      member do
+        get 'duplicate'
+      end
+    end
     resources :tap_templates
     resources :industrial_units
     resources :events

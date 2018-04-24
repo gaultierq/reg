@@ -5,7 +5,7 @@
         <h1 class="uk-heading-primary">Nouveau Robinet</h1>
       </div>
       <div class="uk-width-auto@m" data-controller="template-switcher">
-        <%= select_tag :tap_template, options_from_collection_for_select(TapTemplate.all, "id", "name"), prompt: 'EMPTY TEMPLATE',
+        <%= select_tag :tap_template, options_from_collection_for_select(TapTemplate.all, "id", "name"), prompt: 'Modèle vide',
                        class: 'uk-select', data: { target: 'template-switcher.id', action: 'template-switcher#switch' } %>
       </div>
     </div>

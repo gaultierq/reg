@@ -50,6 +50,15 @@ class Admin::FaucetsController < Admin::BaseController
     redirect_to admin_faucets_url, notice: 'Faucet was successfully destroyed.'
   end
 
+  def duplicate
+    @faucet = Faucet.find(params[:id]).dup
+    @faucet.serial_number = Faucet.all.order("serial_number DESC").first.serial_number + 1
+
+    if @faucet.save
+      redirect_to admin_faucet_path(@faucet), notice: 'Faucet was successfully created.'
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_faucet
