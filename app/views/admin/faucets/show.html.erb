@@ -8,6 +8,29 @@
         <h1 class="uk-heading-primary"><%= @faucet.name %></h1>
       </div>
       <div class="uk-width-auto@m">
+        <a class="uk-button uk-button-default" href="#modal-prompt" uk-toggle>Dupliquer</a>
+        <div id="modal-prompt" uk-modal>
+          <div class="uk-modal-dialog">
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+            <div class="uk-modal-header">
+              <h2 class="uk-modal-title">Dupliquer <%= @faucet.name %></h2>
+            </div>
+            <%= form_with(url: duplicate_admin_faucet_path(@faucet), local: true, method: :get) do |form| %>
+              <div class="uk-modal-body">
+                  <fieldset class="uk-fieldset">
+                    <div class="uk-margin">
+                      <%= form.label :number, "Nombre de robinets :", class: 'uk-form-label' %>
+                      <%= form.number_field :number, placeholder: "0", class: 'uk-input', data: {target: 'form.input'} %>
+                    </div>
+                  </fieldset>
+              </div>
+              <div class="uk-modal-footer uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Retour</button>
+                <%= form.submit "Confirmer", class: 'uk-button uk-button-primary' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
         <%= link_to 'Modifier', edit_admin_faucet_path, class: 'uk-button uk-button-primary' %>
         <%= link_to 'Supprimer', admin_faucet_path(@faucet), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'uk-button uk-button-danger' %>
       </div>
