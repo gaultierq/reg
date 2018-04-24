@@ -39,7 +39,7 @@
           <% end %>
           <li>
             <% if @industrial_unit.present? %>
-              <%= link_to admin_industrial_units_path(industrial_unit: @industrial_unit, format: :csv) do %>
+              <%= link_to admin_industrial_unit_path(@industrial_unit, format: :csv) do %>
                 <span uk-icon="icon: download;" uk-tooltip="Exporter en CSV"></span>
               <% end %>
             <% end %>

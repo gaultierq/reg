@@ -16,7 +16,7 @@ class IndustrialUnit < ApplicationRecord
   accepts_nested_attributes_for :user_industrial_units
   accepts_nested_attributes_for :admin_industrial_units
 
-  def self.index_to_csv
+  def self.to_csv
     attributes = %w{ Nom N°\ puce\ RFID N°\ série\ REG N°\ TAG\ client Date\ de\ fabrication N°\ vente\ REG
         N°\ commande\ client N°\ article Unité\ industrielle DN Raccordement\ entrée Raccordement\ sortie
         Raccordement\ de\ double\ enveloppe Inclinaison/décalage\ entrée/sortie Face\ à\ face
@@ -53,7 +53,7 @@ class IndustrialUnit < ApplicationRecord
     end
   end
 
-  def index_to_csv
+  def to_csv
     attributes = %w{ Nom N°\ puce\ RFID N°\ série\ REG N°\ TAG\ client Date\ de\ fabrication N°\ vente\ REG
         N°\ commande\ client N°\ article Unité\ industrielle DN Raccordement\ entrée Raccordement\ sortie
         Raccordement\ de\ double\ enveloppe Inclinaison/décalage\ entrée/sortie Face\ à\ face
@@ -88,18 +88,6 @@ class IndustrialUnit < ApplicationRecord
     end
   end
 
-  def show_to_csv
-    attributes = %w{ Nom Adresse Code\ Postal Ville Pays Latitude Longitude Informations\ complémentaires
-                     Informations\ sur\ le\ process Commercial Technicien Client}
-
-    CSV.generate(headers: true, col_sep: ';', encoding: 'ISO-8859-1') do |csv|
-      csv << attributes
-      csv << [self.name, self.address, self.postcode, self.city, self.country, self.latitude, self.longitude,
-              self.additional_information, self.process_information, self.admins.first.full_name,
-              self.users.find_by(kind: 'technician').full_name, self.users.find_by(kind: 'client').full_name ]
-    end
-  end
-  
   def full_address
     "#{address}, #{postcode} #{city}, #{country}"
   end

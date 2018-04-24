@@ -8,7 +8,7 @@ class Admin::IndustrialUnitsController < Admin::BaseController
 
     respond_to do |format|
       format.html
-      format.csv { send_data @industrial_units_csv.index_to_csv, filename: "Unité industrielles #{Date.today}.csv" }
+      format.csv { send_data @industrial_units_csv.to_csv, filename: "Unités industrielles #{Date.today}.csv" }
     end
   end
 
@@ -16,7 +16,7 @@ class Admin::IndustrialUnitsController < Admin::BaseController
   def show
     respond_to do |format|
       format.html
-      format.csv { send_data @industrial_unit.show_to_csv, filename: "#{@industrial_unit.name} #{Date.today}.csv" }
+      format.csv { send_data @industrial_unit.to_csv, filename: "#{@industrial_unit.name} #{Date.today}.csv" }
     end
   end
 
