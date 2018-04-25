@@ -55,7 +55,7 @@ class Admin::FaucetsController < Admin::BaseController
       params[:number].to_i.times do |i|
         @faucet = Faucet.find(params[:id]).dup
         serial_number_max = Faucet.all.order("serial_number DESC").first.serial_number
-        console.log('serial number max : ', serial_number_max)
+        puts serial_number_max
         if serial_number_max.nil?
           redirect_to admin_faucets_path, error: 'Error in faucets duplication.'
         else
