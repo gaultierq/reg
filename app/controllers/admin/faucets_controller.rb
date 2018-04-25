@@ -54,8 +54,14 @@ class Admin::FaucetsController < Admin::BaseController
     if params.has_key?(:number)
       params[:number].to_i.times do |i|
         @faucet = Faucet.find(params[:id]).dup
-        @faucet.serial_number = Faucet.all.order("serial_number DESC").first.serial_number + 1
-        @faucet.save
+        serial_number_max = Faucet.all.order("serial_number DESC").first.serial_number
+        console.log('serial number max : ', serial_number_max)
+        if serial_number_max.nil?
+          redirect_to admin_faucets_path, error: 'Error in faucets duplication.'
+        else
+          @faucet.serial_number = serial_number_max + 1
+          @faucet.save
+        end
       end
       redirect_to admin_faucets_path, notice: 'Faucets were successfully created.'
     else
