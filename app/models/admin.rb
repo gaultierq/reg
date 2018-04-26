@@ -1,6 +1,6 @@
 class Admin < ApplicationRecord
   devise :database_authenticatable, :recoverable, :rememberable,
-         :timeoutable, :trackable, :validatable
+         :timeoutable, :trackable, :validatable, :invitable
 
   has_many :admin_industrial_units
   has_many :industrial_units, through: :admin_industrial_units, dependent: :destroy

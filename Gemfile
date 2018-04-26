@@ -17,6 +17,7 @@ gem 'mini_magick', '~> 4.8'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'devise-i18n'
+gem 'devise_invitable'
 gem 'rails-i18n', '~> 5.1'
 gem 'ffaker'
 

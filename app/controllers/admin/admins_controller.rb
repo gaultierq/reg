@@ -18,13 +18,15 @@ class Admin::AdminsController < Admin::BaseController
 
   # POST /admins
   def create
-    @admin = Admin.new(admin_params)
-
-    if @admin.save
-      redirect_to admin_admin_path(@admin), notice: 'Admin was successfully created.'
-    else
-      render :new
-    end
+    Admin.invite!(admin_params)
+    redirect_to admin_peoples_path
+    # @admin = Admin.new(admin_params)
+    #
+    # if @admin.save
+    #   redirect_to admin_admin_path(@admin), notice: 'Admin was successfully created.'
+    # else
+    #   render :new
+    # end
   end
 
   # PATCH/PUT /admins/1
