@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :recoverable, :rememberable,
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable,
          :timeoutable, :trackable, :validatable, :invitable
 
   has_many :user_industrial_units
