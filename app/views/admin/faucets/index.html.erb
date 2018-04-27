@@ -38,7 +38,12 @@
       <tbody>
       <% @faucets.each do |faucet| %>
         <tr>
-          <td><%= faucet.id %></td>
+          <td>
+            <% if faucet.events.length > 0 %>
+              <%= image_tag("warning.svg", {:style => "height: 3%;"}) %>
+            <% end %>
+            <%= faucet.id %>
+          </td>
           <td><%= faucet.name %></td>
           <td><%= faucet.rfid_number %></td>
           <td><%= faucet.serial_number %></td>
