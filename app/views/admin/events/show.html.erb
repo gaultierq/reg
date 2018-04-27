@@ -31,6 +31,16 @@
           <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">commentaire</td>
           <td><%= @event.comment %></td>
         </tr>
+        <tr>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Date de création</td>
+          <td><%= @event.created_at %></td>
+        </tr>
+        <tr>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Unité Industrielle</td>
+          <% if @event.faucet.industrial_unit.present? %>
+            <td><%= @event.faucet.industrial_unit.name %></td>
+          <% end %>
+        </tr>
         </tbody>
       </table>
     </div>

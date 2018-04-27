@@ -3,7 +3,7 @@ class Admin::EventsController < Admin::BaseController
 
   # GET /events
   def index
-    @events = Event.includes(:faucet).all
+    @events = Event.includes(faucet: :industrial_unit).all
   end
 
   # GET /events/1
