@@ -391,6 +391,7 @@
               <th>id</th>
               <th>type</th>
               <th>commentaire</th>
+              <th>actions</th>
               </thead>
               <tbody>
               <% @faucet.events.each do |event| %>
@@ -398,6 +399,15 @@
                   <td><%= event.id %></td>
                   <td><%= event.kind %></td>
                   <td><%= event.comment %></td>
+                  <td class="uk-flex uk-flex-center">
+                    <ul class="uk-iconnav">
+                      <li>
+                        <%= link_to admin_event_path(event) do %>
+                          <span uk-icon="search" , uk-tooltip="Détails"></span>
+                        <% end %>
+                      </li>
+                    </ul>
+                  </td>
                 </tr>
               <% end %>
               </tbody>
