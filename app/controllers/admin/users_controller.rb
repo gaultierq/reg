@@ -16,13 +16,8 @@ class Admin::UsersController < Admin::BaseController
 
   # POST /users
   def create
-    @user = User.new(user_params)
-
-    if @user.save
-      redirect_to admin_user_path(@user), notice: 'User was successfully created.'
-    else
-      render :new
-    end
+    User.invite!(user_params)
+    redirect_to admin_peoples_path, notice: 'Invitation envoyée.'
   end
 
   # PATCH/PUT /users/1

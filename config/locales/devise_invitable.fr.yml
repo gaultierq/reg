@@ -1,4 +1,4 @@
-en:
+fr:
   devise:
     failure:
       invited: "Vous avez une invitation en attente, acceptez la pour finaliser la création de votre compte."
@@ -22,7 +22,7 @@ en:
         someone_invited_you: "Quelqu'un vous a invité à %{url}, vous pouvez accepter via le lien ci-dessous."
         accept: "Accepter l'invitation"
         accept_until: "Cette invitation sera valide jusqu'au %{due_date}."
-        ignore: "Si vous ne voulez pas accepter l'invitation, ignorez cet email.<br />\nVotre compte ne sera pas créé avant que vous n'accédiez au lien ci-dessus et n'assignez votre mot de passe."
+        ignore: "Si vous ne voulez pas accepter l'invitation, ignorez cet email.<br />\nVotre compte ne sera pas créé avant que vous n'accédiez au lien ci-dessus et ne définissiez votre mot de passe."
   time:
     formats:
       devise:
