@@ -1,22 +1,24 @@
 <h2><%= t 'devise.invitations.edit.header' %></h2>
 
 <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :invitation_token, readonly: true %>
+  <fieldset class="uk-fieldset">
+    <%= devise_error_messages! %>
+    <%= f.hidden_field :invitation_token, readonly: true %>
 
-  <% if f.object.class.require_password_on_accepting %>
-    <div class="uk-margin">
-      <%= f.label :password, class: 'uk-form-label' %>
-      <%= f.password_field :password, class: 'uk-input' %>
+    <% if f.object.class.require_password_on_accepting %>
+      <div class="uk-margin">
+        <%= f.label :password, class: 'uk-form-label' %>
+        <%= f.password_field :password, class: 'uk-input' %>
+      </div>
+
+      <div class="uk-margin">
+        <%= f.label :password_confirmation, class: 'uk-form-label' %>
+        <%= f.password_field :password_confirmation, class: 'uk-input' %>
+      </div>
+    <% end %>
+
+    <div class="uk-margin-medium">
+      <%= f.submit t("devise.invitations.edit.submit_button"), class: 'uk-button uk-button-primary' %>
     </div>
-
-    <div class="uk-margin">
-      <%= f.label :password_confirmation, class: 'uk-form-label' %>
-      <%= f.password_field :password_confirmation, class: 'uk-input' %>
-    </div>
-  <% end %>
-
-  <div class="uk-margin-medium">
-    <%= f.submit t("devise.invitations.edit.submit_button"), class: 'uk-button uk-button-primary' %>
-  </div>
+  </fieldset>
 <% end %>
