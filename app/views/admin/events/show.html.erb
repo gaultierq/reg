@@ -41,6 +41,15 @@
             <td><%= @event.faucet.industrial_unit.name %></td>
           <% end %>
         </tr>
+        <tr>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Auteur</td>
+          <% if @event.admin_id.present? %>
+            <td><%= @event.admin.full_name %></td>
+          <% end %>
+          <% if @event.user_id.present? %>
+            <td><%= @event.user.full_name %></td>
+          <% end %>
+        </tr>
         </tbody>
       </table>
     </div>

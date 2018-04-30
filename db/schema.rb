@@ -64,9 +64,13 @@ ActiveRecord::Schema.define(version: 2018_04_18_211421) do
     t.integer "faucet_id"
     t.integer "kind", default: 0, null: false
     t.text "comment"
+    t.integer "admin_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_events_on_admin_id"
     t.index ["faucet_id"], name: "index_events_on_faucet_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "faucets", force: :cascade do |t|

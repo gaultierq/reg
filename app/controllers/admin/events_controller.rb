@@ -3,7 +3,7 @@ class Admin::EventsController < Admin::BaseController
 
   # GET /events
   def index
-    @events = Event.includes(faucet: :industrial_unit).all
+    @events = Event.includes(:admin, :user, faucet: :industrial_unit).all
   end
 
   # GET /events/1
@@ -21,7 +21,11 @@ class Admin::EventsController < Admin::BaseController
 
   # POST /events
   def create
-    @event = Event.new(event_params)
+    if current_user.present?
+      @event = current_user.events.new(event_params)
+    else
+      @event = current_admin.events.new(event_params)
+    end
 
     if @event.save
       redirect_to admin_event_path(@event), notice: 'Event was successfully created.'

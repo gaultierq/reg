@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :user_industrial_units
   has_many :industrial_units, through: :user_industrial_units, dependent: :destroy
   has_many :faucets, through: :industrial_units
+  has_many :events
 
   enum kind: { technician: 0, client: 1 }
 

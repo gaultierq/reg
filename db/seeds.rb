@@ -67,10 +67,10 @@ end
 
 # Maintenance
 200.times do |i|
-  Event.create(kind: "maintenance", comment: "RAS.", faucet_id: (i % 100) + 1)
+  Event.create(kind: "maintenance", comment: "RAS.", faucet_id: (i % 100) + 1, admin_id: 1)
 end
 
 # Incident
 200.times do |i|
-  Event.create(kind: "incident", comment: "Un incident s'est produit sur ce robinet. Après intervention tout est rentré dans l'ordre.", faucet_id: (i % 100) + 1)
+  Event.create(kind: "incident", comment: "Un incident s'est produit sur ce robinet. Après intervention tout est rentré dans l'ordre.", faucet_id: (i % 100) + 1, user_id: 1)
 end
