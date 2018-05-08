@@ -1,5 +1,5 @@
 class Admin::EventsController < Admin::BaseController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: %i[show edit update destroy]
 
   # GET /events
   def index
@@ -7,8 +7,7 @@ class Admin::EventsController < Admin::BaseController
   end
 
   # GET /events/1
-  def show
-  end
+  def show; end
 
   # GET /events/new
   def new
@@ -16,16 +15,11 @@ class Admin::EventsController < Admin::BaseController
   end
 
   # GET /events/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /events
   def create
-    if current_user.present?
-      @event = current_user.events.new(event_params)
-    else
-      @event = current_admin.events.new(event_params)
-    end
+    @event = current_user.present? ? current_user.events.new(event_params) : current_admin.events.new(event_params)
 
     if @event.save
       redirect_to admin_event_path(@event), notice: 'Event was successfully created.'
@@ -50,13 +44,14 @@ class Admin::EventsController < Admin::BaseController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
-      params.require(:event).permit(:faucet_id, :kind, :comment)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def event_params
+    params.require(:event).permit(:faucet_id, :kind, :comment)
+  end
 end

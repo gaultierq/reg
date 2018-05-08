@@ -1,0 +1,36 @@
+<%= form_with(model: [:admin, @attachment], local: true, data: {controller: 'form', form_errors: attachment.errors.messages.keys.join(',')}) do |form| %>
+  <fieldset class="uk-fieldset">
+    <% if attachment.errors.any? %>
+      <div id="error_explanation" class="uk-alert-danger" uk-alert>
+        <h2><%= t("errors.template.header", count: attachment.errors.count, model: 'évènement') %></h2>
+
+        <ul>
+          <% attachment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="uk-margin">
+      <%= form.label :kind, "Type", class: 'uk-form-label' %>
+      <%= form.select :kind, Attachment.kinds.keys, {}, {class: 'uk-select', data: {target: 'form.input'}} %>
+    </div>
+
+    <div class="uk-margin">
+      <div class="js-upload uk-placeholder uk-text-center">
+        <span uk-icon="icon: cloud-upload"></span>
+        <span class="uk-text-middle">Attacher un pdf en les déplaçant ici ou</span>
+        <div uk-form-custom>
+          <%= form.file_field :pdf %>
+          <span class="uk-link">sélectionnez-en un</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="uk-margin-medium">
+      <%= link_to 'Retour', admin_attachments_path, class: 'uk-button uk-button-default' %>
+      <%= form.submit "Enregistrer", class: 'uk-button uk-button-primary' %>
+    </div>
+  </fieldset>
+<% end %>

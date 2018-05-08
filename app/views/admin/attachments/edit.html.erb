@@ -1,0 +1,14 @@
+<div class="uk-section uk-section-default">
+  <div class="uk-container">
+    <div class="uk-flex-middle uk-margin-medium" uk-grid>
+      <div class="uk-width-expand@m">
+        <h1 class="uk-heading-primary">Modification d'un Document</h1>
+      </div>
+      <div class="uk-width-auto@m">
+        <%= link_to 'Détails', admin_attachment_path(@attachment), class: 'uk-button uk-button-primary' %>
+        <%= link_to 'Supprimer', admin_attachment_path(@attachment), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'uk-button uk-button-danger' %>
+      </div>
+    </div>
+    <%= render 'form', attachment: @attachment %>
+  </div>
+</div>

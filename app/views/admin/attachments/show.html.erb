@@ -1,0 +1,38 @@
+<div class="uk-section uk-section-default">
+  <div class="uk-container">
+    <%= render 'shared/notice' %>
+
+    <div class="uk-flex-middle uk-margin-medium" uk-grid>
+      <div class="uk-width-expand@m">
+        <h1 class="uk-heading-primary">Document <%= @attachment.id %></h1>
+      </div>
+      <div class="uk-width-auto@m">
+        <%= link_to 'Modifier', edit_admin_attachment_path(@attachment), class: 'uk-button uk-button-primary' %>
+        <%= link_to 'Supprimer',admin_attachment_path(@attachment), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'uk-button uk-button-danger' %>
+      </div>
+    </div>
+
+    <div class="uk-overflow-auto">
+      <table class="uk-table uk-table-striped">
+        <tbody>
+        <tr>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">id</td>
+          <td><%= @attachment.id %></td>
+        </tr>
+        <tr>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">type</td>
+          <td><%= @attachment.kind %></td>
+        </tr>
+        <tr>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Date de création</td>
+          <td><%= @attachment.created_at %></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="uk-margin-medium">
+      <%= link_to 'Retour', admin_attachments_path, class: 'uk-button uk-button-default' %>
+    </div>
+  </div>
+</div>
