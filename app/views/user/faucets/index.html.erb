@@ -1,10 +1,13 @@
-<div class="uk-section uk-section-default">
+<div class="uk-section uk-section-default" onload="onload()">
   <div class="uk-container">
     <%= render 'shared/notice' %>
 
     <div class="uk-flex-middle uk-margin-medium" uk-grid>
       <div class="uk-width-expand@m">
         <h1 class="uk-heading-primary">Faucets</h1>
+      </div>
+      <div class="uk-width-auto@m">
+        <button id="nfc" class="uk-button uk-button-primary">NFC Scan</button>
       </div>
     </div>
 
@@ -18,3 +21,17 @@
     </div>
   </div>
 </div>
+
+<script>
+    document.getElementById("nfc").onclick = function () {
+        console.log("Send post message");
+
+        window.postMessage("Post message from web", "*");
+    };
+
+    let log = document.querySelector("input");
+    document.addEventListener("message", function(event) {
+        console.log("Received post message", event);
+        log.value = event.data;
+        }, false);
+</script>
