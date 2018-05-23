@@ -37,6 +37,11 @@
               Alertes
             <% end %>
           </li>
+          <li>
+            <%= link_to admin_attachments_path, data: {target: 'navbar.link'} do %>
+              GED
+            <% end %>
+          </li>
         <% end %>
       </ul>
     </div>
@@ -111,6 +116,11 @@
         <li>
           <%= link_to admin_alerts_path, data: {target: 'navbar.link'} do %>
             Alertes
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admin_attachments_path, data: {target: 'navbar.link'} do %>
+            GED
           <% end %>
         </li>
         <li class="uk-nav-divider"></li>

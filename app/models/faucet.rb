@@ -2,26 +2,29 @@ class Faucet < ApplicationRecord
   include Filterable
 
   belongs_to :industrial_unit, optional: true
-  has_many :events, dependent: :destroy
 
-  scope :industrial_unit, -> (industrial_unit_id) { where(industrial_unit_id: industrial_unit_id) }
+  has_many :events, dependent: :destroy
+  has_many :faucet_attachments
+  has_many :attachments, through: :faucet_attachments, dependent: :destroy
+
+  scope :industrial_unit, ->(industrial_unit_id) { where(industrial_unit_id: industrial_unit_id) }
 
   enum fluid_nature: { liquide: 0, gas: 1 }
   enum fluid_danger_group: { I: 0, II: 1 }, _suffix: true
   enum risk_category: { article_4_3_product: 0, I: 1, II: 2, III: 3, IV: 4 }, _suffix: true
 
   def self.to_csv
-    attributes = %w{ Nom N°\ puce\ RFID N°\ série\ REG N°\ TAG\ client Date\ de\ fabrication N°\ vente\ REG
-        N°\ commande\ client N°\ article DN Raccordement\ entrée Raccordement\ sortie
-        Raccordement\ de\ double\ enveloppe Inclinaison/décalage\ entrée/sortie Face\ à\ face
-        Pression\ Maximale\ (PS)\ à\ 20°C\ (bar) Pression\ d'épreuve\ à\ 20°C\ (bar) Température\ maximum\ (°C)
-        Pression\ à\ la\ température\ maximum\ (bar) Température\ minimum\ (°C) Pression\ à\ la\ température\ minimum\ (bar)
-        Nom\ du\ fluide Pression\ (bar) Température\ (°C) Nature\ du\ fluide Groupe\ de\ danger\ du\ fluide
-        Gaz\ instable Catégorie\ de\ risque\ selon\ DESP\ 2014/68 Commande\ manuelle Actionneur
-        Pression\ actionneur\ pneumatique Détecteur\ de\ position Position\ ouverte Position\ fermée Pilotage
-        Autres\ instrumentation Enveloppe Double\ enveloppe Obturateur\ (partie\ mobile) Siège\ (partie\ fixe)
-        Garniture\ de\ presse\ étoupe Joints Certificats\ matières\ demandés ATEX Autres\ exigences\ particulières
-        Autres\ contrôles Autres }
+    attributes = %w[ Nom N°\ puce\ RFID N°\ série\ REG N°\ TAG\ client Date\ de\ fabrication N°\ vente\ REG
+                     N°\ commande\ client N°\ article DN Raccordement\ entrée Raccordement\ sortie
+                     Raccordement\ de\ double\ enveloppe Inclinaison/décalage\ entrée/sortie Face\ à\ face
+                     Pression\ Maximale\ (PS)\ à\ 20°C\ (bar) Pression\ d'épreuve\ à\ 20°C\ (bar) Température\ maximum\ (°C)
+                     Pression\ à\ la\ température\ maximum\ (bar) Température\ minimum\ (°C) Pression\ à\ la\ température\ minimum\ (bar)
+                     Nom\ du\ fluide Pression\ (bar) Température\ (°C) Nature\ du\ fluide Groupe\ de\ danger\ du\ fluide
+                     Gaz\ instable Catégorie\ de\ risque\ selon\ DESP\ 2014/68 Commande\ manuelle Actionneur
+                     Pression\ actionneur\ pneumatique Détecteur\ de\ position Position\ ouverte Position\ fermée Pilotage
+                     Autres\ instrumentation Enveloppe Double\ enveloppe Obturateur\ (partie\ mobile) Siège\ (partie\ fixe)
+                     Garniture\ de\ presse\ étoupe Joints Certificats\ matières\ demandés ATEX Autres\ exigences\ particulières
+                     Autres\ contrôles Autres ]
 
     CSV.generate(headers: true, col_sep: ';', encoding: 'ISO-8859-1') do |csv|
       csv << attributes

@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_18_211421) do
+ActiveRecord::Schema.define(version: 2018_05_08_162130) do
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "admin_industrial_units", force: :cascade do |t|
     t.integer "admin_id"
@@ -60,6 +81,12 @@ ActiveRecord::Schema.define(version: 2018_04_18_211421) do
     t.index ["industrial_unit_id"], name: "index_alerts_on_industrial_unit_id"
   end
 
+  create_table "attachments", force: :cascade do |t|
+    t.integer "kind"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "events", force: :cascade do |t|
     t.integer "faucet_id"
     t.integer "kind", default: 0, null: false
@@ -71,6 +98,15 @@ ActiveRecord::Schema.define(version: 2018_04_18_211421) do
     t.index ["admin_id"], name: "index_events_on_admin_id"
     t.index ["faucet_id"], name: "index_events_on_faucet_id"
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "faucet_attachments", force: :cascade do |t|
+    t.integer "faucet_id"
+    t.integer "attachment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attachment_id"], name: "index_faucet_attachments_on_attachment_id"
+    t.index ["faucet_id"], name: "index_faucet_attachments_on_faucet_id"
   end
 
   create_table "faucets", force: :cascade do |t|
@@ -138,6 +174,15 @@ ActiveRecord::Schema.define(version: 2018_04_18_211421) do
     t.text "process_information"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "tap_template_attachments", force: :cascade do |t|
+    t.integer "tap_template_id"
+    t.integer "attachment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["attachment_id"], name: "index_tap_template_attachments_on_attachment_id"
+    t.index ["tap_template_id"], name: "index_tap_template_attachments_on_tap_template_id"
   end
 
   create_table "tap_templates", force: :cascade do |t|
