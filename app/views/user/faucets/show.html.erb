@@ -59,7 +59,9 @@
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Unité Industrielle</td>
-                <td><%= @faucet.industrial_unit %></td>
+                <% if @faucet.industrial_unit.present? %>
+                  <td><%= @faucet.industrial_unit.name %></td>
+                <% end %>
               </tr>
 
               <tr>
