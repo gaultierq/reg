@@ -9,249 +9,419 @@
       </div>
     </div>
 
-    <div class="uk-overflow-auto">
-      <table class="uk-table uk-table-striped">
-        <tbody>
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Name</td>
-          <td><%= @faucet.name %></td>
-        </tr>
+    <ul class="uk-list-large uk-list-divider" uk-accordion>
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Identification de l'atelier
+        <% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <tbody>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Nom</td>
+                <td><%= @faucet.name %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Rfid number</td>
-          <td><%= @faucet.rfid_number %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° puce RFID</td>
+                <td><%= @faucet.rfid_number %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Serial number</td>
-          <td><%= @faucet.serial_number %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° série REG</td>
+                <td><%= @faucet.serial_number %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Number customer tag</td>
-          <td><%= @faucet.number_customer_tag %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° TAG client</td>
+                <td><%= @faucet.number_customer_tag %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Manufacturing date</td>
-          <td><%= @faucet.manufacturing_date %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Date de fabrication</td>
+                <td><%= @faucet.manufacturing_date %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Sales number</td>
-          <td><%= @faucet.sales_number %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° vente REG</td>
+                <td><%= @faucet.sales_number %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Customer order number</td>
-          <td><%= @faucet.customer_order_number %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° commande client</td>
+                <td><%= @faucet.customer_order_number %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Article number</td>
-          <td><%= @faucet.article_number %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° article</td>
+                <td><%= @faucet.article_number %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Industrial unit</td>
-          <td><%= @faucet.industrial_unit %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Unité Industrielle</td>
+                <td><%= @faucet.industrial_unit %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Dn</td>
-          <td><%= @faucet.dn %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">DN</td>
+                <td><%= @faucet.dn %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Input connection</td>
-          <td><%= @faucet.input_connection %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Raccordement entrée</td>
+                <td><%= @faucet.input_connection %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Output connection</td>
-          <td><%= @faucet.output_connection %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Raccordement sortie</td>
+                <td><%= @faucet.output_connection %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Double jacket connection</td>
-          <td><%= @faucet.double_jacket_connection %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Raccordement de double
+                  enveloppe
+                </td>
+                <td><%= @faucet.double_jacket_connection %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Inclination input offset output</td>
-          <td><%= @faucet.inclination_input_offset_output %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Inclinaison/décalage
+                  entrée/sortie
+                </td>
+                <td><%= @faucet.inclination_input_offset_output %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Face to face</td>
-          <td><%= @faucet.face_to_face %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Face à face</td>
+                <td><%= @faucet.face_to_face %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Maximal pressure</td>
-          <td><%= @faucet.maximal_pressure %></td>
-        </tr>
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Conditions de service / Limite d'utilisation
+        <% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <tbody>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression Maximale (PS) à 20°C
+                  (bar)
+                </td>
+                <td><%= @faucet.maximal_pressure %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Test pressure</td>
-          <td><%= @faucet.test_pressure %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression d'épreuve à 20°C
+                  (bar)
+                </td>
+                <td><%= @faucet.test_pressure %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Maximum temperature</td>
-          <td><%= @faucet.maximum_temperature %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Température maximum (°C)</td>
+                <td><%= @faucet.maximum_temperature %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pressure at maximum temperature</td>
-          <td><%= @faucet.pressure_at_maximum_temperature %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression à la température
+                  maximum (bar)
+                </td>
+                <td><%= @faucet.pressure_at_maximum_temperature %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Minimum temperature</td>
-          <td><%= @faucet.minimum_temperature %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Température minimum (°C)</td>
+                <td><%= @faucet.minimum_temperature %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pressure at minimum temperature</td>
-          <td><%= @faucet.pressure_at_minimum_temperature %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression à la température
+                  minimum (bar)
+                </td>
+                <td><%= @faucet.pressure_at_minimum_temperature %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Fluid name</td>
-          <td><%= @faucet.fluid_name %></td>
-        </tr>
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Données déclarées par le client
+        <% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <tbody>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Nom du fluide</td>
+                <td><%= @faucet.fluid_name %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pressure</td>
-          <td><%= @faucet.pressure %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression (bar)</td>
+                <td><%= @faucet.pressure %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Temperature</td>
-          <td><%= @faucet.temperature %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Température (°C)</td>
+                <td><%= @faucet.temperature %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Fluid nature</td>
-          <td><%= @faucet.fluid_nature %></td>
-        </tr>
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Catégorie de risque selon DESP 2014/68
+        <% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <tbody>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Nature du fluide</td>
+                <td><%= @faucet.fluid_nature %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Fluid danger group</td>
-          <td><%= @faucet.fluid_danger_group %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Groupe de danger du fluide</td>
+                <td><%= @faucet.fluid_danger_group %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Unstable gas</td>
-          <td><%= @faucet.unstable_gas %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Gaz instable</td>
+                <td><%= @faucet.unstable_gas %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Risk category according to desp 2014 68</td>
-          <td><%= @faucet.risk_category %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Catégorie de risque selon DESP
+                  2014/68
+                </td>
+                <td><%= @faucet.risk_category %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Manual control</td>
-          <td><%= @faucet.manual_control %></td>
-        </tr>
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Actionnement - Système de manœuvre
+        <% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <tbody>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Commande manuelle</td>
+                <td><%= @faucet.manual_control %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Actuator</td>
-          <td><%= @faucet.actuator %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Actionneur</td>
+                <td><%= @faucet.actuator %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pneumatic actuator pressure</td>
-          <td><%= @faucet.pneumatic_actuator_pressure %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression actionneur
+                  pneumatique
+                </td>
+                <td><%= @faucet.pneumatic_actuator_pressure %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position detector</td>
-          <td><%= @faucet.position_detector %></td>
-        </tr>
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Instrumentation
+        <% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <tbody>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Détecteur de position</td>
+                <td><%= @faucet.position_detector %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Open position</td>
-          <td><%= @faucet.open_position %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position ouverte</td>
+                <td><%= @faucet.open_position %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Close position</td>
-          <td><%= @faucet.close_position %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position fermée</td>
+                <td><%= @faucet.close_position %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Piloting</td>
-          <td><%= @faucet.piloting %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pilotage</td>
+                <td><%= @faucet.piloting %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Other instrumentation</td>
-          <td><%= @faucet.other_instrumentation %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres instrumentation</td>
+                <td><%= @faucet.other_instrumentation %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Shell</td>
-          <td><%= @faucet.shell %></td>
-        </tr>
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Matériaux
+        <% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <tbody>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Enveloppe</td>
+                <td><%= @faucet.shell %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Double shell</td>
-          <td><%= @faucet.double_shell %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Double enveloppe</td>
+                <td><%= @faucet.double_shell %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Shutter cover</td>
-          <td><%= @faucet.shutter_cover %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Obturateur (partie mobile)</td>
+                <td><%= @faucet.shutter_cover %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Seat</td>
-          <td><%= @faucet.seat %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Siège (partie fixe)</td>
+                <td><%= @faucet.seat %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Cable gland packing</td>
-          <td><%= @faucet.cable_gland_packing %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Garniture de presse étoupe</td>
+                <td><%= @faucet.cable_gland_packing %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Seals</td>
-          <td><%= @faucet.seals %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Joints</td>
+                <td><%= @faucet.seals %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Material certificates required</td>
-          <td><%= @faucet.material_certificates_required %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Certificats matières demandés
+                </td>
+                <td><%= @faucet.material_certificates_required %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Atex</td>
-          <td><%= @faucet.atex %></td>
-        </tr>
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Exigences particulières
+        <% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <tbody>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">ATEX</td>
+                <td><%= @faucet.atex %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Other special requirements</td>
-          <td><%= @faucet.other_special_requirements %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres exigences
+                  particulières
+                </td>
+                <td><%= @faucet.other_special_requirements %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Other controls</td>
-          <td><%= @faucet.other_controls %></td>
-        </tr>
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Contrôles
+        <% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <tbody>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres contrôles</td>
+                <td><%= @faucet.other_controls %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Other</td>
-          <td><%= @faucet.other %></td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Autres
+        <% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <tbody>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres</td>
+                <td><%= @faucet.other %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Évènements
+        <% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <thead>
+              <th>id</th>
+              <th>type</th>
+              <th>commentaire</th>
+              <th>actions</th>
+              </thead>
+              <tbody>
+              <% @faucet.events.each do |event| %>
+                <tr>
+                  <td><%= event.id %></td>
+                  <td><%= event.kind %></td>
+                  <td><%= event.comment %></td>
+                  <td class="uk-flex uk-flex-center">
+                    <ul class="uk-iconnav">
+                      <li>
+                        <%= link_to admin_event_path(event) do %>
+                          <span uk-icon="search" , uk-tooltip="Détails"></span>
+                        <% end %>
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
+    </ul>
 
     <div class="uk-margin-medium">
-      <%= link_to 'Back', user_faucets_path, class: 'uk-button uk-button-default' %>
+      <%= link_to 'Retour', user_faucets_path, class: 'uk-button uk-button-default' %>
     </div>
   </div>
 </div>
