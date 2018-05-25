@@ -11,14 +11,16 @@
       </div>
     </div>
 
+    <%= form_tag(user_faucets_path, method: :get) do %>
     <div class="uk-grid-small" uk-grid>
       <div class="uk-width-expand">
-        <%= text_field_tag :faucet, '', class: 'uk-input' %>
+        <%= text_field_tag :rfid_number, '', class: 'uk-input' %>
       </div>
       <div>
-        <button class="uk-button uk-button-default">Show</button>
+        <%= submit_tag 'Show', class: 'uk-button uk-button-default' %>
       </div>
     </div>
+    <% end %>
   </div>
 </div>
 
@@ -29,9 +31,9 @@
         window.postMessage("Post message from web", "*");
     };
 
-    let log = document.querySelector("input");
+    let showInput = document.querySelector("input");
     document.addEventListener("message", function(event) {
         console.log("Received post message", event);
-        log.value = event.data;
+        showInput.value = event.data;
         }, false);
 </script>
