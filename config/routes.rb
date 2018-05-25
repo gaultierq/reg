@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   namespace :user do
     resources :faucets, only: %i[index show]
+    resources :events
 
     root 'faucets#index'
   end
