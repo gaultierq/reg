@@ -12,6 +12,9 @@ class User::EventsController < User::BaseController
   # GET /events/new
   def new
     @event = Event.new
+    if params[:faucet_id].present?
+      @event.faucet = Faucet.find(params[:faucet_id])
+    end
   end
 
   # GET /events/1/edit
@@ -39,8 +42,9 @@ class User::EventsController < User::BaseController
 
   # DELETE /events/1
   def destroy
+    faucet = @event.faucet
     @event.destroy
-    redirect_to user_events_url, notice: 'Event was successfully destroyed.'
+    redirect_to user_faucet_path(faucet), notice: 'Event was successfully destroyed.'
   end
 
   private

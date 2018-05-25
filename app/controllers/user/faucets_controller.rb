@@ -5,7 +5,11 @@ class User::FaucetsController < User::BaseController
   def index
     if params[:rfid_number].present?
       @faucet = Faucet.find_by(rfid_number: params[:rfid_number])
-      redirect_to user_faucet_path(@faucet)
+      if @faucet.present?
+        redirect_to user_faucet_path(@faucet)
+      else
+        @faucets = current_user.faucets.all
+      end
     else
       @faucets = current_user.faucets.all
     end

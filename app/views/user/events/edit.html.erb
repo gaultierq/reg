@@ -9,6 +9,6 @@
         <%= link_to 'Supprimer', user_event_path(@event), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'uk-button uk-button-danger' %>
       </div>
     </div>
-    <%= render 'form', event: @event %>
+    <%= render 'form', event: @event, faucet: @event.faucet %>
   </div>
 </div>
