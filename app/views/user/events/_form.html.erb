@@ -12,7 +12,7 @@
       </div>
     <% end %>
 
-    <div class="uk-margin">
+    <div class="uk-margin uk-hidden">
       <%= form.label :faucet_id, "Robinet", class: 'uk-form-label' %>
       <%= form.select :faucet_id, [@event.faucet].collect { |faucet| [faucet.name, faucet.id ] }, {}, {class: 'uk-select', data: {target: 'form.input' } } %>
     </div>
