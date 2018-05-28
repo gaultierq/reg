@@ -25,7 +25,7 @@ class User::EventsController < User::BaseController
     @event = current_user.present? ? current_user.events.new(event_params) : current_admin.events.new(event_params)
 
     if @event.save
-      redirect_to user_event_path(@event), notice: 'Event was successfully created.'
+      redirect_to user_event_path(@event), notice: 'Évènement créé avec succès.'
     else
       render :new
     end
@@ -34,7 +34,7 @@ class User::EventsController < User::BaseController
   # PATCH/PUT /events/1
   def update
     if @event.update(event_params)
-      redirect_to user_event_path(@event), notice: 'Event was successfully updated.'
+      redirect_to user_event_path(@event), notice: 'Évènement modifié avec succès.'
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class User::EventsController < User::BaseController
   def destroy
     faucet = @event.faucet
     @event.destroy
-    redirect_to user_faucet_path(faucet), notice: 'Event was successfully destroyed.'
+    redirect_to user_faucet_path(faucet), notice: 'Évènement supprimé avec succès.'
   end
 
   private

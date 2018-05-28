@@ -22,7 +22,7 @@ class Admin::AttachmentsController < Admin::BaseController
     @attachment = Attachment.new(attachment_params)
 
     if @attachment.save
-      redirect_to admin_attachment_path(@attachment), notice: 'Attachment was successfully created.'
+      redirect_to admin_attachment_path(@attachment), notice: 'Document créé avec succès.'
     else
       render :new
     end
@@ -31,7 +31,7 @@ class Admin::AttachmentsController < Admin::BaseController
   # PATCH/PUT /admin/attachments/1
   def update
     if @attachment.update(attachment_params)
-      redirect_to admin_attachment_path(@attachment), notice: 'Attachment was successfully updated.'
+      redirect_to admin_attachment_path(@attachment), notice: 'Document modifié avec succès.'
     else
       render :edit
     end
@@ -40,7 +40,7 @@ class Admin::AttachmentsController < Admin::BaseController
   # DELETE /admin/attachments/1
   def destroy
     @attachment.destroy
-    redirect_to admin_attachments_url, notice: 'Attachment was successfully destroyed.'
+    redirect_to admin_attachments_url, notice: 'Document supprimé avec succès.'
   end
 
   private

@@ -23,7 +23,7 @@ class Admin::UsersController < Admin::BaseController
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
-      redirect_to admin_user_path(@user), notice: 'User was successfully updated.'
+      redirect_to admin_user_path(@user), notice: 'Technicien(ne) modifié(e) avec succès.'
     else
       render :edit
     end
@@ -32,7 +32,7 @@ class Admin::UsersController < Admin::BaseController
   # DELETE /users/1
   def destroy
     @user.destroy
-    redirect_to admin_peoples_url, notice: 'User was successfully destroyed.'
+    redirect_to admin_peoples_url, notice: 'Technicien(ne) supprimé(e) avec succès.'
   end
 
   private

@@ -29,7 +29,7 @@ class Admin::FaucetsController < Admin::BaseController
     @faucet = Faucet.new(faucet_params)
 
     if @faucet.save
-      redirect_to admin_faucet_path(@faucet), notice: 'Faucet was successfully created.'
+      redirect_to admin_faucet_path(@faucet), notice: 'Robinet créé avec succès.'
     else
       render :new
     end
@@ -38,7 +38,7 @@ class Admin::FaucetsController < Admin::BaseController
   # PATCH/PUT /faucets/1
   def update
     if @faucet.update(faucet_params)
-      redirect_to admin_faucet_path(@faucet), notice: 'Faucet was successfully updated.'
+      redirect_to admin_faucet_path(@faucet), notice: 'Robinet modifié avec succès.'
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class Admin::FaucetsController < Admin::BaseController
   # DELETE /faucets/1
   def destroy
     @faucet.destroy
-    redirect_to admin_faucets_url, notice: 'Faucet was successfully destroyed.'
+    redirect_to admin_faucets_url, notice: 'Robinet supprimé avec succès.'
   end
 
   def duplicate
@@ -57,12 +57,12 @@ class Admin::FaucetsController < Admin::BaseController
         @faucet.serial_number = Faucet.where.not(serial_number: nil).order(serial_number: :desc).first.serial_number + 1
         @faucet.save
       end
-      redirect_to admin_faucets_path, notice: 'Faucets were successfully created.'
+      redirect_to admin_faucets_path, notice: 'Robinets dupliqués avec succès.'
     else
       @faucet = Faucet.find(params[:id]).dup
       @faucet.serial_number = Faucet.where.not(serial_number: nil).order(serial_number: :desc).first.serial_number + 1
       if @faucet.save
-        redirect_to admin_faucet_path(@faucet), notice: 'Faucet was successfully created.'
+        redirect_to admin_faucet_path(@faucet), notice: 'Robinet dupliqué avec succès.'
       end
     end
   end

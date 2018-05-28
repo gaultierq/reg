@@ -25,7 +25,7 @@ class Admin::AdminsController < Admin::BaseController
   # PATCH/PUT /admins/1
   def update
     if @admin.update(admin_params)
-      redirect_to admin_admin_path(@admin), notice: 'Admin was successfully updated.'
+      redirect_to admin_admin_path(@admin), notice: 'Admin modifié avec succès.'
     else
       render :edit
     end
@@ -34,7 +34,7 @@ class Admin::AdminsController < Admin::BaseController
   # DELETE /admins/1
   def destroy
     @admin.destroy
-    redirect_to admin_peoples_url, notice: 'Admin was successfully destroyed.'
+    redirect_to admin_peoples_url, notice: 'Admin supprimé avec succès.'
   end
 
   private

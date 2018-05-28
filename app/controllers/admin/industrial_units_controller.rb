@@ -37,7 +37,7 @@ class Admin::IndustrialUnitsController < Admin::BaseController
     @industrial_unit = IndustrialUnit.new(industrial_unit_params)
 
     if @industrial_unit.save
-      redirect_to admin_industrial_unit_path(@industrial_unit), notice: 'Industrial unit was successfully created.'
+      redirect_to admin_industrial_unit_path(@industrial_unit), notice: 'Unité industrielle créée avec succès.'
     else
       render :new
     end
@@ -46,7 +46,7 @@ class Admin::IndustrialUnitsController < Admin::BaseController
   # PATCH/PUT /industrial_units/1
   def update
     if @industrial_unit.update(industrial_unit_params)
-      redirect_to admin_industrial_unit_path(@industrial_unit), notice: 'Industrial unit was successfully updated.'
+      redirect_to admin_industrial_unit_path(@industrial_unit), notice: 'Unité industrielle modifiée avec succès.'
     else
       render :edit
     end
@@ -55,7 +55,7 @@ class Admin::IndustrialUnitsController < Admin::BaseController
   # DELETE /industrial_units/1
   def destroy
     @industrial_unit.destroy
-    redirect_to admin_industrial_units_url, notice: 'Industrial unit was successfully destroyed.'
+    redirect_to admin_industrial_units_url, notice: 'Unité industrielle supprimée avec succès.'
   end
 
   private

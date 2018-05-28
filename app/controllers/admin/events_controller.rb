@@ -22,7 +22,7 @@ class Admin::EventsController < Admin::BaseController
     @event = current_user.present? ? current_user.events.new(event_params) : current_admin.events.new(event_params)
 
     if @event.save
-      redirect_to admin_event_path(@event), notice: 'Event was successfully created.'
+      redirect_to admin_event_path(@event), notice: 'Évènement créé avec succès.'
     else
       render :new
     end
@@ -31,7 +31,7 @@ class Admin::EventsController < Admin::BaseController
   # PATCH/PUT /events/1
   def update
     if @event.update(event_params)
-      redirect_to admin_event_path(@event), notice: 'Event was successfully updated.'
+      redirect_to admin_event_path(@event), notice: 'Évènement modifié avec succès.'
     else
       render :edit
     end
@@ -40,7 +40,7 @@ class Admin::EventsController < Admin::BaseController
   # DELETE /events/1
   def destroy
     @event.destroy
-    redirect_to admin_events_url, notice: 'Event was successfully destroyed.'
+    redirect_to admin_events_url, notice: 'Évènement supprimé avec succès.'
   end
 
   private

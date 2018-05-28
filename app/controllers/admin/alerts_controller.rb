@@ -24,7 +24,7 @@ class Admin::AlertsController < Admin::BaseController
     @alert = Alert.new(alert_params)
 
     if @alert.save
-      redirect_to admin_alert_path(@alert), notice: 'Alert was successfully created.'
+      redirect_to admin_alert_path(@alert), notice: 'Alerte créée avec succès.'
     else
       render :new
     end
@@ -33,7 +33,7 @@ class Admin::AlertsController < Admin::BaseController
   # PATCH/PUT /alerts/1
   def update
     if @alert.update(alert_params)
-      redirect_to admin_alert_path(@alert), notice: 'Alert was successfully updated.'
+      redirect_to admin_alert_path(@alert), notice: 'Alerte modifiée avec succès.'
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class Admin::AlertsController < Admin::BaseController
   # DELETE /alerts/1
   def destroy
     @alert.destroy
-    redirect_to admin_alerts_url, notice: 'Alert was successfully destroyed.'
+    redirect_to admin_alerts_url, notice: 'Alert supprimée avec succès.'
   end
 
   private
