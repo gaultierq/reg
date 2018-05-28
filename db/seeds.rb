@@ -8,24 +8,26 @@
 
 # Admin
 Admin.create(first_name: "Florent", last_name: "Beaurain", email: "beaurain.florent@protonmail.com",
-             password: "password", password_confirmation: "password", kind: "administrator")
+             phone_number: FFaker::PhoneNumberFR.unique.phone_number, password: "password", password_confirmation: "password", kind: "administrator")
 
 # Salesman
 10.times do
   Admin.create(first_name: FFaker::Name.first_name , last_name: FFaker::Name.last_name, email: FFaker::Internet.unique.email,
-               password: "password", password_confirmation: "password")
+               phone_number: FFaker::PhoneNumberFR.unique.phone_number, password: "password", password_confirmation: "password")
 end
 
 # Technician
+User.create(first_name: "Gregoire", last_name: "Dubelloy", email: "gregoire.dubelloy@gmail.com",
+            phone_number: FFaker::PhoneNumberFR.unique.phone_number, password: "password", password_confirmation: "password")
 10.times do
   User.create(first_name: FFaker::Name.first_name , last_name: FFaker::Name.last_name, email: FFaker::Internet.unique.email,
-              password: "password", password_confirmation: "password")
+              phone_number: FFaker::PhoneNumberFR.unique.phone_number, password: "password", password_confirmation: "password")
 end
 
 # Client
 10.times do
   User.create(first_name: FFaker::Name.first_name , last_name: FFaker::Name.last_name, email: FFaker::Internet.unique.email,
-              password: "password", password_confirmation: "password", kind: "client")
+              phone_number: FFaker::PhoneNumberFR.unique.phone_number, password: "password", password_confirmation: "password", kind: "client")
 end
 
 # Industrial unit
@@ -34,8 +36,8 @@ end
                                           city: FFaker::AddressFR.city, postcode: FFaker::AddressFR.postal_code, country: "France")
 
   industrial_unit.admin_industrial_units.create!(admin_id: (industrial_unit.id + 1))
-  industrial_unit.user_industrial_units.create!(user_id: industrial_unit.id)
-  industrial_unit.user_industrial_units.create!(user_id: (industrial_unit.id + 10))
+  industrial_unit.user_industrial_units.create!(user_id: industrial_unit.id + 1)
+  industrial_unit.user_industrial_units.create!(user_id: (industrial_unit.id + 11))
 end
 
 # Faucet template

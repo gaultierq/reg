@@ -396,7 +396,6 @@
           <div class="uk-overflow-auto">
             <table class="uk-table uk-table-striped">
               <thead>
-              <th>id</th>
               <th>type</th>
               <th>commentaire</th>
               <th>actions</th>
@@ -404,7 +403,6 @@
               <tbody>
               <% @faucet.events.each do |event| %>
                 <tr>
-                  <td><%= event.id %></td>
                   <td><%= event.kind %></td>
                   <td><%= event.comment %></td>
                   <td class="uk-flex uk-flex-center">
@@ -417,6 +415,43 @@
                     </ul>
                   </td>
                 </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Contacts
+        <% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <thead>
+              <th>Nom</th>
+              <th>Téléphone</th>
+              <th>Adresse email</th>
+              <th>Rôle</th>
+              </thead>
+              <tbody>
+              <% if @faucet.industrial_unit.present? %>
+                <% @faucet.industrial_unit.admins.each do |admin| %>
+                  <tr>
+                    <td><%= admin.full_name %></td>
+                    <td><%= admin.phone_number %></td>
+                    <td><%= admin.email %></td>
+                    <td>Commercial</td>
+                  </tr>
+                <% end %>
+                <% @faucet.industrial_unit.users.each do |technician| %>
+                  <tr>
+                    <td><%= technician.full_name %></td>
+                    <td><%= technician.phone_number %></td>
+                    <td><%= technician.email %></td>
+                    <td>Technicien</td>
+                  </tr>
+                <% end %>
               <% end %>
               </tbody>
             </table>
