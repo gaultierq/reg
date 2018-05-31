@@ -1,4 +1,6 @@
 class IndustrialUnit < ApplicationRecord
+  require 'browser'
+
   include Filterable
   scope :industrial_unit, -> (industrial_unit_id) { where(id: industrial_unit_id) }
 

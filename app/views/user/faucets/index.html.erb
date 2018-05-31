@@ -4,22 +4,27 @@
 
     <div class="uk-flex-middle uk-margin-medium" uk-grid>
       <div class="uk-width-expand@m">
-        <h1 class="uk-heading-primary">Faucets</h1>
+        <h1 class="uk-heading-primary">Robinets</h1>
       </div>
       <div class="uk-width-auto@m">
-        <button id="nfc" class="uk-button uk-button-primary">NFC Scan</button>
+        <button id="nfc" class="uk-button uk-button-primary">Scan NFC</button>
       </div>
     </div>
 
     <%= form_tag(user_faucets_path, method: :get) do %>
-    <div class="uk-grid-small" uk-grid>
-      <div class="uk-width-expand">
-        <%= text_field_tag :rfid_number, '', class: 'uk-input' %>
+      <div class="uk-margin-top">
+        <%= label_tag :rfid_label, "N° RFID :", class: 'uk-form-label' %>
       </div>
-      <div>
-        <%= submit_tag 'Show', class: 'uk-button uk-button-default' %>
+      <div class="uk-grid-small" uk-grid>
+        <div class="uk-width-expand">
+          <%= text_field_tag :rfid_number, '', class: 'uk-input' %>
+        </div>
+        <div>
+          <%= button_tag(type: "submit", class: 'uk-button uk-button-default') do %>
+            <span uk-icon="icon: search; ratio: 1"></span>
+          <% end %>
+        </div>
       </div>
-    </div>
     <% end %>
   </div>
 </div>

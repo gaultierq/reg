@@ -1,0 +1,77 @@
+<div class="uk-section uk-section-default" onload="onload()">
+  <div class="uk-container">
+    <%= render 'shared/notice' %>
+
+    <div class="uk-flex-middle uk-margin-medium" uk-grid>
+      <div class="uk-width-expand@m">
+        <h1 class="uk-heading-primary">Accueil</h1>
+      </div>
+      <div class="uk-width-auto@m">
+        <button id="nfc" class="uk-button uk-button-primary">Scan NFC</button>
+      </div>
+    </div>
+
+    <%= form_tag(admin_faucets_path, method: :get) do %>
+      <div class="uk-margin-top">
+        <%= label_tag :rfid_label, "N° RFID :", class: 'uk-form-label' %>
+      </div>
+      <div class="uk-grid-small" uk-grid>
+        <div class="uk-width-expand">
+          <%= text_field_tag :rfid_number, '', class: 'uk-input' %>
+        </div>
+        <div>
+          <%= button_tag(type: "submit", class: 'uk-button uk-button-default') do %>
+            <span uk-icon="icon: search; ratio: 1"></span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <%= form_tag(admin_faucets_path, method: :get) do %>
+      <div class="uk-margin-top">
+        <%= label_tag :faucet_label, "Sélectionnez un robinet pour vous y rendre directement :", class: 'uk-form-label' %>
+      </div>
+      <div class="uk-grid-small" uk-grid>
+        <div class="uk-width-expand">
+          <%= select_tag :faucet_id, options_for_select(Faucet.all.collect {|faucet| [faucet.name, faucet.id]}), {class: 'uk-select', data: {target: 'form.input'}} %>
+        </div>
+        <div>
+          <%= button_tag(type: "submit", class: 'uk-button uk-button-default') do %>
+            <span uk-icon="icon: search; ratio: 1"></span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <%= form_tag(admin_industrial_units_path, method: :get) do %>
+      <div class="uk-margin-top">
+        <%= label_tag :industrial_unit_label, "Sélectionnez une unité industrielle pour vous y rendre directement :", class: 'uk-form-label' %>
+      </div>
+      <div class="uk-grid-small" uk-grid>
+        <div class="uk-width-expand">
+          <%= select_tag :industrial_unit_id, options_for_select(IndustrialUnit.all.collect {|industrialUnit| [industrialUnit.name, industrialUnit.id]}), {class: 'uk-select', data: {target: 'form.input'}} %>
+        </div>
+        <div>
+          <%= button_tag(type: "submit", class: 'uk-button uk-button-default') do %>
+            <span uk-icon="icon: search; ratio: 1"></span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
+<script>
+    document.getElementById("nfc").onclick = function () {
+        console.log("Send post message");
+
+        window.postMessage("Post message from web", "*");
+    };
+
+    let showInput = document.querySelector("input");
+    document.addEventListener("message", function(event) {
+        console.log("Received post message", event);
+        showInput.value = event.data;
+    }, false);
+</script>

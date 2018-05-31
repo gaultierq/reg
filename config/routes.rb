@@ -13,7 +13,11 @@ Rails.application.routes.draw do
 
     resources :attachments
     resources :tap_templates
-    resources :industrial_units
+    resources :industrial_units do
+    collection do
+      get 'index_mobile'
+    end
+  end
     resources :events
     resources :alerts
     resources :peoples, only: :index

@@ -3,6 +3,18 @@ class Admin::IndustrialUnitsController < Admin::BaseController
 
   # GET /industrial_units
   def index
+    if params[:industrial_unit_id].present?
+      @industrial_unit = Faucet.find(params[:industrial_unit_id])
+      if @industrial_unit.present?
+        redirect_to admin_industrial_unit_path(@industrial_unit)
+      end
+    end
+
+    browser = Browser.new(request.env['HTTP_USER_AGENT'])
+    if browser.platform.android_app? || browser.platform.ios_app?
+      redirect_to index_mobile_admin_industrial_units_path
+    end
+
     @industrial_units = IndustrialUnit.all
 
     respond_to do |format|
@@ -56,6 +68,11 @@ class Admin::IndustrialUnitsController < Admin::BaseController
   def destroy
     @industrial_unit.destroy
     redirect_to admin_industrial_units_url, notice: 'Unité industrielle supprimée avec succès.'
+  end
+
+  def index_mobile
+    @industrial_units = IndustrialUnit.all
+    @faucets = Faucet.all
   end
 
   private

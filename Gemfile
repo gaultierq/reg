@@ -20,6 +20,7 @@ gem 'devise_invitable'
 gem 'ffaker'
 gem 'mini_magick', '~> 4.8'
 gem 'rails-i18n', '~> 5.1'
+gem 'browser'
 
 group :production do
   gem 'aws-sdk-s3', require: false
