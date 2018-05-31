@@ -7,12 +7,14 @@ class Admin::IndustrialUnitsController < Admin::BaseController
       @industrial_unit = Faucet.find(params[:industrial_unit_id])
       if @industrial_unit.present?
         redirect_to admin_industrial_unit_path(@industrial_unit)
+        return
       end
     end
 
     browser = Browser.new(request.env['HTTP_USER_AGENT'])
     if browser.platform.android_app? || browser.platform.ios_app?
       redirect_to index_mobile_admin_industrial_units_path
+      return
     end
 
     @industrial_units = IndustrialUnit.all

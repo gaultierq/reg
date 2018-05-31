@@ -7,17 +7,20 @@ class Admin::FaucetsController < Admin::BaseController
       @faucet = Faucet.find_by(rfid_number: params[:rfid_number])
       if @faucet.present?
         redirect_to admin_faucet_path(@faucet)
+        return
       end
     elsif params[:faucet_id].present?
       @faucet = Faucet.find(params[:faucet_id])
       if @faucet.present?
         redirect_to admin_faucet_path(@faucet)
+        return
       end
     end
 
     browser = Browser.new(request.env['HTTP_USER_AGENT'])
     if browser.platform.android_app? || browser.platform.ios_app?
       redirect_to index_mobile_admin_industrial_units_path
+      return
     end
 
     @faucets = Faucet.includes(:industrial_unit).where(industrial_unit: nil).all
