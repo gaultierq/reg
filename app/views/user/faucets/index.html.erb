@@ -13,7 +13,7 @@
 
     <%= form_tag(user_faucets_path, method: :get) do %>
       <div class="uk-margin-top">
-        <%= label_tag :rfid_label, "N° RFID :", class: 'uk-form-label' %>
+        <%= label_tag :rfid_label, "N° puce RFID :", class: 'uk-form-label' %>
       </div>
       <div class="uk-grid-small" uk-grid>
         <div class="uk-width-expand">
@@ -30,7 +30,7 @@
 </div>
 
 <script>
-    document.getElementById("nfc").onclick = function () {
+    document.getElementById("rfid_number").onclick = function () {
         console.log("Send post message");
 
         window.postMessage("Post message from web", "*");
