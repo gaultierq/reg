@@ -63,13 +63,13 @@
 </div>
 
 <script>
-    document.getElementById("rfid_number").onclick = function () {
+    document.getElementById("nfc").onclick = function () {
         console.log("Send post message");
 
         window.postMessage("Post message from web", "*");
     };
 
-    let showInput = document.querySelector("input");
+    let showInput = document.getElementById("rfid_number");
     document.addEventListener("message", function(event) {
         console.log("Received post message", event);
         showInput.value = event.data;
