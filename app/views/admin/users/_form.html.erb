@@ -18,6 +18,16 @@
     </div>
 
     <div class="uk-margin">
+      <%= form.label :last_name, "Nom", class: 'uk-form-label' %>
+      <%= form.text_field :last_name, class: 'uk-input', data: {target: 'form.input'} %>
+    </div>
+
+    <div class="uk-margin">
+      <%= form.label :first_name, "Prénom", class: 'uk-form-label' %>
+      <%= form.text_field :first_name, class: 'uk-input', data: {target: 'form.input'} %>
+    </div>
+
+    <div class="uk-margin">
       <%= form.label :password, "Mot de passe", class: 'uk-form-label' %>
       <%= form.password_field :password, class: 'uk-input', data: { target: 'form.input' } %>
     </div>
