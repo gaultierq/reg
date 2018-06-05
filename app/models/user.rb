@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include DeviseInvitable::Inviter
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
          :timeoutable, :trackable, :validatable, :invitable
 
