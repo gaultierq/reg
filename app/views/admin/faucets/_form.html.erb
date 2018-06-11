@@ -315,7 +315,14 @@
       <li>
         <%= link_to '#', class: 'uk-accordion-title' do %>Documentations<% end %>
         <div class="uk-accordion-content">
-
+          <div class="js-upload uk-placeholder uk-text-center">
+            <span uk-icon="icon: cloud-upload"></span>
+            <span class="uk-text-middle">Attacher un pdf en les déplaçant ici ou</span>
+            <div uk-form-custom>
+              <%= form.file_field :pdf %>
+              <span class="uk-link">sélectionnez-en un</span>
+            </div>
+          </div>
         </div>
       </li>
     </ul>

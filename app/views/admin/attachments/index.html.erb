@@ -12,21 +12,21 @@
     </div>
 
     <div class="uk-section-small uk-padding-remove-top">
-      <h3 class="uk-heading-divider">Maintenance</h3>
-      <%= render 'shared/table', locals: { id: 'attachment_maintenance_table', dom: 'lrtip', paging: false, info: false } do %>
+      <h3 class="uk-heading-divider">Instruction de service</h3>
+      <%= render 'shared/table', locals: { id: 'attachment_instruction_service_table', dom: 'lrtip', paging: false, info: false } do %>
         <thead>
         <tr>
           <th>id</th>
-          <th>type</th>
+          <th>fichier</th>
           <th data-orderable="false">actions</th>
         </tr>
         </thead>
 
         <tbody>
-        <% @attachments.where(kind: :maintenance).each do |attachment| %>
+        <% @attachments.where(kind: :instruction_service).each do |attachment| %>
           <tr>
             <td><%= attachment.id %></td>
-            <td><%= attachment.kind %></td>
+            <td><%= attachment.pdf.blob.filename %></td>
             <td class="uk-flex uk-flex-center">
               <ul class="uk-iconnav">
                 <li>
@@ -51,5 +51,161 @@
         </tbody>
       <% end %>
     </div>
+
+    <h3 class="uk-heading-divider">Instrumentation, détecteur de position</h3>
+    <%= render 'shared/table', locals: {id: 'attachment_instrumentation_position_table', dom: 'lrtip', paging: false, info: false} do %>
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>fichier</th>
+        <th data-orderable="false">actions</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @attachments.where(kind: :instrumentation_position).each do |attachment| %>
+        <tr>
+          <td><%= attachment.id %></td>
+          <td><%= attachment.pdf.blob.filename %></td>
+          <td class="uk-flex uk-flex-center">
+            <ul class="uk-iconnav">
+              <li>
+                <%= link_to admin_attachment_path(attachment) do %>
+                  <span uk-icon="search" , uk-tooltip="Détails"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to edit_admin_attachment_path(attachment) do %>
+                  <span uk-icon="pencil" , uk-tooltip="Modifier"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_attachment_path(attachment), method: :delete, data: {confirm: 'Êtes-vous sûr ?'} do %>
+                  <span uk-icon="trash" , uk-tooltip="Supprimer"></span>
+                <% end %>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    <% end %>
+
+    <h3 class="uk-heading-divider">Instrumentation, pilotage</h3>
+    <%= render 'shared/table', locals: {id: 'attachment_instrumentation_pilotage_table', dom: 'lrtip', paging: false, info: false} do %>
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>fichier</th>
+        <th data-orderable="false">actions</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @attachments.where(kind: :instrumentation_pilotage).each do |attachment| %>
+        <tr>
+          <td><%= attachment.id %></td>
+          <td><%= attachment.pdf.blob.filename %></td>
+          <td class="uk-flex uk-flex-center">
+            <ul class="uk-iconnav">
+              <li>
+                <%= link_to admin_attachment_path(attachment) do %>
+                  <span uk-icon="search" , uk-tooltip="Détails"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to edit_admin_attachment_path(attachment) do %>
+                  <span uk-icon="pencil" , uk-tooltip="Modifier"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_attachment_path(attachment), method: :delete, data: {confirm: 'Êtes-vous sûr ?'} do %>
+                  <span uk-icon="trash" , uk-tooltip="Supprimer"></span>
+                <% end %>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    <% end %>
+
+    <h3 class="uk-heading-divider">Instrumentation, autres instrumentation</h3>
+    <%= render 'shared/table', locals: {id: 'attachment_instrumentation_autre_table', dom: 'lrtip', paging: false, info: false} do %>
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>fichier</th>
+        <th data-orderable="false">actions</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @attachments.where(kind: :instrumentation_autre).each do |attachment| %>
+        <tr>
+          <td><%= attachment.id %></td>
+          <td><%= attachment.pdf.blob.filename %></td>
+          <td class="uk-flex uk-flex-center">
+            <ul class="uk-iconnav">
+              <li>
+                <%= link_to admin_attachment_path(attachment) do %>
+                  <span uk-icon="search" , uk-tooltip="Détails"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to edit_admin_attachment_path(attachment) do %>
+                  <span uk-icon="pencil" , uk-tooltip="Modifier"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_attachment_path(attachment), method: :delete, data: {confirm: 'Êtes-vous sûr ?'} do %>
+                  <span uk-icon="trash" , uk-tooltip="Supprimer"></span>
+                <% end %>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    <% end %>
+
+    <h3 class="uk-heading-divider">Actionnement, actionneur</h3>
+    <%= render 'shared/table', locals: {id: 'attachment_actionnement_actionneur_table', dom: 'lrtip', paging: false, info: false} do %>
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>fichier</th>
+        <th data-orderable="false">actions</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @attachments.where(kind: :actionnement_actionneur).each do |attachment| %>
+        <tr>
+          <td><%= attachment.id %></td>
+          <td><%= attachment.pdf.blob.filename %></td>
+          <td class="uk-flex uk-flex-center">
+            <ul class="uk-iconnav">
+              <li>
+                <%= link_to admin_attachment_path(attachment) do %>
+                  <span uk-icon="search" , uk-tooltip="Détails"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to edit_admin_attachment_path(attachment) do %>
+                  <span uk-icon="pencil" , uk-tooltip="Modifier"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_attachment_path(attachment), method: :delete, data: {confirm: 'Êtes-vous sûr ?'} do %>
+                  <span uk-icon="trash" , uk-tooltip="Supprimer"></span>
+                <% end %>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    <% end %>
   </div>
 </div>

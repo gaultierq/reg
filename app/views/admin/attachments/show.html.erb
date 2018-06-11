@@ -27,6 +27,12 @@
           <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Date de création</td>
           <td><%= @attachment.created_at %></td>
         </tr>
+        <tr>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">PDF</td>
+          <% if @attachment.pdf.attached? %>
+            <td><%= link_to @attachment.pdf.blob.filename, url_for(@attachment.pdf) %></td>
+          <% end %>
+        </tr>
         </tbody>
       </table>
     </div>

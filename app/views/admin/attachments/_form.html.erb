@@ -18,13 +18,13 @@
     </div>
 
     <div class="uk-margin">
-      <div class="js-upload uk-placeholder uk-text-center">
-        <span uk-icon="icon: cloud-upload"></span>
-        <span class="uk-text-middle">Attacher un pdf en les déplaçant ici ou</span>
-        <div uk-form-custom>
-          <%= form.file_field :pdf %>
-          <span class="uk-link">sélectionnez-en un</span>
-        </div>
+      <div>
+        <%= form.label :pdf_label, "Attacher un PDF", class: 'uk-form-label' %>
+      </div>
+      <div uk-form-custom="target: input[type=text]">
+        <%= form.file_field :pdf, accept: "application/pdf" %>
+        <button class="uk-button uk-button-default" type="button" tabindex="-1">Choisir</button>
+        <%= form.text_field :pdf, disabled: true, placeholder: "Choisir un pdf", class: "uk-input uk-form-width-medium" %>
       </div>
     </div>
 
