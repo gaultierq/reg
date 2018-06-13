@@ -26,7 +26,11 @@
         <% @attachments.where(kind: :instruction_service).each do |attachment| %>
           <tr>
             <td><%= attachment.id %></td>
-            <td><%= attachment.pdf.blob.filename %></td>
+            <% if attachment.pdf.attached? %>
+              <td><%= attachment.pdf.blob.filename %></td>
+            <% else %>
+              <td></td>
+            <% end %>
             <td class="uk-flex uk-flex-center">
               <ul class="uk-iconnav">
                 <li>
@@ -66,7 +70,11 @@
       <% @attachments.where(kind: :instrumentation_position).each do |attachment| %>
         <tr>
           <td><%= attachment.id %></td>
-          <td><%= attachment.pdf.blob.filename %></td>
+          <% if attachment.pdf.attached? %>
+            <td><%= attachment.pdf.blob.filename %></td>
+          <% else %>
+            <td></td>
+          <% end %>
           <td class="uk-flex uk-flex-center">
             <ul class="uk-iconnav">
               <li>
@@ -105,7 +113,11 @@
       <% @attachments.where(kind: :instrumentation_pilotage).each do |attachment| %>
         <tr>
           <td><%= attachment.id %></td>
-          <td><%= attachment.pdf.blob.filename %></td>
+          <% if attachment.pdf.attached? %>
+            <td><%= attachment.pdf.blob.filename %></td>
+          <% else %>
+            <td></td>
+          <% end %>
           <td class="uk-flex uk-flex-center">
             <ul class="uk-iconnav">
               <li>
@@ -144,7 +156,11 @@
       <% @attachments.where(kind: :instrumentation_autre).each do |attachment| %>
         <tr>
           <td><%= attachment.id %></td>
-          <td><%= attachment.pdf.blob.filename %></td>
+          <% if attachment.pdf.attached? %>
+            <td><%= attachment.pdf.blob.filename %></td>
+          <% else %>
+            <td></td>
+          <% end %>
           <td class="uk-flex uk-flex-center">
             <ul class="uk-iconnav">
               <li>
@@ -183,7 +199,11 @@
       <% @attachments.where(kind: :actionnement_actionneur).each do |attachment| %>
         <tr>
           <td><%= attachment.id %></td>
-          <td><%= attachment.pdf.blob.filename %></td>
+          <% if attachment.pdf.attached? %>
+            <td><%= attachment.pdf.blob.filename %></td>
+          <% else %>
+            <td></td>
+          <% end %>
           <td class="uk-flex uk-flex-center">
             <ul class="uk-iconnav">
               <li>

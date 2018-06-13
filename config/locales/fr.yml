@@ -1,2 +1,8 @@
 fr:
   hello: "Hello world"
+  attachment_kind:
+    instruction_service: "Instruction de service"
+    instrumentation_position: "Instrumentation, détecteur de position"
+    instrumentation_pilotage: "Instrumentation, pilotage"
+    instrumentation_autre: "Instrumentation, autre"
+    actionnement_actionneur: "Actionnement, actionneur"
