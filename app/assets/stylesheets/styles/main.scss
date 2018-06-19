@@ -13,3 +13,11 @@
 span.select2.select2-container {
   width: 100% !important;
 }
+
+.tr-transparent {
+  background-color:rgba(0, 0, 0, 0) !important;
+}
+
+.tr-transparent > td {
+  padding: 5px 0 !important;
+}

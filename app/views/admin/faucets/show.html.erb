@@ -160,6 +160,25 @@
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression à la température minimum (bar)</td>
                 <td><%= @faucet.pressure_at_minimum_temperature %></td>
               </tr>
+
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document d'instruction de service</td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @faucet.attachments.where(kind: :instruction_service).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
               </tbody>
             </table>
           </div>
@@ -240,6 +259,26 @@
               </tr>
 
               <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document d'actionneur
+                </td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @faucet.attachments.where(kind: :actionnement_actionneur).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+
+              <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression actionneur pneumatique</td>
                 <td><%= @faucet.pneumatic_actuator_pressure %></td>
               </tr>
@@ -261,6 +300,25 @@
               </tr>
 
               <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document de détecteur de position</td>
+                <td>
+                  <table class="uk-table uk-table-striped">
+                    <tbody>
+                    <% @faucet.attachments.where(kind: :instrumentation_position).each do |attachment| %>
+                      <tr>
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+
+              <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position ouverte</td>
                 <td><%= @faucet.open_position %></td>
               </tr>
@@ -276,8 +334,46 @@
               </tr>
 
               <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document de pilotage</td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @faucet.attachments.where(kind: :instrumentation_pilotage).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+
+              <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres instrumentation</td>
                 <td><%= @faucet.other_instrumentation %></td>
+              </tr>
+
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document d'autres instrumentation</td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @faucet.attachments.where(kind: :instrumentation_autre).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
               </tr>
               </tbody>
             </table>
