@@ -145,6 +145,13 @@
             <%= form.select :existing_instruction_service_attachment, Attachment.where(kind: :instruction_service).collect { |attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
                             {selected: @faucet.attachments.where(kind: :instruction_service).ids}, {multiple: true, id: 'existing_instruction_service_attachment', data: {target: 'form.input'}} %>
           </div>
+
+          <div class="uk-margin">
+            <div>
+              <%= form.label :new_instruction_service_attachment, "Ajouter un nouveau document d'instruction de service", class: 'uk-form-label' %>
+            </div>
+            <%= form.file_field :new_instruction_service_attachment, accept: "application/pdf", multiple: true %>
+          </div>
         </div>
       </li>
 
@@ -213,6 +220,13 @@
           </div>
 
           <div class="uk-margin">
+            <div>
+              <%= form.label :new_actionnement_actionneur_attachment, "Ajouter un nouveau document d'actionneur existant", class: 'uk-form-label' %>
+            </div>
+            <%= form.file_field :new_actionnement_actionneur_attachment, accept: "application/pdf", multiple: true %>
+          </div>
+
+          <div class="uk-margin">
             <%= form.label :pneumatic_actuator_pressure, "Pression actionneur pneumatique", class: 'uk-form-label' %>
             <%= form.text_field :pneumatic_actuator_pressure, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
@@ -231,6 +245,13 @@
             <%= form.label :existing_instrumentation_position_attachment, "Ajouter un document de détecteur de position existant", class: 'uk-form-label' %>
             <%= form.select :existing_instrumentation_position_attachment, Attachment.where(kind: :instrumentation_position).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
                             {selected: @faucet.attachments.where(kind: :instrumentation_position).ids}, {multiple: true, id: 'existing_instrumentation_position_attachment', data: {target: 'form.input'}} %>
+          </div>
+
+          <div class="uk-margin">
+            <div>
+              <%= form.label :new_instrumentation_position_attachment, "Ajouter un nouveau document de détecteur de position existant", class: 'uk-form-label' %>
+            </div>
+            <%= form.file_field :new_instrumentation_position_attachment, accept: "application/pdf", multiple: true %>
           </div>
 
           <div class="uk-margin">
@@ -255,6 +276,13 @@
           </div>
 
           <div class="uk-margin">
+            <div>
+              <%= form.label :new_instrumentation_pilotage_attachment, "Ajouter un nouveau document de pilotage existant", class: 'uk-form-label' %>
+            </div>
+            <%= form.file_field :new_instrumentation_pilotage_attachment, accept: "application/pdf", multiple: true %>
+          </div>
+
+          <div class="uk-margin">
             <%= form.label :other_instrumentation, "Autres instrumentation", class: 'uk-form-label' %>
             <%= form.text_field :other_instrumentation, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
@@ -263,6 +291,13 @@
             <%= form.label :existing_instrumentation_autre_attachment, "Ajouter un document d'autre instrumentation existant", class: 'uk-form-label' %>
             <%= form.select :existing_instrumentation_autre_attachment, Attachment.where(kind: :instrumentation_autre).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
                             {selected: @faucet.attachments.where(kind: :instrumentation_autre).ids}, {multiple: true, id: 'existing_instrumentation_autre_attachment', data: {target: 'form.input'}} %>
+          </div>
+
+          <div class="uk-margin">
+            <div>
+              <%= form.label :new_instrumentation_autre_attachment, "Ajouter un nouveau d'autre instrumentation existant", class: 'uk-form-label' %>
+            </div>
+            <%= form.file_field :new_instrumentation_autre_attachment, accept: "application/pdf", multiple: true %>
           </div>
         </div>
       </li>
