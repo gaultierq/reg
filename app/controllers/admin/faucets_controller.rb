@@ -49,6 +49,21 @@ class Admin::FaucetsController < Admin::BaseController
     @faucet = Faucet.new(faucet_params)
 
     if @faucet.save
+      if params[:faucet][:existing_instruction_service_attachment].present?
+        @faucet.attachments << Attachment.where(id: params[:faucet][:existing_instruction_service_attachment].drop(1))
+      end
+      if params[:faucet][:existing_actionnement_actionneur_attachment].present?
+        @faucet.attachments << Attachment.where(id: params[:faucet][:existing_actionnement_actionneur_attachment].drop(1))
+      end
+      if params[:faucet][:existing_instrumentation_position_attachment].present?
+        @faucet.attachments << Attachment.where(id: params[:faucet][:existing_instrumentation_position_attachment].drop(1))
+      end
+      if params[:faucet][:existing_instrumentation_pilotage_attachment].present?
+        @faucet.attachments << Attachment.where(id: params[:faucet][:existing_instrumentation_pilotage_attachment].drop(1))
+      end
+      if params[:faucet][:existing_instrumentation_autre_attachment].present?
+        @faucet.attachments << Attachment.where(id: params[:faucet][:existing_instrumentation_autre_attachment].drop(1))
+      end
       redirect_to admin_faucet_path(@faucet), notice: 'Robinet créé avec succès.'
     else
       render :new
@@ -58,6 +73,21 @@ class Admin::FaucetsController < Admin::BaseController
   # PATCH/PUT /faucets/1
   def update
     if @faucet.update(faucet_params)
+      if params[:faucet][:existing_instruction_service_attachment].present?
+        @faucet.attachments << Attachment.where(id: params[:faucet][:existing_instruction_service_attachment].drop(1))
+      end
+      if params[:faucet][:existing_actionnement_actionneur_attachment].present?
+        @faucet.attachments << Attachment.where(id: params[:faucet][:existing_actionnement_actionneur_attachment].drop(1))
+      end
+      if params[:faucet][:existing_instrumentation_position_attachment].present?
+        @faucet.attachments << Attachment.where(id: params[:faucet][:existing_instrumentation_position_attachment].drop(1))
+      end
+      if params[:faucet][:existing_instrumentation_pilotage_attachment].present?
+        @faucet.attachments << Attachment.where(id: params[:faucet][:existing_instrumentation_pilotage_attachment].drop(1))
+      end
+      if params[:faucet][:existing_instrumentation_autre_attachment].present?
+        @faucet.attachments << Attachment.where(id: params[:faucet][:existing_instrumentation_autre_attachment].drop(1))
+      end
       redirect_to admin_faucet_path(@faucet), notice: 'Robinet modifié avec succès.'
     else
       render :edit

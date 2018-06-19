@@ -21,6 +21,8 @@ gem 'ffaker'
 gem 'mini_magick', '~> 4.8'
 gem 'rails-i18n', '~> 5.1'
 gem 'browser'
+gem 'select2-rails'
+gem 'jquery-rails'
 
 group :production do
   gem 'aws-sdk-s3', require: false
