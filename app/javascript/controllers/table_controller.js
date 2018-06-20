@@ -43,7 +43,10 @@ export default class extends Controller {
     }
 
     get order() {
-        return JSON.parse(this.data.get("order")) || [0, "desc"]
+        if (this.data.get("order") !== '')
+            return JSON.parse(this.data.get("order")) || [0, "desc"]
+        else
+            return [0, "desc"]
     }
 
     connect() {
