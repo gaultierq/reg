@@ -12,7 +12,8 @@
     </div>
 
     <div class="uk-padding-remove-top">
-      <%= render 'shared/table', locals: { id: 'alerts_maintenance_table', dom: 'lrtip', paging: false, info: false } do %>
+      <%= render 'shared/table', locals: { id: 'alerts_maintenance_table', dom: 'lrtip', paging: false, info: false,
+                                           order: [[3, "desc"]] } do %>
         <thead>
           <tr>
             <th>id</th>
