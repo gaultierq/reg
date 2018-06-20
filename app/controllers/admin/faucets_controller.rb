@@ -38,6 +38,7 @@ class Admin::FaucetsController < Admin::BaseController
   # GET /faucets/new
   def new
     @faucet = Faucet.new(TapTemplate.find_by_id(params[:tap_template_id])&.attributes)
+    @tap_template = TapTemplate.find_by_id(params[:tap_template_id])
   end
 
   # GET /faucets/1/edit
@@ -91,58 +92,60 @@ class Admin::FaucetsController < Admin::BaseController
 
   def add_attachments
     attachments = []
-    if params[:faucet][:existing_instruction_service_attachment].present?
-      attachments << Attachment.where(id: params[:faucet][:existing_instruction_service_attachment].drop(1))
-    end
-    if params[:faucet][:existing_actionnement_actionneur_attachment].present?
-      attachments << Attachment.where(id: params[:faucet][:existing_actionnement_actionneur_attachment].drop(1))
-    end
-    if params[:faucet][:existing_instrumentation_position_attachment].present?
-      attachments << Attachment.where(id: params[:faucet][:existing_instrumentation_position_attachment].drop(1))
-    end
-    if params[:faucet][:existing_instrumentation_pilotage_attachment].present?
-      attachments << Attachment.where(id: params[:faucet][:existing_instrumentation_pilotage_attachment].drop(1))
-    end
-    if params[:faucet][:existing_instrumentation_autre_attachment].present?
-      attachments << Attachment.where(id: params[:faucet][:existing_instrumentation_autre_attachment].drop(1))
-    end
-    if params[:faucet][:new_instruction_service_attachment].present?
-      params[:faucet][:new_instruction_service_attachment].each do |attachment|
-        @attachment = Attachment.new(kind: :instruction_service, pdf: attachment)
-        if @attachment.save
-          attachments << @attachment
+    if params[:faucet].present?
+      if params[:faucet][:existing_instruction_service_attachment].present?
+        attachments << Attachment.where(id: params[:faucet][:existing_instruction_service_attachment].drop(1))
+      end
+      if params[:faucet][:existing_actionnement_actionneur_attachment].present?
+        attachments << Attachment.where(id: params[:faucet][:existing_actionnement_actionneur_attachment].drop(1))
+      end
+      if params[:faucet][:existing_instrumentation_position_attachment].present?
+        attachments << Attachment.where(id: params[:faucet][:existing_instrumentation_position_attachment].drop(1))
+      end
+      if params[:faucet][:existing_instrumentation_pilotage_attachment].present?
+        attachments << Attachment.where(id: params[:faucet][:existing_instrumentation_pilotage_attachment].drop(1))
+      end
+      if params[:faucet][:existing_instrumentation_autre_attachment].present?
+        attachments << Attachment.where(id: params[:faucet][:existing_instrumentation_autre_attachment].drop(1))
+      end
+      if params[:faucet][:new_instruction_service_attachment].present?
+        params[:faucet][:new_instruction_service_attachment].each do |attachment|
+          @attachment = Attachment.new(kind: :instruction_service, pdf: attachment)
+          if @attachment.save
+            attachments << @attachment
+          end
         end
       end
-    end
-    if params[:faucet][:new_actionnement_actionneur_attachment].present?
-      params[:faucet][:new_actionnement_actionneur_attachment].each do |attachment|
-        @attachment = Attachment.new(kind: :actionnement_actionneur, pdf: attachment)
-        if @attachment.save
-          attachments << @attachment
+      if params[:faucet][:new_actionnement_actionneur_attachment].present?
+        params[:faucet][:new_actionnement_actionneur_attachment].each do |attachment|
+          @attachment = Attachment.new(kind: :actionnement_actionneur, pdf: attachment)
+          if @attachment.save
+            attachments << @attachment
+          end
         end
       end
-    end
-    if params[:faucet][:new_instrumentation_position_attachment].present?
-      params[:faucet][:new_instrumentation_position_attachment].each do |attachment|
-        @attachment = Attachment.new(kind: :instrumentation_position, pdf: attachment)
-        if @attachment.save
-          attachments << @attachment
+      if params[:faucet][:new_instrumentation_position_attachment].present?
+        params[:faucet][:new_instrumentation_position_attachment].each do |attachment|
+          @attachment = Attachment.new(kind: :instrumentation_position, pdf: attachment)
+          if @attachment.save
+            attachments << @attachment
+          end
         end
       end
-    end
-    if params[:faucet][:new_instrumentation_pilotage_attachment].present?
-      params[:faucet][:new_instrumentation_pilotage_attachment].each do |attachment|
-        @attachment = Attachment.new(kind: :instrumentation_pilotage, pdf: attachment)
-        if @attachment.save
-          attachments << @attachment
+      if params[:faucet][:new_instrumentation_pilotage_attachment].present?
+        params[:faucet][:new_instrumentation_pilotage_attachment].each do |attachment|
+          @attachment = Attachment.new(kind: :instrumentation_pilotage, pdf: attachment)
+          if @attachment.save
+            attachments << @attachment
+          end
         end
       end
-    end
-    if params[:faucet][:new_instrumentation_autre_attachment].present?
-      params[:faucet][:new_instrumentation_autre_attachment].each do |attachment|
-        @attachment = Attachment.new(kind: :instrumentation_autre, pdf: attachment)
-        if @attachment.save
-          attachments << @attachment
+      if params[:faucet][:new_instrumentation_autre_attachment].present?
+        params[:faucet][:new_instrumentation_autre_attachment].each do |attachment|
+          @attachment = Attachment.new(kind: :instrumentation_autre, pdf: attachment)
+          if @attachment.save
+            attachments << @attachment
+          end
         end
       end
     end

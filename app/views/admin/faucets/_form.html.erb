@@ -142,8 +142,13 @@
 
           <div class="uk-margin">
             <%= form.label :existing_instruction_service_attachment, "Ajouter un document d'instruction de service existant", class: 'uk-form-label' %>
-            <%= form.select :existing_instruction_service_attachment, Attachment.where(kind: :instruction_service).collect { |attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
-                            {selected: @faucet.attachments.where(kind: :instruction_service).ids}, {multiple: true, id: 'existing_instruction_service_attachment', data: {target: 'form.input'}} %>
+            <% if @tap_template.present? %>
+              <%= form.select :existing_instruction_service_attachment, Attachment.where(kind: :instruction_service).collect { |attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @tap_template.attachments.where(kind: :instruction_service).ids}, {multiple: true, id: 'existing_instruction_service_attachment', data: {target: 'form.input'}} %>
+            <% else %>
+              <%= form.select :existing_instruction_service_attachment, Attachment.where(kind: :instruction_service).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @faucet.attachments.where(kind: :instruction_service).ids}, {multiple: true, id: 'existing_instruction_service_attachment', data: {target: 'form.input'}} %>
+            <% end %>
           </div>
 
           <div class="uk-margin">
@@ -215,8 +220,13 @@
 
           <div class="uk-margin">
             <%= form.label :existing_actionnement_actionneur_attachment, "Ajouter un document d'actionneur existant", class: 'uk-form-label' %>
-            <%= form.select :existing_actionnement_actionneur_attachment, Attachment.where(kind: :actionnement_actionneur).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
-                            {selected: @faucet.attachments.where(kind: :actionnement_actionneur).ids}, {multiple: true, id: 'existing_actionnement_actionneur_attachment', data: {target: 'form.input'}} %>
+            <% if @tap_template.present? %>
+              <%= form.select :existing_actionnement_actionneur_attachment, Attachment.where(kind: :actionnement_actionneur).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @tap_template.attachments.where(kind: :actionnement_actionneur).ids}, {multiple: true, id: 'existing_actionnement_actionneur_attachment', data: {target: 'form.input'}} %>
+            <% else %>
+              <%= form.select :existing_actionnement_actionneur_attachment, Attachment.where(kind: :actionnement_actionneur).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @faucet.attachments.where(kind: :actionnement_actionneur).ids}, {multiple: true, id: 'existing_actionnement_actionneur_attachment', data: {target: 'form.input'}} %>
+            <% end %>
           </div>
 
           <div class="uk-margin">
@@ -243,8 +253,13 @@
 
           <div class="uk-margin">
             <%= form.label :existing_instrumentation_position_attachment, "Ajouter un document de détecteur de position existant", class: 'uk-form-label' %>
-            <%= form.select :existing_instrumentation_position_attachment, Attachment.where(kind: :instrumentation_position).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
-                            {selected: @faucet.attachments.where(kind: :instrumentation_position).ids}, {multiple: true, id: 'existing_instrumentation_position_attachment', data: {target: 'form.input'}} %>
+            <% if @tap_template.present? %>
+              <%= form.select :existing_instrumentation_position_attachment, Attachment.where(kind: :instrumentation_position).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @tap_template.attachments.where(kind: :instrumentation_position).ids}, {multiple: true, id: 'existing_instrumentation_position_attachment', data: {target: 'form.input'}} %>
+            <% else %>
+              <%= form.select :existing_instrumentation_position_attachment, Attachment.where(kind: :instrumentation_position).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @faucet.attachments.where(kind: :instrumentation_position).ids}, {multiple: true, id: 'existing_instrumentation_position_attachment', data: {target: 'form.input'}} %>
+            <% end %>
           </div>
 
           <div class="uk-margin">
@@ -271,8 +286,13 @@
 
           <div class="uk-margin">
             <%= form.label :existing_instrumentation_pilotage_attachment, "Ajouter un document de pilotage existant", class: 'uk-form-label' %>
-            <%= form.select :existing_instrumentation_pilotage_attachment, Attachment.where(kind: :instrumentation_pilotage).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
-                            {selected: @faucet.attachments.where(kind: :instrumentation_pilotage).ids}, {multiple: true, id: 'existing_instrumentation_pilotage_attachment', data: {target: 'form.input'}} %>
+            <% if @tap_template.present? %>
+              <%= form.select :existing_instrumentation_pilotage_attachment, Attachment.where(kind: :instrumentation_pilotage).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @tap_template.attachments.where(kind: :instrumentation_pilotage).ids}, {multiple: true, id: 'existing_instrumentation_pilotage_attachment', data: {target: 'form.input'}} %>
+            <% else %>
+              <%= form.select :existing_instrumentation_pilotage_attachment, Attachment.where(kind: :instrumentation_pilotage).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @faucet.attachments.where(kind: :instrumentation_pilotage).ids}, {multiple: true, id: 'existing_instrumentation_pilotage_attachment', data: {target: 'form.input'}} %>
+            <% end %>
           </div>
 
           <div class="uk-margin">
@@ -289,8 +309,13 @@
 
           <div class="uk-margin">
             <%= form.label :existing_instrumentation_autre_attachment, "Ajouter un document d'autre instrumentation existant", class: 'uk-form-label' %>
-            <%= form.select :existing_instrumentation_autre_attachment, Attachment.where(kind: :instrumentation_autre).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
-                            {selected: @faucet.attachments.where(kind: :instrumentation_autre).ids}, {multiple: true, id: 'existing_instrumentation_autre_attachment', data: {target: 'form.input'}} %>
+            <% if @tap_template.present? %>
+              <%= form.select :existing_instrumentation_autre_attachment, Attachment.where(kind: :instrumentation_autre).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @tap_template.attachments.where(kind: :instrumentation_autre).ids}, {multiple: true, id: 'existing_instrumentation_autre_attachment', data: {target: 'form.input'}} %>
+            <% else %>
+              <%= form.select :existing_instrumentation_autre_attachment, Attachment.where(kind: :instrumentation_autre).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @faucet.attachments.where(kind: :instrumentation_autre).ids}, {multiple: true, id: 'existing_instrumentation_autre_attachment', data: {target: 'form.input'}} %>
+            <% end %>
           </div>
 
           <div class="uk-margin">

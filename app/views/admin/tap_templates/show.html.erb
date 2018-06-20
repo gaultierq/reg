@@ -12,191 +12,415 @@
       </div>
     </div>
 
-    <div class="uk-overflow-auto">
-      <table class="uk-table uk-table-striped">
-        <tbody>
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Nom</td>
-          <td><%= @tap_template.name %></td>
-        </tr>
+    <ul class="uk-list-large uk-list-divider" uk-accordion>
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Identification de l'atelier
+        <% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <tbody>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Nom</td>
+                <td><%= @tap_template.name %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° article</td>
-          <td><%= @tap_template.article_number %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° article</td>
+                <td><%= @tap_template.article_number %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">DN</td>
-          <td><%= @tap_template.dn %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">DN</td>
+                <td><%= @tap_template.dn %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Raccordement entrée</td>
-          <td><%= @tap_template.input_connection %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Raccordement entrée</td>
+                <td><%= @tap_template.input_connection %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Raccordement sortie</td>
-          <td><%= @tap_template.output_connection %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Raccordement sortie</td>
+                <td><%= @tap_template.output_connection %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Raccordement de double enveloppe</td>
-          <td><%= @tap_template.double_jacket_connection %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Raccordement de double
+                  enveloppe
+                </td>
+                <td><%= @tap_template.double_jacket_connection %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Inclinaison/décalage entrée/sortie</td>
-          <td><%= @tap_template.inclination_input_offset_output %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Inclinaison/décalage
+                  entrée/sortie
+                </td>
+                <td><%= @tap_template.inclination_input_offset_output %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Face à face</td>
-          <td><%= @tap_template.face_to_face %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Face à face</td>
+                <td><%= @tap_template.face_to_face %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression Maximale (PS) à 20°C (bar)</td>
-          <td><%= @tap_template.maximal_pressure %></td>
-        </tr>
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Conditions de service / Limite d'utilisation
+        <% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <tbody>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression Maximale (PS) à 20°C
+                  (bar)
+                </td>
+                <td><%= @tap_template.maximal_pressure %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression d'épreuve à 20°C (bar)</td>
-          <td><%= @tap_template.test_pressure %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression d'épreuve à 20°C
+                  (bar)
+                </td>
+                <td><%= @tap_template.test_pressure %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Température maximum (°C)</td>
-          <td><%= @tap_template.maximum_temperature %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Température maximum (°C)</td>
+                <td><%= @tap_template.maximum_temperature %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression à la température maximum (bar)</td>
-          <td><%= @tap_template.pressure_at_maximum_temperature %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression à la température
+                  maximum (bar)
+                </td>
+                <td><%= @tap_template.pressure_at_maximum_temperature %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Température minimum (°C)</td>
-          <td><%= @tap_template.minimum_temperature %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Température minimum (°C)</td>
+                <td><%= @tap_template.minimum_temperature %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression à la température minimum (bar)</td>
-          <td><%= @tap_template.pressure_at_minimum_temperature %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression à la température
+                  minimum (bar)
+                </td>
+                <td><%= @tap_template.pressure_at_minimum_temperature %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Nature du fluide</td>
-          <td><%= @tap_template.fluid_nature %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document d'instruction de
+                  service
+                </td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @tap_template.attachments.where(kind: :instruction_service).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Groupe de danger du  fluide</td>
-          <td><%= @tap_template.fluid_danger_group %></td>
-        </tr>
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Catégorie de risque selon DESP 2014/68
+        <% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <tbody>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Nature du fluide</td>
+                <td><%= @tap_template.fluid_nature %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Gaz instable</td>
-          <td><%= @tap_template.unstable_gas %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Groupe de danger du fluide</td>
+                <td><%= @tap_template.fluid_danger_group %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Catégorie de risque selon DESP 2014/68</td>
-          <td><%= @tap_template.risk_category %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Gaz instable</td>
+                <td><%= @tap_template.unstable_gas %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Commande manuelle</td>
-          <td><%= @tap_template.manual_control %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Catégorie de risque selon DESP
+                  2014/68
+                </td>
+                <td><%= @tap_template.risk_category %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Actionneur</td>
-          <td><%= @tap_template.actuator %></td>
-        </tr>
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Actionnement - Système de manœuvre
+        <% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <tbody>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Commande manuelle</td>
+                <td><%= @tap_template.manual_control %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression actionneur pneumatique</td>
-          <td><%= @tap_template.pneumatic_actuator_pressure %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Actionneur</td>
+                <td><%= @tap_template.actuator %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Détecteur de position</td>
-          <td><%= @tap_template.position_detector %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document d'actionneur
+                </td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @tap_template.attachments.where(kind: :actionnement_actionneur).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position ouverte</td>
-          <td><%= @tap_template.open_position %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression actionneur
+                  pneumatique
+                </td>
+                <td><%= @tap_template.pneumatic_actuator_pressure %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position fermée</td>
-          <td><%= @tap_template.close_position %></td>
-        </tr>
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Instrumentation
+        <% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <tbody>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Détecteur de position</td>
+                <td><%= @tap_template.position_detector %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pilotage</td>
-          <td><%= @tap_template.piloting %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document de détecteur de
+                  position
+                </td>
+                <td>
+                  <table class="uk-table uk-table-striped">
+                    <tbody>
+                    <% @tap_template.attachments.where(kind: :instrumentation_position).each do |attachment| %>
+                      <tr>
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres instrumentation</td>
-          <td><%= @tap_template.other_instrumentation %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position ouverte</td>
+                <td><%= @tap_template.open_position %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Enveloppe</td>
-          <td><%= @tap_template.shell %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position fermée</td>
+                <td><%= @tap_template.close_position %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Double enveloppe</td>
-          <td><%= @tap_template.double_shell %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pilotage</td>
+                <td><%= @tap_template.piloting %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Obturateur (partie mobile)</td>
-          <td><%= @tap_template.shutter_cover %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document de pilotage</td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @tap_template.attachments.where(kind: :instrumentation_pilotage).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Siège (partie fixe)</td>
-          <td><%= @tap_template.seat %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres instrumentation</td>
+                <td><%= @tap_template.other_instrumentation %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Garniture de presse étoupe</td>
-          <td><%= @tap_template.cable_gland_packing %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document d'autres
+                  instrumentation
+                </td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @tap_template.attachments.where(kind: :instrumentation_autre).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Joints</td>
-          <td><%= @tap_template.seals %></td>
-        </tr>
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Matériaux
+        <% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <tbody>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Enveloppe</td>
+                <td><%= @tap_template.shell %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">ATEX</td>
-          <td><%= @tap_template.atex %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Double enveloppe</td>
+                <td><%= @tap_template.double_shell %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres exigences particulières</td>
-          <td><%= @tap_template.other_special_requirements %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Obturateur (partie mobile)</td>
+                <td><%= @tap_template.shutter_cover %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres contrôles</td>
-          <td><%= @tap_template.other_controls %></td>
-        </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Siège (partie fixe)</td>
+                <td><%= @tap_template.seat %></td>
+              </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres</td>
-          <td><%= @tap_template.other %></td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Garniture de presse étoupe</td>
+                <td><%= @tap_template.cable_gland_packing %></td>
+              </tr>
+
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Joints</td>
+                <td><%= @tap_template.seals %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Exigences particulières
+        <% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <tbody>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">ATEX</td>
+                <td><%= @tap_template.atex %></td>
+              </tr>
+
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres exigences
+                  particulières
+                </td>
+                <td><%= @tap_template.other_special_requirements %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Contrôles
+        <% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <tbody>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres contrôles</td>
+                <td><%= @tap_template.other_controls %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
+
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Autres
+        <% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <tbody>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres</td>
+                <td><%= @tap_template.other %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
+    </ul>
 
     <div class="uk-margin-medium">
       <%= link_to 'Retour', admin_tap_templates_path, class: 'uk-button uk-button-default' %>
