@@ -12,6 +12,9 @@ class Admin::EventsController < Admin::BaseController
   # GET /events/new
   def new
     @event = Event.new
+    if params[:faucet_id].present?
+      @event.faucet = Faucet.find(params[:faucet_id])
+    end
   end
 
   # GET /events/1/edit

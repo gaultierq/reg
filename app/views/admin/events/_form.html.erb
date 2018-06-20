@@ -14,7 +14,11 @@
 
     <div class="uk-margin">
       <%= form.label :faucet_id, "Robinet", class: 'uk-form-label' %>
-      <%= form.select :faucet_id, Faucet.all.collect { |faucet| [faucet.name, faucet.id ] }, {}, {class: 'uk-select', data: {target: 'form.input' } } %>
+      <% if [@event.faucet].present? %>
+        <%= form.select :faucet_id, [@event.faucet].collect { |faucet| [faucet.name, faucet.id ] }, {}, {class: 'uk-select', data: {target: 'form.input' } } %>
+      <% else %>
+        <%= form.select :faucet_id, Faucet.all.collect { |faucet| [faucet.name, faucet.id ] }, {}, {class: 'uk-select', data: {target: 'form.input' } } %>
+      <% end %>
     </div>
 
     <div class="uk-margin">
