@@ -11,8 +11,7 @@
       </div>
     </div>
 
-    <div class="uk-section-small uk-padding-remove-top">
-      <h3 class="uk-heading-divider">Maintenances</h3>
+    <div class="uk-padding-remove-top">
       <%= render 'shared/table', locals: { id: 'alerts_maintenance_table', dom: 'lrtip', paging: false, info: false } do %>
         <thead>
           <tr>
@@ -25,7 +24,7 @@
         </thead>
 
         <tbody>
-          <% @alerts.where(kind: :maintenance).each do |alert| %>
+          <% @alerts.each do |alert| %>
             <tr>
               <td><%= alert.id %></td>
               <td><%= alert.industrial_unit.name %></td>
@@ -52,51 +51,6 @@
               </td>
             </tr>
           <% end %>
-        </tbody>
-      <% end %>
-    </div>
-
-    <div class="uk-section-small">
-      <h3 class="uk-heading-divider">Incidents</h3>
-      <%= render 'shared/table', locals: {id: 'alerts_incident_table', dom: 'lrtip', paging: false, info: false} do %>
-        <thead>
-        <tr>
-          <th>id</th>
-          <th>unité industrielle</th>
-          <th>robinet</th>
-          <th>date</th>
-          <th data-orderable="false">actions</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        <% @alerts.where(kind: :incident).each do |alert| %>
-          <tr>
-            <td><%= alert.id %></td>
-            <td><%= alert.industrial_unit.name %></td>
-            <td><%= alert.faucet.name %></td>
-            <td><%= alert.date %></td>
-            <td class="uk-flex uk-flex-center">
-              <ul class="uk-iconnav">
-                <li>
-                  <%= link_to admin_alert_path(alert) do %>
-                    <span uk-icon="search" , uk-tooltip="Détails"></span>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to edit_admin_alert_path(alert) do %>
-                    <span uk-icon="pencil" , uk-tooltip="Modifier"></span>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to admin_alert_path(alert), method: :delete, data: {confirm: 'Êtes-vous sûr ?'} do %>
-                    <span uk-icon="trash" , uk-tooltip="Supprimer"></span>
-                  <% end %>
-                </li>
-              </ul>
-            </td>
-          </tr>
-        <% end %>
         </tbody>
       <% end %>
     </div>
