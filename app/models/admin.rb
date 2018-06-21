@@ -1,5 +1,6 @@
 class Admin < ApplicationRecord
   include DeviseInvitable::Inviter
+
   devise :database_authenticatable, :recoverable, :rememberable,
          :timeoutable, :trackable, :validatable, :invitable
 
