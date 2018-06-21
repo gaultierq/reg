@@ -18,13 +18,15 @@ class Admin::AdminsController < Admin::BaseController
 
   # POST /admins
   def create
-    Admin.invite!(admin_params)
+    @admin = Admin.invite!(admin_params)
+    add_industrial_unit
     redirect_to admin_peoples_path, notice: 'Invitation envoyée.'
   end
 
   # PATCH/PUT /admins/1
   def update
     if @admin.update(admin_params)
+      add_industrial_unit
       redirect_to admin_admin_path(@admin), notice: 'Admin modifié avec succès.'
     else
       render :edit
@@ -35,6 +37,17 @@ class Admin::AdminsController < Admin::BaseController
   def destroy
     @admin.destroy
     redirect_to admin_peoples_url, notice: 'Admin supprimé avec succès.'
+  end
+
+  def add_industrial_unit
+    industrial_unit = []
+    if params[:admin].present?
+      if params[:admin][:industrial_units].present?
+        industrial_unit << IndustrialUnit.where(id: params[:admin][:industrial_units].drop(1))
+      end
+    end
+    @admin.industrial_units.delete_all
+    @admin.industrial_units << industrial_unit
   end
 
   private
