@@ -16,13 +16,15 @@ class Admin::UsersController < Admin::BaseController
 
   # POST /users
   def create
-    User.invite!(user_params)
+    @user = User.invite!(user_params)
+    add_industrial_unit
     redirect_to admin_peoples_path, notice: 'Invitation envoyée.'
   end
 
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
+      add_industrial_unit
       redirect_to admin_user_path(@user), notice: 'Technicien(ne) modifié(e) avec succès.'
     else
       render :edit
@@ -33,6 +35,17 @@ class Admin::UsersController < Admin::BaseController
   def destroy
     @user.destroy
     redirect_to admin_peoples_url, notice: 'Technicien(ne) supprimé(e) avec succès.'
+  end
+
+  def add_industrial_unit
+    industrial_unit = []
+    if params[:admin].present?
+      if params[:admin][:industrial_units].present?
+        industrial_unit << IndustrialUnit.where(id: params[:admin][:industrial_units].drop(1))
+      end
+    end
+    @user.industrial_units.delete_all
+    @user.industrial_units << industrial_unit
   end
 
   private

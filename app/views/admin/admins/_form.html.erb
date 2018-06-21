@@ -33,7 +33,7 @@
     </div>
 
     <div class="uk-margin">
-      <%= form.label :industrial_units, "Ajouter un document de pilotage existant", class: 'uk-form-label' %>
+      <%= form.label :industrial_units, "Unités industrielles", class: 'uk-form-label' %>
       <%= form.select :industrial_units, IndustrialUnit.all.collect {|industrial_unit| [industrial_unit.name, industrial_unit.id]}.compact,
                       {selected: @admin.industrial_units.ids}, {multiple: true, id: 'industrial_units', data: {target: 'form.input'}} %>
     </div>
