@@ -16,19 +16,35 @@
       <table class="uk-table uk-table-striped">
         <tbody>
         <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Adresse email</td>
-          <td><%= @admin.email %></td>
-        </tr>
-
-        <tr>
           <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Nom</td>
           <td><%= @admin.full_name %></td>
         </tr>
 
         <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Mot de passe encrypté</td>
-          <td><%= @admin.encrypted_password %></td>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Adresse email</td>
+          <td><%= @admin.email %></td>
         </tr>
+
+        <tr>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Téléphone</td>
+          <td><%= @admin.phone_number %></td>
+        </tr>
+
+        <tr>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Unités industrielles</td>
+          <td>
+            <table>
+              <tbody>
+              <% @admin.industrial_units.each do |industrial_unit| %>
+                <tr class="tr-transparent">
+                  <td><%= industrial_unit.name  %></td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+
         </tbody>
       </table>
     </div>

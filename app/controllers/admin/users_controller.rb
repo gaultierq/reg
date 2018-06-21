@@ -39,9 +39,9 @@ class Admin::UsersController < Admin::BaseController
 
   def add_industrial_unit
     industrial_unit = []
-    if params[:admin].present?
-      if params[:admin][:industrial_units].present?
-        industrial_unit << IndustrialUnit.where(id: params[:admin][:industrial_units].drop(1))
+    if params[:user].present?
+      if params[:user][:industrial_units].present?
+        industrial_unit << IndustrialUnit.where(id: params[:user][:industrial_units].drop(1))
       end
     end
     @user.industrial_units.delete_all
