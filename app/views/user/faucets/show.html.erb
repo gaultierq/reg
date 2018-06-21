@@ -158,7 +158,7 @@
                     <% @faucet.attachments.where(kind: :instruction_service).each do |attachment| %>
                       <tr class="tr-transparent">
                         <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, "http://drive.google.com/viewerng/viewer?embedded=true&url=" + request.base_url + url_for(attachment.pdf) %></td>
+                          <td><%= link_to attachment.pdf.blob.filename, rails_blob_path(attachment.pdf, disposition: "attachment") %></td>
                         <% else %>
                           <td></td>
                         <% end %>
@@ -261,7 +261,7 @@
                     <% @faucet.attachments.where(kind: :actionnement_actionneur).each do |attachment| %>
                       <tr class="tr-transparent">
                         <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, "http://drive.google.com/viewerng/viewer?embedded=true&url=" + request.base_url +  url_for(attachment.pdf) %></td>
+                          <td><%= link_to attachment.pdf.blob.filename, rails_blob_path(attachment.pdf, disposition: "attachment") %></td>
                         <% else %>
                           <td></td>
                         <% end %>
@@ -306,7 +306,7 @@
                     <% @faucet.attachments.where(kind: :instrumentation_position).each do |attachment| %>
                       <tr>
                         <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, "http://drive.google.com/viewerng/viewer?embedded=true&url=" + request.base_url +  url_for(attachment.pdf) %></td>
+                          <td><%= link_to attachment.pdf.blob.filename, rails_blob_path(attachment.pdf, disposition: "attachment") %></td>
                         <% else %>
                           <td></td>
                         <% end %>
@@ -340,7 +340,7 @@
                     <% @faucet.attachments.where(kind: :instrumentation_pilotage).each do |attachment| %>
                       <tr class="tr-transparent">
                         <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, "http://drive.google.com/viewerng/viewer?embedded=true&url=" + request.base_url +  url_for(attachment.pdf) %></td>
+                          <td><%= link_to attachment.pdf.blob.filename, rails_blob_path(attachment.pdf, disposition: "attachment") %></td>
                         <% else %>
                           <td></td>
                         <% end %>
@@ -366,7 +366,7 @@
                     <% @faucet.attachments.where(kind: :instrumentation_autre).each do |attachment| %>
                       <tr class="tr-transparent">
                         <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, "http://drive.google.com/viewerng/viewer?embedded=true&url=" + request.base_url +  url_for(attachment.pdf)%></td>
+                          <td><%= link_to attachment.pdf.blob.filename, rails_blob_path(attachment.pdf, disposition: "attachment") %></td>
                         <% else %>
                           <td></td>
                         <% end %>
