@@ -25,6 +25,10 @@ class Admin::AdminsController < Admin::BaseController
 
   # PATCH/PUT /admins/1
   def update
+    if params[:admin][:password].blank? && params[:admin][:password_confirmation].blank?
+      params[:admin].delete(:password)
+      params[:admin].delete(:password_confirmation)
+    end
     if @admin.update(admin_params)
       add_industrial_unit
       redirect_to admin_admin_path(@admin), notice: 'Admin modifié avec succès.'
@@ -58,6 +62,6 @@ class Admin::AdminsController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_params
-      params.require(:admin).permit(:email, :first_name, :last_name, :phone_number)
+      params.require(:admin).permit(:email, :password, :password_confirmation, :first_name, :last_name, :phone_number)
     end
 end

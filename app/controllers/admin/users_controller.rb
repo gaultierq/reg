@@ -23,6 +23,10 @@ class Admin::UsersController < Admin::BaseController
 
   # PATCH/PUT /users/1
   def update
+    if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
     if @user.update(user_params)
       add_industrial_unit
       redirect_to admin_user_path(@user), notice: 'Technicien(ne) modifié(e) avec succès.'
