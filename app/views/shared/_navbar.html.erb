@@ -5,8 +5,8 @@
         <%= image_tag("logo.png", {:style => "height:80%"}) %>
       <% end %>
 
-      <ul class="uk-navbar-nav uk-visible@m">
-        <% if admin_signed_in? %>
+      <% if admin_signed_in? %>
+        <ul class="uk-navbar-nav uk-visible@m">
           <li>
             <%= link_to admin_industrial_units_path, data: { target: 'navbar.link' } do %>
               Unités Industrielles
@@ -42,13 +42,22 @@
               GED
             <% end %>
           </li>
-        <% end %>
-      </ul>
+        </ul>
+      <% end %>
+      <% if user_signed_in? %>
+        <ul class="uk-navbar-nav uk-visible@m">
+          <li>
+            <%= link_to user_industrial_units_path, data: {target: 'navbar.link'} do %>
+              Unités Industrielles
+            <% end %>
+          </li>
+        </ul>
+      <% end %>
     </div>
 
     <div class="uk-navbar-right">
-      <ul class="uk-navbar-nav">
-        <% if admin_signed_in? %>
+      <% if admin_signed_in? %>
+        <ul class="uk-navbar-nav">
           <li>
             <%= link_to '#', class: 'uk-navbar-toggle uk-hidden@m', data: { action: 'navbar#toggle' } do %>
               <span uk-navbar-toggle-icon></span>
@@ -74,13 +83,10 @@
               </ul>
             </div>
           </li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div class="uk-navbar-right">
-      <ul class="uk-navbar-nav">
-        <% if user_signed_in? %>
+        </ul>
+      <% end %>
+      <% if user_signed_in? %>
+        <ul class="uk-navbar-nav">
           <li>
             <%= link_to '#', class: 'uk-navbar-toggle uk-hidden@m', data: {action: 'navbar#toggle'} do %>
               <span uk-navbar-toggle-icon></span>
@@ -106,8 +112,8 @@
               </ul>
             </div>
           </li>
-        <% end %>
-      </ul>
+        </ul>
+      <% end %>
     </div>
   </nav>
 

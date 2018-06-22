@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   end
 
   namespace :user do
+    resources :industrial_units, only: %i[index show]
     resources :faucets, only: %i[index show]
     resources :events
     resources :users, only: %i[edit update]
