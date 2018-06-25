@@ -92,6 +92,7 @@ class Admin::FaucetsController < Admin::BaseController
 
   def add_attachments
     attachments = []
+    notices = []
     if params[:faucet].present?
       if params[:faucet][:existing_instruction_service_attachment].present?
         attachments << Attachment.where(id: params[:faucet][:existing_instruction_service_attachment].drop(1))
@@ -110,47 +111,70 @@ class Admin::FaucetsController < Admin::BaseController
       end
       if params[:faucet][:new_instruction_service_attachment].present?
         params[:faucet][:new_instruction_service_attachment].each do |attachment|
-          @attachment = Attachment.new(kind: :instruction_service, pdf: attachment)
-          if @attachment.save
-            attachments << @attachment
+          attachment_to_add = Attachment.new(kind: :instruction_service, pdf: attachment)
+          if attachment_to_add.save
+            attachments << attachment_to_add
+          else
+            check_uniqueness(attachments, attachment_to_add)
           end
         end
       end
       if params[:faucet][:new_actionnement_actionneur_attachment].present?
         params[:faucet][:new_actionnement_actionneur_attachment].each do |attachment|
-          @attachment = Attachment.new(kind: :actionnement_actionneur, pdf: attachment)
-          if @attachment.save
-            attachments << @attachment
+          attachment_to_add = Attachment.new(kind: :actionnement_actionneur, pdf: attachment)
+          if attachment_to_add.save
+            attachments << attachment_to_add
+          else
+            check_uniqueness(attachments, attachment_to_add)
           end
         end
       end
       if params[:faucet][:new_instrumentation_position_attachment].present?
         params[:faucet][:new_instrumentation_position_attachment].each do |attachment|
-          @attachment = Attachment.new(kind: :instrumentation_position, pdf: attachment)
-          if @attachment.save
-            attachments << @attachment
+          attachment_to_add = Attachment.new(kind: :instrumentation_position, pdf: attachment)
+          if attachment_to_add.save
+            attachments << attachment_to_add
+          else
+            check_uniqueness(attachments, attachment_to_add)
           end
         end
       end
       if params[:faucet][:new_instrumentation_pilotage_attachment].present?
         params[:faucet][:new_instrumentation_pilotage_attachment].each do |attachment|
-          @attachment = Attachment.new(kind: :instrumentation_pilotage, pdf: attachment)
-          if @attachment.save
-            attachments << @attachment
+          attachment_to_add = Attachment.new(kind: :instrumentation_pilotage, pdf: attachment)
+          if attachment_to_add.save
+            attachments << attachment_to_add
+          else
+            check_uniqueness(attachments, attachment_to_add)
           end
         end
       end
       if params[:faucet][:new_instrumentation_autre_attachment].present?
         params[:faucet][:new_instrumentation_autre_attachment].each do |attachment|
-          @attachment = Attachment.new(kind: :instrumentation_autre, pdf: attachment)
-          if @attachment.save
-            attachments << @attachment
+          attachment_to_add = Attachment.new(kind: :instrumentation_autre, pdf: attachment)
+          if attachment_to_add.save
+            attachments << attachment_to_add
+          else
+            check_uniqueness(attachments, attachment_to_add)
           end
         end
       end
     end
     @faucet.attachments.delete_all
     @faucet.attachments << attachments
+  end
+
+  def check_uniqueness(attachments, attachment_to_add)
+    found_attachment = Attachment.find_by(md5: attachment_to_add.md5)
+    contains = false
+    attachments.each do |relation|
+      if relation.find_by(md5: found_attachment.md5).present?
+        contains = true
+      end
+    end
+    if found_attachment.present? && !contains
+      attachments << found_attachment
+    end
   end
 
   private
