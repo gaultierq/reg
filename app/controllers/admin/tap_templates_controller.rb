@@ -66,48 +66,71 @@ class Admin::TapTemplatesController < Admin::BaseController
         attachments << Attachment.where(id: params[:tap_template][:existing_instrumentation_autre_attachment].drop(1))
       end
       if params[:tap_template][:new_instruction_service_attachment].present?
-        params[:tap_template][:new_instruction_service_attachment].each do |pdf|
-          attachment = Attachment.new(kind: :instruction_service, pdf: pdf)
-          if attachment.save
-            attachments << attachment
+        params[:tap_template][:new_instruction_service_attachment].each do |attachment|
+          attachment_to_add = Attachment.new(kind: :instruction_service, pdf: attachment)
+          if attachment_to_add.save
+            attachments << attachment_to_add
+          else
+            check_uniqueness(attachments, attachment_to_add)
           end
         end
       end
       if params[:tap_template][:new_actionnement_actionneur_attachment].present?
-        params[:tap_template][:new_actionnement_actionneur_attachment].each do |pdf|
-          attachment = Attachment.new(kind: :actionnement_actionneur, pdf: pdf)
-          if attachment.save
-            attachments << attachment
+        params[:tap_template][:new_actionnement_actionneur_attachment].each do |attachment|
+          attachment_to_add = Attachment.new(kind: :actionnement_actionneur, pdf: attachment)
+          if attachment_to_add.save
+            attachments << attachment_to_add
+          else
+            check_uniqueness(attachments, attachment_to_add)
           end
         end
       end
       if params[:tap_template][:new_instrumentation_position_attachment].present?
-        params[:tap_template][:new_instrumentation_position_attachment].each do |pdf|
-          attachment = Attachment.new(kind: :instrumentation_position, pdf: pdf)
-          if attachment.save
-            attachments << attachment
+        params[:tap_template][:new_instrumentation_position_attachment].each do |attachment|
+          attachment_to_add = Attachment.new(kind: :instrumentation_position, pdf: attachment)
+          if attachment_to_add.save
+            attachments << attachment_to_add
+          else
+            check_uniqueness(attachments, attachment_to_add)
           end
         end
       end
       if params[:tap_template][:new_instrumentation_pilotage_attachment].present?
-        params[:tap_template][:new_instrumentation_pilotage_attachment].each do |pdf|
-          attachment = Attachment.new(kind: :instrumentation_pilotage, pdf: pdf)
-          if attachment.save
-            attachments << attachment
+        params[:tap_template][:new_instrumentation_pilotage_attachment].each do |attachment|
+          attachment_to_add = Attachment.new(kind: :instrumentation_pilotage, pdf: attachment)
+          if attachment_to_add.save
+            attachments << attachment_to_add
+          else
+            check_uniqueness(attachments, attachment_to_add)
           end
         end
       end
       if params[:tap_template][:new_instrumentation_autre_attachment].present?
-        params[:tap_template][:new_instrumentation_autre_attachment].each do |pdf|
-          attachment = Attachment.new(kind: :instrumentation_autre, pdf: pdf)
-          if attachment.save
-            attachments << attachment
+        params[:tap_template][:new_instrumentation_autre_attachment].each do |attachment|
+          attachment_to_add = Attachment.new(kind: :instrumentation_autre, pdf: attachment)
+          if attachment_to_add.save
+            attachments << attachment_to_add
+          else
+            check_uniqueness(attachments, attachment_to_add)
           end
         end
       end
     end
     @tap_template.attachments.delete_all
     @tap_template.attachments << attachments
+  end
+
+  def check_uniqueness(attachments, attachment_to_add)
+    found_attachment = Attachment.find_by(md5: attachment_to_add.md5)
+    contains = false
+    attachments.each do |relation|
+      if relation.find_by(md5: found_attachment.md5).present?
+        contains = true
+      end
+    end
+    if found_attachment.present? && !contains
+      attachments << found_attachment
+    end
   end
 
   private
