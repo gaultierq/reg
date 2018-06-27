@@ -1,8 +1,15 @@
 <div data-controller="navbar" class="uk-offcanvas-content">
   <nav class="uk-navbar-container uk-margin tm-navbar" uk-sticky uk-navbar>
     <div class="uk-navbar-left">
-      <%= link_to root_path, class: 'uk-navbar-item uk-logo' do %>
-        <%= image_tag("logo.png", {:style => "height:80%"}) %>
+      <% if admin_signed_in? %>
+        <%= link_to root_path, class: 'uk-navbar-item uk-logo' do %>
+          <%= image_tag("logo.png", {:style => "height:80%"}) %>
+        <% end %>
+      <% end %>
+      <% if user_signed_in? %>
+        <%= link_to user_faucets_path, class: 'uk-navbar-item uk-logo' do %>
+          <%= image_tag("logo.png", {:style => "height:80%"}) %>
+        <% end %>
       <% end %>
 
       <% if admin_signed_in? %>
