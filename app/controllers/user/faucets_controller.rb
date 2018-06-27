@@ -17,6 +17,7 @@ class User::FaucetsController < User::BaseController
 
   # GET /user/faucets/1
   def show
+    @browser = Browser.new(request.env['HTTP_USER_AGENT'])
   end
 
   private

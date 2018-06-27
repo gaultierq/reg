@@ -8,6 +8,7 @@ class Admin::TapTemplatesController < Admin::BaseController
 
   # GET /tap_templates/1
   def show
+    @browser = Browser.new(request.env['HTTP_USER_AGENT'])
   end
 
   # GET /tap_templates/new
