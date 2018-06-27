@@ -36,5 +36,5 @@ Rails.application.routes.draw do
     root 'faucets#index'
   end
 
-  root 'admin/industrial_units#index'
+  root 'user/industrial_units#index'
 end
