@@ -51,7 +51,8 @@
           </li>
         </ul>
       <% end %>
-      <% if user_signed_in? %>
+      <% browser = Browser.new(request.env['HTTP_USER_AGENT'])
+        if user_signed_in? && !browser.platform.android_app? && !browser.platform.ios_app? %>
         <ul class="uk-navbar-nav uk-visible@m">
           <li>
             <%= link_to user_industrial_units_path, data: {target: 'navbar.link'} do %>
