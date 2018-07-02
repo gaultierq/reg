@@ -133,43 +133,55 @@
       <button class="uk-offcanvas-close" type="button" uk-close></button>
 
       <ul class="uk-nav uk-nav-default">
-        <li class="uk-nav-header">General</li>
-        <li>
-          <%= link_to admin_industrial_units_path, data: { target: 'navbar.link' } do %>
-            Unités Industrielles
-          <% end %>
-        </li>
-        <li>
-          <%= link_to admin_tap_templates_path, data: { target: 'navbar.link' } do %>
-            Modèles
-          <% end %>
-        </li>
-        <li>
-          <%= link_to admin_faucets_path, data: { target: 'navbar.link' } do %>
-            Robinets
-          <% end %>
-        </li>
-        <li>
-          <%= link_to admin_events_path, data: { target: 'navbar.link' } do %>
-            Évènements
-          <% end %>
-        </li>
-        <li>
-          <%= link_to admin_peoples_path, data: { target: 'navbar.link' } do %>
-            Utilisateurs
-          <% end %>
-        </li>
-        <li>
-          <%= link_to admin_alerts_path, data: {target: 'navbar.link'} do %>
-            Alertes
-          <% end %>
-        </li>
-        <li>
-          <%= link_to admin_attachments_path, data: {target: 'navbar.link'} do %>
-            GED
-          <% end %>
-        </li>
-        <li class="uk-nav-divider"></li>
+        <% if admin_signed_in? %>
+          <li class="uk-nav-header">General</li>
+          <li>
+            <%= link_to admin_industrial_units_path, data: { target: 'navbar.link' } do %>
+              Unités Industrielles
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_tap_templates_path, data: { target: 'navbar.link' } do %>
+              Modèles
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_faucets_path, data: { target: 'navbar.link' } do %>
+              Robinets
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_events_path, data: { target: 'navbar.link' } do %>
+              Évènements
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_peoples_path, data: { target: 'navbar.link' } do %>
+              Utilisateurs
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_alerts_path, data: {target: 'navbar.link'} do %>
+              Alertes
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_attachments_path, data: {target: 'navbar.link'} do %>
+              GED
+            <% end %>
+          </li>
+          <li class="uk-nav-divider"></li>
+        <% end %>
+        <% browser = Browser.new(request.env['HTTP_USER_AGENT'])
+           if user_signed_in? && !browser.platform.android_app? && !browser.platform.ios_app? %>
+          <li class="uk-nav-header">General</li>
+          <li>
+            <%= link_to user_industrial_units_path, data: {target: 'navbar.link'} do %>
+              Unités Industrielles
+            <% end %>
+          </li>
+          <li class="uk-nav-divider"></li>
+        <% end %>
         <li>
           <%= link_to destroy_admin_session_path, method: :delete do %>
             Déconnexion
