@@ -14,7 +14,7 @@
 
     <div class="uk-margin">
       <%= form.label :faucet_id, "Robinet", class: 'uk-form-label' %>
-      <% if [@event.faucet].present? %>
+      <% if @event.faucet.present? %>
         <%= form.select :faucet_id, [@event.faucet].collect { |faucet| [faucet.name, faucet.id ] }, {}, {class: 'uk-select', data: {target: 'form.input' } } %>
       <% else %>
         <%= form.select :faucet_id, Faucet.all.collect { |faucet| [faucet.name, faucet.id ] }, {}, {class: 'uk-select', data: {target: 'form.input' } } %>
