@@ -13,6 +13,8 @@ class Faucet < ApplicationRecord
   enum fluid_danger_group: { I: 0, II: 1 }, _suffix: true
   enum risk_category: { article_4_3_product: 0, I: 1, II: 2, III: 3, IV: 4 }, _suffix: true
 
+  validates :serial_number, uniqueness: { message: 'existe déjà' }
+
   def self.to_csv
     attributes = %w[ Nom N°\ puce\ RFID N°\ série\ REG N°\ TAG\ client Date\ de\ fabrication N°\ vente\ REG
                      N°\ commande\ client N°\ article DN Raccordement\ entrée Raccordement\ sortie
