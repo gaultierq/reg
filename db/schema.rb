@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_09_133224) do
+ActiveRecord::Schema.define(version: 2018_07_09_141229) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -69,17 +69,6 @@ ActiveRecord::Schema.define(version: 2018_07_09_133224) do
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["invitation_token"], name: "index_admins_on_invitation_token", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
-  end
-
-  create_table "alerts", force: :cascade do |t|
-    t.integer "industrial_unit_id"
-    t.integer "faucet_id"
-    t.integer "kind", default: 0, null: false
-    t.date "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["faucet_id"], name: "index_alerts_on_faucet_id"
-    t.index ["industrial_unit_id"], name: "index_alerts_on_industrial_unit_id"
   end
 
   create_table "attachments", force: :cascade do |t|
