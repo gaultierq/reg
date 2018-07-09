@@ -534,7 +534,6 @@
               <th>Nom</th>
               <th>Téléphone</th>
               <th>Adresse email</th>
-              <th>Rôle</th>
               </thead>
               <tbody>
               <% if @faucet.industrial_unit.present? %>
@@ -543,15 +542,6 @@
                     <td><%= admin.full_name %></td>
                     <td><%= admin.phone_number %></td>
                     <td><%= admin.email %></td>
-                    <td>Commercial</td>
-                  </tr>
-                <% end %>
-                <% @faucet.industrial_unit.users.each do |technician| %>
-                  <tr>
-                    <td><%= technician.full_name %></td>
-                    <td><%= technician.phone_number %></td>
-                    <td><%= technician.email %></td>
-                    <td>Technicien</td>
                   </tr>
                 <% end %>
               <% end %>
