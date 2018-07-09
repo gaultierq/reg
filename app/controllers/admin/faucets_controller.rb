@@ -77,13 +77,13 @@ class Admin::FaucetsController < Admin::BaseController
   def duplicate
     if params.has_key?(:number)
       params[:number].to_i.times do |i|
-        @faucet = Faucet.find(params[:id]).dup
+        @faucet = Faucet.find(params[:id]).deep_clone include: [:industrial_unit, :events, :faucet_attachments]
         @faucet.serial_number = Faucet.where.not(serial_number: nil).order(serial_number: :desc).first.serial_number + 1
         @faucet.save
       end
       redirect_to admin_faucets_path, notice: 'Robinets dupliqués avec succès.'
     else
-      @faucet = Faucet.find(params[:id]).dup
+      @faucet = Faucet.find(params[:id]).deep_clone include: [:industrial_unit, :events, :faucet_attachments]
       @faucet.serial_number = Faucet.where.not(serial_number: nil).order(serial_number: :desc).first.serial_number + 1
       if @faucet.save
         redirect_to admin_faucet_path(@faucet), notice: 'Robinet dupliqué avec succès.'

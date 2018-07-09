@@ -23,6 +23,7 @@ gem 'rails-i18n', '~> 5.1'
 gem 'browser'
 gem 'select2-rails'
 gem 'jquery-rails'
+gem 'deep_cloneable', '~> 2.3.2'
 
 group :production do
   gem 'aws-sdk-s3', require: false
