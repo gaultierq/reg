@@ -29,7 +29,7 @@ class Admin::UsersController < Admin::BaseController
     end
     if @user.update(user_params)
       add_industrial_unit
-      redirect_to admin_user_path(@user), notice: 'Technicien(ne) modifié(e) avec succès.'
+      redirect_to admin_user_path(@user), notice: 'Client(e) modifié(e) avec succès.'
     else
       render :edit
     end
@@ -38,7 +38,7 @@ class Admin::UsersController < Admin::BaseController
   # DELETE /users/1
   def destroy
     @user.destroy
-    redirect_to admin_peoples_url, notice: 'Technicien(ne) supprimé(e) avec succès.'
+    redirect_to admin_peoples_url, notice: 'Client(e) supprimé(e) avec succès.'
   end
 
   def add_industrial_unit
