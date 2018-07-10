@@ -62,15 +62,25 @@
 
         <tr>
           <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Commercial</td>
-          <td><%= @industrial_unit.admins.first.full_name %></td>
-        </tr>
-
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Technicien</td>
           <td>
             <table>
               <tbody>
-              <% @industrial_unit.users.all.each do |user| %>
+              <% @industrial_unit.admins.each do |admin| %>
+                <tr class="tr-transparent">
+                  <td><%= admin.full_name %></td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Client</td>
+          <td>
+            <table>
+              <tbody>
+              <% @industrial_unit.users.each do |user| %>
                 <tr class="tr-transparent">
                   <td><%= user.full_name %></td>
                 </tr>

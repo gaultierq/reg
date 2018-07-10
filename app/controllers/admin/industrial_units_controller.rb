@@ -60,6 +60,7 @@ class Admin::IndustrialUnitsController < Admin::BaseController
   # PATCH/PUT /industrial_units/1
   def update
     if @industrial_unit.update(industrial_unit_params)
+      add_associations
       redirect_to admin_industrial_unit_path(@industrial_unit), notice: 'Unité industrielle modifiée avec succès.'
     else
       render :edit
@@ -77,6 +78,24 @@ class Admin::IndustrialUnitsController < Admin::BaseController
     @faucets = Faucet.all
   end
 
+  def add_associations
+    admins = []
+    users = []
+    if params[:industrial_unit].present?
+      if params[:industrial_unit][:admin_id].present?
+        admins << Admin.where(id: params[:industrial_unit][:admin_id])
+      end
+      @industrial_unit.admins.delete_all
+      @industrial_unit.admins << admins
+
+      if params[:industrial_unit][:user_id].present?
+        users << User.where(id: params[:industrial_unit][:user_id])
+      end
+      @industrial_unit.users.delete_all
+      @industrial_unit.users << users
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_industrial_unit
@@ -85,7 +104,6 @@ class Admin::IndustrialUnitsController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def industrial_unit_params
-      params.require(:industrial_unit).permit(:name, :address, :postcode, :city, :country, :additional_information, :process_information,
-                                              user_industrial_units_attributes: :user_id, admin_industrial_units_attributes: :admin_id)
+      params.require(:industrial_unit).permit(:name, :address, :postcode, :city, :country, :additional_information, :process_information)
     end
 end

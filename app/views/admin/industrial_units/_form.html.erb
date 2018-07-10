@@ -47,28 +47,19 @@
       <%= form.text_area :process_information, class: 'uk-textarea', data: { target: 'form.input' } %>
     </div>
 
-    <%= form.fields_for :admin_industrial_units do |field_for| %>
-      <div class="uk-margin">
-        <%= field_for.label :admin_id, "Commercial", class: 'uk-form-label' %>
-        <%= field_for.select :admin_id, Admin.salesman.collect { |salesman| [ salesman.full_name, salesman.id ] }, {}, {class: 'uk-select', data: {target: 'form.input'}} %>
-      </div>
-    <% end %>
+    <div class="uk-margin">
+      <%= form.label :admin_id, "Commercial", class: 'uk-form-label' %>
+      <%= form.select :admin_id, Admin.salesman.collect { |salesman| [ salesman.full_name, salesman.id ] },
+                      {selected: @industrial_unit.admins.ids, hidden_field: false},
+                      {multiple: true, class: 'uk-select', data: {target: 'form.input'}} %>
+    </div>
 
-    <% @industrial_unit.user_industrial_units.each do |user_industrial_unit| %>
-      <%= form.fields_for :user_industrial_units, user_industrial_unit do |field_for| %>
-        <% if user_industrial_unit.user.client? %>
-          <div class="uk-margin">
-            <%= field_for.label :user_id, "Client", class: 'uk-form-label' %>
-            <%= field_for.select :user_id, User.client.collect {|client| [client.full_name, client.id]}, {}, {class: 'uk-select', data: {target: 'form.input'}} %>
-          </div>
-        <% else %>
-          <div class="uk-margin">
-            <%= field_for.label :user_id, "Technicien", class: 'uk-form-label' %>
-            <%= field_for.select :user_id, User.technician.collect {|technician| [technician.full_name, technician.id]}, {}, {class: 'uk-select', data: {target: 'form.input'}} %>
-          </div>
-        <% end %>
-      <% end %>
-    <% end %>
+    <div class="uk-margin">
+      <%= form.label :user_id, "Client", class: 'uk-form-label' %>
+      <%= form.select :user_id, User.all.collect {|technician| [technician.full_name, technician.id]},
+                      {selected: @industrial_unit.users.ids, hidden_field: false},
+                      {multiple: true, class: 'uk-select', data: {target: 'form.input'}} %>
+    </div>
 
     <div class="uk-margin-medium">
       <%= link_to 'Retour', admin_industrial_units_path, class: 'uk-button uk-button-default' %>
@@ -76,3 +67,10 @@
     </div>
   </fieldset>
 <% end %>
+
+<script>
+    $(document).ready(function () {
+        $('#industrial_unit_user_id').select2();
+        $('#industrial_unit_admin_id').select2();
+    });
+</script>
