@@ -10,6 +10,13 @@ class User::FaucetsController < User::BaseController
       else
         @faucets = current_user.faucets.all
       end
+    elsif params[:serial_number].present?
+      @faucet = Faucet.find_by(serial_number: params[:serial_number])
+      if @faucet.present?
+        redirect_to user_faucet_path(@faucet)
+      else
+        @faucets = current_user.faucets.all
+      end
     else
       @faucets = current_user.faucets.all
     end

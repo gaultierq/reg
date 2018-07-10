@@ -26,6 +26,22 @@
         </div>
       </div>
     <% end %>
+
+    <%= form_tag(user_faucets_path, method: :get) do %>
+      <div class="uk-margin-top">
+        <%= label_tag :serial_number, "N° de série :", class: 'uk-form-label' %>
+      </div>
+      <div class="uk-grid-small" uk-grid>
+        <div class="uk-width-expand">
+          <%= text_field_tag :serial_number, '', class: 'uk-input' %>
+        </div>
+        <div>
+          <%= button_tag(type: "submit", class: 'uk-button uk-button-default') do %>
+            <span uk-icon="icon: search; ratio: 1"></span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 
