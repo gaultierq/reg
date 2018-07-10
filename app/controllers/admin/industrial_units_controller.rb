@@ -51,6 +51,7 @@ class Admin::IndustrialUnitsController < Admin::BaseController
     @industrial_unit = IndustrialUnit.new(industrial_unit_params)
 
     if @industrial_unit.save
+      add_associations
       redirect_to admin_industrial_unit_path(@industrial_unit), notice: 'Unité industrielle créée avec succès.'
     else
       render :new
