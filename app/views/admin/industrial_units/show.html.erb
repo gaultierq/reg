@@ -67,13 +67,19 @@
 
         <tr>
           <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Technicien</td>
-          <td><%= @industrial_unit.users.find_by(kind: 'technician').full_name %></td>
+          <td>
+            <table>
+              <tbody>
+              <% @industrial_unit.users.all.each do |user| %>
+                <tr class="tr-transparent">
+                  <td><%= user.full_name %></td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </td>
         </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Client</td>
-          <td><%= @industrial_unit.users.find_by(kind: 'client').full_name %></td>
-        </tr>
         </tbody>
       </table>
     </div>
