@@ -50,6 +50,10 @@ class Admin::FaucetsController < Admin::BaseController
   def create
     @faucet = Faucet.new(faucet_params)
 
+    if @faucet.manufacturing_date.nil?
+      @faucet.manufacturing_date = Date.today.strftime('%d/%m/%Y')
+    end
+
     if @faucet.save
       add_attachments
       redirect_to admin_faucet_path(@faucet), notice: 'Robinet créé avec succès.'
@@ -60,6 +64,10 @@ class Admin::FaucetsController < Admin::BaseController
 
   # PATCH/PUT /faucets/1
   def update
+    if params[:faucet][:manufacturing_date] == ''
+      params[:faucet][:manufacturing_date] = Date.today.strftime('%d/%m/%Y')
+    end
+
     if @faucet.update(faucet_params)
       add_attachments
       redirect_to admin_faucet_path(@faucet), notice: 'Robinet modifié avec succès.'

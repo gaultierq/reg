@@ -44,7 +44,7 @@
             <table class="uk-table uk-table-striped">
               <tbody>
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Nom</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Type</td>
                 <td><%= @faucet.name %></td>
               </tr>
 
@@ -65,7 +65,11 @@
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Date de fabrication</td>
-                <td><%= @faucet.manufacturing_date %></td>
+                <% if @faucet.manufacturing_date.present? %>
+                  <td><%= @faucet.manufacturing_date.strftime('%d/%m') %></td>
+                <% else %>
+                  <td></td>
+                <% end %>
               </tr>
 
               <tr>
@@ -87,6 +91,8 @@
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Unité Industrielle</td>
                 <% if @faucet.industrial_unit.present? %>
                   <td><%= @faucet.industrial_unit.name %></td>
+                <% else %>
+                  <td></td>
                 <% end %>
               </tr>
 

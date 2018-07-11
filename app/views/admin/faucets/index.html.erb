@@ -21,16 +21,12 @@
     <%= render 'shared/table', locals: { id: 'faucets_table', dom: 'lrtip', paging: false, info: false } do %>
       <thead>
       <tr>
-        <th>id</th>
-        <th>Nom</th>
-        <th>N° puce RFID</th>
-        <th>N° série REG</th>
-        <th>N° TAG client</th>
-        <th>Date de fabrication</th>
-        <th>N° vente REG</th>
-        <th>N° commande client</th>
+        <th>Type</th>
         <th>N° article</th>
-        <th>Unité Industrielle</th>
+        <th>N° série REG</th>
+        <th>N° vente REG</th>
+        <th>DN</th>
+        <th>Date de fabrication</th>
         <th data-orderable="false">Actions</th>
       </tr>
       </thead>
@@ -42,17 +38,17 @@
             <% if faucet.events.length > 0 %>
               <%= image_tag("warning.svg", {:style => "height: 3%;"}) %>
             <% end %>
-            <%= faucet.id %>
+            <%= faucet.name %>
           </td>
-          <td><%= faucet.name %></td>
-          <td><%= faucet.rfid_number %></td>
-          <td><%= faucet.serial_number %></td>
-          <td><%= faucet.number_customer_tag %></td>
-          <td><%= faucet.manufacturing_date %></td>
-          <td><%= faucet.sales_number %></td>
-          <td><%= faucet.customer_order_number %></td>
           <td><%= faucet.article_number %></td>
-          <td><%= faucet.industrial_unit&.name %></td>
+          <td><%= faucet.serial_number %></td>
+          <td><%= faucet.sales_number %></td>
+          <td><%= faucet.dn %></td>
+          <% if faucet.manufacturing_date.present? %>
+            <td><%= faucet.manufacturing_date.strftime('%d/%m') %></td>
+          <% else %>
+            <td></td>
+          <% end %>
           <td class="uk-flex uk-flex-center">
             <ul class="uk-iconnav">
               <li>
