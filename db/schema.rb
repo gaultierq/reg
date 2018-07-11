@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_11_121336) do
+ActiveRecord::Schema.define(version: 2018_07_11_134207) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(version: 2018_07_11_121336) do
     t.string "other"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "note"
     t.index ["industrial_unit_id"], name: "index_faucets_on_industrial_unit_id"
     t.index ["serial_number"], name: "index_faucets_on_serial_number", unique: true
   end

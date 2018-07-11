@@ -38,7 +38,7 @@
 
     <ul class="uk-list-large uk-list-divider" uk-accordion>
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Identification de l'atelier<% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Identification du robinet<% end %>
         <div class="uk-accordion-content">
           <div class="uk-overflow-auto">
             <table class="uk-table uk-table-striped">
@@ -59,7 +59,7 @@
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° TAG client</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">TAG client</td>
                 <td><%= @faucet.number_customer_tag %></td>
               </tr>
 
@@ -479,6 +479,10 @@
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres</td>
                 <td><%= @faucet.other %></td>
+              </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Note</td>
+                <td><%= @faucet.note %></td>
               </tr>
               </tbody>
             </table>

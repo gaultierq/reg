@@ -7,11 +7,14 @@
       <div class="uk-width-expand@m">
         <h1 class="uk-heading-primary"><%= @faucet.name %></h1>
       </div>
+      <div class="uk-width-auto@m">
+        <%= link_to 'Modifier', edit_user_faucet_path, class: 'uk-button uk-button-primary' %>
+      </div>
     </div>
 
     <ul class="uk-list-large uk-list-divider" uk-accordion>
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Identification de l'atelier
+        <%= link_to '#', class: 'uk-accordion-title' do %>Identification du robinet
         <% end %>
         <div class="uk-accordion-content">
           <div class="uk-overflow-auto">
@@ -33,7 +36,7 @@
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° TAG client</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">TAG client</td>
                 <td><%= @faucet.number_customer_tag %></td>
               </tr>
 
@@ -487,6 +490,10 @@
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres</td>
                 <td><%= @faucet.other %></td>
+              </tr>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Note</td>
+                <td><%= @faucet.note %></td>
               </tr>
               </tbody>
             </table>

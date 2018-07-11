@@ -1,0 +1,14 @@
+<div class="uk-section uk-section-default">
+  <div class="uk-container">
+    <div class="uk-flex-middle uk-margin-medium" uk-grid>
+      <div class="uk-width-expand@m">
+        <h1 class="uk-heading-primary">Modification de Robinet</h1>
+      </div>
+      <div class="uk-width-auto@m">
+        <%= link_to 'Détails', user_faucet_path(@faucet), class: 'uk-button uk-button-primary' %>
+      </div>
+    </div>
+
+    <%= render 'form', faucet: @faucet %>
+  </div>
+</div>

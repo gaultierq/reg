@@ -1,0 +1,34 @@
+<%= form_with(model: [:user, @faucet], local: true, data: { controller: 'form', form_errors: faucet.errors.messages.keys.join(',') }) do |form| %>
+  <fieldset class="uk-fieldset">
+    <% if faucet.errors.any? %>
+      <div id="error_explanation" class="uk-alert-danger" uk-alert>
+        <h2><%= t("errors.template.header", count: faucet.errors.count, model: 'robinet') %></h2>
+
+        <ul>
+          <% faucet.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <ul class="uk-list-large uk-list-divider" uk-accordion>
+      <li>
+        <div class="uk-margin">
+          <%= form.label :number_customer_tag, "TAG client", class: 'uk-form-label' %>
+          <%= form.number_field :number_customer_tag, class: 'uk-input', data: { target: 'form.input' } %>
+        </div>
+
+        <div class="uk-margin">
+          <%= form.label :note, "Note", class: 'uk-form-label' %>
+          <%= form.text_area :note, class: 'uk-textarea', data: {target: 'form.input'} %>
+        </div>
+      </li>
+    </ul>
+
+    <div class="uk-margin-medium">
+      <%= link_to 'Retour', user_faucet_path(@faucet), class: 'uk-button uk-button-default' %>
+      <%= form.submit "Enregistrer", class: 'uk-button uk-button-primary' %>
+    </div>
+  </fieldset>
+<% end %>

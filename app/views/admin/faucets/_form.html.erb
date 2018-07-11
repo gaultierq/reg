@@ -14,7 +14,7 @@
 
     <ul class="uk-list-large uk-list-divider" uk-accordion>
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Identification de l'atelier<% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Identification du robinet<% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
             <%= form.label :name, "Type", class: 'uk-form-label' %>
@@ -32,7 +32,7 @@
           </div>
 
           <div class="uk-margin">
-            <%= form.label :number_customer_tag, "N° TAG client", class: 'uk-form-label' %>
+            <%= form.label :number_customer_tag, "TAG client", class: 'uk-form-label' %>
             <%= form.number_field :number_customer_tag, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
@@ -398,6 +398,11 @@
           <div class="uk-margin">
             <%= form.label :other, "Autres", class: 'uk-form-label' %>
             <%= form.text_field :other, class: 'uk-input', data: { target: 'form.input' } %>
+          </div>
+
+          <div class="uk-margin">
+            <%= form.label :note, "Note", class: 'uk-form-label' %>
+            <%= form.text_area :note, class: 'uk-textarea', data: {target: 'form.input'} %>
           </div>
         </div>
       </li>
