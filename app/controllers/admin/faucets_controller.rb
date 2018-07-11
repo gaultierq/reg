@@ -93,7 +93,6 @@ class Admin::FaucetsController < Admin::BaseController
 
   def add_attachments
     attachments = []
-    notices = []
     if params[:faucet].present?
       if params[:faucet][:existing_instruction_service_attachment].present?
         attachments << Attachment.where(id: params[:faucet][:existing_instruction_service_attachment].drop(1))
