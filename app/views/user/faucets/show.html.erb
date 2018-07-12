@@ -21,8 +21,18 @@
             <table class="uk-table uk-table-striped">
               <tbody>
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Nom</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Type</td>
                 <td><%= @faucet.name %></td>
+              </tr>
+
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° article</td>
+                <td><%= @faucet.article_number %></td>
+              </tr>
+
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">DN</td>
+                <td><%= @faucet.dn %></td>
               </tr>
 
               <tr>
@@ -60,22 +70,12 @@
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° article</td>
-                <td><%= @faucet.article_number %></td>
-              </tr>
-
-              <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Unité Industrielle</td>
                 <% if @faucet.industrial_unit.present? %>
                   <td><%= @faucet.industrial_unit.name %></td>
                 <% else %>
                   <td></td>
                 <% end %>
-              </tr>
-
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">DN</td>
-                <td><%= @faucet.dn %></td>
               </tr>
 
               <tr>

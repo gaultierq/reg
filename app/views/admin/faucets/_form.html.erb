@@ -22,6 +22,16 @@
           </div>
 
           <div class="uk-margin">
+            <%= form.label :article_number, "N° article", class: 'uk-form-label' %>
+            <%= form.text_field :article_number, class: 'uk-input', data: {target: 'form.input'} %>
+          </div>
+
+          <div class="uk-margin">
+            <%= form.label :dn, "DN", class: 'uk-form-label' %>
+            <%= form.text_field :dn, class: 'uk-input', data: {target: 'form.input'} %>
+          </div>
+
+          <div class="uk-margin">
             <%= form.label :rfid_number, "N° puce RFID", class: 'uk-form-label' %>
             <%= form.text_field :rfid_number, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
@@ -64,19 +74,9 @@
           </div>
 
           <div class="uk-margin">
-            <%= form.label :article_number, "N° article", class: 'uk-form-label' %>
-            <%= form.text_field :article_number, class: 'uk-input', data: { target: 'form.input' } %>
-          </div>
-
-          <div class="uk-margin">
             <%= form.label :industrial_unit_id, "Unité Industrielle", class: 'uk-form-label' %>
             <%= form.select :industrial_unit_id, IndustrialUnit.all.collect { |industrial_unit| [ industrial_unit.name, industrial_unit.id ] },
                             { include_blank: true }, { class: 'uk-select', data: { target: 'form.input' } } %>
-          </div>
-
-          <div class="uk-margin">
-            <%= form.label :dn, "DN", class: 'uk-form-label' %>
-            <%= form.text_field :dn, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
@@ -121,23 +121,19 @@
           </div>
 
           <div class="uk-margin">
-            <%= form.label :maximum_temperature, "Température maximum (°C)", class: 'uk-form-label' %>
-            <%= form.text_field :maximum_temperature, class: 'uk-input', data: { target: 'form.input' } %>
+            <%= form.label :maximum_temperature, "Température maximum", class: 'uk-form-label' %>
+            <%= form.text_field :maximum_temperature, class: 'uk-input uk-width-small uk-margin-left uk-margin-right', data: { target: 'form.input' } %>
+            <%= form.label :pressure_at_maximum_temperature, "°C à", class: 'uk-form-label' %>
+            <%= form.text_field :pressure_at_maximum_temperature, class: 'uk-input uk-width-small uk-margin-left uk-margin-right', data: {target: 'form.input'} %>
+            <span class="uk-form-label">bars</span>
           </div>
 
           <div class="uk-margin">
-            <%= form.label :pressure_at_maximum_temperature, "Pression à la température maximum (bar)", class: 'uk-form-label' %>
-            <%= form.text_field :pressure_at_maximum_temperature, class: 'uk-input', data: { target: 'form.input' } %>
-          </div>
-
-          <div class="uk-margin">
-            <%= form.label :minimum_temperature, "Température minimum (°C)", class: 'uk-form-label' %>
-            <%= form.text_field :minimum_temperature, class: 'uk-input', data: { target: 'form.input' } %>
-          </div>
-
-          <div class="uk-margin">
-            <%= form.label :pressure_at_minimum_temperature, "Pression à la température minimum (bar)", class: 'uk-form-label' %>
-            <%= form.text_field :pressure_at_minimum_temperature, class: 'uk-input', data: { target: 'form.input' } %>
+            <%= form.label :minimum_temperature, "Température minimum", class: 'uk-form-label' %>
+            <%= form.text_field :minimum_temperature, class: 'uk-input uk-width-small uk-margin-left uk-margin-right', data: { target: 'form.input' } %>
+            <%= form.label :pressure_at_minimum_temperature, "°C à", class: 'uk-form-label' %>
+            <%= form.text_field :pressure_at_minimum_temperature, class: 'uk-input uk-width-small uk-margin-left uk-margin-right', data: {target: 'form.input'} %>
+            <span class="uk-form-label">bars</span>
           </div>
 
           <div class="uk-margin">
