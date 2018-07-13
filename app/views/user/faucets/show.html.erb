@@ -435,7 +435,11 @@
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Certificats matières demandés
                 </td>
-                <td><%= @faucet.material_certificates_required %></td>
+                <td>
+                  <% if @faucet.material_certificates_required %>
+                    <span uk-icon="icon: check"></span>
+                  <% end %>
+                </td>
               </tr>
               </tbody>
             </table>
