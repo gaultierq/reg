@@ -14,8 +14,7 @@
 
     <ul class="uk-list-large uk-list-divider" uk-accordion>
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Identification du robinet
-        <% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Identification du robinet<% end %>
         <div class="uk-accordion-content">
           <div class="uk-overflow-auto">
             <table class="uk-table uk-table-striped">
@@ -89,16 +88,12 @@
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Raccordement de double
-                  enveloppe
-                </td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Raccordement de double enveloppe</td>
                 <td><%= @faucet.double_jacket_connection %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Inclinaison/décalage
-                  entrée/sortie
-                </td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Inclinaison/décalage entrée/sortie</td>
                 <td><%= @faucet.inclination_input_offset_output %></td>
               </tr>
 
@@ -113,23 +108,18 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Conditions de service / Limite d'utilisation
-        <% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Conditions de service / Limite d'utilisation<% end %>
         <div class="uk-accordion-content">
           <div class="uk-overflow-auto">
             <table class="uk-table uk-table-striped">
               <tbody>
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression Maximale (PS) à 20°C
-                  (bar)
-                </td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression Maximale (PS) à 20°C (bar)</td>
                 <td><%= @faucet.maximal_pressure %></td>
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression d'épreuve à 20°C
-                  (bar)
-                </td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression d'épreuve à 20°C (bar)</td>
                 <td><%= @faucet.test_pressure %></td>
               </tr>
 
@@ -139,9 +129,7 @@
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression à la température
-                  maximum (bar)
-                </td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression à la température maximum (bar)</td>
                 <td><%= @faucet.pressure_at_maximum_temperature %></td>
               </tr>
 
@@ -151,31 +139,8 @@
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression à la température
-                  minimum (bar)
-                </td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression à la température minimum (bar)</td>
                 <td><%= @faucet.pressure_at_minimum_temperature %></td>
-              </tr>
-
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document d'instruction de
-                  service
-                </td>
-                <td>
-                  <table>
-                    <tbody>
-                    <% @faucet.attachments.where(kind: :instruction_service).each do |attachment| %>
-                      <tr class="tr-transparent">
-                        <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
-                        <% else %>
-                          <td></td>
-                        <% end %>
-                      </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-                </td>
               </tr>
               </tbody>
             </table>
@@ -184,8 +149,7 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Données déclarées par le client
-        <% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Données déclarées par le client<% end %>
         <div class="uk-accordion-content">
           <div class="uk-overflow-auto">
             <table class="uk-table uk-table-striped">
@@ -211,8 +175,7 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Catégorie de risque selon DESP 2014/68
-        <% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Catégorie de risque selon DESP 2014/68<% end %>
         <div class="uk-accordion-content">
           <div class="uk-overflow-auto">
             <table class="uk-table uk-table-striped">
@@ -223,7 +186,7 @@
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Groupe de danger du fluide</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Groupe de danger du  fluide</td>
                 <td><%= @faucet.fluid_danger_group %></td>
               </tr>
 
@@ -237,9 +200,7 @@
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Catégorie de risque selon DESP
-                  2014/68
-                </td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Catégorie de risque selon DESP 2014/68</td>
                 <td><%= @faucet.risk_category %></td>
               </tr>
               </tbody>
@@ -249,8 +210,7 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Actionnement - Système de manœuvre
-        <% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Actionnement - Système de manœuvre<% end %>
         <div class="uk-accordion-content">
           <div class="uk-overflow-auto">
             <table class="uk-table uk-table-striped">
@@ -286,9 +246,7 @@
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression actionneur
-                  pneumatique
-                </td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression actionneur pneumatique</td>
                 <td><%= @faucet.pneumatic_actuator_pressure %></td>
               </tr>
               </tbody>
@@ -298,8 +256,7 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Instrumentation
-        <% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Instrumentation<% end %>
         <div class="uk-accordion-content">
           <div class="uk-overflow-auto">
             <table class="uk-table uk-table-striped">
@@ -310,9 +267,7 @@
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document de détecteur de
-                  position
-                </td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document de détecteur de position</td>
                 <td>
                   <table class="uk-table uk-table-striped">
                     <tbody>
@@ -332,12 +287,40 @@
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position ouverte</td>
-                <td><%= @faucet.open_position %></td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @faucet.attachments.where(kind: :open_position).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position fermée</td>
-                <td><%= @faucet.close_position %></td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @faucet.attachments.where(kind: :close_position).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
               </tr>
 
               <tr>
@@ -370,9 +353,7 @@
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document d'autres
-                  instrumentation
-                </td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document d'autres instrumentation</td>
                 <td>
                   <table>
                     <tbody>
@@ -396,8 +377,7 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Matériaux
-        <% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Matériaux<% end %>
         <div class="uk-accordion-content">
           <div class="uk-overflow-auto">
             <table class="uk-table uk-table-striped">
@@ -433,12 +413,125 @@
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Certificats matières demandés
-                </td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Certificats matières demandés</td>
                 <td>
                   <% if @faucet.material_certificates_required %>
                     <span uk-icon="icon: check"></span>
                   <% end %>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document certificat de matière corps</td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @faucet.attachments.where(kind: :certif_corps).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document certificat de matière chapeau</td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @faucet.attachments.where(kind: :certif_chapeau).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document certificat de matière tige</td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @faucet.attachments.where(kind: :certif_tige).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document certificat de matière clapet</td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @faucet.attachments.where(kind: :certif_clapet).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document certificat de matière siège</td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @faucet.attachments.where(kind: :certif_siege).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document certificat de matière autre</td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @faucet.attachments.where(kind: :certif_autre).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
                 </td>
               </tr>
               </tbody>
@@ -448,8 +541,7 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Exigences particulières
-        <% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Exigences particulières<% end %>
         <div class="uk-accordion-content">
           <div class="uk-overflow-auto">
             <table class="uk-table uk-table-striped">
@@ -460,10 +552,27 @@
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres exigences
-                  particulières
-                </td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres exigences particulières</td>
                 <td><%= @faucet.other_special_requirements %></td>
+              </tr>
+
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document d'exigence particulière</td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @faucet.attachments.where(kind: :special_requirement).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
               </tr>
               </tbody>
             </table>
@@ -472,8 +581,7 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Contrôles
-        <% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Contrôles<% end %>
         <div class="uk-accordion-content">
           <div class="uk-overflow-auto">
             <table class="uk-table uk-table-striped">
@@ -482,6 +590,25 @@
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres contrôles</td>
                 <td><%= @faucet.other_controls %></td>
               </tr>
+
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document de contrôle</td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @faucet.attachments.where(kind: :control).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
               </tbody>
             </table>
           </div>
@@ -489,12 +616,49 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Autres
-        <% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Documentation<% end %>
         <div class="uk-accordion-content">
           <div class="uk-overflow-auto">
             <table class="uk-table uk-table-striped">
               <tbody>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document de plan</td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @faucet.attachments.where(kind: :documentation_plan).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document d'instruction de service</td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @faucet.attachments.where(kind: :instruction_service).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres</td>
                 <td><%= @faucet.other %></td>
@@ -510,15 +674,15 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Évènements
-        <% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Évènements<% end %>
         <div class="uk-accordion-content">
           <div class="uk-width-auto@m">
-            <%= link_to 'Nouvel Évènement', new_user_event_path(faucet_id: @faucet.id), class: 'uk-button uk-button-primary' %>
+            <%= link_to 'Nouvel Évènement', new_admin_event_path(faucet_id: @faucet.id), class: 'uk-button uk-button-primary' %>
           </div>
           <div class="uk-overflow-auto">
             <table class="uk-table uk-table-striped">
               <thead>
+              <th>id</th>
               <th>type</th>
               <th>commentaire</th>
               <th>actions</th>
@@ -526,12 +690,13 @@
               <tbody>
               <% @faucet.events.each do |event| %>
                 <tr>
+                  <td><%= event.id %></td>
                   <td><%= event.kind %></td>
                   <td><%= event.comment %></td>
                   <td class="uk-flex uk-flex-center">
                     <ul class="uk-iconnav">
                       <li>
-                        <%= link_to user_event_path(event) do %>
+                        <%= link_to admin_event_path(event) do %>
                           <span uk-icon="search" , uk-tooltip="Détails"></span>
                         <% end %>
                       </li>

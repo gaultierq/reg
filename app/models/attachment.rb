@@ -17,6 +17,15 @@ class Attachment < ApplicationRecord
     incident_maintenance: 5,
     open_position: 6,
     close_position: 7,
+    certif_corps: 8,
+    certif_chapeau: 9,
+    certif_tige: 10,
+    certif_clapet: 11,
+    certif_siege: 12,
+    certif_autre: 13,
+    special_requirement: 14,
+    control: 15,
+    documentation_plan: 16
   }
 
   before_validation :compute_hash

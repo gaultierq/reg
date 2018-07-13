@@ -135,24 +135,6 @@
             <%= form.text_field :pressure_at_minimum_temperature, class: 'uk-input uk-width-small uk-margin-left uk-margin-right', data: {target: 'form.input'} %>
             <span class="uk-form-label">bars</span>
           </div>
-
-          <div class="uk-margin">
-            <%= form.label :existing_instruction_service_attachment, "Ajouter un document d'instruction de service existant", class: 'uk-form-label' %>
-            <% if @tap_template.present? %>
-              <%= form.select :existing_instruction_service_attachment, Attachment.where(kind: :instruction_service).collect { |attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
-                              {selected: @tap_template.attachments.where(kind: :instruction_service).ids}, {multiple: true, id: 'existing_instruction_service_attachment', data: {target: 'form.input'}} %>
-            <% else %>
-              <%= form.select :existing_instruction_service_attachment, Attachment.where(kind: :instruction_service).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
-                              {selected: @faucet.attachments.where(kind: :instruction_service).ids}, {multiple: true, id: 'existing_instruction_service_attachment', data: {target: 'form.input'}} %>
-            <% end %>
-          </div>
-
-          <div class="uk-margin">
-            <div>
-              <%= form.label :new_instruction_service_attachment, "Ajouter un nouveau document d'instruction de service", class: 'uk-form-label' %>
-            </div>
-            <%= form.file_field :new_instruction_service_attachment, multiple: true %>
-          </div>
         </div>
       </li>
 
@@ -264,7 +246,7 @@
 
           <div class="uk-margin">
             <div>
-              <%= form.label :new_instrumentation_position_attachment, "Ajouter un nouveau document de détecteur de position existant", class: 'uk-form-label' %>
+              <%= form.label :new_instrumentation_position_attachment, "Ajouter un nouveau document de détecteur de position", class: 'uk-form-label' %>
             </div>
             <%= form.file_field :new_instrumentation_position_attachment, disabled: @faucet.position_detector.blank?, multiple: true %>
           </div>
@@ -287,7 +269,7 @@
 
           <div class="uk-margin">
             <div>
-              <%= form.label :new_open_position_attachment, "Ajouter un nouveau document de détecteur de position existant", class: 'uk-form-label' %>
+              <%= form.label :new_open_position_attachment, "Ajouter un nouveau document de détecteur de position", class: 'uk-form-label' %>
             </div>
             <%= form.file_field :new_open_position_attachment, disabled: !@faucet.open_position, multiple: true %>
           </div>
@@ -310,7 +292,7 @@
 
           <div class="uk-margin">
             <div>
-              <%= form.label :new_close_position_attachment, "Ajouter un nouveau document de détecteur de position existant", class: 'uk-form-label' %>
+              <%= form.label :new_close_position_attachment, "Ajouter un nouveau document de détecteur de position", class: 'uk-form-label' %>
             </div>
             <%= form.file_field :new_close_position_attachment, disabled: !@faucet.close_position, multiple: true %>
           </div>
@@ -334,7 +316,7 @@
 
           <div class="uk-margin">
             <div>
-              <%= form.label :new_instrumentation_pilotage_attachment, "Ajouter un nouveau document de pilotage existant", class: 'uk-form-label' %>
+              <%= form.label :new_instrumentation_pilotage_attachment, "Ajouter un nouveau document de pilotage", class: 'uk-form-label' %>
             </div>
             <%= form.file_field :new_instrumentation_pilotage_attachment, disabled: @faucet.piloting.blank?, multiple: true %>
           </div>
@@ -358,7 +340,7 @@
 
           <div class="uk-margin">
             <div>
-              <%= form.label :new_instrumentation_autre_attachment, "Ajouter un nouveau document d'autre instrumentation existant", class: 'uk-form-label' %>
+              <%= form.label :new_instrumentation_autre_attachment, "Ajouter un nouveau document d'autre instrumentation", class: 'uk-form-label' %>
             </div>
             <%= form.file_field :new_instrumentation_autre_attachment, disabled: @faucet.other_instrumentation.blank?, multiple: true %>
           </div>
@@ -403,6 +385,115 @@
             <%= form.label :material_certificates_required, "Certificats matières demandés", class: 'uk-form-label' %>
             <%= form.check_box :material_certificates_required, class: 'uk-checkbox', data: { target: 'form.input' } %>
           </div>
+
+          <div class="uk-margin">
+            <%= form.label :existing_certif_corps_attachment, "Ajouter un document de certificat matière Corps existant", class: 'uk-form-label' %>
+            <% if @tap_template.present? %>
+              <%= form.select :existing_certif_corps_attachment, Attachment.where(kind: :certif_corps).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @tap_template.attachments.where(kind: :certif_corps).ids}, {multiple: true, id: 'existing_certif_corps_attachment', disabled: @tap_template.attachments.where(kind: :certif_corps).blank?, data: {target: 'form.input'}} %>
+            <% else %>
+              <%= form.select :existing_certif_corps_attachment, Attachment.where(kind: :certif_corps).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @faucet.attachments.where(kind: :certif_corps).ids}, {multiple: true, id: 'existing_certif_corps_attachment', disabled: @faucet.attachments.where(kind: :certif_corps).blank?, data: {target: 'form.input'}} %>
+            <% end %>
+          </div>
+
+          <div class="uk-margin">
+            <div>
+              <%= form.label :new_certif_corps_attachment, "Ajouter un nouveau document de certificat matière Corps", class: 'uk-form-label' %>
+            </div>
+            <%= form.file_field :new_certif_corps_attachment, disabled: !@faucet.material_certificates_required, multiple: true %>
+          </div>
+
+
+          <div class="uk-margin">
+            <%= form.label :existing_certif_chapeau_attachment, "Ajouter un document de certificat matière Chapeau existant", class: 'uk-form-label' %>
+            <% if @tap_template.present? %>
+              <%= form.select :existing_certif_chapeau_attachment, Attachment.where(kind: :certif_chapeau).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @tap_template.attachments.where(kind: :certif_chapeau).ids}, {multiple: true, id: 'existing_certif_chapeau_attachment', disabled: @tap_template.attachments.where(kind: :certif_chapeau).blank?, data: {target: 'form.input'}} %>
+            <% else %>
+              <%= form.select :existing_certif_chapeau_attachment, Attachment.where(kind: :certif_chapeau).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @faucet.attachments.where(kind: :certif_chapeau).ids}, {multiple: true, id: 'existing_certif_chapeau_attachment', disabled: @faucet.attachments.where(kind: :certif_chapeau).blank?, data: {target: 'form.input'}} %>
+            <% end %>
+          </div>
+
+          <div class="uk-margin">
+            <div>
+              <%= form.label :new_certif_chapeau_attachment, "Ajouter un nouveau document de certificat matière Chapeau", class: 'uk-form-label' %>
+            </div>
+            <%= form.file_field :new_certif_chapeau_attachment, disabled: !@faucet.material_certificates_required, multiple: true %>
+          </div>
+
+          <div class="uk-margin">
+            <%= form.label :existing_certif_tige_attachment, "Ajouter un document de certificat matière Tige existant", class: 'uk-form-label' %>
+            <% if @tap_template.present? %>
+              <%= form.select :existing_certif_tige_attachment, Attachment.where(kind: :certif_tige).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @tap_template.attachments.where(kind: :certif_tige).ids}, {multiple: true, id: 'existing_certif_tige_attachment', disabled: @tap_template.attachments.where(kind: :certif_tige).blank?, data: {target: 'form.input'}} %>
+            <% else %>
+              <%= form.select :existing_certif_tige_attachment, Attachment.where(kind: :certif_tige).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @faucet.attachments.where(kind: :certif_tige).ids}, {multiple: true, id: 'existing_certif_tige_attachment', disabled: @faucet.attachments.where(kind: :certif_tige).blank?, data: {target: 'form.input'}} %>
+            <% end %>
+          </div>
+
+          <div class="uk-margin">
+            <div>
+              <%= form.label :new_certif_tige_attachment, "Ajouter un nouveau document de certificat matière Tige", class: 'uk-form-label' %>
+            </div>
+            <%= form.file_field :new_certif_tige_attachment, disabled: !@faucet.material_certificates_required, multiple: true %>
+          </div>
+
+          <div class="uk-margin">
+            <%= form.label :existing_certif_clapet_attachment, "Ajouter un document de certificat matière Clapet existant", class: 'uk-form-label' %>
+            <% if @tap_template.present? %>
+              <%= form.select :existing_certif_clapet_attachment, Attachment.where(kind: :certif_clapet).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @tap_template.attachments.where(kind: :certif_clapet).ids}, {multiple: true, id: 'existing_certif_clapet_attachment', disabled: @tap_template.attachments.where(kind: :certif_clapet).blank?, data: {target: 'form.input'}} %>
+            <% else %>
+              <%= form.select :existing_certif_clapet_attachment, Attachment.where(kind: :certif_clapet).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @faucet.attachments.where(kind: :certif_clapet).ids}, {multiple: true, id: 'existing_certif_clapet_attachment', disabled: @faucet.attachments.where(kind: :certif_clapet).blank?, data: {target: 'form.input'}} %>
+            <% end %>
+          </div>
+
+          <div class="uk-margin">
+            <div>
+              <%= form.label :new_certif_clapet_attachment, "Ajouter un nouveau document de certificat matière Clapet", class: 'uk-form-label' %>
+            </div>
+            <%= form.file_field :new_certif_clapet_attachment, disabled: !@faucet.material_certificates_required, multiple: true %>
+          </div>
+
+          <div class="uk-margin">
+            <%= form.label :existing_certif_siege_attachment, "Ajouter un document de certificat matière Siège existant", class: 'uk-form-label' %>
+            <% if @tap_template.present? %>
+              <%= form.select :existing_certif_siege_attachment, Attachment.where(kind: :certif_siege).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @tap_template.attachments.where(kind: :certif_siege).ids}, {multiple: true, id: 'existing_certif_siege_attachment', disabled: @tap_template.attachments.where(kind: :certif_siege).blank?, data: {target: 'form.input'}} %>
+            <% else %>
+              <%= form.select :existing_certif_siege_attachment, Attachment.where(kind: :certif_siege).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @faucet.attachments.where(kind: :certif_siege).ids}, {multiple: true, id: 'existing_certif_siege_attachment', disabled: @faucet.attachments.where(kind: :certif_siege).blank?, data: {target: 'form.input'}} %>
+            <% end %>
+          </div>
+
+          <div class="uk-margin">
+            <div>
+              <%= form.label :new_certif_siege_attachment, "Ajouter un nouveau document de certificat matière Siège", class: 'uk-form-label' %>
+            </div>
+            <%= form.file_field :new_certif_siege_attachment, disabled: !@faucet.material_certificates_required, multiple: true %>
+          </div>
+
+          <div class="uk-margin">
+            <%= form.label :existing_certif_autre_attachment, "Ajouter un document de certificat matière Autre existant", class: 'uk-form-label' %>
+            <% if @tap_template.present? %>
+              <%= form.select :existing_certif_autre_attachment, Attachment.where(kind: :certif_autre).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @tap_template.attachments.where(kind: :certif_autre).ids}, {multiple: true, id: 'existing_certif_autre_attachment', disabled: @tap_template.attachments.where(kind: :certif_autre).blank?, data: {target: 'form.input'}} %>
+            <% else %>
+              <%= form.select :existing_certif_autre_attachment, Attachment.where(kind: :certif_autre).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @faucet.attachments.where(kind: :certif_autre).ids}, {multiple: true, id: 'existing_certif_autre_attachment', disabled: @faucet.attachments.where(kind: :certif_autre).blank?, data: {target: 'form.input'}} %>
+            <% end %>
+          </div>
+
+          <div class="uk-margin">
+            <div>
+              <%= form.label :new_certif_autre_attachment, "Ajouter un nouveau document de certificat matière Autre", class: 'uk-form-label' %>
+            </div>
+            <%= form.file_field :new_certif_autre_attachment, disabled: !@faucet.material_certificates_required, multiple: true %>
+          </div>
         </div>
       </li>
 
@@ -420,6 +511,24 @@
             <%= form.check_box :other_special_requirements_checkbox, checked: @faucet.other_special_requirements.present?, class: 'uk-checkbox' %>
             <%= form.text_field :other_special_requirements, class: 'uk-input', disabled: @faucet.other_special_requirements.blank?, data: { target: 'form.input' } %>
           </div>
+
+          <div class="uk-margin">
+            <%= form.label :existing_special_requirement_attachment, "Ajouter un document d'Autre exigence particulière existant", class: 'uk-form-label' %>
+            <% if @tap_template.present? %>
+              <%= form.select :existing_special_requirement_attachment, Attachment.where(kind: :special_requirement).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @tap_template.attachments.where(kind: :special_requirement).ids}, {multiple: true, id: 'existing_special_requirement_attachment', disabled: @tap_template.attachments.where(kind: :special_requirement).blank?, data: {target: 'form.input'}} %>
+            <% else %>
+              <%= form.select :existing_special_requirement_attachment, Attachment.where(kind: :special_requirement).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @faucet.attachments.where(kind: :special_requirement).ids}, {multiple: true, id: 'existing_special_requirement_attachment', disabled: @faucet.attachments.where(kind: :special_requirement).blank?, data: {target: 'form.input'}} %>
+            <% end %>
+          </div>
+
+          <div class="uk-margin">
+            <div>
+              <%= form.label :new_special_requirement_attachment, "Ajouter un nouveau document d'Autre exigence particulière", class: 'uk-form-label' %>
+            </div>
+            <%= form.file_field :new_special_requirement_attachment, disabled: @faucet.other_special_requirements.blank?, multiple: true %>
+          </div>
         </div>
       </li>
 
@@ -430,15 +539,69 @@
             <%= form.label :other_controls, "Autres contrôles", class: 'uk-form-label' %>
             <%= form.text_field :other_controls, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
+
+          <div class="uk-margin">
+            <%= form.label :existing_control_attachment, "Ajouter un document d'Autre contrôle", class: 'uk-form-label' %>
+            <% if @tap_template.present? %>
+              <%= form.select :existing_control_attachment, Attachment.where(kind: :control).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @tap_template.attachments.where(kind: :control).ids}, {multiple: true, id: 'existing_control_attachment', data: {target: 'form.input'}} %>
+            <% else %>
+              <%= form.select :existing_control_attachment, Attachment.where(kind: :control).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @faucet.attachments.where(kind: :control).ids}, {multiple: true, id: 'existing_control_attachment', data: {target: 'form.input'}} %>
+            <% end %>
+          </div>
+
+          <div class="uk-margin">
+            <div>
+              <%= form.label :new_control_attachment, "Ajouter un nouveau document d'Autre contrôle", class: 'uk-form-label' %>
+            </div>
+            <%= form.file_field :new_control_attachment, multiple: true %>
+          </div>
         </div>
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Autres<% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Documentation<% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
+            <%= form.label :existing_documentation_plan_attachment, "Ajouter un document de plan existant", class: 'uk-form-label' %>
+            <% if @tap_template.present? %>
+              <%= form.select :existing_documentation_plan_attachment, Attachment.where(kind: :documentation_plan).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @tap_template.attachments.where(kind: :documentation_plan).ids}, {multiple: true, id: 'existing_documentation_plan_attachment', data: {target: 'form.input'}} %>
+            <% else %>
+              <%= form.select :existing_documentation_plan_attachment, Attachment.where(kind: :documentation_plan).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @faucet.attachments.where(kind: :documentation_plan).ids}, {multiple: true, id: 'existing_documentation_plan_attachment', data: {target: 'form.input'}} %>
+            <% end %>
+          </div>
+
+          <div class="uk-margin">
+            <div>
+              <%= form.label :new_documentation_plan_attachment, "Ajouter un nouveau document de plan", class: 'uk-form-label' %>
+            </div>
+            <%= form.file_field :new_documentation_plan_attachment, multiple: true %>
+          </div>
+
+          <div class="uk-margin">
+            <%= form.label :existing_instruction_service_attachment, "Ajouter un document d'instruction de service existant", class: 'uk-form-label' %>
+            <% if @tap_template.present? %>
+              <%= form.select :existing_instruction_service_attachment, Attachment.where(kind: :instruction_service).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @tap_template.attachments.where(kind: :instruction_service).ids}, {multiple: true, id: 'existing_instruction_service_attachment', data: {target: 'form.input'}} %>
+            <% else %>
+              <%= form.select :existing_instruction_service_attachment, Attachment.where(kind: :instruction_service).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @faucet.attachments.where(kind: :instruction_service).ids}, {multiple: true, id: 'existing_instruction_service_attachment', data: {target: 'form.input'}} %>
+            <% end %>
+          </div>
+
+          <div class="uk-margin">
+            <div>
+              <%= form.label :new_instruction_service_attachment, "Ajouter un nouveau document d'instruction de service", class: 'uk-form-label' %>
+            </div>
+            <%= form.file_field :new_instruction_service_attachment, multiple: true %>
+          </div>
+
+          <div class="uk-margin">
             <%= form.label :other, "Autres", class: 'uk-form-label' %>
-            <%= form.text_field :other, class: 'uk-input', data: { target: 'form.input' } %>
+            <%= form.text_field :other, class: 'uk-input', data: {target: 'form.input'} %>
           </div>
 
           <div class="uk-margin">
@@ -465,6 +628,15 @@
         $('#existing_actionnement_actionneur_attachment').select2();
         $('#existing_open_position_attachment').select2();
         $('#existing_close_position_attachment').select2();
+        $('#existing_certif_corps_attachment').select2();
+        $('#existing_certif_chapeau_attachment').select2();
+        $('#existing_certif_tige_attachment').select2();
+        $('#existing_certif_clapet_attachment').select2();
+        $('#existing_certif_siege_attachment').select2();
+        $('#existing_certif_autre_attachment').select2();
+        $('#existing_special_requirement_attachment').select2();
+        $('#existing_control_attachment').select2();
+        $('#existing_documentation_plan_attachment').select2();
 
         $("#faucet_manual_control_checkbox").click(function () {
             const isDisabled = $("#faucet_manual_control_checkbox").prop('checked');
@@ -586,6 +758,48 @@
             } else {
                 $("#faucet_new_close_position_attachment").prop('disabled', true);
                 $("#existing_close_position_attachment").prop('disabled', true);
+            }
+        });
+
+        $("#faucet_other_special_requirements_checkbox").click(function () {
+            const isDisabled = $("#faucet_other_special_requirements_checkbox").prop('checked');
+            if (isDisabled) {
+                $("#faucet_new_special_requirement_attachment").removeAttr("disabled");
+                $("#existing_special_requirement_attachment").removeAttr("disabled");
+            } else {
+                $("#faucet_new_special_requirement_attachment").prop('disabled', true);
+                $("#existing_special_requirement_attachment").prop('disabled', true);
+            }
+        });
+
+        $("#faucet_material_certificates_required").click(function () {
+            const isDisabled = $("#faucet_material_certificates_required").prop('checked');
+            if (isDisabled) {
+                $("#existing_certif_corps_attachment").removeAttr("disabled");
+                $("#existing_certif_chapeau_attachment").removeAttr("disabled");
+                $("#existing_certif_tige_attachment").removeAttr("disabled");
+                $("#existing_certif_clapet_attachment").removeAttr("disabled");
+                $("#existing_certif_siege_attachment").removeAttr("disabled");
+                $("#existing_certif_autre_attachment").removeAttr("disabled");
+                $("#faucet_new_certif_corps_attachment").removeAttr("disabled");
+                $("#faucet_new_certif_chapeau_attachment").removeAttr("disabled");
+                $("#faucet_new_certif_tige_attachment").removeAttr("disabled");
+                $("#faucet_new_certif_clapet_attachment").removeAttr("disabled");
+                $("#faucet_new_certif_siege_attachment").removeAttr("disabled");
+                $("#faucet_new_certif_autre_attachment").removeAttr("disabled");
+            } else {
+                $("#existing_certif_corps_attachment").prop('disabled', true);
+                $("#existing_certif_chapeau_attachment").prop('disabled', true);
+                $("#existing_certif_tige_attachment").prop('disabled', true);
+                $("#existing_certif_clapet_attachment").prop('disabled', true);
+                $("#existing_certif_siege_attachment").prop('disabled', true);
+                $("#existing_certif_autre_attachment").prop('disabled', true);
+                $("#faucet_new_certif_corps_attachment").prop('disabled', true);
+                $("#faucet_new_certif_chapeau_attachment").prop('disabled', true);
+                $("#faucet_new_certif_tige_attachment").prop('disabled', true);
+                $("#faucet_new_certif_clapet_attachment").prop('disabled', true);
+                $("#faucet_new_certif_siege_attachment").prop('disabled', true);
+                $("#faucet_new_certif_autre_attachment").prop('disabled', true);
             }
         });
     });
