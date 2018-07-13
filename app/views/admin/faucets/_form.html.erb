@@ -206,22 +206,24 @@
         <div class="uk-accordion-content">
           <div class="uk-margin">
             <%= form.label :manual_control, "Commande manuelle", class: 'uk-form-label' %>
-            <%= form.text_field :manual_control, class: 'uk-input', data: { target: 'form.input' } %>
+            <%= form.check_box :manual_control_checkbox, checked: @faucet.manual_control.present?, class: 'uk-checkbox' %>
+            <%= form.text_field :manual_control, class: 'uk-input', disabled: @faucet.manual_control.blank?, data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
             <%= form.label :actuator, "Actionneur", class: 'uk-form-label' %>
-            <%= form.text_field :actuator, class: 'uk-input', data: { target: 'form.input' } %>
+            <%= form.check_box :actuator_checkbox, checked: @faucet.actuator.present?, class: 'uk-checkbox' %>
+            <%= form.text_field :actuator, class: 'uk-input', disabled: @faucet.actuator.blank?, data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
             <%= form.label :existing_actionnement_actionneur_attachment, "Ajouter un document d'actionneur existant", class: 'uk-form-label' %>
             <% if @tap_template.present? %>
               <%= form.select :existing_actionnement_actionneur_attachment, Attachment.where(kind: :actionnement_actionneur).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
-                              {selected: @tap_template.attachments.where(kind: :actionnement_actionneur).ids}, {multiple: true, id: 'existing_actionnement_actionneur_attachment', data: {target: 'form.input'}} %>
+                              {selected: @tap_template.attachments.where(kind: :actionnement_actionneur).ids}, {multiple: true, id: 'existing_actionnement_actionneur_attachment', disabled: @tap_template.attachments.where(kind: :actionnement_actionneur).blank?, data: {target: 'form.input'}} %>
             <% else %>
-              <%= form.select :existing_actionnement_actionneur_attachment, Attachment.where(kind: :actionnement_actionneur).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
-                              {selected: @faucet.attachments.where(kind: :actionnement_actionneur).ids}, {multiple: true, id: 'existing_actionnement_actionneur_attachment', data: {target: 'form.input'}} %>
+              <%= form.select :existing_actionnement_actionneur_attachment, Attachment.where(kind: :instruction_service).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @faucet.attachments.where(kind: :instruction_service).ids}, {multiple: true, id: 'existing_actionnement_actionneur_attachment', disabled: @faucet.attachments.where(kind: :instruction_service).blank?, data: {target: 'form.input'}} %>
             <% end %>
           </div>
 
@@ -229,12 +231,13 @@
             <div>
               <%= form.label :new_actionnement_actionneur_attachment, "Ajouter un nouveau document d'actionneur existant", class: 'uk-form-label' %>
             </div>
-            <%= form.file_field :new_actionnement_actionneur_attachment, multiple: true %>
+            <%= form.file_field :new_actionnement_actionneur_attachment, disabled: @faucet.actuator.blank?, multiple: true %>
           </div>
 
           <div class="uk-margin">
             <%= form.label :pneumatic_actuator_pressure, "Pression actionneur pneumatique", class: 'uk-form-label' %>
-            <%= form.text_field :pneumatic_actuator_pressure, class: 'uk-input', data: { target: 'form.input' } %>
+            <%= form.check_box :pneumatic_actuator_pressure_checkbox, checked: @faucet.pneumatic_actuator_pressure.present?, class: 'uk-checkbox' %>
+            <%= form.text_field :pneumatic_actuator_pressure, class: 'uk-input', disabled: @faucet.pneumatic_actuator_pressure.blank?, data: { target: 'form.input' } %>
           </div>
         </div>
       </li>
@@ -277,17 +280,18 @@
 
           <div class="uk-margin">
             <%= form.label :piloting, "Pilotage", class: 'uk-form-label' %>
-            <%= form.text_field :piloting, class: 'uk-input', data: { target: 'form.input' } %>
+            <%= form.check_box :piloting_checkbox, checked: @faucet.piloting.present?, class: 'uk-checkbox' %>
+            <%= form.text_field :piloting, class: 'uk-input', disabled: @faucet.piloting.blank?, data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
             <%= form.label :existing_instrumentation_pilotage_attachment, "Ajouter un document de pilotage existant", class: 'uk-form-label' %>
             <% if @tap_template.present? %>
               <%= form.select :existing_instrumentation_pilotage_attachment, Attachment.where(kind: :instrumentation_pilotage).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
-                              {selected: @tap_template.attachments.where(kind: :instrumentation_pilotage).ids}, {multiple: true, id: 'existing_instrumentation_pilotage_attachment', data: {target: 'form.input'}} %>
+                              {selected: @tap_template.attachments.where(kind: :instrumentation_pilotage).ids}, {multiple: true, id: 'existing_instrumentation_pilotage_attachment', disabled: @tap_template.attachments.where(kind: :instrumentation_pilotage).blank?, data: {target: 'form.input'}} %>
             <% else %>
               <%= form.select :existing_instrumentation_pilotage_attachment, Attachment.where(kind: :instrumentation_pilotage).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
-                              {selected: @faucet.attachments.where(kind: :instrumentation_pilotage).ids}, {multiple: true, id: 'existing_instrumentation_pilotage_attachment', data: {target: 'form.input'}} %>
+                              {selected: @faucet.attachments.where(kind: :instrumentation_pilotage).ids}, {multiple: true, id: 'existing_instrumentation_pilotage_attachment', disabled: @faucet.attachments.where(kind: :instrumentation_pilotage).blank?, data: {target: 'form.input'}} %>
             <% end %>
           </div>
 
@@ -295,22 +299,23 @@
             <div>
               <%= form.label :new_instrumentation_pilotage_attachment, "Ajouter un nouveau document de pilotage existant", class: 'uk-form-label' %>
             </div>
-            <%= form.file_field :new_instrumentation_pilotage_attachment, multiple: true %>
+            <%= form.file_field :new_instrumentation_pilotage_attachment, disabled: @faucet.piloting.blank?, multiple: true %>
           </div>
 
           <div class="uk-margin">
             <%= form.label :other_instrumentation, "Autres instrumentation", class: 'uk-form-label' %>
-            <%= form.text_field :other_instrumentation, class: 'uk-input', data: { target: 'form.input' } %>
+            <%= form.check_box :other_instrumentation_checkbox, checked: @faucet.other_instrumentation.present?, class: 'uk-checkbox' %>
+            <%= form.text_field :other_instrumentation, disabled: @faucet.other_instrumentation.blank?, class: 'uk-input', data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
             <%= form.label :existing_instrumentation_autre_attachment, "Ajouter un document d'autre instrumentation existant", class: 'uk-form-label' %>
             <% if @tap_template.present? %>
               <%= form.select :existing_instrumentation_autre_attachment, Attachment.where(kind: :instrumentation_autre).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
-                              {selected: @tap_template.attachments.where(kind: :instrumentation_autre).ids}, {multiple: true, id: 'existing_instrumentation_autre_attachment', data: {target: 'form.input'}} %>
+                              {selected: @tap_template.attachments.where(kind: :instrumentation_autre).ids}, {multiple: true, id: 'existing_instrumentation_autre_attachment', disabled: @tap_template.attachments.where(kind: :instrumentation_autre).blank?, data: {target: 'form.input'}} %>
             <% else %>
               <%= form.select :existing_instrumentation_autre_attachment, Attachment.where(kind: :instrumentation_autre).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
-                              {selected: @faucet.attachments.where(kind: :instrumentation_autre).ids}, {multiple: true, id: 'existing_instrumentation_autre_attachment', data: {target: 'form.input'}} %>
+                              {selected: @faucet.attachments.where(kind: :instrumentation_autre).ids}, {multiple: true, id: 'existing_instrumentation_autre_attachment', disabled: @faucet.attachments.where(kind: :instrumentation_autre).blank?, data: {target: 'form.input'}} %>
             <% end %>
           </div>
 
@@ -318,7 +323,7 @@
             <div>
               <%= form.label :new_instrumentation_autre_attachment, "Ajouter un nouveau document d'autre instrumentation existant", class: 'uk-form-label' %>
             </div>
-            <%= form.file_field :new_instrumentation_autre_attachment, multiple: true %>
+            <%= form.file_field :new_instrumentation_autre_attachment, disabled: @faucet.other_instrumentation.blank?, multiple: true %>
           </div>
         </div>
       </li>
@@ -333,7 +338,8 @@
 
           <div class="uk-margin">
             <%= form.label :double_shell, "Double enveloppe", class: 'uk-form-label' %>
-            <%= form.text_field :double_shell, class: 'uk-input', data: { target: 'form.input' } %>
+            <%= form.check_box :double_shell_checkbox, checked: @faucet.double_shell.present?, class: 'uk-checkbox' %>
+            <%= form.text_field :double_shell, class: 'uk-input', disabled: @faucet.double_shell.blank?, data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
@@ -368,12 +374,14 @@
         <div class="uk-accordion-content">
           <div class="uk-margin">
             <%= form.label :atex, "ATEX", class: 'uk-form-label' %>
-            <%= form.text_field :atex, class: 'uk-input', data: { target: 'form.input' } %>
+            <%= form.check_box :atex_checkbox, checked: @faucet.atex.present?, class: 'uk-checkbox' %>
+            <%= form.text_field :atex, class: 'uk-input', disabled: @faucet.atex.blank?, data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
             <%= form.label :other_special_requirements, "Autres exigences particulières", class: 'uk-form-label' %>
-            <%= form.text_field :other_special_requirements, class: 'uk-input', data: { target: 'form.input' } %>
+            <%= form.check_box :other_special_requirements_checkbox, checked: @faucet.other_special_requirements.present?, class: 'uk-checkbox' %>
+            <%= form.text_field :other_special_requirements, class: 'uk-input', disabled: @faucet.other_special_requirements.blank?, data: { target: 'form.input' } %>
           </div>
         </div>
       </li>
@@ -418,5 +426,89 @@
         $('#existing_instrumentation_pilotage_attachment').select2();
         $('#existing_instrumentation_autre_attachment').select2();
         $('#existing_actionnement_actionneur_attachment').select2();
+
+        $("#faucet_manual_control_checkbox").click(function () {
+            const isDisabled = $("#faucet_manual_control_checkbox").prop('checked');
+            if (isDisabled) {
+                $("#faucet_manual_control").removeAttr("disabled");
+            } else {
+                $("#faucet_manual_control").prop('disabled', true)
+            }
+        });
+
+        $("#faucet_pneumatic_actuator_pressure_checkbox").click(function () {
+            const isDisabled = $("#faucet_pneumatic_actuator_pressure_checkbox").prop('checked');
+            if (isDisabled) {
+                $("#faucet_pneumatic_actuator_pressure").removeAttr("disabled");
+            } else {
+                $("#faucet_pneumatic_actuator_pressure").prop('disabled', true)
+            }
+        });
+
+        $("#faucet_double_shell_checkbox").click(function () {
+            const isDisabled = $("#faucet_double_shell_checkbox").prop('checked');
+            if (isDisabled) {
+                $("#faucet_double_shell").removeAttr("disabled");
+            } else {
+                $("#faucet_double_shell").prop('disabled', true)
+            }
+        });
+
+        $("#faucet_atex_checkbox").click(function () {
+            const isDisabled = $("#faucet_atex_checkbox").prop('checked');
+            if (isDisabled) {
+                $("#faucet_atex").removeAttr("disabled");
+            } else {
+                $("#faucet_atex").prop('disabled', true)
+            }
+        });
+
+        $("#faucet_other_special_requirements_checkbox").click(function () {
+            const isDisabled = $("#faucet_other_special_requirements_checkbox").prop('checked');
+            if (isDisabled) {
+                $("#faucet_other_special_requirements").removeAttr("disabled");
+            } else {
+                $("#faucet_other_special_requirements").prop('disabled', true)
+            }
+        });
+
+        $("#faucet_actuator_checkbox").click(function () {
+            const isDisabled = $("#faucet_actuator_checkbox").prop('checked');
+            if (isDisabled) {
+                $("#faucet_actuator").removeAttr("disabled");
+                $("#faucet_new_actionnement_actionneur_attachment").removeAttr("disabled");
+                $("#existing_actionnement_actionneur_attachment").removeAttr("disabled");
+            } else {
+                $("#faucet_actuator").prop('disabled', true);
+                $("#faucet_new_actionnement_actionneur_attachment").prop('disabled', true);
+                $("#existing_actionnement_actionneur_attachment").prop('disabled', true);
+            }
+        });
+
+        $("#faucet_piloting_checkbox").click(function () {
+            const isDisabled = $("#faucet_piloting_checkbox").prop('checked');
+            if (isDisabled) {
+                $("#faucet_piloting").removeAttr("disabled");
+                $("#faucet_new_instrumentation_pilotage_attachment").removeAttr("disabled");
+                $("#existing_instrumentation_pilotage_attachment").removeAttr("disabled");
+            } else {
+                $("#faucet_piloting").prop('disabled', true);
+                $("#faucet_new_instrumentation_pilotage_attachment").prop('disabled', true);
+                $("#existing_instrumentation_pilotage_attachment").prop('disabled', true);
+            }
+        });
+
+        $("#faucet_other_instrumentation_checkbox").click(function () {
+            const isDisabled = $("#faucet_other_instrumentation_checkbox").prop('checked');
+            if (isDisabled) {
+                $("#faucet_other_instrumentation").removeAttr("disabled");
+                $("#faucet_new_instrumentation_autre_attachment").removeAttr("disabled");
+                $("#existing_instrumentation_autre_attachment").removeAttr("disabled");
+            } else {
+                $("#faucet_other_instrumentation").prop('disabled', true);
+                $("#faucet_new_instrumentation_autre_attachment").prop('disabled', true);
+                $("#existing_instrumentation_autre_attachment").prop('disabled', true);
+            }
+        });
     });
 </script>

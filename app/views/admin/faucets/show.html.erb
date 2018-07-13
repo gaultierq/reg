@@ -235,7 +235,11 @@
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Gaz instable</td>
-                <td><%= @faucet.unstable_gas %></td>
+                <td>
+                  <% if @faucet.unstable_gas %>
+                    <span uk-icon="icon: check"></span>
+                  <% end %>
+                </td>
               </tr>
 
               <tr>
