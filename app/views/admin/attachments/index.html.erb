@@ -227,5 +227,220 @@
       <% end %>
       </tbody>
     <% end %>
+
+    <h3 class="uk-heading-divider">Position Ouverte</h3>
+    <%= render 'shared/table', locals: {id: 'attachment_open_position_table', dom: 'lrtip', paging: false, info: false} do %>
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>nom</th>
+        <th data-orderable="false">actions</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @attachments.where(kind: :open_position).each do |attachment| %>
+        <tr>
+          <td><%= attachment.id %></td>
+          <% if attachment.pdf.attached? %>
+            <td><%= attachment.pdf.blob.filename %></td>
+          <% else %>
+            <td></td>
+          <% end %>
+          <td class="uk-flex uk-flex-center">
+            <ul class="uk-iconnav">
+              <li>
+                <%= link_to admin_attachment_path(attachment) do %>
+                  <span uk-icon="search" , uk-tooltip="Détails"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to edit_admin_attachment_path(attachment) do %>
+                  <span uk-icon="pencil" , uk-tooltip="Modifier"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_attachment_path(attachment), method: :delete, data: {confirm: 'Êtes-vous sûr ?'} do %>
+                  <span uk-icon="trash" , uk-tooltip="Supprimer"></span>
+                <% end %>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    <% end %>
+
+    <h3 class="uk-heading-divider">Position Fermée</h3>
+    <%= render 'shared/table', locals: {id: 'attachment_close_position_table', dom: 'lrtip', paging: false, info: false} do %>
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>nom</th>
+        <th data-orderable="false">actions</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @attachments.where(kind: :close_position).each do |attachment| %>
+        <tr>
+          <td><%= attachment.id %></td>
+          <% if attachment.pdf.attached? %>
+            <td><%= attachment.pdf.blob.filename %></td>
+          <% else %>
+            <td></td>
+          <% end %>
+          <td class="uk-flex uk-flex-center">
+            <ul class="uk-iconnav">
+              <li>
+                <%= link_to admin_attachment_path(attachment) do %>
+                  <span uk-icon="search" , uk-tooltip="Détails"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to edit_admin_attachment_path(attachment) do %>
+                  <span uk-icon="pencil" , uk-tooltip="Modifier"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_attachment_path(attachment), method: :delete, data: {confirm: 'Êtes-vous sûr ?'} do %>
+                  <span uk-icon="trash" , uk-tooltip="Supprimer"></span>
+                <% end %>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    <% end %>
+
+    <h3 class="uk-heading-divider">Certificat de Matières</h3>
+    <%= render 'shared/table', locals: {id: 'attachment_certificat_table', dom: 'lrtip', paging: false, info: false} do %>
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>nom</th>
+        <th data-orderable="false">actions</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @attachments.where(kind: [:certif_corps, :certif_chapeau, :certif_tige, :certif_clapet, :certif_siege, :certif_autre]).each do |attachment| %>
+        <tr>
+          <td><%= attachment.id %></td>
+          <% if attachment.pdf.attached? %>
+            <td><%= attachment.pdf.blob.filename %></td>
+          <% else %>
+            <td></td>
+          <% end %>
+          <td class="uk-flex uk-flex-center">
+            <ul class="uk-iconnav">
+              <li>
+                <%= link_to admin_attachment_path(attachment) do %>
+                  <span uk-icon="search" , uk-tooltip="Détails"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to edit_admin_attachment_path(attachment) do %>
+                  <span uk-icon="pencil" , uk-tooltip="Modifier"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_attachment_path(attachment), method: :delete, data: {confirm: 'Êtes-vous sûr ?'} do %>
+                  <span uk-icon="trash" , uk-tooltip="Supprimer"></span>
+                <% end %>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    <% end %>
+
+    <h3 class="uk-heading-divider">Exigences particulières</h3>
+    <%= render 'shared/table', locals: {id: 'attachment_special_requirement_table', dom: 'lrtip', paging: false, info: false} do %>
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>nom</th>
+        <th data-orderable="false">actions</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @attachments.where(kind: :special_requirement).each do |attachment| %>
+        <tr>
+          <td><%= attachment.id %></td>
+          <% if attachment.pdf.attached? %>
+            <td><%= attachment.pdf.blob.filename %></td>
+          <% else %>
+            <td></td>
+          <% end %>
+          <td class="uk-flex uk-flex-center">
+            <ul class="uk-iconnav">
+              <li>
+                <%= link_to admin_attachment_path(attachment) do %>
+                  <span uk-icon="search" , uk-tooltip="Détails"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to edit_admin_attachment_path(attachment) do %>
+                  <span uk-icon="pencil" , uk-tooltip="Modifier"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_attachment_path(attachment), method: :delete, data: {confirm: 'Êtes-vous sûr ?'} do %>
+                  <span uk-icon="trash" , uk-tooltip="Supprimer"></span>
+                <% end %>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    <% end %>
+
+    <h3 class="uk-heading-divider">Contrôle</h3>
+    <%= render 'shared/table', locals: {id: 'attachment_control_table', dom: 'lrtip', paging: false, info: false} do %>
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>nom</th>
+        <th data-orderable="false">actions</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @attachments.where(kind: :control).each do |attachment| %>
+        <tr>
+          <td><%= attachment.id %></td>
+          <% if attachment.pdf.attached? %>
+            <td><%= attachment.pdf.blob.filename %></td>
+          <% else %>
+            <td></td>
+          <% end %>
+          <td class="uk-flex uk-flex-center">
+            <ul class="uk-iconnav">
+              <li>
+                <%= link_to admin_attachment_path(attachment) do %>
+                  <span uk-icon="search" , uk-tooltip="Détails"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to edit_admin_attachment_path(attachment) do %>
+                  <span uk-icon="pencil" , uk-tooltip="Modifier"></span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to admin_attachment_path(attachment), method: :delete, data: {confirm: 'Êtes-vous sûr ?'} do %>
+                  <span uk-icon="trash" , uk-tooltip="Supprimer"></span>
+                <% end %>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    <% end %>
   </div>
 </div>
