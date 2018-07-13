@@ -25,3 +25,10 @@ span.select2.select2-container {
 .tr-transparent > td {
   padding: 5px 0 !important;
 }
+
+@media (min-width: 960px) {
+  .ui-container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
