@@ -143,8 +143,8 @@ ActiveRecord::Schema.define(version: 2018_07_11_134207) do
     t.string "actuator"
     t.float "pneumatic_actuator_pressure"
     t.string "position_detector"
-    t.string "open_position"
-    t.string "close_position"
+    t.boolean "open_position"
+    t.boolean "close_position"
     t.string "piloting"
     t.string "other_instrumentation"
     t.string "shell"
@@ -162,7 +162,6 @@ ActiveRecord::Schema.define(version: 2018_07_11_134207) do
     t.datetime "updated_at", null: false
     t.string "note"
     t.index ["industrial_unit_id"], name: "index_faucets_on_industrial_unit_id"
-    t.index ["serial_number"], name: "index_faucets_on_serial_number", unique: true
   end
 
   create_table "industrial_units", force: :cascade do |t|

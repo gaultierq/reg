@@ -14,7 +14,9 @@ class Attachment < ApplicationRecord
     instrumentation_pilotage: 2,
     instrumentation_autre: 3,
     actionnement_actionneur: 4,
-    incident_maintenance: 5
+    incident_maintenance: 5,
+    open_position: 6,
+    close_position: 7,
   }
 
   before_validation :compute_hash

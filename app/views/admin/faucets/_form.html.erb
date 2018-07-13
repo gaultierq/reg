@@ -247,17 +247,18 @@
         <div class="uk-accordion-content">
           <div class="uk-margin">
             <%= form.label :position_detector, "Détecteur de position", class: 'uk-form-label' %>
-            <%= form.text_field :position_detector, class: 'uk-input', data: { target: 'form.input' } %>
+            <%= form.check_box :position_detector_checkbox, checked: @faucet.position_detector.present?, class: 'uk-checkbox' %>
+            <%= form.text_field :position_detector, class: 'uk-input', disabled: @faucet.position_detector.blank?, data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
             <%= form.label :existing_instrumentation_position_attachment, "Ajouter un document de détecteur de position existant", class: 'uk-form-label' %>
             <% if @tap_template.present? %>
               <%= form.select :existing_instrumentation_position_attachment, Attachment.where(kind: :instrumentation_position).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
-                              {selected: @tap_template.attachments.where(kind: :instrumentation_position).ids}, {multiple: true, id: 'existing_instrumentation_position_attachment', data: {target: 'form.input'}} %>
+                              {selected: @tap_template.attachments.where(kind: :instrumentation_position).ids}, {multiple: true, id: 'existing_instrumentation_position_attachment', disabled: @tap_template.attachments.where(kind: :instrumentation_position).blank?, data: {target: 'form.input'}} %>
             <% else %>
               <%= form.select :existing_instrumentation_position_attachment, Attachment.where(kind: :instrumentation_position).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
-                              {selected: @faucet.attachments.where(kind: :instrumentation_position).ids}, {multiple: true, id: 'existing_instrumentation_position_attachment', data: {target: 'form.input'}} %>
+                              {selected: @faucet.attachments.where(kind: :instrumentation_position).ids}, {multiple: true, id: 'existing_instrumentation_position_attachment', disabled: @faucet.attachments.where(kind: :instrumentation_position).blank?, data: {target: 'form.input'}} %>
             <% end %>
           </div>
 
@@ -265,17 +266,53 @@
             <div>
               <%= form.label :new_instrumentation_position_attachment, "Ajouter un nouveau document de détecteur de position existant", class: 'uk-form-label' %>
             </div>
-            <%= form.file_field :new_instrumentation_position_attachment, multiple: true %>
+            <%= form.file_field :new_instrumentation_position_attachment, disabled: @faucet.position_detector.blank?, multiple: true %>
           </div>
 
           <div class="uk-margin">
             <%= form.label :open_position, "Position ouverte", class: 'uk-form-label' %>
-            <%= form.text_field :open_position, class: 'uk-input', data: { target: 'form.input' } %>
+            <%= form.check_box :open_position, class: 'uk-checkbox', disabled: @faucet.position_detector.blank?, data: { target: 'form.input' } %>
+          </div>
+
+          <div class="uk-margin">
+            <%= form.label :existing_open_position_attachment, "Ajouter un document de position ouverte existant", class: 'uk-form-label' %>
+            <% if @tap_template.present? %>
+              <%= form.select :existing_open_position_attachment, Attachment.where(kind: :open_position).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @tap_template.attachments.where(kind: :open_position).ids}, {multiple: true, id: 'existing_open_position_attachment', disabled: @tap_template.attachments.where(kind: :open_position).blank?, data: {target: 'form.input'}} %>
+            <% else %>
+              <%= form.select :existing_open_position_attachment, Attachment.where(kind: :open_position).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @faucet.attachments.where(kind: :open_position).ids}, {multiple: true, id: 'existing_open_position_attachment', disabled: @faucet.attachments.where(kind: :open_position).blank?, data: {target: 'form.input'}} %>
+            <% end %>
+          </div>
+
+          <div class="uk-margin">
+            <div>
+              <%= form.label :new_open_position_attachment, "Ajouter un nouveau document de détecteur de position existant", class: 'uk-form-label' %>
+            </div>
+            <%= form.file_field :new_open_position_attachment, disabled: !@faucet.open_position, multiple: true %>
           </div>
 
           <div class="uk-margin">
             <%= form.label :close_position, "Position fermée", class: 'uk-form-label' %>
-            <%= form.text_field :close_position, class: 'uk-input', data: { target: 'form.input' } %>
+            <%= form.check_box :close_position, class: 'uk-checkbox', disabled: @faucet.position_detector.blank?, data: { target: 'form.input' } %>
+          </div>
+
+          <div class="uk-margin">
+            <%= form.label :existing_close_position_attachment, "Ajouter un document de position ouverte existant", class: 'uk-form-label' %>
+            <% if @tap_template.present? %>
+              <%= form.select :existing_close_position_attachment, Attachment.where(kind: :open_position).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @tap_template.attachments.where(kind: :close_position).ids}, {multiple: true, id: 'existing_close_position_attachment', disabled: @tap_template.attachments.where(kind: :close_position).blank?, data: {target: 'form.input'}} %>
+            <% else %>
+              <%= form.select :existing_close_position_attachment, Attachment.where(kind: :open_position).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
+                              {selected: @faucet.attachments.where(kind: :close_position).ids}, {multiple: true, id: 'existing_close_position_attachment', disabled: @faucet.attachments.where(kind: :close_position).blank?, data: {target: 'form.input'}} %>
+            <% end %>
+          </div>
+
+          <div class="uk-margin">
+            <div>
+              <%= form.label :new_close_position_attachment, "Ajouter un nouveau document de détecteur de position existant", class: 'uk-form-label' %>
+            </div>
+            <%= form.file_field :new_close_position_attachment, disabled: !@faucet.close_position, multiple: true %>
           </div>
 
           <div class="uk-margin">
@@ -426,6 +463,8 @@
         $('#existing_instrumentation_pilotage_attachment').select2();
         $('#existing_instrumentation_autre_attachment').select2();
         $('#existing_actionnement_actionneur_attachment').select2();
+        $('#existing_open_position_attachment').select2();
+        $('#existing_close_position_attachment').select2();
 
         $("#faucet_manual_control_checkbox").click(function () {
             const isDisabled = $("#faucet_manual_control_checkbox").prop('checked');
@@ -508,6 +547,45 @@
                 $("#faucet_other_instrumentation").prop('disabled', true);
                 $("#faucet_new_instrumentation_autre_attachment").prop('disabled', true);
                 $("#existing_instrumentation_autre_attachment").prop('disabled', true);
+            }
+        });
+
+        $("#faucet_position_detector_checkbox").click(function () {
+            const isDisabled = $("#faucet_position_detector_checkbox").prop('checked');
+            if (isDisabled) {
+                $("#faucet_position_detector").removeAttr("disabled");
+                $("#faucet_open_position").removeAttr("disabled");
+                $("#faucet_close_position").removeAttr("disabled");
+                $("#faucet_new_instrumentation_position_attachment").removeAttr("disabled");
+                $("#existing_instrumentation_position_attachment").removeAttr("disabled");
+            } else {
+                $("#faucet_position_detector").prop('disabled', true);
+                $("#faucet_open_position").prop('disabled', true);
+                $("#faucet_close_position").prop('disabled', true);
+                $("#faucet_new_instrumentation_position_attachment").prop('disabled', true);
+                $("#existing_instrumentation_position_attachment").prop('disabled', true);
+            }
+        });
+
+        $("#faucet_open_position").click(function () {
+            const isDisabled = $("#faucet_open_position").prop('checked');
+            if (isDisabled) {
+                $("#faucet_new_open_position_attachment").removeAttr("disabled");
+                $("#existing_open_position_attachment").removeAttr("disabled");
+            } else {
+                $("#faucet_new_open_position_attachment").prop('disabled', true);
+                $("#existing_open_position_attachment").prop('disabled', true);
+            }
+        });
+
+        $("#faucet_close_position").click(function () {
+            const isDisabled = $("#faucet_close_position").prop('checked');
+            if (isDisabled) {
+                $("#faucet_new_close_position_attachment").removeAttr("disabled");
+                $("#existing_close_position_attachment").removeAttr("disabled");
+            } else {
+                $("#faucet_new_close_position_attachment").prop('disabled', true);
+                $("#existing_close_position_attachment").prop('disabled', true);
             }
         });
     });

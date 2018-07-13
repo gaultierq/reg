@@ -33,8 +33,8 @@ class CreateFaucets < ActiveRecord::Migration[5.2]
       t.string :actuator
       t.float :pneumatic_actuator_pressure
       t.string :position_detector
-      t.string :open_position
-      t.string :close_position
+      t.boolean :open_position
+      t.boolean :close_position
       t.string :piloting
       t.string :other_instrumentation
       t.string :shell

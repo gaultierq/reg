@@ -330,12 +330,40 @@
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position ouverte</td>
-                <td><%= @faucet.open_position %></td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @faucet.attachments.where(kind: :open_position).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
               </tr>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position fermée</td>
-                <td><%= @faucet.close_position %></td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @faucet.attachments.where(kind: :close_position).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
               </tr>
 
               <tr>

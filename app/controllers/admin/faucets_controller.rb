@@ -117,6 +117,12 @@ class Admin::FaucetsController < Admin::BaseController
       if params[:faucet][:existing_instrumentation_autre_attachment].present?
         attachments << Attachment.where(id: params[:faucet][:existing_instrumentation_autre_attachment].drop(1))
       end
+      if params[:faucet][:existing_open_position_attachment].present?
+        attachments << Attachment.where(id: params[:faucet][:existing_open_position_attachment].drop(1))
+      end
+      if params[:faucet][:existing_close_position_attachment].present?
+        attachments << Attachment.where(id: params[:faucet][:existing_close_position_attachment].drop(1))
+      end
       if params[:faucet][:new_instruction_service_attachment].present?
         params[:faucet][:new_instruction_service_attachment].each do |attachment|
           attachment_to_add = Attachment.new(kind: :instruction_service, pdf: attachment)
@@ -160,6 +166,26 @@ class Admin::FaucetsController < Admin::BaseController
       if params[:faucet][:new_instrumentation_autre_attachment].present?
         params[:faucet][:new_instrumentation_autre_attachment].each do |attachment|
           attachment_to_add = Attachment.new(kind: :instrumentation_autre, pdf: attachment)
+          if attachment_to_add.save
+            attachments << attachment_to_add
+          else
+            check_uniqueness(attachments, attachment_to_add)
+          end
+        end
+      end
+      if params[:faucet][:new_open_position_attachment].present?
+        params[:faucet][:new_open_position_attachment].each do |attachment|
+          attachment_to_add = Attachment.new(kind: :open_position, pdf: attachment)
+          if attachment_to_add.save
+            attachments << attachment_to_add
+          else
+            check_uniqueness(attachments, attachment_to_add)
+          end
+        end
+      end
+      if params[:faucet][:new_close_position_attachment].present?
+        params[:faucet][:new_close_position_attachment].each do |attachment|
+          attachment_to_add = Attachment.new(kind: :close_position, pdf: attachment)
           if attachment_to_add.save
             attachments << attachment_to_add
           else
