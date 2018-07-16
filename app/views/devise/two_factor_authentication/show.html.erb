@@ -1,0 +1,13 @@
+<h2>Bonjour, vous avez reçu un code par email, merci de le saisir ci-dessous !</h2>
+
+<%= form_tag([resource_name, :two_factor_authentication], :method => :put) do %>
+  <div class="uk-margin">
+    <%= text_field_tag :code, nil, class: 'uk-input' %>
+  </div>
+
+  <div class="uk-margin">
+    <%= submit_tag "Se connecter", class: 'uk-button uk-button-primary uk-width-1-1' %>
+  </div>
+<% end %>
+
+<%= link_to "Se déconnecter", destroy_user_session_path, :method => :delete %>

@@ -24,6 +24,8 @@ gem 'browser'
 gem 'select2-rails'
 gem 'jquery-rails'
 gem 'deep_cloneable', '~> 2.3.2'
+gem 'two_factor_authentication'
+gem 'figaro'
 
 group :production do
   gem 'aws-sdk-s3', require: false
