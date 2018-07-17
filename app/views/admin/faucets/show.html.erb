@@ -293,10 +293,10 @@
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document de détecteur de position</td>
                 <td>
-                  <table class="uk-table uk-table-striped">
+                  <table>
                     <tbody>
                     <% @faucet.attachments.where(kind: :instrumentation_position).each do |attachment| %>
-                      <tr>
+                      <tr class="tr-transparent">
                         <% if attachment.pdf.attached? %>
                           <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
                         <% else %>
@@ -312,6 +312,9 @@
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position ouverte</td>
                 <td>
+                  <% if @faucet.open_position %>
+                    <span uk-icon="icon: check"></span>
+                  <% end %>
                   <table>
                     <tbody>
                     <% @faucet.attachments.where(kind: :open_position).each do |attachment| %>
@@ -331,6 +334,9 @@
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position fermée</td>
                 <td>
+                  <% if @faucet.close_position %>
+                    <span uk-icon="icon: check"></span>
+                  <% end %>
                   <table>
                     <tbody>
                     <% @faucet.attachments.where(kind: :close_position).each do |attachment| %>
@@ -446,7 +452,7 @@
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document certificat de matière corps</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document corps</td>
                 <td>
                   <table>
                     <tbody>
@@ -465,7 +471,7 @@
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document certificat de matière chapeau</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document chapeau</td>
                 <td>
                   <table>
                     <tbody>
@@ -484,7 +490,7 @@
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document certificat de matière tige</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document tige</td>
                 <td>
                   <table>
                     <tbody>
@@ -503,7 +509,7 @@
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document certificat de matière clapet</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document clapet</td>
                 <td>
                   <table>
                     <tbody>
@@ -522,7 +528,7 @@
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document certificat de matière siège</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document siège</td>
                 <td>
                   <table>
                     <tbody>
@@ -541,7 +547,7 @@
               </tr>
 
               <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document certificat de matière autre</td>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document autre</td>
                 <td>
                   <table>
                     <tbody>

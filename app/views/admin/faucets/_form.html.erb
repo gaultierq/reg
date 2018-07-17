@@ -253,17 +253,17 @@
 
           <div class="uk-margin">
             <%= form.label :open_position, "Position ouverte", class: 'uk-form-label' %>
-            <%= form.check_box :open_position, class: 'uk-checkbox', disabled: @faucet.position_detector.blank?, data: { target: 'form.input' } %>
+            <%= form.check_box :open_position, class: 'uk-checkbox', disabled: @faucet.open_position.blank?, data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
             <%= form.label :existing_open_position_attachment, "Ajouter un document de position ouverte existant", class: 'uk-form-label' %>
             <% if @tap_template.present? %>
               <%= form.select :existing_open_position_attachment, Attachment.where(kind: :open_position).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
-                              {selected: @tap_template.attachments.where(kind: :open_position).ids}, {multiple: true, id: 'existing_open_position_attachment', disabled: @tap_template.attachments.where(kind: :open_position).blank?, data: {target: 'form.input'}} %>
+                              {selected: @tap_template.attachments.where(kind: :open_position).ids}, {multiple: true, id: 'existing_open_position_attachment', disabled: !@faucet.open_position, data: {target: 'form.input'}} %>
             <% else %>
               <%= form.select :existing_open_position_attachment, Attachment.where(kind: :open_position).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
-                              {selected: @faucet.attachments.where(kind: :open_position).ids}, {multiple: true, id: 'existing_open_position_attachment', disabled: @faucet.attachments.where(kind: :open_position).blank?, data: {target: 'form.input'}} %>
+                              {selected: @faucet.attachments.where(kind: :open_position).ids}, {multiple: true, id: 'existing_open_position_attachment', disabled: !@faucet.open_position, data: {target: 'form.input'}} %>
             <% end %>
           </div>
 
@@ -276,17 +276,17 @@
 
           <div class="uk-margin">
             <%= form.label :close_position, "Position fermée", class: 'uk-form-label' %>
-            <%= form.check_box :close_position, class: 'uk-checkbox', disabled: @faucet.position_detector.blank?, data: { target: 'form.input' } %>
+            <%= form.check_box :close_position, class: 'uk-checkbox', disabled: @faucet.close_position.blank?, data: { target: 'form.input' } %>
           </div>
 
           <div class="uk-margin">
             <%= form.label :existing_close_position_attachment, "Ajouter un document de position ouverte existant", class: 'uk-form-label' %>
             <% if @tap_template.present? %>
               <%= form.select :existing_close_position_attachment, Attachment.where(kind: :open_position).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
-                              {selected: @tap_template.attachments.where(kind: :close_position).ids}, {multiple: true, id: 'existing_close_position_attachment', disabled: @tap_template.attachments.where(kind: :close_position).blank?, data: {target: 'form.input'}} %>
+                              {selected: @tap_template.attachments.where(kind: :close_position).ids}, {multiple: true, id: 'existing_close_position_attachment', disabled: !@faucet.close_position, data: {target: 'form.input'}} %>
             <% else %>
               <%= form.select :existing_close_position_attachment, Attachment.where(kind: :open_position).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
-                              {selected: @faucet.attachments.where(kind: :close_position).ids}, {multiple: true, id: 'existing_close_position_attachment', disabled: @faucet.attachments.where(kind: :close_position).blank?, data: {target: 'form.input'}} %>
+                              {selected: @faucet.attachments.where(kind: :close_position).ids}, {multiple: true, id: 'existing_close_position_attachment', disabled: !@faucet.close_position, data: {target: 'form.input'}} %>
             <% end %>
           </div>
 

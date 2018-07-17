@@ -23,6 +23,7 @@ class Admin::EventsController < Admin::BaseController
   # POST /events
   def create
     @event = current_user.present? ? current_user.events.new(event_params) : current_admin.events.new(event_params)
+    @event.seen = false
 
     if @event.save
       add_attachments

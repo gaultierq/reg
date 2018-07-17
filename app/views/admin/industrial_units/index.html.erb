@@ -75,7 +75,7 @@
         <% industrial_unit.faucets.filter(params.slice(:industrial_unit)).each do |faucet| %>
           <tr>
             <td>
-              <% if faucet.events.length > 0 %>
+              <% if faucet.events.where(seen: false).length > 0 %>
                 <%= image_tag("warning.svg", {:style => "height: 3%;"}) %>
               <% end %>
               <%= faucet.name %>
