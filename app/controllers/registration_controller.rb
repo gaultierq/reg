@@ -11,9 +11,9 @@ class RegistrationController < ApplicationController
       email = @registration.admin.email
     end
 
-    puts('CREATE')
-    puts(@registration).inspect
-    RegistrationMailer.registration_email(@registration, email)
+    puts(email).inspect
+    puts(@registration.admin).inspect
+    RegistrationMailer.registration_email(@registration, email).deliver_later
 
     redirect_to new_user_session_path, notice: "Demande envoyée."
   end
