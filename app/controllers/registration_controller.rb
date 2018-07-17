@@ -5,17 +5,21 @@ class RegistrationController < ApplicationController
 
   def create
     @registration = Registration.new(registration_params)
-    if @registration.admin.blank?
-      email = "gregoire.dubelloy@gmail.com"
+    if @registration.save
+      if @registration.admin.blank?
+        email = "gregoire.dubelloy@gmail.com"
+      else
+        email = @registration.admin.email
+      end
+
+      puts(email).inspect
+      puts(@registration.admin).inspect
+      RegistrationMailer.registration_email(@registration, email).deliver_later
+
+      redirect_to new_user_session_path, notice: "Demande envoyée."
     else
-      email = @registration.admin.email
+      render :new, alert: "Une erreur est survenue."
     end
-
-    puts(email).inspect
-    puts(@registration.admin).inspect
-    RegistrationMailer.registration_email(@registration, email).deliver_later
-
-    redirect_to new_user_session_path, notice: "Demande envoyée."
   end
 
   private
