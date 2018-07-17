@@ -66,7 +66,15 @@ ActiveRecord::Schema.define(version: 2018_07_17_084333) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "phone_number"
+    t.integer "second_factor_attempts_count", default: 0
+    t.string "encrypted_otp_secret_key"
+    t.string "encrypted_otp_secret_key_iv"
+    t.string "encrypted_otp_secret_key_salt"
+    t.string "direct_otp"
+    t.datetime "direct_otp_sent_at"
+    t.datetime "totp_timestamp"
     t.index ["email"], name: "index_admins_on_email", unique: true
+    t.index ["encrypted_otp_secret_key"], name: "index_admins_on_encrypted_otp_secret_key", unique: true
     t.index ["invitation_token"], name: "index_admins_on_invitation_token", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
