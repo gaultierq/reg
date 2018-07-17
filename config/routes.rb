@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   devise_for :admins
-  devise_for :users, controllers: {
-    registrations: 'devise/registrations'
-  }
+  devise_for :users
 
   namespace :admin do
     resources :faucets do
@@ -35,6 +33,8 @@ Rails.application.routes.draw do
 
     root 'faucets#index'
   end
+
+  resources :registration, only: %i[new create]
 
   root 'admin/industrial_units#index'
 end

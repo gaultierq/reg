@@ -1,5 +1,9 @@
 <%= image_tag("logo.png", {:style => "width: 35%; padding-bottom: 2%"}) %>
 
+<div class="uk-width-large uk-text-center">
+  <%= render 'shared/notice' %>
+</div>
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'uk-width-large' }) do |f| %>
 
   <% unless flash[:alert].nil? %>

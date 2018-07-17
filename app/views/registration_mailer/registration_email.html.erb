@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+Bonjour,
+<p>Un client a fait une demande de compte avec les informations suivantes :</p>
+<p>
+  Nom : <%= @user.last_name %>
+  Prénom : <%= @user.first_name %>
+  Adresse email : <%= @user.email %>
+  Téléphone : <%= @user.phone_number %>
+</p>
+</body>
+</html>
