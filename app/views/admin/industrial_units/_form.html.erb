@@ -38,6 +38,12 @@
     </div>
 
     <div class="uk-margin">
+      <%= form.label :sign_in_perimeter, "Périmètre de connexion", class: 'uk-form-label' %>
+      <%= form.text_field :sign_in_perimeter, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
+
+    <div class="uk-margin">
       <%= form.label :additional_information, "Informations complémentaires", class: 'uk-form-label' %>
       <%= form.text_area :additional_information, class: 'uk-textarea', data: { target: 'form.input' } %>
     </div>

@@ -185,7 +185,7 @@ ActiveRecord::Schema.define(version: 2018_07_20_200202) do
     t.text "process_information"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "sign_in_perimeter", default: 1000
+    t.integer "sign_in_perimeter", default: 10
   end
 
   create_table "registrations", force: :cascade do |t|
