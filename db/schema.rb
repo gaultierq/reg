@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_17_151418) do
+ActiveRecord::Schema.define(version: 2018_07_20_200202) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -185,6 +185,7 @@ ActiveRecord::Schema.define(version: 2018_07_17_151418) do
     t.text "process_information"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "sign_in_perimeter", default: 1000
   end
 
   create_table "registrations", force: :cascade do |t|
