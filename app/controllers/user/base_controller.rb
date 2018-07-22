@@ -8,7 +8,7 @@ class User::BaseController < ApplicationController
 
   def verify_user_in_range
     if current_user.industrial_units.any?
-      location = Geokit::Geocoders::MultiGeocoder.geocode("141.134.40.147")(current_user.current_sign_in_ip)
+      location = Geokit::Geocoders::MultiGeocoder.geocode(current_user.current_sign_in_ip)
       return if location.success? && current_user.industrial_units.in_range(user_login_range, origin: location).exists?
     end
 
