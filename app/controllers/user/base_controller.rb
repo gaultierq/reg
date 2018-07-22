@@ -22,7 +22,7 @@ class User::BaseController < ApplicationController
   end
 
   def user_login_max_distance
-    current_user.industrial_units.reduce(0) do |industrial_unit, memo|
+    current_user.industrial_units.reduce(0) do |memo, industrial_unit|
       industrial_unit.sign_in_perimeter > memo ? industrial_unit.sign_in_perimeter : memo
     end
   end
