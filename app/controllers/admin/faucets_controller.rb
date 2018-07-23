@@ -107,38 +107,38 @@ class Admin::FaucetsController < Admin::BaseController
 
   def archive_admin
     @faucet = Faucet.find(params[:id])
-    if @faucet.archived
-      @faucet.archived = false
-      if @faucet.save
-        redirect_to admin_faucet_path(@faucet), notice: 'Robinet activé avec succès.'
-      else
-        redirect_to admin_faucet_path(@faucet), alert: 'Erreur dans l\'activation du robinet.'
-      end
-    else
+    if @faucet.archived.nil? || !@faucet.archived
       @faucet.archived = true
       if @faucet.save
         redirect_to admin_faucet_path(@faucet), notice: 'Robinet désactivé avec succès.'
       else
         redirect_to admin_faucet_path(@faucet), alert: 'Erreur dans la désactivation du robinet.'
       end
+    else
+      @faucet.archived = false
+      if @faucet.save
+        redirect_to admin_faucet_path(@faucet), notice: 'Robinet activé avec succès.'
+      else
+        redirect_to admin_faucet_path(@faucet), alert: 'Erreur dans l\'activation du robinet.'
+      end
     end
   end
 
   def archive_user
     @faucet = Faucet.find(params[:id])
-    if @faucet.archived
-      @faucet.archived = false
-      if @faucet.save
-        redirect_to user_faucet_path(@faucet), notice: 'Robinet activé avec succès.'
-      else
-        redirect_to user_faucet_path(@faucet), alert: 'Erreur dans l\'activation du robinet.'
-      end
-    else
+    if @faucet.archived.nil? || !@faucet.archived
       @faucet.archived = true
       if @faucet.save
         redirect_to user_faucet_path(@faucet), notice: 'Robinet désactivé avec succès.'
       else
         redirect_to user_faucet_path(@faucet), alert: 'Erreur dans la désactivation du robinet.'
+      end
+    else
+      @faucet.archived = false
+      if @faucet.save
+        redirect_to user_faucet_path(@faucet), notice: 'Robinet activé avec succès.'
+      else
+        redirect_to user_faucet_path(@faucet), alert: 'Erreur dans l\'activation du robinet.'
       end
     end
   end
