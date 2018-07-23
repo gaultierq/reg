@@ -1,0 +1,5 @@
+class AddArchivedToFaucets < ActiveRecord::Migration[5.2]
+  def change
+    add_column :faucets, :archived, :boolean
+  end
+end

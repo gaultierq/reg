@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :faucets do
       member do
         get 'duplicate'
+        get 'archive_admin'
+        get 'archive_user'
       end
     end
 

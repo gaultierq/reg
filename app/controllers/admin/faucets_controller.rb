@@ -50,6 +50,9 @@ class Admin::FaucetsController < Admin::BaseController
   def create
     @faucet = Faucet.new(faucet_params)
 
+    if @faucet.archived.nil?
+      @faucet.archived = false
+    end
     if @faucet.manufacturing_date.nil?
       @faucet.manufacturing_date = Date.today.strftime('%d/%m/%Y')
     end
@@ -69,6 +72,9 @@ class Admin::FaucetsController < Admin::BaseController
     end
 
     if @faucet.update(faucet_params)
+      if @faucet.archived.nil?
+        @faucet.archived = false
+      end
       add_attachments
       redirect_to admin_faucet_path(@faucet), notice: 'Robinet modifié avec succès.'
     else
@@ -95,6 +101,44 @@ class Admin::FaucetsController < Admin::BaseController
       @faucet.serial_number = Faucet.where.not(serial_number: nil).order(serial_number: :desc).first.serial_number + 1
       if @faucet.save
         redirect_to admin_faucet_path(@faucet), notice: 'Robinet dupliqué avec succès.'
+      end
+    end
+  end
+
+  def archive_admin
+    @faucet = Faucet.find(params[:id])
+    if @faucet.archived
+      @faucet.archived = false
+      if @faucet.save
+        redirect_to admin_faucet_path(@faucet), notice: 'Robinet activé avec succès.'
+      else
+        redirect_to admin_faucet_path(@faucet), alert: 'Erreur dans l\'activation du robinet.'
+      end
+    else
+      @faucet.archived = true
+      if @faucet.save
+        redirect_to admin_faucet_path(@faucet), notice: 'Robinet désactivé avec succès.'
+      else
+        redirect_to admin_faucet_path(@faucet), alert: 'Erreur dans la désactivation du robinet.'
+      end
+    end
+  end
+
+  def archive_user
+    @faucet = Faucet.find(params[:id])
+    if @faucet.archived
+      @faucet.archived = false
+      if @faucet.save
+        redirect_to user_faucet_path(@faucet), notice: 'Robinet activé avec succès.'
+      else
+        redirect_to user_faucet_path(@faucet), alert: 'Erreur dans l\'activation du robinet.'
+      end
+    else
+      @faucet.archived = true
+      if @faucet.save
+        redirect_to user_faucet_path(@faucet), notice: 'Robinet désactivé avec succès.'
+      else
+        redirect_to user_faucet_path(@faucet), alert: 'Erreur dans la désactivation du robinet.'
       end
     end
   end
@@ -336,6 +380,6 @@ class Admin::FaucetsController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def faucet_params
-      params.require(:faucet).permit(:name, :rfid_number, :serial_number, :number_customer_tag, :manufacturing_date, :sales_number, :customer_order_number, :article_number, :industrial_unit_id, :dn, :input_connection, :output_connection, :double_jacket_connection, :inclination_input_offset_output, :face_to_face, :maximal_pressure, :test_pressure, :maximum_temperature, :pressure_at_maximum_temperature, :minimum_temperature, :pressure_at_minimum_temperature, :fluid_name, :pressure, :temperature, :fluid_nature, :fluid_danger_group, :unstable_gas, :risk_category, :manual_control, :actuator, :pneumatic_actuator_pressure, :position_detector, :open_position, :close_position, :piloting, :other_instrumentation, :shell, :double_shell, :shutter_cover, :seat, :cable_gland_packing, :seals, :material_certificates_required, :atex, :other_special_requirements, :other_controls, :other, :note)
+      params.require(:faucet).permit(:name, :rfid_number, :serial_number, :number_customer_tag, :manufacturing_date, :sales_number, :customer_order_number, :article_number, :industrial_unit_id, :dn, :input_connection, :output_connection, :double_jacket_connection, :inclination_input_offset_output, :face_to_face, :maximal_pressure, :test_pressure, :maximum_temperature, :pressure_at_maximum_temperature, :minimum_temperature, :pressure_at_minimum_temperature, :fluid_name, :pressure, :temperature, :fluid_nature, :fluid_danger_group, :unstable_gas, :risk_category, :manual_control, :actuator, :pneumatic_actuator_pressure, :position_detector, :open_position, :close_position, :piloting, :other_instrumentation, :shell, :double_shell, :shutter_cover, :seat, :cable_gland_packing, :seals, :material_certificates_required, :atex, :other_special_requirements, :other_controls, :other, :note, :archived)
     end
 end
