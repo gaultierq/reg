@@ -7,7 +7,6 @@ Rails.application.routes.draw do
       member do
         get 'duplicate'
         get 'archive_admin'
-        get 'archive_user'
       end
     end
 
@@ -29,7 +28,11 @@ Rails.application.routes.draw do
 
   namespace :user do
     resources :industrial_units, only: %i[index show]
-    resources :faucets, only: %i[index show edit update]
+    resources :faucets, only: %i[index show edit update] do
+      member do
+        get 'archive_user'
+      end
+    end
     resources :events
     resources :users, only: %i[edit update]
 

@@ -65,7 +65,11 @@
         <tbody>
         <% @industrial_units.each do |industrial_unit| %>
           <% industrial_unit.faucets.filter(params.slice(:industrial_unit)).each do |faucet| %>
-            <tr>
+            <% if faucet.archived %>
+              <tr class="row-disabled">
+            <% else %>
+              <tr>
+            <% end %>
               <td>
                 <% if faucet.events.length > 0 %>
                   <%= image_tag("warning.svg", {:style => "height: 3%;"}) %>

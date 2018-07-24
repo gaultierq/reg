@@ -73,7 +73,11 @@
       <tbody>
       <% @industrial_units.each do |industrial_unit| %>
         <% industrial_unit.faucets.filter(params.slice(:industrial_unit)).each do |faucet| %>
-          <tr>
+          <% if faucet.archived %>
+            <tr class="row-disabled">
+          <% else %>
+            <tr>
+          <% end %>
             <td>
               <% if faucet.events.where(seen: false).length > 0 %>
                 <%= image_tag("warning.svg", {:style => "height: 3%;"}) %>
@@ -97,21 +101,23 @@
                     <span uk-icon="search", uk-tooltip="Détails"></span>
                   <% end %>
                 </li>
-                <li>
-                  <%= link_to edit_admin_faucet_path(faucet) do %>
-                    <span uk-icon="pencil", uk-tooltip="Modifier"></span>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to duplicate_admin_faucet_path(faucet) do %>
-                    <span uk-icon="copy", uk-tooltip="Dupliquer"></span>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to admin_faucet_path(faucet), method: :delete, data: {confirm: 'Êtes-vous sûr ?'} do %>
-                    <span uk-icon="trash", uk-tooltip="Supprimer"></span>
-                  <% end %>
-                </li>
+                <% if !faucet.archived %>
+                  <li>
+                    <%= link_to edit_admin_faucet_path(faucet) do %>
+                      <span uk-icon="pencil", uk-tooltip="Modifier"></span>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to duplicate_admin_faucet_path(faucet) do %>
+                      <span uk-icon="copy", uk-tooltip="Dupliquer"></span>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to admin_faucet_path(faucet), method: :delete, data: {confirm: 'Êtes-vous sûr ?'} do %>
+                      <span uk-icon="trash", uk-tooltip="Supprimer"></span>
+                    <% end %>
+                  </li>
+                <% end %>
               </ul>
             </td>
           </tr>
