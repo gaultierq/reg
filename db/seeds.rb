@@ -10,6 +10,9 @@
 Admin.create(first_name: "Florent", last_name: "Beaurain", email: "beaurain.florent@protonmail.com",
              phone_number: FFaker::PhoneNumberFR.unique.phone_number, password: "password", password_confirmation: "password", kind: "administrator")
 
+Admin.create(first_name: "Quentin", last_name: "Gaultier", email: "quentin.gaultier@gmail.com",
+             phone_number: FFaker::PhoneNumberFR.unique.phone_number, password: "password", password_confirmation: "password", kind: "administrator")
+
 # Salesman
 10.times do
   Admin.create(first_name: FFaker::Name.first_name , last_name: FFaker::Name.last_name, email: FFaker::Internet.unique.email,
@@ -32,8 +35,7 @@ end
 
 # Industrial unit
 10.times do |i|
-  industrial_unit = IndustrialUnit.create(name: "Unité Industrielle n°#{i}", address: FFaker::AddressFR.street_address,
-                                          city: FFaker::AddressFR.city, postcode: FFaker::AddressFR.postal_code, country: "France")
+  industrial_unit = IndustrialUnit.create(name: "Unité Industrielle n°#{i}", address: FFaker::AddressFR.street_address, city: FFaker::AddressFR.city, postcode: FFaker::AddressFR.postal_code, country: "France")
 
   industrial_unit.admin_industrial_units.create!(admin_id: (industrial_unit.id + 1))
   industrial_unit.user_industrial_units.create!(user_id: industrial_unit.id + 1)
