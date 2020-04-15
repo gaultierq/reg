@@ -35,8 +35,8 @@ end
 
 # Industrial unit
 10.times do |i|
-  industrial_unit = IndustrialUnit.create(name: "Unité Industrielle n°#{i}", address: FFaker::AddressFR.street_address, city: FFaker::AddressFR.city, postcode: FFaker::AddressFR.postal_code, country: "France")
-
+  industrial_unit = IndustrialUnit.new(name: "Unité Industrielle n°#{i}", address: FFaker::AddressFR.street_address, city: FFaker::AddressFR.city, postcode: FFaker::AddressFR.postal_code, country: "France")
+  industrial_unit.save!(validate: false)
   industrial_unit.admin_industrial_units.create!(admin_id: (industrial_unit.id + 1))
   industrial_unit.user_industrial_units.create!(user_id: industrial_unit.id + 1)
   industrial_unit.user_industrial_units.create!(user_id: (industrial_unit.id + 11))
