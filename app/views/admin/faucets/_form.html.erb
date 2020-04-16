@@ -564,7 +564,7 @@
         <%= link_to '#', class: 'uk-accordion-title' do %>Documentation<% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
-            <%= form.label :existing_documentation_plan_attachment, "Ajouter un document de plan existant", class: 'uk-form-label' %>
+            <%= form.label :existing_documentation_plan_attachment, "Ajouter un plan existant", class: 'uk-form-label' %>
             <% if @tap_template.present? %>
               <%= form.select :existing_documentation_plan_attachment, Attachment.where(kind: :documentation_plan).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
                               {selected: @tap_template.attachments.where(kind: :documentation_plan).ids}, {multiple: true, id: 'existing_documentation_plan_attachment', data: {target: 'form.input'}} %>
@@ -576,7 +576,7 @@
 
           <div class="uk-margin">
             <div>
-              <%= form.label :new_documentation_plan_attachment, "Ajouter un nouveau document de plan", class: 'uk-form-label' %>
+              <%= form.label :new_documentation_plan_attachment, "Ajouter un nouveau plan", class: 'uk-form-label' %>
             </div>
             <%= form.file_field :new_documentation_plan_attachment, multiple: true %>
           </div>
