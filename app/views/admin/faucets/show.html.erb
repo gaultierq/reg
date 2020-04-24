@@ -33,6 +33,7 @@
               <% end %>
             </div>
           </div>
+          <%= link_to 'Créer un modèle', templatize_admin_faucet_path, class: 'uk-button uk-button-default' %>
           <%= link_to 'Modifier', edit_admin_faucet_path, class: 'uk-button uk-button-primary' %>
           <%= link_to 'Supprimer', admin_faucet_path(@faucet), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'uk-button uk-button-danger' %>
         <% else %>

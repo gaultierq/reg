@@ -103,6 +103,53 @@ class Admin::FaucetsController < Admin::BaseController
     end
   end
 
+
+  # list of the attributes to copy when creating a template
+  TEMPLATE_ATTR = [
+      'article_number',
+      'dn',
+      'input_connection',
+      'output_connection',
+      'double_jacket_connection',
+      'inclination_input_offset_output',
+      'face_to_face',
+      'maximal_pressure',
+      'test_pressure',
+      'maximum_temperature',
+      'pressure_at_maximum_temperature',
+      'minimum_temperature',
+      'pressure_at_minimum_temperature',
+      'fluid_nature',
+      'fluid_danger_group',
+      'unstable_gas',
+      'risk_category',
+      'manual_control',
+      'actuator',
+      'pneumatic_actuator_pressure',
+      'position_detector',
+      'open_position',
+      'close_position',
+      'piloting',
+      'instrumentation_pilotage',
+      'other_instrumentation',
+      'shell',
+      'double_shell',
+      'shutter_cover',
+      'seat',
+      'cable_gland_packing',
+      'seals',
+      'atex',
+      'other_special_requirements',
+      'other_controls',
+  ]
+
+  # GET /faucets/{id}/templatize
+  def templatize
+    set_faucet
+    template = TapTemplate.create!(@faucet.attributes.select {|k| TEMPLATE_ATTR.include?(k)})
+    redirect_to admin_tap_template_path(template)
+  end
+
   def archive_admin
     @faucet = Faucet.find(params[:id])
     if @faucet.archived.nil? || !@faucet.archived

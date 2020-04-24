@@ -114,26 +114,7 @@
                 <td><%= @tap_template.pressure_at_minimum_temperature %></td>
               </tr>
 
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document d'instruction de
-                  service
-                </td>
-                <td>
-                  <table>
-                    <tbody>
-                    <% @tap_template.attachments.where(kind: :instruction_service).each do |attachment| %>
-                      <tr class="tr-transparent">
-                        <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
-                        <% else %>
-                          <td></td>
-                        <% end %>
-                      </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
+
               </tbody>
             </table>
           </div>
@@ -403,6 +384,40 @@
           </div>
         </div>
       </li>
+
+      <li>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Documentation<% end %>
+        <div class="uk-accordion-content">
+          <div class="uk-overflow-auto">
+            <table class="uk-table uk-table-striped">
+              <tbody>
+              <tr>
+                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document d'instruction de
+                  service
+                </td>
+                <td>
+                  <table>
+                    <tbody>
+                    <% @tap_template.attachments.where(kind: :instruction_service).each do |attachment| %>
+                      <tr class="tr-transparent">
+                        <% if attachment.pdf.attached? %>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
+                        <% else %>
+                          <td></td>
+                        <% end %>
+                      </tr>
+                    <% end %>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </li>
+
+
 
       <li>
         <%= link_to '#', class: 'uk-accordion-title' do %>Autres

@@ -16,6 +16,15 @@ class Admin::TapTemplatesController < Admin::BaseController
     @tap_template = TapTemplate.new
   end
 
+
+  # GET /tap_templates/new_from_params
+  def new_from_params
+    @tap_template = TapTemplate.new(tap_template_params)
+    respond_to do |format|
+      format.html { render :template => "tap_template/new" }
+    end
+  end
+
   # GET /tap_templates/1/edit
   def edit
   end

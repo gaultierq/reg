@@ -7,11 +7,17 @@ Rails.application.routes.draw do
       member do
         get 'duplicate'
         get 'archive_admin'
+        get 'templatize'
       end
     end
 
     resources :attachments
-    resources :tap_templates
+    resources :tap_templates do
+      member do
+        get 'new_from_params'
+      end
+    end
+
     resources :industrial_units do
     collection do
       get 'index_mobile'
