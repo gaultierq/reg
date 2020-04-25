@@ -358,6 +358,7 @@
   </fieldset>
 <% end %>
 
+
 <script>
     $(document).ready(function () {
         $('#existing_instruction_service_attachment').select2();
@@ -422,124 +423,47 @@
             }
         });
 
-        $("#faucet_actuator_checkbox").click(function () {
-            const isDisabled = $("#faucet_actuator_checkbox").prop('checked');
-            if (isDisabled) {
-                $("#faucet_actuator").removeAttr("disabled");
-                $("#faucet_new_actionnement_actionneur_attachment").removeAttr("disabled");
-                $("#existing_actionnement_actionneur_attachment").removeAttr("disabled");
-            } else {
-                $("#faucet_actuator").prop('disabled', true);
-                $("#faucet_new_actionnement_actionneur_attachment").prop('disabled', true);
-                $("#existing_actionnement_actionneur_attachment").prop('disabled', true);
-            }
-        });
 
-        $("#faucet_piloting_checkbox").click(function () {
-            const isDisabled = $("#faucet_piloting_checkbox").prop('checked');
-            if (isDisabled) {
-                $("#faucet_piloting").removeAttr("disabled");
-                $("#faucet_new_instrumentation_pilotage_attachment").removeAttr("disabled");
-                $("#existing_instrumentation_pilotage_attachment").removeAttr("disabled");
-            } else {
-                $("#faucet_piloting").prop('disabled', true);
-                $("#faucet_new_instrumentation_pilotage_attachment").prop('disabled', true);
-                $("#existing_instrumentation_pilotage_attachment").prop('disabled', true);
-            }
-        });
+        <%=  render 'form_js_disabled', checkbox_id: "#faucet_actuator_checkbox",
+        attachments: [:actionnement_actionneur],
+        dyn_ids: ["#faucet_actuator"]
+        %>
 
-        $("#faucet_other_instrumentation_checkbox").click(function () {
-            const isDisabled = $("#faucet_other_instrumentation_checkbox").prop('checked');
-            if (isDisabled) {
-                $("#faucet_other_instrumentation").removeAttr("disabled");
-                $("#faucet_new_instrumentation_autre_attachment").removeAttr("disabled");
-                $("#existing_instrumentation_autre_attachment").removeAttr("disabled");
-            } else {
-                $("#faucet_other_instrumentation").prop('disabled', true);
-                $("#faucet_new_instrumentation_autre_attachment").prop('disabled', true);
-                $("#existing_instrumentation_autre_attachment").prop('disabled', true);
-            }
-        });
+        <%=  render 'form_js_disabled', checkbox_id: "#faucet_piloting_checkbox",
+        attachments: [:instrumentation_pilotage],
+        dyn_ids: ["#faucet_piloting"]
+        %>
+        <%=  render 'form_js_disabled', checkbox_id: "#faucet_other_instrumentation_checkbox",
+                attachments: [:instrumentation_autre],
+                dyn_ids: ["#faucet_other_instrumentation"]
+        %>
+        <%=  render 'form_js_disabled', checkbox_id: "#faucet_position_detector_checkbox",
+                        attachments: [:instrumentation_position],
+                        dyn_ids: ["#faucet_position_detector", "#faucet_open_position", "#faucet_close_position"]
+                %>
 
-        $("#faucet_position_detector_checkbox").click(function () {
-            const isDisabled = $("#faucet_position_detector_checkbox").prop('checked');
-            if (isDisabled) {
-                $("#faucet_position_detector").removeAttr("disabled");
-                $("#faucet_open_position").removeAttr("disabled");
-                $("#faucet_close_position").removeAttr("disabled");
-                $("#faucet_new_instrumentation_position_attachment").removeAttr("disabled");
-                $("#existing_instrumentation_position_attachment").removeAttr("disabled");
-            } else {
-                $("#faucet_position_detector").prop('disabled', true);
-                $("#faucet_open_position").prop('disabled', true);
-                $("#faucet_close_position").prop('disabled', true);
-                $("#faucet_new_instrumentation_position_attachment").prop('disabled', true);
-                $("#existing_instrumentation_position_attachment").prop('disabled', true);
-            }
-        });
+        <%=  render 'form_js_disabled', checkbox_id: "#faucet_close_position",
+                                attachments: [:open_position],
+                                dyn_ids: []
+                        %>
 
-        $("#faucet_open_position").click(function () {
-            const isDisabled = $("#faucet_open_position").prop('checked');
-            if (isDisabled) {
-                $("#faucet_new_open_position_attachment").removeAttr("disabled");
-                $("#existing_open_position_attachment").removeAttr("disabled");
-            } else {
-                $("#faucet_new_open_position_attachment").prop('disabled', true);
-                $("#existing_open_position_attachment").prop('disabled', true);
-            }
-        });
+        <%=  render 'form_js_disabled', checkbox_id: "#faucet_open_position",
+                                attachments: [:close_position],
+                                dyn_ids: []
 
-        $("#faucet_close_position").click(function () {
-            const isDisabled = $("#faucet_close_position").prop('checked');
-            if (isDisabled) {
-                $("#faucet_new_close_position_attachment").removeAttr("disabled");
-                $("#existing_close_position_attachment").removeAttr("disabled");
-            } else {
-                $("#faucet_new_close_position_attachment").prop('disabled', true);
-                $("#existing_close_position_attachment").prop('disabled', true);
-            }
-        });
+                        %>
+        <%=  render 'form_js_disabled', checkbox_id: "#faucet_other_special_requirements_checkbox",
+                                        attachments: [:special_requirement],
+                                        dyn_ids: []
+                                %>
 
-        $("#faucet_other_special_requirements_checkbox").click(function () {
-            const isDisabled = $("#faucet_other_special_requirements_checkbox").prop('checked');
-            if (isDisabled) {
-                $("#faucet_new_special_requirement_attachment").removeAttr("disabled");
-                $("#existing_special_requirement_attachment").removeAttr("disabled");
-            } else {
-                $("#faucet_new_special_requirement_attachment").prop('disabled', true);
-                $("#existing_special_requirement_attachment").prop('disabled', true);
-            }
-        });
+        <%=  render 'form_js_disabled', checkbox_id: "#faucet_material_certificates_required",
+                                        attachments: [
+                                        :certif_corps, :certif_chapeau, :certif_tige,
+                                        :certif_clapet, :certif_siege, :certif_autre,],
+                                        dyn_ids: []
+                                %>
 
-        $("#faucet_material_certificates_required").click(function () {
-            const isDisabled = $("#faucet_material_certificates_required").prop('checked');
-            if (isDisabled) {
-                $("#existing_certif_corps_attachment").removeAttr("disabled");
-                $("#existing_certif_chapeau_attachment").removeAttr("disabled");
-                $("#existing_certif_tige_attachment").removeAttr("disabled");
-                $("#existing_certif_clapet_attachment").removeAttr("disabled");
-                $("#existing_certif_siege_attachment").removeAttr("disabled");
-                $("#existing_certif_autre_attachment").removeAttr("disabled");
-                $("#faucet_new_certif_corps_attachment").removeAttr("disabled");
-                $("#faucet_new_certif_chapeau_attachment").removeAttr("disabled");
-                $("#faucet_new_certif_tige_attachment").removeAttr("disabled");
-                $("#faucet_new_certif_clapet_attachment").removeAttr("disabled");
-                $("#faucet_new_certif_siege_attachment").removeAttr("disabled");
-                $("#faucet_new_certif_autre_attachment").removeAttr("disabled");
-            } else {
-                $("#existing_certif_corps_attachment").prop('disabled', true);
-                $("#existing_certif_chapeau_attachment").prop('disabled', true);
-                $("#existing_certif_tige_attachment").prop('disabled', true);
-                $("#existing_certif_clapet_attachment").prop('disabled', true);
-                $("#existing_certif_siege_attachment").prop('disabled', true);
-                $("#existing_certif_autre_attachment").prop('disabled', true);
-                $("#faucet_new_certif_corps_attachment").prop('disabled', true);
-                $("#faucet_new_certif_chapeau_attachment").prop('disabled', true);
-                $("#faucet_new_certif_tige_attachment").prop('disabled', true);
-                $("#faucet_new_certif_clapet_attachment").prop('disabled', true);
-                $("#faucet_new_certif_siege_attachment").prop('disabled', true);
-                $("#faucet_new_certif_autre_attachment").prop('disabled', true);
-            }
-        });
+
     });
 </script>
