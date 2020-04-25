@@ -1,5 +1,6 @@
 class Admin::FaucetsController < Admin::BaseController
   before_action :set_faucet, only: [:show, :edit, :update, :destroy]
+  helper_method :selected_attachment, :kind_to_attachement, :title_add_attachment
 
   # GET /faucets
   def index
@@ -190,7 +191,11 @@ class Admin::FaucetsController < Admin::BaseController
 
 
   def kind_to_attachement(k)
-    "existing_#{k.to_s}_attachement".to_sym
+    "existing_#{k.to_s}_attachment".to_sym
+  end
+
+  def title_add_attachment(k)
+    Attachment.displayable_kind(k)
   end
 
   def add_attachments
@@ -230,6 +235,16 @@ class Admin::FaucetsController < Admin::BaseController
     if found_attachment.present? && !contains
       attachments << found_attachment
     end
+  end
+
+
+  def selected_attachment(kind)
+    if @tap_template.present?
+      @tap_template.attachments.where(kind: kind).ids
+    else
+      @faucet.attachments.where(kind: kind).ids
+    end
+
   end
 
   private

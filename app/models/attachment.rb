@@ -35,7 +35,11 @@ class Attachment < ApplicationRecord
 
 
   def displayable_kind
-    case self.kind
+    Attachment.displayable_kind(self.kind)
+  end
+
+  def self.displayable_kind(k)
+    case k
       when 'instruction_service'; "Instructions de service"
       when 'instrumentation_position'; "Détection position"
       when 'instrumentation_pilotage'; "Pilotage"
