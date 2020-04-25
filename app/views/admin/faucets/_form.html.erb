@@ -378,92 +378,26 @@
         $('#existing_control_attachment').select2();
         $('#existing_documentation_plan_attachment').select2();
 
-        $("#faucet_manual_control_checkbox").click(function () {
-            const isDisabled = $("#faucet_manual_control_checkbox").prop('checked');
-            if (isDisabled) {
-                $("#faucet_manual_control").removeAttr("disabled");
-            } else {
-                $("#faucet_manual_control").prop('disabled', true)
-            }
-        });
-
-        $("#faucet_pneumatic_actuator_pressure_checkbox").click(function () {
-            const isDisabled = $("#faucet_pneumatic_actuator_pressure_checkbox").prop('checked');
-            if (isDisabled) {
-                $("#faucet_pneumatic_actuator_pressure").removeAttr("disabled");
-            } else {
-                $("#faucet_pneumatic_actuator_pressure").prop('disabled', true)
-            }
-        });
-
-        $("#faucet_double_shell_checkbox").click(function () {
-            const isDisabled = $("#faucet_double_shell_checkbox").prop('checked');
-            if (isDisabled) {
-                $("#faucet_double_shell").removeAttr("disabled");
-            } else {
-                $("#faucet_double_shell").prop('disabled', true)
-            }
-        });
-
-        $("#faucet_atex_checkbox").click(function () {
-            const isDisabled = $("#faucet_atex_checkbox").prop('checked');
-            if (isDisabled) {
-                $("#faucet_atex").removeAttr("disabled");
-            } else {
-                $("#faucet_atex").prop('disabled', true)
-            }
-        });
-
-        $("#faucet_other_special_requirements_checkbox").click(function () {
-            const isDisabled = $("#faucet_other_special_requirements_checkbox").prop('checked');
-            if (isDisabled) {
-                $("#faucet_other_special_requirements").removeAttr("disabled");
-            } else {
-                $("#faucet_other_special_requirements").prop('disabled', true)
-            }
-        });
-
-
-        <%=  render 'form_js_disabled', checkbox_id: "#faucet_actuator_checkbox",
-        attachments: [:actionnement_actionneur],
-        dyn_ids: ["#faucet_actuator"]
-        %>
-
-        <%=  render 'form_js_disabled', checkbox_id: "#faucet_piloting_checkbox",
-        attachments: [:instrumentation_pilotage],
-        dyn_ids: ["#faucet_piloting"]
-        %>
-        <%=  render 'form_js_disabled', checkbox_id: "#faucet_other_instrumentation_checkbox",
-                attachments: [:instrumentation_autre],
-                dyn_ids: ["#faucet_other_instrumentation"]
-        %>
-        <%=  render 'form_js_disabled', checkbox_id: "#faucet_position_detector_checkbox",
-                        attachments: [:instrumentation_position],
-                        dyn_ids: ["#faucet_position_detector", "#faucet_open_position", "#faucet_close_position"]
-                %>
-
-        <%=  render 'form_js_disabled', checkbox_id: "#faucet_close_position",
-                                attachments: [:open_position],
-                                dyn_ids: []
-                        %>
-
-        <%=  render 'form_js_disabled', checkbox_id: "#faucet_open_position",
-                                attachments: [:close_position],
-                                dyn_ids: []
-
-                        %>
-        <%=  render 'form_js_disabled', checkbox_id: "#faucet_other_special_requirements_checkbox",
-                                        attachments: [:special_requirement],
-                                        dyn_ids: []
-                                %>
-
-        <%=  render 'form_js_disabled', checkbox_id: "#faucet_material_certificates_required",
-                                        attachments: [
+        // the following code is mapping checkboxes with their associated attachment upload button
+        <%
+        [
+        ["#faucet_manual_control_checkbox", [], ["#faucet_manual_control"]],
+        ["#faucet_pneumatic_actuator_pressure_checkbox", [], ["#faucet_pneumatic_actuator_pressure"]],
+        ["#faucet_double_shell_checkbox", [], ["#faucet_double_shell"]],
+        ["#faucet_atex_checkbox", [], ["#faucet_atex"]],
+        ["#faucet_actuator_checkbox", [:actionnement_actionneur], ["#faucet_actuator"]],
+        ["#faucet_piloting_checkbox", [:instrumentation_pilotage], ["#faucet_piloting"]],
+        ["#faucet_other_instrumentation_checkbox", [:instrumentation_autre], ["#faucet_other_instrumentation"]],
+        ["#faucet_position_detector_checkbox", [:instrumentation_position], ["#faucet_position_detector", "#faucet_open_position", "#faucet_close_position"]],
+        ["#faucet_close_position", [:open_position], []],
+        ["#faucet_open_position", [:close_position], []],
+        ["#faucet_other_special_requirements_checkbox", [:special_requirement], ["#faucet_other_special_requirements"]],
+        ["#faucet_material_certificates_required", [
                                         :certif_corps, :certif_chapeau, :certif_tige,
-                                        :certif_clapet, :certif_siege, :certif_autre,],
-                                        dyn_ids: []
-                                %>
-
+                                        :certif_clapet, :certif_siege, :certif_autre,], []],
+        ].each do |f| %>
+        <%=  render 'form_js_disabled', checkbox_id: f[0], attachments: f[1], dyn_ids: f[2] %>
+        <% end %>
 
     });
-</script>
+    </script>
