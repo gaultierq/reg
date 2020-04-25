@@ -33,10 +33,37 @@ class Attachment < ApplicationRecord
   validates :name, uniqueness: { message: ': Un fichier avec ce nom existe déjà' }
   validates :md5, uniqueness: { message: ': Ce fichier existe déjà' }
 
+
+  def displayable_kind
+    case self.kind
+      when 'instruction_service'; "Instructions de service"
+      when 'instrumentation_position'; "Détection position"
+      when 'instrumentation_pilotage'; "Pilotage"
+      when 'instrumentation_autre'; "Autre instrumentation"
+      when 'actionnement_actionneur'; "Actionneur"
+      when 'incident_maintenance'; "incident_maintenance"
+      when 'open_position'; "open_position"
+      when 'close_position'; "close_position"
+      when 'certif_corps'; "Certificat matière"
+      when 'certif_chapeau'; "certif_chapeau"
+      when 'certif_tige'; "certif_tige"
+      when 'certif_clapet'; "certif_clapet"
+      when 'certif_siege'; "certif_siege"
+      when 'certif_autre'; "certif_autre"
+      when 'special_requirement'; "Exigences particulières"
+      when 'control'; "Contrôle"
+      when 'documentation_plan'; "Plans"
+      else
+        "idk"
+    end
+  end
+
   private
 
   def compute_hash
     self.name = pdf.blob.filename
     self.md5 = pdf.blob.checksum
   end
+
+
 end
