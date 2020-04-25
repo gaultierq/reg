@@ -188,218 +188,33 @@ class Admin::FaucetsController < Admin::BaseController
     end
   end
 
+
+  def kind_to_attachement(k)
+    "existing_#{k.to_s}_attachement".to_sym
+  end
+
   def add_attachments
     attachments = []
+
+    puts "adding attachement #{params[:faucet]}"
     if params[:faucet].present?
-      if params[:faucet][:existing_instruction_service_attachment].present?
-        attachments << Attachment.where(id: params[:faucet][:existing_instruction_service_attachment].drop(1))
-      end
-      if params[:faucet][:existing_actionnement_actionneur_attachment].present?
-        attachments << Attachment.where(id: params[:faucet][:existing_actionnement_actionneur_attachment].drop(1))
-      end
-      if params[:faucet][:existing_instrumentation_position_attachment].present?
-        attachments << Attachment.where(id: params[:faucet][:existing_instrumentation_position_attachment].drop(1))
-      end
-      if params[:faucet][:existing_instrumentation_pilotage_attachment].present?
-        attachments << Attachment.where(id: params[:faucet][:existing_instrumentation_pilotage_attachment].drop(1))
-      end
-      if params[:faucet][:existing_instrumentation_autre_attachment].present?
-        attachments << Attachment.where(id: params[:faucet][:existing_instrumentation_autre_attachment].drop(1))
-      end
-      if params[:faucet][:existing_open_position_attachment].present?
-        attachments << Attachment.where(id: params[:faucet][:existing_open_position_attachment].drop(1))
-      end
-      if params[:faucet][:existing_close_position_attachment].present?
-        attachments << Attachment.where(id: params[:faucet][:existing_close_position_attachment].drop(1))
-      end
-      if params[:faucet][:existing_certif_corps_attachment].present?
-        attachments << Attachment.where(id: params[:faucet][:existing_certif_corps_attachment].drop(1))
-      end
-      if params[:faucet][:existing_certif_chapeau_attachment].present?
-        attachments << Attachment.where(id: params[:faucet][:existing_certif_chapeau_attachment].drop(1))
-      end
-      if params[:faucet][:existing_certif_tige_attachment].present?
-        attachments << Attachment.where(id: params[:faucet][:existing_certif_tige_attachment].drop(1))
-      end
-      if params[:faucet][:existing_certif_clapet_attachment].present?
-        attachments << Attachment.where(id: params[:faucet][:existing_certif_clapet_attachment].drop(1))
-      end
-      if params[:faucet][:existing_certif_siege_attachment].present?
-        attachments << Attachment.where(id: params[:faucet][:existing_certif_siege_attachment].drop(1))
-      end
-      if params[:faucet][:existing_certif_autre_attachment].present?
-        attachments << Attachment.where(id: params[:faucet][:existing_certif_autre_attachment].drop(1))
-      end
-      if params[:faucet][:existing_special_requirement_attachment].present?
-        attachments << Attachment.where(id: params[:faucet][:existing_special_requirement_attachment].drop(1))
-      end
-      if params[:faucet][:existing_control_attachment].present?
-        attachments << Attachment.where(id: params[:faucet][:existing_control_attachment].drop(1))
-      end
-      if params[:faucet][:existing_documentation_plan_attachment].present?
-        attachments << Attachment.where(id: params[:faucet][:existing_documentation_plan_attachment].drop(1))
-      end
-      if params[:faucet][:new_instruction_service_attachment].present?
-        params[:faucet][:new_instruction_service_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :instruction_service, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
+      Attachment.kinds.each {|a|
+        att = kind_to_attachement(a)
+        file = params[:faucet][att]
+        if file.present?
+          file.each do |attachment|
+            attachment_to_add = Attachment.new(kind: a, pdf: attachment)
+            if attachment_to_add.save
+              attachments << attachment_to_add
+            else
+              check_uniqueness(attachments, attachment_to_add)
+            end
           end
         end
-      end
-      if params[:faucet][:new_actionnement_actionneur_attachment].present?
-        params[:faucet][:new_actionnement_actionneur_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :actionnement_actionneur, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
-          end
-        end
-      end
-      if params[:faucet][:new_instrumentation_position_attachment].present?
-        params[:faucet][:new_instrumentation_position_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :instrumentation_position, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
-          end
-        end
-      end
-      if params[:faucet][:new_instrumentation_pilotage_attachment].present?
-        params[:faucet][:new_instrumentation_pilotage_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :instrumentation_pilotage, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
-          end
-        end
-      end
-      if params[:faucet][:new_instrumentation_autre_attachment].present?
-        params[:faucet][:new_instrumentation_autre_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :instrumentation_autre, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
-          end
-        end
-      end
-      if params[:faucet][:new_open_position_attachment].present?
-        params[:faucet][:new_open_position_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :open_position, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
-          end
-        end
-      end
-      if params[:faucet][:new_close_position_attachment].present?
-        params[:faucet][:new_close_position_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :close_position, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
-          end
-        end
-      end
-      if params[:faucet][:new_certif_corps_attachment].present?
-        params[:faucet][:new_certif_corps_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :certif_corps, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
-          end
-        end
-      end
-      if params[:faucet][:new_certif_chapeau_attachment].present?
-        params[:faucet][:new_certif_chapeau_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :certif_chapeau, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
-          end
-        end
-      end
-      if params[:faucet][:new_certif_tige_attachment].present?
-        params[:faucet][:new_certif_tige_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :certif_tige, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
-          end
-        end
-      end
-      if params[:faucet][:new_certif_clapet_attachment].present?
-        params[:faucet][:new_certif_clapet_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :certif_clapet, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
-          end
-        end
-      end
-      if params[:faucet][:new_certif_siege_attachment].present?
-        params[:faucet][:new_certif_siege_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :certif_siege, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
-          end
-        end
-      end
-      if params[:faucet][:new_certif_autre_attachment].present?
-        params[:faucet][:new_certif_autre_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :certif_autre, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
-          end
-        end
-      end
-      if params[:faucet][:new_special_requirement_attachment].present?
-        params[:faucet][:new_special_requirement_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :special_requirement, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
-          end
-        end
-      end
-      if params[:faucet][:new_control_attachment].present?
-        params[:faucet][:new_control_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :control, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
-          end
-        end
-      end
-      if params[:faucet][:new_documentation_plan_attachment].present?
-        params[:faucet][:new_documentation_plan_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :documentation_plan, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
-          end
-        end
-      end
+      }
+
     end
+
     @faucet.attachments.delete_all
     @faucet.attachments << attachments
   end

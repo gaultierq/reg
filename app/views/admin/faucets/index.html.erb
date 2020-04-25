@@ -27,6 +27,7 @@
         <th>N° vente REG</th>
         <th>DN</th>
         <th>Date de fabrication</th>
+        <th>Unité industrielle</th>
         <th data-orderable="false">Actions</th>
       </tr>
       </thead>
@@ -53,6 +54,7 @@
           <% else %>
             <td></td>
           <% end %>
+          <td><%= faucet.industrial_unit.name if faucet.industrial_unit.present? %></td>
           <td class="uk-flex uk-flex-center">
             <ul class="uk-iconnav">
               <li>
