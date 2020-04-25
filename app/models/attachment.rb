@@ -39,27 +39,7 @@ class Attachment < ApplicationRecord
   end
 
   def self.displayable_kind(k)
-    case k
-      when 'instruction_service'; "Instructions de service"
-      when 'instrumentation_position'; "Détection position"
-      when 'instrumentation_pilotage'; "Pilotage"
-      when 'instrumentation_autre'; "Autre instrumentation"
-      when 'actionnement_actionneur'; "Actionneur"
-      when 'incident_maintenance'; "incident_maintenance"
-      when 'open_position'; "open_position"
-      when 'close_position'; "close_position"
-      when 'certif_corps'; "Certificat matière"
-      when 'certif_chapeau'; "certif_chapeau"
-      when 'certif_tige'; "certif_tige"
-      when 'certif_clapet'; "certif_clapet"
-      when 'certif_siege'; "certif_siege"
-      when 'certif_autre'; "certif_autre"
-      when 'special_requirement'; "Exigences particulières"
-      when 'control'; "Contrôle"
-      when 'documentation_plan'; "Plans"
-      else
-        "idk"
-    end
+    I18n.t("attachment_kind.#{k}")
   end
 
   private
