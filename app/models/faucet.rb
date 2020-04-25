@@ -8,6 +8,7 @@ class Faucet < ApplicationRecord
   has_many :attachments, through: :faucet_attachments, dependent: :destroy
 
   scope :industrial_unit, ->(industrial_unit_id) { where(industrial_unit_id: industrial_unit_id) }
+  scope :without_industrial_unit, -> { where('industrial_unit_id is null') }
 
   enum fluid_nature: { liquide: 0, gas: 1 }
   enum fluid_danger_group: { I: 0, II: 1 }, _suffix: true

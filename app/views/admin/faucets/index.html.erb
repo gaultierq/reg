@@ -21,6 +21,7 @@
     <%= render 'shared/table', locals: { id: 'faucets_table', dom: 'lrtip', paging: false, info: false } do %>
       <thead>
       <tr>
+        <th>id</th>
         <th>Type</th>
         <th>N° article</th>
         <th>N° série REG</th>
@@ -39,6 +40,7 @@
         <% else %>
           <tr>
         <% end %>
+          <td><%= faucet.id %></td>
           <td>
             <% if faucet.events.where(seen: false).length > 0 %>
               <%= image_tag("warning.svg", {:style => "height: 3%;"}) %>

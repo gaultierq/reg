@@ -17,7 +17,9 @@
       <% if @event.faucet.present? %>
         <%= form.select :faucet_id, [@event.faucet].collect { |faucet| [faucet.name, faucet.id ] }, {}, {class: 'uk-select', data: {target: 'form.input' } } %>
       <% else %>
-        <%= form.select :faucet_id, Faucet.all.collect { |faucet| [faucet.name, faucet.id ] }, {}, {class: 'uk-select', data: {target: 'form.input' } } %>
+        <%= form.select :faucet_id, options_for_select(Faucet.all.collect { |faucet| [faucet.name, faucet.id ] }, disabled: Faucet.without_industrial_unit.ids),
+                                                       {},
+                        {class: 'uk-select', data: {target: 'form.input' } } %>
       <% end %>
     </div>
 
