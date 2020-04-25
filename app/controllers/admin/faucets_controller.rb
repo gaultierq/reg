@@ -1,6 +1,6 @@
 class Admin::FaucetsController < Admin::BaseController
   before_action :set_faucet, only: [:show, :edit, :update, :destroy]
-  helper_method :selected_attachment, :kind_to_attachement, :title_add_attachment
+  helper_method :selected_attachment, :kind_to_attachement,
 
   # GET /faucets
   def index
@@ -194,9 +194,6 @@ class Admin::FaucetsController < Admin::BaseController
     "existing_#{k.to_s}_attachment".to_sym
   end
 
-  def title_add_attachment(k)
-    Attachment.displayable_kind(k)
-  end
 
   def add_attachments
     attachments = []

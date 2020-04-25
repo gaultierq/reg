@@ -24,7 +24,7 @@
         <tbody>
         <% @attachments.all.each do |attachment| %>
           <tr>
-            <td><%= attachment.displayable_kind %></td>
+            <td><%= I18n.t("attachment_kind.#{attachment.kind}") %></td>
             <% if attachment.pdf.attached? %>
               <td><%= attachment.pdf.blob.filename %></td>
             <% else %>

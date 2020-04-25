@@ -1,5 +1,5 @@
 <div class="uk-margin">
-  <%= form.label :existing_actionnement_actionneur_attachment, "#{title_add_attachment(kind)}", class: 'uk-form-label' %>
+  <%= form.label :existing_actionnement_actionneur_attachment, I18n.t("attachment_kind.#{kind}"), class: 'uk-form-label' %>
   <%= form.select kind_to_attachement(kind),
                   Attachment.where(kind: kind).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
                   {
