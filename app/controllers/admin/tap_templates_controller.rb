@@ -58,77 +58,11 @@ class Admin::TapTemplatesController < Admin::BaseController
   end
 
   def add_attachments
-    attachments = []
-    if params[:tap_template].present?
-      if params[:tap_template][:existing_instruction_service_attachment].present?
-        attachments << Attachment.where(id: params[:tap_template][:existing_instruction_service_attachment].drop(1))
-      end
-      if params[:tap_template][:existing_actionnement_actionneur_attachment].present?
-        attachments << Attachment.where(id: params[:tap_template][:existing_actionnement_actionneur_attachment].drop(1))
-      end
-      if params[:tap_template][:existing_instrumentation_position_attachment].present?
-        attachments << Attachment.where(id: params[:tap_template][:existing_instrumentation_position_attachment].drop(1))
-      end
-      if params[:tap_template][:existing_instrumentation_pilotage_attachment].present?
-        attachments << Attachment.where(id: params[:tap_template][:existing_instrumentation_pilotage_attachment].drop(1))
-      end
-      if params[:tap_template][:existing_instrumentation_autre_attachment].present?
-        attachments << Attachment.where(id: params[:tap_template][:existing_instrumentation_autre_attachment].drop(1))
-      end
-      if params[:tap_template][:new_instruction_service_attachment].present?
-        params[:tap_template][:new_instruction_service_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :instruction_service, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
-          end
-        end
-      end
-      if params[:tap_template][:new_actionnement_actionneur_attachment].present?
-        params[:tap_template][:new_actionnement_actionneur_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :actionnement_actionneur, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
-          end
-        end
-      end
-      if params[:tap_template][:new_instrumentation_position_attachment].present?
-        params[:tap_template][:new_instrumentation_position_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :instrumentation_position, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
-          end
-        end
-      end
-      if params[:tap_template][:new_instrumentation_pilotage_attachment].present?
-        params[:tap_template][:new_instrumentation_pilotage_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :instrumentation_pilotage, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
-          end
-        end
-      end
-      if params[:tap_template][:new_instrumentation_autre_attachment].present?
-        params[:tap_template][:new_instrumentation_autre_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :instrumentation_autre, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
-          end
-        end
-      end
-    end
+    attachments = Attachment.prepare_attach(params[:tap_template])
     @tap_template.attachments.delete_all
     @tap_template.attachments << attachments
   end
+
 
   def check_uniqueness(attachments, attachment_to_add)
     found_attachment = Attachment.find_by(md5: attachment_to_add.md5)
@@ -144,13 +78,13 @@ class Admin::TapTemplatesController < Admin::BaseController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tap_template
-      @tap_template = TapTemplate.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_tap_template
+    @tap_template = TapTemplate.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def tap_template_params
-      params.require(:tap_template).permit(:name, :article_number, :dn, :input_connection, :output_connection, :double_jacket_connection, :inclination_input_offset_output, :face_to_face, :maximal_pressure, :test_pressure, :maximum_temperature, :pressure_at_maximum_temperature, :minimum_temperature, :pressure_at_minimum_temperature, :fluid_nature, :fluid_danger_group, :unstable_gas, :risk_category, :manual_control, :actuator, :pneumatic_actuator_pressure, :position_detector, :open_position, :close_position, :piloting, :other_instrumentation, :shell, :double_shell, :shutter_cover, :seat, :cable_gland_packing, :seals, :atex, :other_special_requirements, :other_controls, :other)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def tap_template_params
+    params.require(:tap_template).permit(:name, :article_number, :dn, :input_connection, :output_connection, :double_jacket_connection, :inclination_input_offset_output, :face_to_face, :maximal_pressure, :test_pressure, :maximum_temperature, :pressure_at_maximum_temperature, :minimum_temperature, :pressure_at_minimum_temperature, :fluid_nature, :fluid_danger_group, :unstable_gas, :risk_category, :manual_control, :actuator, :pneumatic_actuator_pressure, :position_detector, :open_position, :close_position, :piloting, :other_instrumentation, :shell, :double_shell, :shutter_cover, :seat, :cable_gland_packing, :seals, :atex, :other_special_requirements, :other_controls, :other)
+  end
 end

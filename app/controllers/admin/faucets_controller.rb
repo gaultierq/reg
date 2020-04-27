@@ -196,27 +196,7 @@ class Admin::FaucetsController < Admin::BaseController
 
 
   def add_attachments
-    attachments = []
-
-    puts "adding attachement #{params[:faucet]}"
-    if params[:faucet].present?
-      Attachment.kinds.each {|a|
-        att = kind_to_attachement(a)
-        file = params[:faucet][att]
-        if file.present?
-          file.each do |attachment|
-            attachment_to_add = Attachment.new(kind: a, pdf: attachment)
-            if attachment_to_add.save
-              attachments << attachment_to_add
-            else
-              check_uniqueness(attachments, attachment_to_add)
-            end
-          end
-        end
-      }
-
-    end
-
+    attachments = Attachment.prepare_attach(params[:faucet])
     @faucet.attachments.delete_all
     @faucet.attachments << attachments
   end

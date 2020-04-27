@@ -49,5 +49,38 @@ class Attachment < ApplicationRecord
     self.md5 = pdf.blob.checksum
   end
 
+  def self.prepare_attach(params)
+    attachments = []
+    if params.present?
+      Attachment.kinds.each {|kind, i|
+        existing = params["existing_#{kind.to_s}_attachment".to_sym]&.reject(&:empty?)
 
+        attachments.concat existing.map {|ex| Attachment.where(id: ex)}.flatten.compact if existing.present?
+
+        new_files = params["new_#{kind.to_s}_attachment".to_sym]
+
+        if new_files.present?
+          new_files.each do |attachment|
+            attachment_to_add = Attachment.new(kind: kind, pdf: attachment)
+
+            if attachment_to_add.valid?
+              # md5 + name are uniq
+              attachments << attachment_to_add
+            else
+              # file already in db, attaching to template
+              already = Attachment.find_by(md5: attachment_to_add.md5)
+              if already
+                attachments << already
+              else
+                # TODO: handle this case
+                puts "Un fichier avec le même nom est déjà présent"
+              end
+            end
+          end
+        end
+      }
+
+    end
+    attachments
+  end
 end

@@ -3,7 +3,7 @@
   <td>
     <table>
       <tbody>
-      <% @faucet.attachments.where(kind: @kind).each do |attachment| %>
+      <% attachments.each do |attachment| %>
         <tr class="tr-transparent">
           <% if attachment.pdf.attached? %>
             <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
