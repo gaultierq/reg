@@ -16,4 +16,11 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  # after 30min without activity
+  def timeout_in
+    30.minutes
+  end
+
+
 end

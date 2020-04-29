@@ -12,6 +12,9 @@ class User::BaseController < ApplicationController
       return if location.success? && current_user.industrial_units.in_range(user_login_range, origin: location).exists?
     end
 
+
+    return if Rails.env.development?
+
     sign_out current_user
     flash[:alert] = "Vous n'êtes pas/plus dans votre périmètre d'intervention"
     redirect_to new_user_session_path

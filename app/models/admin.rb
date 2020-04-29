@@ -23,4 +23,9 @@ class Admin < ApplicationRecord
   def send_two_factor_authentication_code(code)
     AdminMailer.otp_email(self, code).deliver_now
   end
+
+  def timeout_in
+    1.day
+  end
+
 end
