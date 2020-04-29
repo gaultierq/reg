@@ -14,7 +14,7 @@ class Event < ApplicationRecord
 
 
   def faucet_with_industrial_unit?
-    errors.add(:faucet, "cannot create a event on a faucet without industrial unit") unless faucet.industrial_unit.present?
+    errors.add(:faucet, "cannot create a event on a faucet without industrial unit") unless faucet&.industrial_unit.present?
   end
 
 end
