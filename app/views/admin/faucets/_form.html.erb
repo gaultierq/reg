@@ -224,14 +224,10 @@
             <%= form.check_box :open_position, class: 'uk-checkbox', disabled: @faucet.open_position.blank?, data: { target: 'form.input' } %>
           </div>
 
-          <%= render 'form_attachment', form: form, kind: :open_position %>
-
           <div class="uk-margin">
             <%= form.label :close_position, "Position fermée", class: 'uk-form-label' %>
             <%= form.check_box :close_position, class: 'uk-checkbox', disabled: @faucet.close_position.blank?, data: { target: 'form.input' } %>
           </div>
-
-          <%= render 'form_attachment', form: form, kind: :close_position %>
 
           <div class="uk-margin">
             <%= form.label :piloting, "Pilotage", class: 'uk-form-label' %>
