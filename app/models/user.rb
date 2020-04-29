@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   include DeviseInvitable::Inviter
   devise :database_authenticatable, :registerable, :recoverable, :rememberable,
-         :timeoutable, :trackable, :validatable, :invitable
+         :timeoutable, :trackable, :validatable, :invitable, :lockable
 
   has_many :user_industrial_units
   has_many :industrial_units, through: :user_industrial_units, dependent: :destroy

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_23_125925) do
+ActiveRecord::Schema.define(version: 2020_04_29_185016) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -115,6 +115,7 @@ ActiveRecord::Schema.define(version: 2018_07_23_125925) do
     t.integer "attachment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "categ"
     t.index ["attachment_id"], name: "index_faucet_attachments_on_attachment_id"
     t.index ["faucet_id"], name: "index_faucet_attachments_on_faucet_id"
   end
@@ -283,9 +284,13 @@ ActiveRecord::Schema.define(version: 2018_07_23_125925) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "phone_number"
+    t.integer "failed_attempts", default: 0, null: false
+    t.datetime "locked_at"
+    t.string "unlock_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
 end

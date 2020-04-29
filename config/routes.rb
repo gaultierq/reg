@@ -19,15 +19,19 @@ Rails.application.routes.draw do
     end
 
     resources :industrial_units do
-    collection do
-      get 'index_mobile'
+      collection do
+        get 'index_mobile'
+      end
     end
-  end
     resources :events
     resources :alerts
     resources :peoples, only: :index
     resources :admins, except: :index
-    resources :users, except: :index
+    resources :users, except: :index do
+      member do
+        post :unlock
+      end
+    end
 
     root 'industrial_units#index'
   end

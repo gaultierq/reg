@@ -67,7 +67,12 @@
         <tbody>
         <% @users.each do |user| %>
           <tr>
-            <td><%= user.id %></td>
+            <td>
+              <% if user.access_locked? %>
+                <%= image_tag("warning.svg", {:style => "height: 3%;"}) %>
+              <% end %>
+              <%= user.id %>
+            </td>
             <td><%= user.email %></td>
             <td class="uk-flex uk-flex-center">
               <ul class="uk-iconnav">

@@ -1,5 +1,5 @@
 class Admin::UsersController < Admin::BaseController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :unlock]
 
   # GET /users/1
   def show
@@ -50,6 +50,14 @@ class Admin::UsersController < Admin::BaseController
     end
     @user.industrial_units.delete_all
     @user.industrial_units << industrial_unit
+  end
+
+  def unlock
+    if @user.unlock_access!
+      redirect_to admin_peoples_url, notice: 'Utilisateur débloqué.'
+    else
+      redirect_to admin_peoples_path, alert: "Utilisateur n'a pas pu être débloqué."
+    end
   end
 
   private
