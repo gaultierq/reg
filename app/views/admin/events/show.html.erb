@@ -59,7 +59,7 @@
               <% @event.attachments.where(kind: :incident_maintenance).each do |attachment| %>
                 <tr class="tr-transparent">
                   <% if attachment.pdf.attached? %>
-                    <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
+                    <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
                   <% else %>
                     <td></td>
                   <% end %>

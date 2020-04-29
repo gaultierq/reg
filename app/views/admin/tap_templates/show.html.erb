@@ -181,7 +181,7 @@
                     <% @tap_template.attachments.where(kind: :actionnement_actionneur).each do |attachment| %>
                       <tr class="tr-transparent">
                         <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
                         <% else %>
                           <td></td>
                         <% end %>
@@ -226,7 +226,7 @@
                     <% @tap_template.attachments.where(kind: :instrumentation_position).each do |attachment| %>
                       <tr>
                         <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
                         <% else %>
                           <td></td>
                         <% end %>
@@ -260,7 +260,7 @@
                     <% @tap_template.attachments.where(kind: :instrumentation_pilotage).each do |attachment| %>
                       <tr class="tr-transparent">
                         <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
                         <% else %>
                           <td></td>
                         <% end %>
@@ -286,7 +286,7 @@
                     <% @tap_template.attachments.where(kind: :instrumentation_autre).each do |attachment| %>
                       <tr class="tr-transparent">
                         <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
                         <% else %>
                           <td></td>
                         <% end %>
@@ -401,7 +401,7 @@
                     <% @tap_template.attachments.where(kind: :instruction_service).each do |attachment| %>
                       <tr class="tr-transparent">
                         <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf) %></td>
+                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
                         <% else %>
                           <td></td>
                         <% end %>
