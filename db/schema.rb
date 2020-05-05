@@ -115,7 +115,6 @@ ActiveRecord::Schema.define(version: 2020_04_29_185016) do
     t.integer "attachment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "categ"
     t.index ["attachment_id"], name: "index_faucet_attachments_on_attachment_id"
     t.index ["faucet_id"], name: "index_faucet_attachments_on_faucet_id"
   end
