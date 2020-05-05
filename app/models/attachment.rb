@@ -34,14 +34,6 @@ class Attachment < ApplicationRecord
   validates :md5, uniqueness: { message: ': Ce fichier existe déjà' }
 
 
-  def displayable_kind
-    Attachment.displayable_kind(self.kind)
-  end
-
-  def self.displayable_kind(k)
-    I18n.t("attachment_kind.#{k}")
-  end
-
   private
 
   def compute_hash
