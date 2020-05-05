@@ -51,24 +51,9 @@
           <% end %>
         </tr>
 
-        <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document</td>
-          <td>
-            <table>
-              <tbody>
-              <% @event.attachments.where(kind: :incident_maintenance).each do |attachment| %>
-                <tr class="tr-transparent">
-                  <% if attachment.pdf.attached? %>
-                    <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
-                  <% else %>
-                    <td></td>
-                  <% end %>
-                </tr>
-              <% end %>
-              </tbody>
-            </table>
-          </td>
-        </tr>
+        <%= render 'admin/faucets/show_attachement',
+                   attachments: @event.attachments.where(kind: :incident_maintenance),
+                   title: "Documents" %>
         </tbody>
       </table>
     </div>

@@ -230,25 +230,11 @@
                 <td><%= @faucet.actuator %></td>
               </tr>
 
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document d'actionneur
-                </td>
-                <td>
-                  <table>
-                    <tbody>
-                    <% @faucet.attachments.where(kind: :actionnement_actionneur).each do |attachment| %>
-                      <tr class="tr-transparent">
-                        <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
-                        <% else %>
-                          <td></td>
-                        <% end %>
-                      </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
+
+              <%= render 'admin/faucets/show_attachement',
+                         attachments: @faucet.attachments.where(kind: :actionnement_actionneur),
+                         title: "Documents d'actionneur" %>
+
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression actionneur pneumatique</td>
@@ -271,110 +257,27 @@
                 <td><%= @faucet.position_detector %></td>
               </tr>
 
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document de détecteur de position</td>
-                <td>
-                  <table class="uk-table uk-table-striped">
-                    <tbody>
-                    <% @faucet.attachments.where(kind: :instrumentation_position).each do |attachment| %>
-                      <tr>
-                        <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
-                        <% else %>
-                          <td></td>
-                        <% end %>
-                      </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
-
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position ouverte</td>
-                <td>
-                  <table>
-                    <tbody>
-                    <% @faucet.attachments.where(kind: :open_position).each do |attachment| %>
-                      <tr class="tr-transparent">
-                        <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
-                        <% else %>
-                          <td></td>
-                        <% end %>
-                      </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
-
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position fermée</td>
-                <td>
-                  <table>
-                    <tbody>
-                    <% @faucet.attachments.where(kind: :close_position).each do |attachment| %>
-                      <tr class="tr-transparent">
-                        <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
-                        <% else %>
-                          <td></td>
-                        <% end %>
-                      </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
+              <%= render 'admin/faucets/show_attachement',
+                         attachments: @faucet.attachments.where(kind: :instrumentation_position),
+                         title: "Documents de détecteur de position" %>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pilotage</td>
                 <td><%= @faucet.piloting %></td>
               </tr>
 
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document de pilotage</td>
-                <td>
-                  <table>
-                    <tbody>
-                    <% @faucet.attachments.where(kind: :instrumentation_pilotage).each do |attachment| %>
-                      <tr class="tr-transparent">
-                        <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
-                        <% else %>
-                          <td></td>
-                        <% end %>
-                      </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
+              <%= render 'admin/faucets/show_attachement',
+                         attachments: @faucet.attachments.where(kind: :instrumentation_pilotage),
+                         title: "Documents de pilotage" %>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres instrumentation</td>
                 <td><%= @faucet.other_instrumentation %></td>
               </tr>
 
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document d'autres instrumentation</td>
-                <td>
-                  <table>
-                    <tbody>
-                    <% @faucet.attachments.where(kind: :instrumentation_autre).each do |attachment| %>
-                      <tr class="tr-transparent">
-                        <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
-                        <% else %>
-                          <td></td>
-                        <% end %>
-                      </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
+              <%= render 'admin/faucets/show_attachement',
+                         attachments: @faucet.attachments.where(kind: :instrumentation_autre),
+                         title: "Documents d'autres instrumentation" %>
               </tbody>
             </table>
           </div>
@@ -426,119 +329,31 @@
                 </td>
               </tr>
 
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document certificat de matière corps</td>
-                <td>
-                  <table>
-                    <tbody>
-                    <% @faucet.attachments.where(kind: :certif_corps).each do |attachment| %>
-                      <tr class="tr-transparent">
-                        <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
-                        <% else %>
-                          <td></td>
-                        <% end %>
-                      </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
+              <%= render 'admin/faucets/show_attachement',
+                         attachments: @faucet.attachments.where(kind: :certif_corps),
+                         title: "Documents certificat de matière corps" %>
 
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document certificat de matière chapeau</td>
-                <td>
-                  <table>
-                    <tbody>
-                    <% @faucet.attachments.where(kind: :certif_chapeau).each do |attachment| %>
-                      <tr class="tr-transparent">
-                        <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
-                        <% else %>
-                          <td></td>
-                        <% end %>
-                      </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
+              <%= render 'admin/faucets/show_attachement',
+                         attachments: @faucet.attachments.where(kind: :certif_chapeau),
+                         title: "Documents certificat de matière chapeau" %>
 
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document certificat de matière tige</td>
-                <td>
-                  <table>
-                    <tbody>
-                    <% @faucet.attachments.where(kind: :certif_tige).each do |attachment| %>
-                      <tr class="tr-transparent">
-                        <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
-                        <% else %>
-                          <td></td>
-                        <% end %>
-                      </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
+              <%= render 'admin/faucets/show_attachement',
+                         attachments: @faucet.attachments.where(kind: :certif_tige),
+                         title: "Documents certificat de matière tige" %>
 
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document certificat de matière clapet</td>
-                <td>
-                  <table>
-                    <tbody>
-                    <% @faucet.attachments.where(kind: :certif_clapet).each do |attachment| %>
-                      <tr class="tr-transparent">
-                        <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
-                        <% else %>
-                          <td></td>
-                        <% end %>
-                      </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
+              <%= render 'admin/faucets/show_attachement',
+                         attachments: @faucet.attachments.where(kind: :certif_clapet),
+                         title: "Documents certificat de matière clapet" %>
 
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document certificat de matière siège</td>
-                <td>
-                  <table>
-                    <tbody>
-                    <% @faucet.attachments.where(kind: :certif_siege).each do |attachment| %>
-                      <tr class="tr-transparent">
-                        <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
-                        <% else %>
-                          <td></td>
-                        <% end %>
-                      </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
+              <%= render 'admin/faucets/show_attachement',
+                         attachments: @faucet.attachments.where(kind: :certif_siege),
+                         title: "Documents certificat de matière siège" %>
 
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document certificat de matière autre</td>
-                <td>
-                  <table>
-                    <tbody>
-                    <% @faucet.attachments.where(kind: :certif_autre).each do |attachment| %>
-                      <tr class="tr-transparent">
-                        <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
-                        <% else %>
-                          <td></td>
-                        <% end %>
-                      </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
+
+              <%= render 'admin/faucets/show_attachement',
+                         attachments: @faucet.attachments.where(kind: :certif_autre),
+                         title: "Documents certificat de matière autre" %>
+
               </tbody>
             </table>
           </div>
@@ -561,24 +376,10 @@
                 <td><%= @faucet.other_special_requirements %></td>
               </tr>
 
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document d'exigence particulière</td>
-                <td>
-                  <table>
-                    <tbody>
-                    <% @faucet.attachments.where(kind: :special_requirement).each do |attachment| %>
-                      <tr class="tr-transparent">
-                        <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
-                        <% else %>
-                          <td></td>
-                        <% end %>
-                      </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
+              <%= render 'admin/faucets/show_attachement',
+                         attachments: @faucet.attachments.where(kind: :special_requirement),
+                         title: "Documents d'exigence particulière" %>
+
               </tbody>
             </table>
           </div>
@@ -596,24 +397,9 @@
                 <td><%= @faucet.other_controls %></td>
               </tr>
 
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document de contrôle</td>
-                <td>
-                  <table>
-                    <tbody>
-                    <% @faucet.attachments.where(kind: :control).each do |attachment| %>
-                      <tr class="tr-transparent">
-                        <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
-                        <% else %>
-                          <td></td>
-                        <% end %>
-                      </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
+              <%= render 'admin/faucets/show_attachement',
+                         attachments: @faucet.attachments.where(kind: :control),
+                         title: "Documents de contrôle" %>
               </tbody>
             </table>
           </div>
@@ -626,43 +412,14 @@
           <div class="uk-overflow-auto">
             <table class="uk-table uk-table-striped">
               <tbody>
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Plan</td>
-                <td>
-                  <table>
-                    <tbody>
-                    <% @faucet.attachments.where(kind: :documentation_plan).each do |attachment| %>
-                      <tr class="tr-transparent">
-                        <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
-                        <% else %>
-                          <td></td>
-                        <% end %>
-                      </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
 
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Document d'instruction de service</td>
-                <td>
-                  <table>
-                    <tbody>
-                    <% @faucet.attachments.where(kind: :instruction_service).each do |attachment| %>
-                      <tr class="tr-transparent">
-                        <% if attachment.pdf.attached? %>
-                          <td><%= link_to attachment.pdf.blob.filename, url_for(attachment.pdf), target: :_blank %></td>
-                        <% else %>
-                          <td></td>
-                        <% end %>
-                      </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-                </td>
-              </tr>
+              <%= render 'admin/faucets/show_attachement',
+                         attachments: @faucet.attachments.where(kind: :documentation_plan),
+                         title: "Plans" %>
+
+              <%= render 'admin/faucets/show_attachement',
+                         attachments: @faucet.attachments.where(kind: :instruction_service),
+                         title: "Documents d'instruction de service" %>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres</td>
