@@ -56,7 +56,7 @@ export default class extends Controller {
 
     load() {
         this.table = $(this.id).DataTable({
-            responsive: true,
+            // responsive: true,
             dom: this.dom,
             paging: this.paging,
             info: this.info,
