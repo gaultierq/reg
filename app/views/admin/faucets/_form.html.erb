@@ -356,6 +356,20 @@
 
 
 <script>
+    function configureCheckbox(checkboxId, allIds) {
+        return function () {
+            // const wasDisabled = $(checkboxId).prop('checked');
+            const isEnabled = this.checked;
+            if (isEnabled) {
+                $.each(allIds, function(index, id) { $(id).removeAttr('disabled'); });
+            }
+            else {
+                $.each(allIds, function(index, id) { $(id).prop('disabled', true); });
+            }
+        }
+    }
+
+
     $(document).ready(function () {
         $('#existing_instruction_service_attachment').select2();
         $('#existing_instrumentation_position_attachment').select2();
@@ -392,7 +406,9 @@
                                         :certif_corps, :certif_chapeau, :certif_tige,
                                         :certif_clapet, :certif_siege, :certif_autre,], []],
         ].each do |f| %>
-        <%=  render 'form_js_disabled', checkbox_id: f[0], attachments: f[1], dyn_ids: f[2] %>
+        <%= raw "$('#{f[0]}').change(configureCheckbox('#{f[0]}', #{f[1].map{ |c| ["#existing_#{c}_attachment", "#faucet_new_#{c}_attachment"] }.flatten.concat(f[2])}))" %>
+        <%= raw "$('#{f[0]}').trigger('change');" %>
+
         <% end %>
 
     });
