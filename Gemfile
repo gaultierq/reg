@@ -35,8 +35,8 @@ group :production do
 end
 
 group :development, :test do
-  gem 'bullet'
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'bullet' #help to kill N+1 queries and unused eager loading
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw] #like degugger;
   gem 'factory_bot_rails'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
