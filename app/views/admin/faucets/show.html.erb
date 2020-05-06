@@ -255,9 +255,10 @@
                 <td><%= @faucet.actuator %></td>
               </tr>
 
-              <%= render 'show_attachement', 
-                         attachments: @faucet.attachments.where(kind: :actionnement_actionneur),  
-                         title: "Documents d'actionneur" %>
+              <%= render 'show_attachement',
+                         attachments: @faucet.attachments.where_kind(:actionnement_actionneur),
+                         title: t("attachment_title.#{:actionnement_actionneur}")
+              %>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression actionneur pneumatique</td>
@@ -279,20 +280,29 @@
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Détecteur de position</td>
                 <td><%= @faucet.position_detector %></td>
               </tr>
-              <%= render 'show_attachement', attachments: @faucet.attachments.where(kind: :actionnement_actionneur),  title: "Documents de détecteur de position" %>
+              <%= render 'show_attachement',
+                         attachments: @faucet.attachments.where_kind(:instrumentation_position),
+                         title: t("attachment_title.#{:instrumentation_position}")
+              %>
 
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pilotage</td>
                 <td><%= @faucet.piloting %></td>
               </tr>
-              <%= render 'show_attachement', attachments: @faucet.attachments.where(kind: :instrumentation_pilotage), title: "Documents de pilotage" %>
+              <%= render 'show_attachement',
+                         attachments: @faucet.attachments.where_kind(:instrumentation_pilotage),
+                         title: t("attachment_title.#{:instrumentation_pilotage}")
+              %>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres instrumentation</td>
                 <td><%= @faucet.other_instrumentation %></td>
               </tr>
-              <%= render 'show_attachement', attachments: @faucet.attachments.where(kind: :instrumentation_autre), title: "Documents d'autres instrumentation" %>
+              <%= render 'show_attachement',
+                         attachments: @faucet.attachments.where_kind(:instrumentation_autre),
+                         title: t("attachment_title.#{:instrumentation_autre}")
+              %>
               </tbody>
             </table>
           </div>
@@ -343,18 +353,30 @@
                   <% end %>
                 </td>
               </tr>
-              <%= render 'show_attachement', attachments: @faucet.attachments.where(kind: :certif_corps),
-                         title: "Documents corps" %>
-              <%= render 'show_attachement', attachments: @faucet.attachments.where(kind: :certif_chapeau),
-                         title: "Documents chapeau" %>
-              <%= render 'show_attachement', attachments: @faucet.attachments.where(kind: :certif_tige),
-                         title: "Documents tige" %>
-              <%= render 'show_attachement', attachments: @faucet.attachments.where(kind: :certif_clapet),
-                         title: "Documents clapet" %>
-              <%= render 'show_attachement', attachments: @faucet.attachments.where(kind: :certif_siege),
-                         title: "Documents siège" %>
-              <%= render 'show_attachement', attachments: @faucet.attachments.where(kind: :certif_autre),
-                         title: "Documents autre" %>
+              <%= render 'show_attachement',
+                         attachments: @faucet.attachments.where_kind(:certif_corps),
+                         title: t("attachment_title.#{:certif_corps}")
+              %>
+
+              <%= render 'show_attachement',
+                         attachments: @faucet.attachments.where_kind(:certif_chapeau),
+                         title: t("attachment_title.#{:certif_chapeau}")
+              %>
+              <%= render 'show_attachement', attachments: @faucet.attachments.where_kind(:certif_tige),
+                         title: t("attachment_title.#{:certif_tige}")
+              %>
+              <%= render 'show_attachement',
+                         attachments: @faucet.attachments.where_kind(:certif_clapet),
+                         title: t("attachment_title.#{:certif_clapet}")
+              %>
+              <%= render 'show_attachement',
+                         attachments: @faucet.attachments.where_kind(:certif_siege),
+                         title: t("attachment_title.#{:certif_siege}")
+              %>
+              <%= render 'show_attachement',
+                         attachments: @faucet.attachments.where_kind(:certif_autre),
+                         title: t("attachment_title.#{:certif_autre}")
+              %>
               </tbody>
             </table>
           </div>
@@ -377,7 +399,7 @@
                 <td><%= @faucet.other_special_requirements %></td>
               </tr>
 
-              <%= render 'show_attachement', attachments: @faucet.attachments.where(kind: :special_requirement), title: "Documents d'exigence particulière" %>
+              <%= render 'show_attachement', attachments: @faucet.attachments.where_kind(:special_requirement), title: "Documents d'exigence particulière" %>
               </tbody>
             </table>
           </div>
@@ -395,7 +417,10 @@
                 <td><%= @faucet.other_controls %></td>
               </tr>
 
-              <%= render 'show_attachement', attachments: @faucet.attachments.where(kind: :control), title: "Documents de contrôle" %>
+              <%= render 'show_attachement',
+                         attachments: @faucet.attachments.where_kind(:control),
+                         title: t("attachment_title.#{:control}")
+              %>
               </tbody>
             </table>
           </div>
@@ -408,8 +433,14 @@
           <div class="uk-overflow-auto">
             <table class="uk-table uk-table-striped">
               <tbody>
-              <%= render 'show_attachement', attachments: @faucet.attachments.where(kind: :documentation_plan), title: "Plan" %>
-              <%= render 'show_attachement', attachments: @faucet.attachments.where(kind: :instruction_service), title: "Documents d'instruction de service" %>
+              <%= render 'show_attachement',
+                         attachments: @faucet.attachments.where_kind(:documentation_plan),
+                         title: t("attachment_title.#{:documentation_plan}")
+              %>
+              <%= render 'show_attachement',
+                         attachments: @faucet.attachments.where_kind(:instruction_service),
+                         title: t("attachment_title.#{:instruction_service}")
+              %>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Autres</td>

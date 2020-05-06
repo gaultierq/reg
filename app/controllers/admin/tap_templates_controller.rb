@@ -58,7 +58,7 @@ class Admin::TapTemplatesController < Admin::BaseController
   end
 
   def add_attachments
-    attachments = Attachment.prepare_attach(params[:tap_template])
+    attachments = Attachment.prepare_attach(params[:tap_template], Attachment.kinds)
     @tap_template.attachments.delete_all
     @tap_template.attachments << attachments
   end

@@ -52,6 +52,6 @@ class Admin::AttachmentsController < Admin::BaseController
 
   # Only allow a trusted parameter "white list" through.
   def attachment_params
-    params.require(:attachment).permit(:kind, :pdf)
+    params.require(:attachment).permit(:categ, :pdf)
   end
 end

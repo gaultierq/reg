@@ -196,7 +196,10 @@ class Admin::FaucetsController < Admin::BaseController
 
 
   def add_attachments
-    attachments = Attachment.prepare_attach(params[:faucet])
+    attachments = Attachment.prepare_attach(
+        params[:faucet],
+        FaucetAttachment.kinds
+    )
     @faucet.attachments.delete_all
     @faucet.attachments << attachments
   end
@@ -219,7 +222,7 @@ class Admin::FaucetsController < Admin::BaseController
     if @tap_template.present?
       @tap_template.attachments.where(kind: kind).ids
     else
-      @faucet.attachments.where(kind: kind).ids
+      @faucet.attachments.where_kind(kind).ids
     end
 
   end

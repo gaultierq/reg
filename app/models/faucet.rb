@@ -5,7 +5,14 @@ class Faucet < ApplicationRecord
 
   has_many :events, dependent: :destroy
   has_many :faucet_attachments
-  has_many :attachments, through: :faucet_attachments, dependent: :destroy
+  has_many :attachments, :extend => Kindable, through: :faucet_attachments, dependent: :destroy do
+
+    def where_kind(kind)
+      kind = FaucetAttachment.kinds[kind] if kind.kind_of? Symbol
+      where("faucet_attachments.kind = ?", kind)
+    end
+  end
+
 
   scope :industrial_unit, ->(industrial_unit_id) { where(industrial_unit_id: industrial_unit_id) }
   scope :without_industrial_unit, -> { where('industrial_unit_id is null') }
