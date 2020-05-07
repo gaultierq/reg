@@ -29,19 +29,22 @@ class Attachment < ApplicationRecord
 
   attr_accessor :kind
 
-  private
-
 
   def self.get_categ(kind)
-    case kind
+    case kind.to_s
       when "certif_corps", "certif_chapeau", "certif_tige","certif_clapet","certif_siege","certif_autre"
-        "certif_material"
+        :certif_material
       when "open_position", "close_position"
-        "instrument_position"
+        :instrument_position
       else
         kind
     end
   end
+
+  private
+
+
+
 
 
   def compute_hash

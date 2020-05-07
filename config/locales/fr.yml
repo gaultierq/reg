@@ -6,7 +6,6 @@ fr:
     instrumentation_pilotage: "Pilotage"
     instrumentation_autre: "Autre instrumentation"
     actionnement_actionneur: "Actionneur"
-    certif_materials: "Certification matière"
     special_requirement: "Exigences particulières"
     control: "Contrôle"
     documentation_plan: "Plans"

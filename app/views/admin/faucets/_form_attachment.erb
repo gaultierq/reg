@@ -1,7 +1,7 @@
 <div class="uk-margin">
   <%= form.label "existing_#{kind.to_s}_attachment".to_sym, I18n.t("attachment_kind.#{kind}"), class: 'uk-form-label' %>
   <%= form.select "existing_#{kind.to_s}_attachment",
-                  FaucetAttachment.where(kind: kind).collect {|fa| [fa.attachment.pdf.blob.filename, fa.attachment.id] if fa.attachment.pdf.attached?}.compact,
+                  already_attachment(kind),
                   {
                       selected: selected_attachment(kind)
                   },

@@ -1,6 +1,7 @@
 class Admin::FaucetsController < Admin::BaseController
   before_action :set_faucet, only: [:show, :edit, :update, :destroy]
-  helper_method :selected_attachment, :kind_to_attachement,
+  helper_method :selected_attachment, :kind_to_attachement
+
 
   # GET /faucets
   def index
