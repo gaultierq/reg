@@ -148,7 +148,10 @@ class Admin::FaucetsController < Admin::BaseController
   # GET /faucets/{id}/templatize
   def templatize
     set_faucet
-    template = TapTemplate.create!(@faucet.attributes.select {|k| TEMPLATE_ATTR.include?(k)})
+    attr = @faucet.attributes.select {|k| TEMPLATE_ATTR.include?(k)}
+    attr[:name] = "Modèle de \"#{@faucet.name}\""
+    template = TapTemplate.create!(attr)
+
     redirect_to admin_tap_template_path(template)
   end
 
@@ -229,8 +232,9 @@ class Admin::FaucetsController < Admin::BaseController
 
   private
   def do_dup_faucet
-    @faucet = Faucet.find(params[:id]).deep_clone include: [:industrial_unit, :events, :faucet_attachments],
-                                                  except: [
+    original = Faucet.find(params[:id])
+    @faucet = original.deep_clone include: [:events, :faucet_attachments],
+                                     except: [
                                                       :rfid_number,
                                                       :serial_number,
                                                       :number_customer_tag,
@@ -240,10 +244,11 @@ class Admin::FaucetsController < Admin::BaseController
                                                       :fluid_name,
                                                       :pressure,
                                                       :temperature,
+                                                      :industrial_unit_id,
                                                   ]
 
     @faucet.serial_number = Faucet.where.not(serial_number: nil).order(serial_number: :desc).first.serial_number + 1
-    @faucet.save
+    @faucet.save!
   end
 
   # Use callbacks to share common setup or constraints between actions.

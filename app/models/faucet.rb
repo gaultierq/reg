@@ -23,6 +23,7 @@ class Faucet < ApplicationRecord
 
   validates :serial_number, uniqueness: { message: 'existe déjà' }
 
+
   def self.to_csv
     attributes = %w[ Nom N°\ puce\ RFID N°\ série\ REG N°\ TAG\ client Date\ de\ fabrication N°\ vente\ REG
                      N°\ commande\ client N°\ article DN Raccordement\ entrée Raccordement\ sortie
