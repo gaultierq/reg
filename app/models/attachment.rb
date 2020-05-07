@@ -58,13 +58,11 @@ class Attachment < ApplicationRecord
       kinds.each {|kind, i|
         existing = params["existing_#{kind.to_s}_attachment".to_sym]&.reject(&:empty?)
 
-        if existing.present?
-          yo = existing.map {|ex| Attachment.where(id: ex)}.flatten.compact
-          yo.each do |y|
-            y.kind = kind
-          end
-          attachments.concat yo
-        end
+        attachments.concat  existing
+                                .map {|ex| Attachment.where(id: ex)}
+                                .flatten
+                                .compact
+                                .each { |a| a.kind = kind } if existing.present?
 
         new_files = params["new_#{kind.to_s}_attachment".to_sym]
 

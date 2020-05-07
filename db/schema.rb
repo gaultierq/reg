@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_06_192928) do
+ActiveRecord::Schema.define(version: 2020_05_07_085538) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 2020_05_06_192928) do
     t.integer "attachment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "kind"
     t.index ["attachment_id"], name: "index_event_attachments_on_attachment_id"
     t.index ["event_id"], name: "index_event_attachments_on_event_id"
   end
@@ -206,6 +207,7 @@ ActiveRecord::Schema.define(version: 2020_05_06_192928) do
     t.integer "attachment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "kind"
     t.index ["attachment_id"], name: "index_tap_template_attachments_on_attachment_id"
     t.index ["tap_template_id"], name: "index_tap_template_attachments_on_tap_template_id"
   end

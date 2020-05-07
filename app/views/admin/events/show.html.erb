@@ -52,7 +52,7 @@
         </tr>
 
         <%= render 'admin/faucets/show_attachement',
-                   attachments: @event.attachments.where(kind: :incident_maintenance),
+                   attachments: @event.attachments.where_kind(:incident_maintenance),
                    title: "Documents" %>
         </tbody>
       </table>

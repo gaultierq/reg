@@ -33,18 +33,9 @@
       <%= form.text_area :comment, class: 'uk-textarea', data: { target: 'form.input' } %>
     </div>
 
-    <div class="uk-margin">
-      <%= form.label :existing_event_attachment, "Ajouter un document existant", class: 'uk-form-label' %>
-      <%= form.select :existing_event_attachment, Attachment.where(kind: :incident_maintenance).collect {|attachment| [attachment.pdf.blob.filename, attachment.id] if attachment.pdf.attached?}.compact,
-                      {selected: @event.attachments.where(kind: :incident_maintenance).ids}, {multiple: true, id: 'existing_event_attachment', data: {target: 'form.input'}} %>
-    </div>
 
-    <div class="uk-margin">
-      <div>
-        <%= form.label :new_event_attachment, "Ajouter un nouveau document", class: 'uk-form-label' %>
-      </div>
-      <%= form.file_field :new_event_attachment, multiple: true %>
-    </div>
+    <%= render 'admin/faucets/form_attachment', form: form, kind: :incident_maintenance %>
+
 
     <div class="uk-margin-medium">
       <%= link_to 'Retour', admin_events_path, class: 'uk-button uk-button-default' %>
@@ -55,7 +46,7 @@
 
 <script>
     $(document).ready(function () {
-        $('#existing_event_attachment').select2();
+        $('#existing_incident_maintenance_attachment').select2();
     });
 </script>
 

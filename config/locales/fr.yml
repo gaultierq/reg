@@ -29,6 +29,7 @@ fr:
     special_requirement: "Exigences particulières"
     control: "Contrôle"
     documentation_plan: "Plans"
+    incident_maintenance: "Incident maintenance"
   attachment_title:
     instruction_service: "Documents de Instructions de service"
     instrumentation_position: "Documents de détecteur de position"

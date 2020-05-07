@@ -1,5 +1,6 @@
 class Admin::EventsController < Admin::BaseController
   before_action :set_event, only: %i[show edit update destroy]
+  helper_method :selected_attachment
 
   # GET /events
   def index
@@ -50,39 +51,16 @@ class Admin::EventsController < Admin::BaseController
   end
 
   def add_attachments
-    attachments = []
-    if params[:event].present?
-      if params[:event][:existing_event_attachment].present?
-        attachments << Attachment.where(id: params[:event][:existing_event_attachment].drop(1))
-      end
-
-      if params[:event][:new_event_attachment].present?
-        params[:event][:new_event_attachment].each do |attachment|
-          attachment_to_add = Attachment.new(kind: :incident_maintenance, pdf: attachment)
-          if attachment_to_add.save
-            attachments << attachment_to_add
-          else
-            check_uniqueness(attachments, attachment_to_add)
-          end
-        end
-      end
-
-      @event.attachments.delete_all
-      @event.attachments << attachments
-    end
+    attachments = Attachment.prepare_attach(
+        params[:event],
+        EventAttachment.kinds
+    )
+    @event.attachments.delete_all
+    @event.attachments << attachments
   end
 
-  def check_uniqueness(attachments, attachment_to_add)
-    found_attachment = Attachment.find_by(md5: attachment_to_add.md5)
-    contains = false
-    attachments.each do |relation|
-      if relation.find_by(md5: found_attachment.md5).present?
-        contains = true
-      end
-    end
-    if found_attachment.present? && !contains
-      attachments << found_attachment
-    end
+  def selected_attachment(kind)
+    @event.attachments.where_kind(kind).ids
   end
 
   private

@@ -172,7 +172,7 @@
                 <td><%= @tap_template.actuator %></td>
               </tr>
 
-              <%= render 'admin/faucets/show_attachement', attachments: @tap_template.attachments.where(kind: :actionnement_actionneur), title: "Documents d'actionneur" %>
+              <%= render 'admin/faucets/show_attachement', attachments: @tap_template.attachments.where_kind(:actionnement_actionneur), title: "Documents d'actionneur" %>
 
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pression actionneur
@@ -199,7 +199,7 @@
               </tr>
 
               <%= render 'admin/faucets/show_attachement',
-                         attachments: @tap_template.attachments.where(kind: :instrumentation_position),
+                         attachments: @tap_template.attachments.where_kind(:instrumentation_position),
                          title: "Documents de détecteur de position" %>
 
               <tr>
@@ -218,7 +218,7 @@
               </tr>
 
               <%= render 'admin/faucets/show_attachement',
-                         attachments: @tap_template.attachments.where(kind: :instrumentation_pilotage),
+                         attachments: @tap_template.attachments.where_kind(:instrumentation_pilotage),
                          title: "Documents de pilotage" %>
 
               <tr>
@@ -227,7 +227,7 @@
               </tr>
 
               <%= render 'admin/faucets/show_attachement',
-                         attachments: @tap_template.attachments.where(kind: :instrumentation_autre),
+                         attachments: @tap_template.attachments.where_kind(:instrumentation_autre),
                          title: "Documents d'autres instrumentation" %>
               </tbody>
             </table>
@@ -325,7 +325,7 @@
             <table class="uk-table uk-table-striped">
               <tbody>
               <%= render 'admin/faucets/show_attachement',
-                         attachments: @tap_template.attachments.where(kind: :instruction_service),
+                         attachments: @tap_template.attachments.where_kind(:instruction_service),
                          title: "Documents d'instruction de service" %>
 
               </tbody>

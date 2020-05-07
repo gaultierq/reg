@@ -6,7 +6,8 @@
                       selected: selected_attachment(kind)
                   },
                   {
-                      multiple: true, id: kind_to_attachement(kind),
+                      multiple: true,
+                      id: "existing_#{kind.to_s}_attachment",
                       data: {target: 'form.input'}
                   }
   %>

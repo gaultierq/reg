@@ -1,5 +1,6 @@
 class Admin::TapTemplatesController < Admin::BaseController
   before_action :set_tap_template, only: [:show, :edit, :update, :destroy]
+  helper_method :selected_attachment
 
   # GET /tap_templates
   def index
@@ -58,11 +59,14 @@ class Admin::TapTemplatesController < Admin::BaseController
   end
 
   def add_attachments
-    attachments = Attachment.prepare_attach(params[:tap_template], Attachment.kinds)
+    attachments = Attachment.prepare_attach(params[:tap_template], TapTemplateAttachment.kinds)
     @tap_template.attachments.delete_all
     @tap_template.attachments << attachments
   end
 
+  def selected_attachment(kind)
+    @tap_template.attachments.where_kind(kind).ids
+  end
 
   def check_uniqueness(attachments, attachment_to_add)
     found_attachment = Attachment.find_by(md5: attachment_to_add.md5)

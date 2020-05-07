@@ -8,7 +8,13 @@ class Event < ApplicationRecord
   belongs_to :user, optional: true
 
   has_many :event_attachments
-  has_many :attachments, through: :event_attachments, dependent: :destroy
+  has_many :attachments, :extend => Kindable, through: :event_attachments, dependent: :destroy do
+
+    def where_kind(kind)
+      kind = EventAttachment.kinds[kind] if kind.kind_of? Symbol
+      where("event_attachments.kind = ?", kind)
+    end
+  end
 
   enum kind: { maintenance: 0, incident: 1 }
 

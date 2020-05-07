@@ -1,6 +1,12 @@
 class TapTemplate < ApplicationRecord
   has_many :tap_template_attachments
-  has_many :attachments, through: :tap_template_attachments, dependent: :destroy
+  has_many :attachments, :extend => Kindable, through: :tap_template_attachments, dependent: :destroy do
+
+    def where_kind(kind)
+      kind = TapTemplateAttachment.kinds[kind] if kind.kind_of? Symbol
+      where("tap_template_attachments.kind = ?", kind)
+    end
+  end
 
   enum fluid_nature: { liquide: 0, gas: 1 }
   enum fluid_danger_group: { I: 0, II: 1 }, _prefix: true

@@ -221,11 +221,10 @@ class Admin::FaucetsController < Admin::BaseController
 
   def selected_attachment(kind)
     if @tap_template.present?
-      @tap_template.attachments.where(kind: kind).ids
+      @tap_template.attachments.where_kind(kind).ids
     else
       @faucet.attachments.where_kind(kind).ids
     end
-
   end
 
   private

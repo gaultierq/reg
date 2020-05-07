@@ -232,7 +232,7 @@
 
 
               <%= render 'admin/faucets/show_attachement',
-                         attachments: @faucet.attachments.where(kind: :actionnement_actionneur),
+                         attachments: @faucet.attachments.where_kind(:actionnement_actionneur),
                          title: "Documents d'actionneur" %>
 
 
@@ -258,7 +258,7 @@
               </tr>
 
               <%= render 'admin/faucets/show_attachement',
-                         attachments: @faucet.attachments.where(kind: :instrumentation_position),
+                         attachments: @faucet.attachments.where_kind(:instrumentation_position),
                          title: "Documents de détecteur de position" %>
 
               <tr>
@@ -267,7 +267,7 @@
               </tr>
 
               <%= render 'admin/faucets/show_attachement',
-                         attachments: @faucet.attachments.where(kind: :instrumentation_pilotage),
+                         attachments: @faucet.attachments.where_kind(:instrumentation_pilotage),
                          title: "Documents de pilotage" %>
 
               <tr>
@@ -276,7 +276,7 @@
               </tr>
 
               <%= render 'admin/faucets/show_attachement',
-                         attachments: @faucet.attachments.where(kind: :instrumentation_autre),
+                         attachments: @faucet.attachments.where_kind(:instrumentation_autre),
                          title: "Documents d'autres instrumentation" %>
               </tbody>
             </table>
@@ -330,28 +330,28 @@
               </tr>
 
               <%= render 'admin/faucets/show_attachement',
-                         attachments: @faucet.attachments.where(kind: :certif_corps),
+                         attachments: @faucet.attachments.where_kind(:certif_corps),
                          title: "Documents certificat de matière corps" %>
 
               <%= render 'admin/faucets/show_attachement',
-                         attachments: @faucet.attachments.where(kind: :certif_chapeau),
+                         attachments: @faucet.attachments.where_kind(:certif_chapeau),
                          title: "Documents certificat de matière chapeau" %>
 
               <%= render 'admin/faucets/show_attachement',
-                         attachments: @faucet.attachments.where(kind: :certif_tige),
+                         attachments: @faucet.attachments.where_kind(:certif_tige),
                          title: "Documents certificat de matière tige" %>
 
               <%= render 'admin/faucets/show_attachement',
-                         attachments: @faucet.attachments.where(kind: :certif_clapet),
+                         attachments: @faucet.attachments.where_kind(:certif_clapet),
                          title: "Documents certificat de matière clapet" %>
 
               <%= render 'admin/faucets/show_attachement',
-                         attachments: @faucet.attachments.where(kind: :certif_siege),
+                         attachments: @faucet.attachments.where_kind(:certif_siege),
                          title: "Documents certificat de matière siège" %>
 
 
               <%= render 'admin/faucets/show_attachement',
-                         attachments: @faucet.attachments.where(kind: :certif_autre),
+                         attachments: @faucet.attachments.where_kind(:certif_autre),
                          title: "Documents certificat de matière autre" %>
 
               </tbody>
@@ -377,7 +377,7 @@
               </tr>
 
               <%= render 'admin/faucets/show_attachement',
-                         attachments: @faucet.attachments.where(kind: :special_requirement),
+                         attachments: @faucet.attachments.where_kind(:special_requirement),
                          title: "Documents d'exigence particulière" %>
 
               </tbody>
@@ -398,7 +398,7 @@
               </tr>
 
               <%= render 'admin/faucets/show_attachement',
-                         attachments: @faucet.attachments.where(kind: :control),
+                         attachments: @faucet.attachments.where_kind(:control),
                          title: "Documents de contrôle" %>
               </tbody>
             </table>
@@ -414,11 +414,11 @@
               <tbody>
 
               <%= render 'admin/faucets/show_attachement',
-                         attachments: @faucet.attachments.where(kind: :documentation_plan),
+                         attachments: @faucet.attachments.where_kind(:documentation_plan),
                          title: "Plans" %>
 
               <%= render 'admin/faucets/show_attachement',
-                         attachments: @faucet.attachments.where(kind: :instruction_service),
+                         attachments: @faucet.attachments.where_kind(:instruction_service),
                          title: "Documents d'instruction de service" %>
 
               <tr>
