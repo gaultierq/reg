@@ -3,12 +3,12 @@
     <div class="uk-navbar-left">
       <% if admin_signed_in? %>
         <%= link_to root_path, class: 'uk-navbar-item uk-logo' do %>
-          <%= image_tag("logo.png", {:style => "height:80%"}) %>
+          <%= image_tag("logo.png", {:style => "height:80px; margin: 20px"}) %>
         <% end %>
       <% end %>
       <% if user_signed_in? %>
         <%= link_to user_faucets_path, class: 'uk-navbar-item uk-logo' do %>
-          <%= image_tag("logo.png", {:style => "height:80%"}) %>
+          <%= image_tag("logo.png", {:style => "height:80px; margin: 20px"}) %>
         <% end %>
       <% end %>
 
