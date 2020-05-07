@@ -42,6 +42,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'sqlite3'
+  gem 'meta_request'
 end
 
 group :development do

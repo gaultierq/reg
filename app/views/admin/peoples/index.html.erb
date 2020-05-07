@@ -72,6 +72,10 @@
                 <%= image_tag("warning.svg", {:style => "height: 3%;"}) %>
               <% end %>
               <%= user.id %>
+              <% unless user.invitation_accepted? %>
+                  (en attente)
+              <% end %>
+
             </td>
             <td><%= user.email %></td>
             <td class="uk-flex uk-flex-center">
