@@ -286,8 +286,6 @@
             <%= form.check_box :material_certificates_required, class: 'uk-checkbox', data: { target: 'form.input' } %>
           </div>
 
-          <%= render 'form_attachment', form: form, kind: :certif_corps %>
-
           <%= render 'form_attachment', form: form, kind: :certif_chapeau %>
           <%= render 'form_attachment', form: form, kind: :certif_tige %>
           <%= render 'form_attachment', form: form, kind: :certif_clapet %>
@@ -378,7 +376,6 @@
         $('#existing_actionnement_actionneur_attachment').select2();
         $('#existing_open_position_attachment').select2();
         $('#existing_close_position_attachment').select2();
-        $('#existing_certif_corps_attachment').select2();
         $('#existing_certif_chapeau_attachment').select2();
         $('#existing_certif_tige_attachment').select2();
         $('#existing_certif_clapet_attachment').select2();
@@ -403,7 +400,7 @@
         ["#faucet_open_position", [:close_position], []],
         ["#faucet_other_special_requirements_checkbox", [:special_requirement], ["#faucet_other_special_requirements"]],
         ["#faucet_material_certificates_required", [
-                                        :certif_corps, :certif_chapeau, :certif_tige,
+                                        :certif_chapeau, :certif_tige,
                                         :certif_clapet, :certif_siege, :certif_autre,], []],
         ].each do |f| %>
         <%= raw "$('#{f[0]}').change(configureCheckbox('#{f[0]}', #{f[1].map{ |c| ["#existing_#{c}_attachment", "#faucet_new_#{c}_attachment"] }.flatten.concat(f[2])}))" %>
