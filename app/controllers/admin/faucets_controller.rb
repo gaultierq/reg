@@ -41,6 +41,7 @@ class Admin::FaucetsController < Admin::BaseController
   # GET /faucets/new
   def new
     @faucet = Faucet.new(TapTemplate.find_by_id(params[:tap_template_id])&.attributes)
+    @faucet.serial_number = next_serial_number
     @tap_template = TapTemplate.find_by_id(params[:tap_template_id])
   end
 
@@ -233,22 +234,41 @@ class Admin::FaucetsController < Admin::BaseController
   def do_dup_faucet
     original = Faucet.find(params[:id])
     @faucet = original.deep_clone include: [:events, :faucet_attachments],
-                                     except: [
-                                                      :rfid_number,
-                                                      :serial_number,
-                                                      :number_customer_tag,
-                                                      :manufacturing_date,
-                                                      :sales_number,
-                                                      :customer_order_number,
-                                                      :fluid_name,
-                                                      :pressure,
-                                                      :temperature,
-                                                      :industrial_unit_id,
-                                                      :of_id,
-                                                  ]
+                                  except: [
+                                      :rfid_number,
+                                      :serial_number,
+                                      :number_customer_tag,
+                                      :manufacturing_date,
+                                      :sales_number,
+                                      :customer_order_number,
+                                      :fluid_name,
+                                      :pressure,
+                                      :temperature,
+                                      :industrial_unit_id,
+                                      :of_id,
+                                  ]
 
-    @faucet.serial_number = Faucet.where.not(serial_number: nil).order(serial_number: :desc).first.serial_number + 1
+    @faucet.serial_number = next_serial_number
     @faucet.save!
+  end
+
+  # on veut : partir de 18000, prendre le prochain dispo
+  def next_serial_number
+    sql = 'SELECT  serial_number + 1
+    FROM    faucets mo
+    WHERE   serial_number > 18000 and NOT EXISTS
+        (
+        SELECT  NULL
+        FROM    faucets mi
+        WHERE   mi.serial_number = mo.serial_number + 1
+        )
+    ORDER BY
+        serial_number
+    LIMIT 1'
+    result = ActiveRecord::Base.connection.execute(sql)
+    Rails.logger.info "Next serial number is #{result}"
+    result.empty? ? 18000 : result[0][0]
+
   end
 
   # Use callbacks to share common setup or constraints between actions.
