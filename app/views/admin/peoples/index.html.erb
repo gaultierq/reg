@@ -86,7 +86,7 @@
             </td>
             <td><%= user.email %></td>
             <td><%= user.phone_number %></td>
-
+            <td><%= user.industrial_units.map(&:name).join(', ') %></td>
             <td class="uk-flex uk-flex-center">
               <ul class="uk-iconnav">
                 <li>
