@@ -16,8 +16,11 @@
       <%= render 'shared/table', locals: { id: 'events_maintenance_table', dom: 'lrtip', paging: false, info: false } do %>
         <thead>
         <tr>
-          <th>id</th>
-          <th>robinet</th>
+          <th>N° article</th>
+          <th>N° série</th>
+          <th>Date de création</th>
+          <th>Unité industrielle</th>
+          <th>Auteur</th>
           <th data-orderable="false">actions</th>
         </tr>
         </thead>
@@ -25,8 +28,11 @@
         <tbody>
         <% @events.where(kind: :maintenance).each do |event| %>
           <tr>
-            <td><%= event.id %></td>
+            <td><%= event.faucet.article_number %></td>
             <td><%= event.faucet.serial_number %></td>
+            <td><%= event.created_at %></td>
+            <td><%= event.faucet.industrial_unit&.name %></td>
+            <td><%= event.user_id %></td>
             <td class="uk-flex uk-flex-center">
               <ul class="uk-iconnav">
                 <li>
@@ -57,8 +63,11 @@
       <%= render 'shared/table', locals: { id: 'events_incidents_table', dom: 'lrtip', paging: false, info: false } do %>
         <thead>
         <tr>
-          <th>id</th>
-          <th>robinet</th>
+          <th>N° article</th>
+          <th>N° série</th>
+          <th>Date de création</th>
+          <th>Unité industrielle</th>
+          <th>Auteur</th>
           <th data-orderable="false">actions</th>
         </tr>
         </thead>
@@ -66,8 +75,11 @@
         <tbody>
         <% @events.where(kind: :incident).each do |event| %>
           <tr>
-            <td><%= event.id %></td>
+            <td><%= event.faucet.article_number %></td>
             <td><%= event.faucet.serial_number %></td>
+            <td><%= event.created_at %></td>
+            <td><%= event.faucet.industrial_unit&.name %></td>
+            <td><%= event.user_id %></td>
             <td class="uk-flex uk-flex-center">
               <ul class="uk-iconnav">
                 <li>
