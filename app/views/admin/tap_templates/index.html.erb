@@ -24,7 +24,7 @@
 
       <tbody>
       <% @tap_templates.each do |tap_template| %>
-        <tr link="<%= admin_tap_template_path(tap_template) %>" style="cursor: pointer">
+        <tr>
           <td><%= tap_template.id %></td>
           <td><%= tap_template.name %></td>
           <td><%= tap_template.article_number %></td>

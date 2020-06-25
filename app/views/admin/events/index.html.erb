@@ -24,7 +24,7 @@
 
         <tbody>
         <% @events.where(kind: :maintenance).each do |event| %>
-          <tr link="<%= admin_event_path(event) %>" style="cursor: pointer">
+          <tr>
             <td><%= event.id %></td>
             <td><%= event.faucet.serial_number %></td>
             <td class="uk-flex uk-flex-center">
