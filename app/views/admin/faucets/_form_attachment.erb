@@ -1,5 +1,5 @@
 <div class="uk-margin" id="<%= "existing_#{kind.to_s}_attachment_group" %>">
-  <%= form.label "existing_#{kind.to_s}_attachment".to_sym, "Documents", class: 'uk-form-label' %>
+  <%= form.label "existing_#{kind.to_s}_attachment".to_sym, I18n.t("attachment_kind.#{kind}"), class: 'uk-form-label' %>
   <%= form.select "existing_#{kind.to_s}_attachment",
                   already_attachment(kind),
                   {
