@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
   # after 30min without activity
   def timeout_in
-    30.minutes
+    2.hours
   end
 
 

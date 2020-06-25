@@ -1,0 +1,23 @@
+#!/bin/bash
+
+job_mon=${-//[^m]/}
+set +m
+
+pids=()
+
+while read command; do
+	eval "($command) &"
+	pids+=("$!")
+done
+
+pids="${pids[*]}"
+
+echo "pids=$pids"
+trap "kill -9 $pids" SIGINT SIGKILL
+
+for pid in ${pids}; do wait $pid; done
+
+#cleanup
+trap - SIGINT SIGKILL
+sleep 0;
+if [[ -n "$job_mon" ]]; then set -m; else set +m; fi
