@@ -29,7 +29,7 @@ class IndustrialUnit < ApplicationRecord
         Pression\ Maximale\ (PS)\ à\ 20°C\ (bar) Pression\ d'épreuve\ à\ 20°C\ (bar) Température\ maximum\ (°C)
         Pression\ à\ la\ température\ maximum\ (bar) Température\ minimum\ (°C) Pression\ à\ la\ température\ minimum\ (bar)
         Nom\ du\ fluide Pression\ (bar) Température\ (°C) Nature\ du\ fluide Groupe\ de\ danger\ du\ fluide
-        Gaz\ instable Catégorie\ de\ risque\ selon\ DESP\ 2014/68 Commande\ manuelle Actionneur
+        Gaz\ instable Catégorie\ de\ risque\ selon\ DESP\ 2014/68/UE Commande\ manuelle Actionneur
         Pression\ actionneur\ pneumatique Détecteur\ de\ position Position\ ouverte Position\ fermée Pilotage
         Autres\ instrumentation Enveloppe Double\ enveloppe Obturateur\ (partie\ mobile) Siège\ (partie\ fixe)
         Garniture\ de\ presse\ étoupe Joints Certificats\ matières\ demandés ATEX Autres\ exigences\ particulières
@@ -66,7 +66,7 @@ class IndustrialUnit < ApplicationRecord
         Pression\ Maximale\ (PS)\ à\ 20°C\ (bar) Pression\ d'épreuve\ à\ 20°C\ (bar) Température\ maximum\ (°C)
         Pression\ à\ la\ température\ maximum\ (bar) Température\ minimum\ (°C) Pression\ à\ la\ température\ minimum\ (bar)
         Nom\ du\ fluide Pression\ (bar) Température\ (°C) Nature\ du\ fluide Groupe\ de\ danger\ du\ fluide
-        Gaz\ instable Catégorie\ de\ risque\ selon\ DESP\ 2014/68 Commande\ manuelle Actionneur
+        Gaz\ instable Catégorie\ de\ risque\ selon\ DESP\ 2014/68/UE Commande\ manuelle Actionneur
         Pression\ actionneur\ pneumatique Détecteur\ de\ position Position\ ouverte Position\ fermée Pilotage
         Autres\ instrumentation Enveloppe Double\ enveloppe Obturateur\ (partie\ mobile) Siège\ (partie\ fixe)
         Garniture\ de\ presse\ étoupe Joints Certificats\ matières\ demandés ATEX Autres\ exigences\ particulières

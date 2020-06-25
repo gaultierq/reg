@@ -159,7 +159,7 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Catégorie de risque selon DESP 2014/68<% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>Catégorie de risque selon DESP 2014/68/UE<% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
             <%= form.label :fluid_nature, "Nature du fluide", class: 'uk-form-label' %>
@@ -177,7 +177,7 @@
           </div>
 
           <div class="uk-margin">
-            <%= form.label :risk_category, "Catégorie de risque selon DESP 2014/68", class: 'uk-form-label' %>
+            <%= form.label :risk_category, "Catégorie de risque selon DESP 2014/68/UE", class: 'uk-form-label' %>
             <%= form.select :risk_category, [ ['Article 4&3', 0], ['I', 1], ['II', 2], ['III', 3], ['IV', 4] ], { include_blank: true }, { class: 'uk-select',  data: { target: 'form.input' } } %>
           </div>
         </div>
