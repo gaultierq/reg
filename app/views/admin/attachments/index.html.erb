@@ -15,8 +15,9 @@
       <%= render 'shared/table', locals: { id: 'attachment_all_table', dom: 'lrtip', paging: false, info: false } do %>
         <thead>
         <tr>
-          <th>type</th>
+          <th>Type</th>
           <th>nom</th>
+          <th>Date de création</th>
           <th data-orderable="false">actions</th>
         </tr>
         </thead>
@@ -30,6 +31,7 @@
             <% else %>
               <td></td>
             <% end %>
+            <td><%= attachment.created_at %></td>
             <td class="uk-flex uk-flex-center">
               <ul class="uk-iconnav">
                 <li>

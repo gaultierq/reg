@@ -14,10 +14,10 @@
     <%= render 'shared/table', locals: { id: 'tap_templates_table', dom: 'lrtip', paging: false, info: false } do %>
       <thead>
       <tr>
-        <th>id</th>
-        <th>nom</th>
+        <th>Nom</th>
         <th>N° article</th>
         <th>DN</th>
+        <th>Pression max</th>
         <th data-orderable="false">actions</th>
       </tr>
       </thead>
@@ -25,7 +25,6 @@
       <tbody>
       <% @tap_templates.each do |tap_template| %>
         <tr>
-          <td><%= tap_template.id %></td>
           <td>
             <%= link_to admin_tap_template_path(tap_template) do %>
               <%= tap_template.name %>
@@ -34,6 +33,7 @@
 
           <td><%= tap_template.article_number %></td>
           <td><%= tap_template.dn %></td>
+          <td><%= tap_template.maximal_pressure %></td>
           <td class="uk-flex uk-flex-center">
             <ul class="uk-iconnav">
               <li>

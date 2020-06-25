@@ -22,7 +22,7 @@
     <div class="uk-flex-middle uk-margin-medium" uk-grid>
       <div class="uk-flex uk-flex-row uk-width-expand@m">
         <h1 class="uk-heading-primary">
-          <%= @industrial_unit&.name || 'Robinets de mes unités industrielles'%>
+          <%= @industrial_unit&.name || 'Robinets par unités industrielles'%>
         </h1>
         <ul class="uk-iconnav">
           <% if @industrial_unit.present? %>
@@ -61,11 +61,14 @@
       <tr>
         <th>Type</th>
         <th>N° article</th>
-        <th>N° série REG</th>
-        <th>N° vente REG</th>
+        <th>N° série</th>
         <th>DN</th>
+        <% unless @industrial_unit.present? %>
+          <th>Unité industrielle</th>
+        <% end %>
+
         <th>Date de fabrication</th>
-        <th>Unité industrielle</th>
+        <th>Pression Max</th>
         <th data-orderable="false">Actions</th>
       </tr>
       </thead>
@@ -88,18 +91,21 @@
           </td>
           <td><%= faucet.article_number %></td>
           <td><%= faucet.serial_number %></td>
-          <td><%= faucet.sales_number %></td>
           <td><%= faucet.dn %></td>
+          <% unless @industrial_unit.present? %>
+            <td>
+              <%= link_to admin_industrial_unit_path(faucet.industrial_unit) do %>
+                <%= faucet.industrial_unit.name %>
+              <% end %>
+            </td>
+          <% end %>
           <% if faucet.manufacturing_date.present? %>
             <td><%= faucet.manufacturing_date.strftime('%d/%m') %></td>
           <% else %>
             <td></td>
           <% end %>
-          <td>
-            <%= link_to admin_industrial_unit_path(faucet.industrial_unit) do %>
-              <%= faucet.industrial_unit.name %>
-            <% end %>
-          </td>
+          <td><%= faucet.maximal_pressure %></td>
+
           <td class="uk-flex uk-flex-center">
             <ul class="uk-iconnav">
               <li>

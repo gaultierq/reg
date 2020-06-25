@@ -3,9 +3,10 @@ class Event < ApplicationRecord
   belongs_to :faucet
   validate :faucet_with_industrial_unit?
 
-
   belongs_to :admin, optional: true
   belongs_to :user, optional: true
+
+  # has_one :user
 
   has_many :event_attachments
   has_many :attachments, :extend => Kindable, through: :event_attachments, dependent: :destroy do

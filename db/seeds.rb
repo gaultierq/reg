@@ -67,7 +67,7 @@ end
 
 # Maintenance
 200.times do |i|
-  Event.create(kind: "maintenance", comment: "RAS.", faucet_id: (i % 100) + 1, admin_id: 1, seen: false)
+  Event.create(kind: "maintenance", comment: "RAS.", faucet_id: (i % 100) + 1, user_id: 1, seen: false)
 end
 
 # Incident

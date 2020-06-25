@@ -17,8 +17,9 @@
       <%= render 'shared/table', locals: { id: 'admins_table', dom: 'lrtip', paging: false, info: false } do %>
         <thead>
         <tr>
-          <th>id</th>
-          <th>adresse email</th>
+          <th>Nom</th>
+          <th>Adresse Email</th>
+          <th>Téléphone</th>
           <th data-orderable="false">actions</th>
         </tr>
         </thead>
@@ -26,8 +27,14 @@
         <tbody>
         <% @admins.each do |admin| %>
           <tr>
-            <td><%= admin.id %></td>
+            <td>
+              <%= link_to admin_admin_path(admin) do %>
+                <%= admin.full_name %>
+              <% end %>
+            </td>
             <td><%= admin.email %></td>
+            <td><%= admin.phone_number %></td>
+
             <td class="uk-flex uk-flex-center">
               <ul class="uk-iconnav">
                 <li>
@@ -58,8 +65,10 @@
       <%= render 'shared/table', locals: { id: 'technicians_table', dom: 'lrtip', paging: false, info: false } do %>
         <thead>
         <tr>
-          <th>id</th>
-          <th>adresse email</th>
+          <th>Nom</th>
+          <th>Adresse Email</th>
+          <th>Téléphone</th>
+          <th>Unités industrielles</th>
           <th data-orderable="false">actions</th>
         </tr>
         </thead>
@@ -71,13 +80,13 @@
               <% if user.access_locked? %>
                 <%= image_tag("warning.svg", {:style => "height: 3%;"}) %>
               <% end %>
-              <%= user.id %>
-              <% unless user.invitation_accepted? %>
-                  (en attente)
+              <%= link_to admin_user_path(user) do %>
+                <%= user.full_name %>
               <% end %>
-
             </td>
             <td><%= user.email %></td>
+            <td><%= user.phone_number %></td>
+
             <td class="uk-flex uk-flex-center">
               <ul class="uk-iconnav">
                 <li>
