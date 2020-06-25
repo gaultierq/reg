@@ -359,10 +359,14 @@
             // const wasDisabled = $(checkboxId).prop('checked');
             const isEnabled = this.checked;
             if (isEnabled) {
+                // activate and show
                 $.each(allIds, function(index, id) { $(id).removeAttr('disabled'); });
+                $.each(allIds, function(index, id) { $(id).show(); });
             }
             else {
+                // deactivate and hide
                 $.each(allIds, function(index, id) { $(id).prop('disabled', true); });
+                $.each(allIds, function(index, id) { $(id).hide(); });
             }
         }
     }
@@ -403,7 +407,7 @@
                                         :certif_chapeau, :certif_tige,
                                         :certif_clapet, :certif_siege, :certif_autre,], []],
         ].each do |f| %>
-        <%= raw "$('#{f[0]}').change(configureCheckbox('#{f[0]}', #{f[1].map{ |c| ["#existing_#{c}_attachment", "#faucet_new_#{c}_attachment"] }.flatten.concat(f[2])}))" %>
+        <%= raw "$('#{f[0]}').change(configureCheckbox('#{f[0]}', #{f[1].map{ |c| ["#existing_#{c}_attachment", "#faucet_new_#{c}_attachment", "#existing_#{c}_attachment_group"] }.flatten.concat(f[2])}))" %>
         <%= raw "$('#{f[0]}').trigger('change');" %>
 
         <% end %>
