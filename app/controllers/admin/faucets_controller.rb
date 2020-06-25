@@ -92,12 +92,11 @@ class Admin::FaucetsController < Admin::BaseController
 
   def duplicate
     if params.has_key?(:number)
+      ok = nil
       params[:number].to_i.times do |i|
-        if do_dup_faucet
-          redirect_to admin_faucets_path, notice: 'Robinets dupliqués avec succès.'
-        end
+        ok &= do_dup_faucet
       end
-
+      redirect_to admin_faucets_path, notice: 'Robinets dupliqués avec succès.'
     else
       if do_dup_faucet
         redirect_to admin_faucets_path, notice: 'Robinet dupliqué avec succès.'
