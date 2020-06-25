@@ -2,7 +2,7 @@ fr:
   hello: "Hello world"
   attachment_categ:
     instruction_service: "Instructions de service"
-    instrumentation_position: "Instrumentation, détecteur de position"
+    instrumentation_position: "Détecteur de position"
     instrumentation_pilotage: "Pilotage"
     instrumentation_autre: "Autre instrumentation"
     actionnement_actionneur: "Actionneur"
@@ -14,7 +14,7 @@ fr:
 
   attachment_kind:
     instruction_service: "Instructions de service"
-    instrumentation_position: "Instrumentation, détecteur de position"
+    instrumentation_position: "Détecteur de position"
     instrumentation_pilotage: "Pilotage"
     instrumentation_autre: "Autre instrumentation"
     actionnement_actionneur: "Actionneur"
