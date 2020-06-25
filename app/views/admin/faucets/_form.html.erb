@@ -14,7 +14,10 @@
 
     <ul class="uk-list-large uk-list-divider" uk-accordion>
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Identification du robinet<% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>
+          <%= image_tag("Logo_identification.png", :size => "50x50", class: "menu_icon") %>
+          Identification du robinet
+        <% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
             <%= form.label :name, "Type", class: 'uk-form-label' %>
@@ -108,7 +111,10 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Conditions de service / Limite d'utilisation<% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>
+          <%= image_tag("Logo_conditions_services.png", :size => "50x50", class: "menu_icon") %>
+          Conditions de service / Limite d'utilisation
+        <% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
             <%= form.label :maximal_pressure, "Pression Maximale (PS) à 20°C (bar)", class: 'uk-form-label' %>
@@ -139,7 +145,10 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Données déclarées par le client<% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>
+          <%= image_tag("Logo_données.png", :size => "50x50", class: "menu_icon") %>
+          Données déclarées par le client
+        <% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
             <%= form.label :fluid_name, "Nom du fluide", class: 'uk-form-label' %>
@@ -159,7 +168,10 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Catégorie de risque selon DESP 2014/68/UE<% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>
+          <%= image_tag("Logo_catégorie_risque.png", :size => "50x50", class: "menu_icon") %>
+          Catégorie de risque selon DESP 2014/68/UE
+        <% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
             <%= form.label :fluid_nature, "Nature du fluide", class: 'uk-form-label' %>
@@ -184,7 +196,10 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Actionnement - Système de manœuvre<% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>
+          <%= image_tag("Logo_actionnement.png", :size => "50x50", class: "menu_icon") %>
+          Actionnement - Système de manœuvre
+        <% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
             <%= form.label :manual_control, "Commande manuelle", class: 'uk-form-label' %>
@@ -209,7 +224,10 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Instrumentation<% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>
+          <%= image_tag("Logo_instrumentation.png", :size => "50x50", class: "menu_icon") %>
+          Instrumentation
+        <% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
             <%= form.label :position_detector, "Détecteur de position", class: 'uk-form-label' %>
@@ -248,7 +266,10 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Matériaux<% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>
+          <%= image_tag("Logo_matériaux.png", :size => "50x50", class: "menu_icon") %>
+          Matériaux
+        <% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
             <%= form.label :shell, "Enveloppe", class: 'uk-form-label' %>
@@ -296,7 +317,10 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Exigences particulières<% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>
+          <%= image_tag("Logo_exigences.png", :size => "50x50", class: "menu_icon") %>
+          Exigences particulières
+        <% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
             <%= form.label :atex, "ATEX", class: 'uk-form-label' %>
@@ -315,7 +339,10 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Contrôles<% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>
+          <%= image_tag("Logo_contrôles.png", :size => "50x50", class: "menu_icon") %>
+          Contrôles
+        <% end %>
         <div class="uk-accordion-content">
           <div class="uk-margin">
             <%= form.label :other_controls, "Autres contrôles", class: 'uk-form-label' %>
@@ -327,7 +354,10 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>Documentation<% end %>
+        <%= link_to '#', class: 'uk-accordion-title' do %>
+          <%= image_tag("Logo_documentation.png", :size => "50x50", class: "menu_icon") %>
+          Documentation
+        <% end %>
         <div class="uk-accordion-content">
           <%= render 'form_attachment', form: form, kind: :documentation_plan %>
           <%= render 'form_attachment', form: form, kind: :instruction_service %>
