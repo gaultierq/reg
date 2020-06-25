@@ -17,7 +17,7 @@
       <% if @event.faucet.present? %>
         <%= form.select :faucet_id, [@event.faucet].collect { |faucet| [faucet.name, faucet.id ] }, {}, {class: 'uk-select', data: {target: 'form.input' } } %>
       <% else %>
-        <%= form.select :faucet_id, options_for_select(Faucet.all.collect { |faucet| [faucet.name, faucet.id ] }, disabled: Faucet.without_industrial_unit.ids),
+        <%= form.select :faucet_id, options_for_select(Faucet.with_serial_number.collect { |faucet| ["#{faucet.name} - ##{faucet.serial_number} ", faucet.id ] }, disabled: Faucet.without_industrial_unit.ids),
                                                        {},
                         {class: 'uk-select', data: {target: 'form.input' } } %>
       <% end %>

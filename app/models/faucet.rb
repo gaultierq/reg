@@ -16,6 +16,7 @@ class Faucet < ApplicationRecord
 
   scope :industrial_unit, ->(industrial_unit_id) { where(industrial_unit_id: industrial_unit_id) }
   scope :without_industrial_unit, -> { where('industrial_unit_id is null') }
+  scope :with_serial_number, -> { where('serial_number is not null') }
 
   enum fluid_nature: { liquide: 0, gas: 1 }
   enum fluid_danger_group: { I: 0, II: 1 }, _suffix: true

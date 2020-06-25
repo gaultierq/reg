@@ -256,7 +256,7 @@ class Admin::FaucetsController < Admin::BaseController
   def next_serial_number
     sql = 'SELECT  serial_number + 1
     FROM    faucets mo
-    WHERE   serial_number > 18000 and NOT EXISTS
+    WHERE   serial_number >= 18000 and NOT EXISTS
         (
         SELECT  NULL
         FROM    faucets mi
