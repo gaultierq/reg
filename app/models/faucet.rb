@@ -24,6 +24,9 @@ class Faucet < ApplicationRecord
 
   validates :serial_number, uniqueness: { message: 'existe déjà' }
 
+  def display_name
+    serial_number.present? ? "#{name} - ##{serial_number}" : name
+  end
 
   def self.to_csv
     attributes = %w[ Nom N°\ puce\ RFID N°\ série\ REG N°\ TAG\ client Date\ de\ fabrication N°\ vente\ REG
@@ -59,5 +62,7 @@ class Faucet < ApplicationRecord
       end
     end
   end
+
+
 
 end

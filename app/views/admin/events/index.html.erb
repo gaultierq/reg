@@ -26,17 +26,12 @@
         <% @events.where(kind: :maintenance).each do |event| %>
           <tr>
             <td><%= event.id %></td>
-            <td><%= event.faucet.serial_number %></td>
+            <td><%= event.faucet.display_name %></td>
             <td class="uk-flex uk-flex-center">
               <ul class="uk-iconnav">
                 <li>
                   <%= link_to admin_event_path(event) do %>
                     <span uk-icon="search", uk-tooltip="Détails"></span>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to edit_admin_event_path(event) do %>
-                    <span uk-icon="pencil", uk-tooltip="Modifier"></span>
                   <% end %>
                 </li>
                 <li>
@@ -73,11 +68,6 @@
                 <li>
                   <%= link_to admin_event_path(event) do %>
                     <span uk-icon="search", uk-tooltip="Détails"></span>
-                  <% end %>
-                </li>
-                <li>
-                  <%= link_to edit_admin_event_path(event) do %>
-                    <span uk-icon="pencil", uk-tooltip="Modifier"></span>
                   <% end %>
                 </li>
                 <li>
