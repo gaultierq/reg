@@ -142,7 +142,7 @@ GEM
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
     pg (1.0.0)
-    puma (3.11.4)
+    puma (3.12.6)
     rack (2.0.4)
     rack-contrib (2.2.0)
       rack (~> 2.0)
@@ -300,7 +300,7 @@ DEPENDENCIES
   mini_magick (~> 4.8)
   mini_racer (~> 0.2.6)
   pg
-  puma (~> 3.11)
+  puma (~> 3.12)
   rails (~> 5.2.0.rc1)
   rails-erd
   rails-i18n (~> 5.1)
