@@ -38,7 +38,7 @@
         <% if faucet.archived %>
           <tr class="row-disabled">
         <% else %>
-          <tr>
+          <tr link="<%= admin_faucet_path(faucet) %>" style="cursor: pointer">
         <% end %>
           <td><%= faucet.id %></td>
           <td>

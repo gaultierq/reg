@@ -55,7 +55,7 @@ export default class extends Controller {
     }
 
     load() {
-        this.table = $(this.id).DataTable({
+        var table = $(this.id).DataTable({
             // responsive: true,
             dom: this.dom,
             paging: this.paging,
@@ -67,6 +67,17 @@ export default class extends Controller {
                 { className: "dt-center", targets: "_all" }
             ]
         })
+        this.table = table;
+
+        $(this.id).on('click', 'tr', function () {
+            let row = table.row( this );
+            let nodes = row && row.nodes();
+            var node = nodes && nodes[0];
+            var link = node && $(node).attr("link");
+            if (link) {
+                window.location = link
+            }
+        } );
     }
 
     search() {

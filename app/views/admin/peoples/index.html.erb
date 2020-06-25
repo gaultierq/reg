@@ -25,7 +25,7 @@
 
         <tbody>
         <% @admins.each do |admin| %>
-          <tr>
+          <tr link="<%= admin_admin_path(admin) %>" style="cursor: pointer">
             <td><%= admin.id %></td>
             <td><%= admin.email %></td>
             <td class="uk-flex uk-flex-center">
