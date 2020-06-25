@@ -4,7 +4,7 @@ class IndustrialUnit < ApplicationRecord
   include Filterable
 
   acts_as_mappable default_units: :kms, lat_column_name: :latitude,
-                   lng_column_name: :longitude, auto_geocode: { field: :full_address }
+                   lng_column_name: :longitude
 
   has_many :user_industrial_units
   has_many :users, through: :user_industrial_units, dependent: :destroy
@@ -12,10 +12,12 @@ class IndustrialUnit < ApplicationRecord
   has_many :admins, through: :admin_industrial_units, dependent: :destroy
   has_many :faucets, dependent: :destroy
 
-  validates :address, presence: true
-  validates :postcode, presence: true
-  validates :city, presence: true
-  validates :country, presence: true
+  # validates :address, presence: true
+  # validates :postcode, presence: true
+  # validates :city, presence: true
+  # validates :country, presence: true
+  validates :latitude, presence: true
+  validates :longitude, presence: true
 
   scope :industrial_unit, -> (industrial_unit_id) { where(id: industrial_unit_id) }
 

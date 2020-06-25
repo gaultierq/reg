@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_07_085538) do
+ActiveRecord::Schema.define(version: 2020_06_25_083122) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -178,12 +178,12 @@ ActiveRecord::Schema.define(version: 2020_05_07_085538) do
 
   create_table "industrial_units", force: :cascade do |t|
     t.string "name"
-    t.string "address", null: false
-    t.string "postcode", null: false
-    t.string "city", null: false
-    t.string "country", null: false
-    t.float "latitude", default: 0.0
-    t.float "longitude", default: 0.0
+    t.string "address"
+    t.string "postcode"
+    t.string "city"
+    t.string "country"
+    t.float "latitude", default: 0.0, null: false
+    t.float "longitude", default: 0.0, null: false
     t.text "additional_information"
     t.text "process_information"
     t.datetime "created_at", null: false
