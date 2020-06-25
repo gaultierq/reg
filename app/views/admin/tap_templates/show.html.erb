@@ -324,8 +324,13 @@
             <table class="uk-table uk-table-striped">
               <tbody>
               <%= render 'admin/faucets/show_attachement',
+                         attachments: @tap_template.attachments.where_kind(:documentation_plan),
+                         title: t("attachment_title.#{:documentation_plan}")
+              %>
+
+              <%= render 'admin/faucets/show_attachement',
                          attachments: @tap_template.attachments.where_kind(:instruction_service),
-                         title: "Documents d'instruction de service" %>
+                         title: t("attachment_title.#{:instruction_service}") %>
 
               </tbody>
             </table>
