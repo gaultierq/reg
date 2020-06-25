@@ -26,7 +26,12 @@
       <% @tap_templates.each do |tap_template| %>
         <tr>
           <td><%= tap_template.id %></td>
-          <td><%= tap_template.name %></td>
+          <td>
+            <%= link_to admin_tap_template_path(tap_template) do %>
+              <%= tap_template.name %>
+            <% end %>
+            </td>
+
           <td><%= tap_template.article_number %></td>
           <td><%= tap_template.dn %></td>
           <td class="uk-flex uk-flex-center">

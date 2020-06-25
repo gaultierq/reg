@@ -52,7 +52,7 @@
         </ul>
       </div>
       <div class="uk-width-auto@m">
-          <%= link_to 'Nouvelle unité industrielle', new_admin_industrial_unit_path, class: 'uk-button uk-button-primary' %>
+        <%= link_to 'Nouvelle unité industrielle', new_admin_industrial_unit_path, class: 'uk-button uk-button-primary' %>
       </div>
     </div>
 
@@ -78,48 +78,54 @@
           <% else %>
             <tr>
           <% end %>
-            <td>
-              <% if faucet.events.where(seen: false).length > 0 %>
-                <%= image_tag("warning.svg", {:style => "height: 3%;"}) %>
-              <% end %>
-              <%= faucet.name %>
-            </td>
-            <td><%= faucet.article_number %></td>
-            <td><%= faucet.serial_number %></td>
-            <td><%= faucet.sales_number %></td>
-            <td><%= faucet.dn %></td>
-            <% if faucet.manufacturing_date.present? %>
-              <td><%= faucet.manufacturing_date.strftime('%d/%m') %></td>
-            <% else %>
-              <td></td>
+          <td>
+            <% if faucet.events.where(seen: false).length > 0 %>
+              <%= image_tag("warning.svg", {:style => "height: 3%;"}) %>
             <% end %>
-            <td><%= faucet.industrial_unit.name %></td>
-            <td class="uk-flex uk-flex-center">
-              <ul class="uk-iconnav">
+            <%= link_to admin_faucet_path(faucet) do %>
+              <%= faucet.name %>
+            <% end %>
+          </td>
+          <td><%= faucet.article_number %></td>
+          <td><%= faucet.serial_number %></td>
+          <td><%= faucet.sales_number %></td>
+          <td><%= faucet.dn %></td>
+          <% if faucet.manufacturing_date.present? %>
+            <td><%= faucet.manufacturing_date.strftime('%d/%m') %></td>
+          <% else %>
+            <td></td>
+          <% end %>
+          <td>
+            <%= link_to admin_industrial_unit_path(faucet.industrial_unit) do %>
+              <%= faucet.industrial_unit.name %>
+            <% end %>
+          </td>
+          <td class="uk-flex uk-flex-center">
+            <ul class="uk-iconnav">
+              <li>
+                <%= link_to admin_faucet_path(faucet) do %>
+                  <span uk-icon="search", uk-tooltip="Détails"></span>
+                <% end %>
+              </li>
+              <% if !faucet.archived %>
                 <li>
-                  <%= link_to admin_faucet_path(faucet) do %>
-                    <span uk-icon="search", uk-tooltip="Détails"></span>
+                  <%= link_to edit_admin_faucet_path(faucet) do %>
+                    <span uk-icon="pencil", uk-tooltip="Modifier"></span>
                   <% end %>
                 </li>
-                <% if !faucet.archived %>
-                  <li>
-                    <%= link_to edit_admin_faucet_path(faucet) do %>
-                      <span uk-icon="pencil", uk-tooltip="Modifier"></span>
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to duplicate_admin_faucet_path(faucet) do %>
-                      <span uk-icon="copy", uk-tooltip="Dupliquer"></span>
-                    <% end %>
-                  </li>
-                  <li>
-                    <%= link_to admin_faucet_path(faucet), method: :delete, data: {confirm: 'Êtes-vous sûr ?'} do %>
-                      <span uk-icon="trash", uk-tooltip="Supprimer"></span>
-                    <% end %>
-                  </li>
-                <% end %>
-              </ul>
-            </td>
+                <li>
+                  <%= link_to duplicate_admin_faucet_path(faucet) do %>
+                    <span uk-icon="copy", uk-tooltip="Dupliquer"></span>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to admin_faucet_path(faucet), method: :delete, data: {confirm: 'Êtes-vous sûr ?'} do %>
+                    <span uk-icon="trash", uk-tooltip="Supprimer"></span>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </td>
           </tr>
         <% end %>
       <% end %>

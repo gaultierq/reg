@@ -110,12 +110,12 @@
         <div class="uk-accordion-content">
           <div class="uk-margin">
             <%= form.label :fluid_nature, "Nature du fluide", class: 'uk-form-label' %>
-            <%= form.select :fluid_nature, [ ['Liquide', 0], ['Gaz', 1] ], { include_blank: true }, { class: 'uk-select', data: { target: 'form.input' } } %>
+            <%= form.select :fluid_nature, [ ['Liquide', 'liquide'], ['Gaz', 'gas'] ], { include_blank: true }, { class: 'uk-select', data: { target: 'form.input' } } %>
           </div>
 
           <div class="uk-margin">
             <%= form.label :fluid_danger_group, "Groupe de danger du  fluide", class: 'uk-form-label' %>
-            <%= form.select :fluid_danger_group, [ ['I', 0], ['II', 1] ], { include_blank: true}, { class: 'uk-select', data: { target: 'form.input' } } %>
+            <%= form.select :fluid_danger_group, [ ['I', 'I'], ['II', 'II'] ], { include_blank: true}, { class: 'uk-select', data: { target: 'form.input' } } %>
           </div>
 
           <div class="uk-margin">
