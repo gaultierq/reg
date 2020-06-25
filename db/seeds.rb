@@ -40,7 +40,7 @@ end
 
 # Faucet template
 10.times do |i|
-  TapTemplate.create name: "Modèle n°#{i}", article_number: "12345#{i}", dn: "98765#{i}"
+  TapTemplate.create template_name: "Modèle n°#{i}", name: "Robinet n°#{i}", article_number: "12345#{i}", dn: "98765#{i}"
 end
 
 # Faucet

@@ -13,6 +13,11 @@
       </div>
     <% end %>
 
+    <div class="uk-margin">
+      <%= form.label :template_name, "Nom du modèle", class: 'uk-form-label' %>
+      <%= form.text_field :template_name, class: 'uk-input', data: { target: 'form.input' } %>
+    </div>
+
     <ul class="uk-list-large uk-list-divider" uk-accordion>
       <li>
         <%= link_to '#', class: 'uk-accordion-title' do %>

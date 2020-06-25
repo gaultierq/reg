@@ -15,6 +15,7 @@
       <thead>
       <tr>
         <th>Nom</th>
+        <th>Type</th>
         <th>N° article</th>
         <th>DN</th>
         <th>Pression max</th>
@@ -27,10 +28,10 @@
         <tr>
           <td>
             <%= link_to admin_tap_template_path(tap_template) do %>
-              <%= tap_template.name %>
+              <%= tap_template.template_name %>
             <% end %>
-            </td>
-
+          </td>
+          <td><%= tap_template.name %></td>
           <td><%= tap_template.article_number %></td>
           <td><%= tap_template.dn %></td>
           <td><%= tap_template.maximal_pressure %></td>
