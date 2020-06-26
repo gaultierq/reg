@@ -46,13 +46,15 @@ group :development, :test do
 end
 
 group :development do
-  gem 'bundler-audit', require: false
+  # gem 'bundler-audit', require: false
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'rails-erd'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
 end
+
+gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
