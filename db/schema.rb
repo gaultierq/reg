@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2020_06_25_170853) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -34,8 +37,8 @@ ActiveRecord::Schema.define(version: 2020_06_25_170853) do
   end
 
   create_table "admin_industrial_units", force: :cascade do |t|
-    t.integer "admin_id"
-    t.integer "industrial_unit_id"
+    t.bigint "admin_id"
+    t.bigint "industrial_unit_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["admin_id"], name: "index_admin_industrial_units_on_admin_id"
@@ -88,8 +91,8 @@ ActiveRecord::Schema.define(version: 2020_06_25_170853) do
   end
 
   create_table "event_attachments", force: :cascade do |t|
-    t.integer "event_id"
-    t.integer "attachment_id"
+    t.bigint "event_id"
+    t.bigint "attachment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "kind"
@@ -98,11 +101,11 @@ ActiveRecord::Schema.define(version: 2020_06_25_170853) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.integer "faucet_id"
+    t.bigint "faucet_id"
     t.integer "kind", default: 0, null: false
     t.text "comment"
-    t.integer "admin_id"
-    t.integer "user_id"
+    t.bigint "admin_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "seen"
@@ -112,8 +115,8 @@ ActiveRecord::Schema.define(version: 2020_06_25_170853) do
   end
 
   create_table "faucet_attachments", force: :cascade do |t|
-    t.integer "faucet_id"
-    t.integer "attachment_id"
+    t.bigint "faucet_id"
+    t.bigint "attachment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "kind"
@@ -130,7 +133,7 @@ ActiveRecord::Schema.define(version: 2020_06_25_170853) do
     t.string "sales_number"
     t.string "customer_order_number"
     t.string "article_number"
-    t.integer "industrial_unit_id"
+    t.bigint "industrial_unit_id"
     t.string "dn"
     t.string "input_connection"
     t.string "output_connection"
@@ -198,15 +201,15 @@ ActiveRecord::Schema.define(version: 2020_06_25_170853) do
     t.string "first_name"
     t.string "email"
     t.string "phone_number"
-    t.integer "admin_id"
+    t.bigint "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["admin_id"], name: "index_registrations_on_admin_id"
   end
 
   create_table "tap_template_attachments", force: :cascade do |t|
-    t.integer "tap_template_id"
-    t.integer "attachment_id"
+    t.bigint "tap_template_id"
+    t.bigint "attachment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "kind"
@@ -257,8 +260,8 @@ ActiveRecord::Schema.define(version: 2020_06_25_170853) do
   end
 
   create_table "user_industrial_units", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "industrial_unit_id"
+    t.bigint "user_id"
+    t.bigint "industrial_unit_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["industrial_unit_id"], name: "index_user_industrial_units_on_industrial_unit_id"
@@ -298,4 +301,19 @@ ActiveRecord::Schema.define(version: 2020_06_25_170853) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "admin_industrial_units", "admins"
+  add_foreign_key "admin_industrial_units", "industrial_units"
+  add_foreign_key "event_attachments", "attachments"
+  add_foreign_key "event_attachments", "events"
+  add_foreign_key "events", "admins"
+  add_foreign_key "events", "faucets"
+  add_foreign_key "events", "users"
+  add_foreign_key "faucet_attachments", "attachments"
+  add_foreign_key "faucet_attachments", "faucets"
+  add_foreign_key "faucets", "industrial_units"
+  add_foreign_key "registrations", "admins"
+  add_foreign_key "tap_template_attachments", "attachments"
+  add_foreign_key "tap_template_attachments", "tap_templates"
+  add_foreign_key "user_industrial_units", "industrial_units"
+  add_foreign_key "user_industrial_units", "users"
 end

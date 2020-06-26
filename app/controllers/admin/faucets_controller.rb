@@ -267,9 +267,9 @@ class Admin::FaucetsController < Admin::BaseController
         serial_number
     LIMIT 1'
     result = ActiveRecord::Base.connection.execute(sql)
-    Rails.logger.info "Next serial number is #{result}"
-    result.empty? ? 18000 : result[0][0]
-
+    serial_number = result&.to_a.empty? ? 18000 : result.getvalue(0,0)
+    Rails.logger.info "Next serial number is #{serial_number}"
+    serial_number
   end
 
   # Use callbacks to share common setup or constraints between actions.
