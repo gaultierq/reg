@@ -40,7 +40,7 @@ class Admin::FaucetsController < Admin::BaseController
 
   # GET /faucets/new
   def new
-    @faucet = Faucet.new(TapTemplate.find_by_id(params[:tap_template_id])&.attributes)
+    @faucet = Faucet.new(TapTemplate.find_by_id(params[:tap_template_id])&.attributes.reject { |attr| attr == 'template_name' })
     @faucet.serial_number = next_serial_number
     @tap_template = TapTemplate.find_by_id(params[:tap_template_id])
   end
