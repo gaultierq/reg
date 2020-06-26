@@ -40,11 +40,6 @@
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to edit_admin_attachment_path(attachment) do %>
-                    <span uk-icon="pencil", uk-tooltip="Modifier"></span>
-                  <% end %>
-                </li>
-                <li>
                   <%= link_to admin_attachment_path(attachment), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } do %>
                     <span uk-icon="trash", uk-tooltip="Supprimer"></span>
                   <% end %>

@@ -7,7 +7,6 @@
         <h1 class="uk-heading-primary">Document <%= @attachment.id %></h1>
       </div>
       <div class="uk-width-auto@m">
-        <%= link_to 'Modifier', edit_admin_attachment_path(@attachment), class: 'uk-button uk-button-primary' %>
         <%= link_to 'Supprimer',admin_attachment_path(@attachment), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'uk-button uk-button-danger' %>
       </div>
     </div>
