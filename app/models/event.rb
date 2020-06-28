@@ -6,7 +6,6 @@ class Event < ApplicationRecord
   belongs_to :admin, optional: true
   belongs_to :user, optional: true
 
-  # has_one :user
 
   has_many :event_attachments
   has_many :attachments, :extend => Kindable, through: :event_attachments, dependent: :destroy do
@@ -22,6 +21,11 @@ class Event < ApplicationRecord
 
   def faucet_with_industrial_unit?
     errors.add(:faucet, "cannot create a event on a faucet without industrial unit") unless faucet&.industrial_unit.present?
+  end
+
+  def author
+    user.full_name if user_id
+    admin.full_name if admin_id
   end
 
 end
