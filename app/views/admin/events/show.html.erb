@@ -16,16 +16,17 @@
       <table class="uk-table uk-table-striped">
         <tbody>
         <tr>
-          <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">id</td>
-          <td><%= @event.id %></td>
-        </tr>
-        <tr>
           <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">type</td>
           <td><%= @event.kind %></td>
         </tr>
         <tr>
           <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">robinet</td>
-          <td><%= @event.faucet.name %></td>
+          <td>
+            <%= link_to admin_faucet_path(@event.faucet) do %>
+              <%= @event.faucet.name %>
+            <% end %>
+
+          </td>
         </tr>
         <tr>
           <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">commentaire</td>
