@@ -19,22 +19,26 @@ class Admin::AttachmentsController < Admin::BaseController
 
   # POST /admin/attachments
   def create
-    @attachment = Attachment.new(attachment_params)
-
-    if @attachment.save
-      redirect_to admin_attachment_path(@attachment), notice: 'Document créé avec succès.'
-    else
-      render :new
+    add_attachments
+    ActiveRecord::Base.transaction do
+      @attachments.each do |att|
+        att.save
+      end
     end
+    redirect_to admin_attachments_url, notice: 'Documents créé avec succès.'
   end
 
-  # PATCH/PUT /admin/attachments/1
-  def update
-    if @attachment.update(attachment_params)
-      redirect_to admin_attachment_path(@attachment), notice: 'Document modifié avec succès.'
-    else
-      render :edit
-    end
+  def add_attachments
+
+    dummy_params = params[:attachment].clone
+
+    # TODO: clean up the interface
+    dummy_params["new_" + dummy_params[:categ] + "_attachment"] = dummy_params[:pdf]
+
+    @attachments = Attachment.prepare_attach(
+        dummy_params,
+        Attachment.categs
+    )
   end
 
   # DELETE /admin/attachments/1

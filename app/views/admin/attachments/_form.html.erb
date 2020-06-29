@@ -14,14 +14,19 @@
 
     <div class="uk-margin">
       <%= form.label :categ, "Type", class: 'uk-form-label' %>
-      <%= form.select :categ, Attachment.categs.collect {|cat| [I18n.t("attachment_categ.#{cat[0]}"), cat[0]]}, {}, {class: 'uk-select', data: {target: 'form.input'}} %>
+      <%= form.select :categ,
+                      Attachment.categs.collect {|cat| [I18n.t("attachment_categ.#{cat[0]}"), cat[0]]}, {},
+                      {
+                          class: 'uk-select',
+                          data: {target: 'form.input'}
+                      } %>
     </div>
 
     <div class="uk-margin">
       <div>
         <%= form.label :pdf_label, "Attacher un document", class: 'uk-form-label' %>
       </div>
-      <%= form.file_field :pdf %>
+      <%= form.file_field :pdf, multiple: true %>
     </div>
 
     <div class="uk-margin-medium">
