@@ -471,11 +471,11 @@
               <tbody>
               <%= render 'show_attachement',
                          attachments: @faucet.attachments.where_kind(:documentation_plan),
-                         title: t("attachment_title.#{:documentation_plan}")
+                         title: t("attachment_kind.#{:documentation_plan}")
               %>
               <%= render 'show_attachement',
                          attachments: @faucet.attachments.where_kind(:instruction_service),
-                         title: t("attachment_title.#{:instruction_service}")
+                         title: t("attachment_kind.#{:instruction_service}")
               %>
 
               <tr>
