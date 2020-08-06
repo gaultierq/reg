@@ -65,8 +65,8 @@
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° d'OF</td>
                 <td><%= @faucet.of_id %></td>
               </tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">DN</td>
-                <td><%= @faucet.dn %></td>
+              <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">DN</td>
+              <td><%= @faucet.dn %></td>
               </tr>
 
               <tr>
@@ -491,46 +491,48 @@
           </div>
         </div>
       </li>
+      <% if @faucet.industrial_unit.present? %>
+        <li>
+          <%= link_to '#', class: 'uk-accordion-title' do %>
+            <%= image_tag("Logo_évènement.png", :size => "50x50", class: "menu_icon") %>
+            Évènements
+          <% end %>
+          <div class="uk-accordion-content">
+            <div class="uk-width-auto@m">
+              <%= link_to 'Nouvel Évènement', new_admin_event_path(faucet_id: @faucet.id), class: 'uk-button uk-button-primary' %>
+            </div>
+            <div class="uk-overflow-auto">
+              <table class="uk-table uk-table-striped">
+                <thead>
+                <th>id</th>
+                <th>type</th>
+                <th>commentaire</th>
+                <th>actions</th>
+                </thead>
+                <tbody>
+                <% @faucet.events.each do |event| %>
+                  <tr>
+                    <td><%= event.id %></td>
+                    <td><%= event.kind %></td>
+                    <td><%= event.comment %></td>
+                    <td class="uk-flex uk-flex-center">
+                      <ul class="uk-iconnav">
+                        <li>
+                          <%= link_to admin_event_path(event) do %>
+                            <span uk-icon="search" , uk-tooltip="Détails"></span>
+                          <% end %>
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </li>
 
-      <li>
-        <%= link_to '#', class: 'uk-accordion-title' do %>
-          <%= image_tag("Logo_évènement.png", :size => "50x50", class: "menu_icon") %>
-          Évènements
-        <% end %>
-        <div class="uk-accordion-content">
-          <div class="uk-width-auto@m">
-            <%= link_to 'Nouvel Évènement', new_admin_event_path(faucet_id: @faucet.id), class: 'uk-button uk-button-primary' %>
-          </div>
-          <div class="uk-overflow-auto">
-            <table class="uk-table uk-table-striped">
-              <thead>
-              <th>id</th>
-              <th>type</th>
-              <th>commentaire</th>
-              <th>actions</th>
-              </thead>
-              <tbody>
-              <% @faucet.events.each do |event| %>
-                <tr>
-                  <td><%= event.id %></td>
-                  <td><%= event.kind %></td>
-                  <td><%= event.comment %></td>
-                  <td class="uk-flex uk-flex-center">
-                    <ul class="uk-iconnav">
-                      <li>
-                        <%= link_to admin_event_path(event) do %>
-                          <span uk-icon="search" , uk-tooltip="Détails"></span>
-                        <% end %>
-                      </li>
-                    </ul>
-                  </td>
-                </tr>
-              <% end %>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </li>
+      <% end %>
     </ul>
 
     <div class="uk-margin-medium">
