@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'noreply@reg.fr'
+  default from: 'noreply@reg-technology.com'
   layout 'mailer'
 end

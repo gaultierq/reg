@@ -3,7 +3,7 @@ class RegistrationMailer < ApplicationMailer
     @user = user
 
     mail(to: email,
-         from: 'noreply@reg.fr',
+         from: 'noreply@reg-technology.com',
          subject: 'Demande de création de compte')
   end
 end
