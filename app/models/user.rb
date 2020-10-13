@@ -23,4 +23,8 @@ class User < ApplicationRecord
   end
 
 
+  def inactive
+    sign_in_count == 0 && invitation_sent_at.present? && !invitation_accepted_at.present?
+  end
+
 end
