@@ -1,7 +1,7 @@
 class Admin::AdminsController < Admin::BaseController
   layout 'admin'
   before_action :authenticate_admin!
-  before_action :set_admin, only: [:show, :edit, :update, :destroy]
+  before_action :set_admin, only: [:show, :edit, :update, :destroy, :unlock]
 
   # GET /admins/1
   def show
@@ -52,6 +52,14 @@ class Admin::AdminsController < Admin::BaseController
     end
     @admin.industrial_units.delete_all
     @admin.industrial_units << industrial_unit
+  end
+
+  def unlock
+    if @admin.unlock_access!
+      redirect_to admin_peoples_url, notice: 'Admin débloqué.'
+    else
+      redirect_to admin_peoples_path, alert: "Admin n'a pas pu être débloqué."
+    end
   end
 
   private

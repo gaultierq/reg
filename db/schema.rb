@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_25_170853) do
+ActiveRecord::Schema.define(version: 2020_10_13_121902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,10 +76,14 @@ ActiveRecord::Schema.define(version: 2020_06_25_170853) do
     t.string "direct_otp"
     t.datetime "direct_otp_sent_at"
     t.datetime "totp_timestamp"
+    t.integer "failed_attempts", default: 0, null: false
+    t.datetime "locked_at"
+    t.string "unlock_token"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["encrypted_otp_secret_key"], name: "index_admins_on_encrypted_otp_secret_key", unique: true
     t.index ["invitation_token"], name: "index_admins_on_invitation_token", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+    t.index ["unlock_token"], name: "index_admins_on_unlock_token", unique: true
   end
 
   create_table "attachments", force: :cascade do |t|

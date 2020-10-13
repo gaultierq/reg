@@ -28,6 +28,9 @@
         <% @admins.each do |admin| %>
           <tr>
             <td>
+              <% if admin.access_locked? %>
+                <%= image_tag("warning.svg", {:style => "height: 20px;"}) %>
+              <% end %>
               <%= link_to admin_admin_path(admin) do %>
                 <%= admin.full_name %>
               <% end %>

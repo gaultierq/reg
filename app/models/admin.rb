@@ -2,7 +2,7 @@ class Admin < ApplicationRecord
   include DeviseInvitable::Inviter
 
   devise :two_factor_authenticatable, :database_authenticatable, :recoverable,
-         :rememberable, :timeoutable, :trackable, :validatable, :invitable
+         :rememberable, :timeoutable, :trackable, :validatable, :invitable, :lockable
 
   has_many :admin_industrial_units
   has_many :industrial_units, through: :admin_industrial_units, dependent: :destroy

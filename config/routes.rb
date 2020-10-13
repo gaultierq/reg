@@ -26,7 +26,11 @@ Rails.application.routes.draw do
     resources :events
     resources :alerts
     resources :peoples, only: :index
-    resources :admins, except: :index
+    resources :admins, except: :index do
+      member do
+        post :unlock
+      end
+    end
     resources :users, except: :index do
       member do
         post :unlock
