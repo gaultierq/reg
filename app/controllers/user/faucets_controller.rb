@@ -22,6 +22,8 @@ class User::FaucetsController < User::BaseController
     end
   end
 
+
+
   # GET /user/faucets/1
   def show
     @browser = Browser.new(request.env['HTTP_USER_AGENT'])
@@ -40,14 +42,36 @@ class User::FaucetsController < User::BaseController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_faucet
-      @faucet = Faucet.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def faucet_params
-      params.require(:faucet).permit(:number_customer_tag, :other, :note)
+  def archive_user
+    @faucet = Faucet.find(params[:id])
+    if @faucet.archived.nil? || !@faucet.archived
+      @faucet.archived = true
+      if @faucet.save
+        redirect_to user_faucet_path(@faucet), notice: 'Robinet désactivé avec succès.'
+      else
+        redirect_to user_faucet_path(@faucet), alert: 'Erreur dans la désactivation du robinet.'
+      end
+    else
+      @faucet.archived = false
+      if @faucet.save
+        redirect_to user_faucet_path(@faucet), notice: 'Robinet activé avec succès.'
+      else
+        redirect_to user_faucet_path(@faucet), alert: 'Erreur dans l\'activation du robinet.'
+      end
     end
+  end
+
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_faucet
+    @faucet = Faucet.find(params[:id])
+  end
+
+
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def faucet_params
+    params.require(:faucet).permit(:number_customer_tag, :other, :note)
+  end
 end

@@ -241,14 +241,16 @@
 
           <%= render 'form_attachment', form: form, kind: :instrumentation_position %>
 
-          <div class="uk-margin">
-            <%= form.label :open_position, "Position ouverte", class: 'uk-form-label' %>
-            <%= form.check_box :open_position, class: 'uk-checkbox', disabled: @faucet.open_position.blank?, data: { target: 'form.input' } %>
-          </div>
+          <div id="position_slectors">
+            <div class="uk-margin">
+              <%= form.label :open_position, "Position ouverte", class: 'uk-form-label' %>
+              <%= form.check_box :open_position, class: 'uk-checkbox', disabled: @faucet.open_position.blank?, data: { target: 'form.input' } %>
+            </div>
 
-          <div class="uk-margin">
-            <%= form.label :close_position, "Position fermée", class: 'uk-form-label' %>
-            <%= form.check_box :close_position, class: 'uk-checkbox', disabled: @faucet.close_position.blank?, data: { target: 'form.input' } %>
+            <div class="uk-margin">
+              <%= form.label :close_position, "Position fermée", class: 'uk-form-label' %>
+              <%= form.check_box :close_position, class: 'uk-checkbox', disabled: @faucet.close_position.blank?, data: { target: 'form.input' } %>
+            </div>
           </div>
 
           <div class="uk-margin">
@@ -311,6 +313,7 @@
             <%= form.check_box :material_certificates_required, class: 'uk-checkbox', data: { target: 'form.input' } %>
           </div>
 
+          <%= render 'form_attachment', form: form, kind: :certif_corps %>
           <%= render 'form_attachment', form: form, kind: :certif_chapeau %>
           <%= render 'form_attachment', form: form, kind: :certif_tige %>
           <%= render 'form_attachment', form: form, kind: :certif_clapet %>
@@ -414,6 +417,7 @@
         $('#existing_actionnement_actionneur_attachment').select2();
         $('#existing_open_position_attachment').select2();
         $('#existing_close_position_attachment').select2();
+        $('#existing_certif_corps_attachment').select2();
         $('#existing_certif_chapeau_attachment').select2();
         $('#existing_certif_tige_attachment').select2();
         $('#existing_certif_clapet_attachment').select2();
@@ -433,12 +437,12 @@
         ["#faucet_actuator_checkbox", [:actionnement_actionneur], ["#faucet_actuator"]],
         ["#faucet_piloting_checkbox", [:instrumentation_pilotage], ["#faucet_piloting"]],
         ["#faucet_other_instrumentation_checkbox", [:instrumentation_autre], ["#faucet_other_instrumentation"]],
-        ["#faucet_position_detector_checkbox", [:instrumentation_position], ["#faucet_position_detector", "#faucet_open_position", "#faucet_close_position"]],
+        ["#faucet_position_detector_checkbox", [:instrumentation_position], ["#faucet_position_detector", "#faucet_open_position", "#faucet_close_position", "#position_slectors"]],
         ["#faucet_close_position", [:open_position], []],
         ["#faucet_open_position", [:close_position], []],
         ["#faucet_other_special_requirements_checkbox", [:special_requirement], ["#faucet_other_special_requirements"]],
         ["#faucet_material_certificates_required", [
-                                        :certif_chapeau, :certif_tige,
+                                        :certif_corps, :certif_chapeau, :certif_tige,
                                         :certif_clapet, :certif_siege, :certif_autre,], []],
         ].each do |f| %>
         <%= raw "$('#{f[0]}').change(configureCheckbox('#{f[0]}', #{f[1].map{ |c| ["#existing_#{c}_attachment", "#faucet_new_#{c}_attachment", "#existing_#{c}_attachment_group"] }.flatten.concat(f[2])}))" %>
@@ -447,4 +451,4 @@
         <% end %>
 
     });
-    </script>
+</script>

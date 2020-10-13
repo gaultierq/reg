@@ -386,6 +386,10 @@
               </tr>
 
               <%= render 'show_attachement',
+                         attachments: @faucet.attachments.where_kind(:certif_corps),
+                         title: t("attachment_title.#{:certif_corps}")
+              %>
+              <%= render 'show_attachement',
                          attachments: @faucet.attachments.where_kind(:certif_chapeau),
                          title: t("attachment_title.#{:certif_chapeau}")
               %>

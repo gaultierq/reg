@@ -25,7 +25,11 @@
         </tr>
         <tr>
           <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">robinet</td>
-          <td><%= @event.faucet.name %></td>
+          <td>
+            <%= link_to user_faucet_path(@event.faucet) do %>
+              <%= @event.faucet.name %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">N° article</td>
@@ -51,12 +55,7 @@
         </tr>
         <tr>
           <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Auteur</td>
-          <% if @event.admin_id.present? %>
-            <td><%= @event.admin.full_name %></td>
-          <% end %>
-          <% if @event.user_id.present? %>
-            <td><%= @event.user.full_name %></td>
-          <% end %>
+          <%= @event.author %>
         </tr>
         </tbody>
       </table>

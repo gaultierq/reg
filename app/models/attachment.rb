@@ -32,7 +32,7 @@ class Attachment < ApplicationRecord
 
   def self.get_categ(kind)
     case kind.to_s
-      when "certif_chapeau", "certif_tige","certif_clapet","certif_siege","certif_autre"
+      when "certif_corps", "certif_chapeau", "certif_tige","certif_clapet","certif_siege","certif_autre"
         :certif_material
       when "open_position", "close_position"
         :instrument_position

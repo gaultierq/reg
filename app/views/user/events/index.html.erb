@@ -16,6 +16,7 @@
       <%= render 'shared/table', locals: { id: 'events_maintenance_table', dom: 'lrtip', paging: false, info: false } do %>
         <thead>
         <tr>
+          <th>Événement</th>
           <th>N° article</th>
           <th>N° série</th>
           <th>Date de création</th>
@@ -28,6 +29,11 @@
         <tbody>
         <% @events.where(kind: :maintenance).each do |event| %>
           <tr>
+            <td>
+              <%= link_to user_event_path(event) do %>
+                <%= event.id %>
+              <% end %>
+            </td>
             <td><%= event.faucet.article_number %></td>
             <td><%= event.faucet.serial_number %></td>
             <td><%= event.created_at %></td>

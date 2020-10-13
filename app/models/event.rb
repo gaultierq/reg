@@ -24,7 +24,7 @@ class Event < ApplicationRecord
   end
 
   def author
-    user.full_name if user_id
+    return user.full_name if user_id
     admin.full_name if admin_id
   end
 

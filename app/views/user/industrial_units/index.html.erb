@@ -74,7 +74,9 @@
                 <% if faucet.events.length > 0 %>
                   <%= image_tag("warning.svg", {:style => "height: 20px;"}) %>
                 <% end %>
-                <%= faucet.name %>
+                <%= link_to user_faucet_path(faucet) do %>
+                  <%= faucet.name %>
+                <% end %>
               </td>
               <td><%= faucet.article_number %></td>
               <td><%= faucet.serial_number %></td>

@@ -149,7 +149,7 @@ class Admin::FaucetsController < Admin::BaseController
   def templatize
     set_faucet
     attr = @faucet.attributes.select {|k| TEMPLATE_ATTR.include?(k)}
-    attr[:name] = "Modèle de \"#{@faucet.name}\""
+    attr[:template_name] = "Modèle de \"#{@faucet.name}\""
     template = TapTemplate.create!(attr)
 
     redirect_to admin_tap_template_path(template)
@@ -170,25 +170,6 @@ class Admin::FaucetsController < Admin::BaseController
         redirect_to admin_faucet_path(@faucet), notice: 'Robinet activé avec succès.'
       else
         redirect_to admin_faucet_path(@faucet), alert: 'Erreur dans l\'activation du robinet.'
-      end
-    end
-  end
-
-  def archive_user
-    @faucet = Faucet.find(params[:id])
-    if @faucet.archived.nil? || !@faucet.archived
-      @faucet.archived = true
-      if @faucet.save
-        redirect_to user_faucet_path(@faucet), notice: 'Robinet désactivé avec succès.'
-      else
-        redirect_to user_faucet_path(@faucet), alert: 'Erreur dans la désactivation du robinet.'
-      end
-    else
-      @faucet.archived = false
-      if @faucet.save
-        redirect_to user_faucet_path(@faucet), notice: 'Robinet activé avec succès.'
-      else
-        redirect_to user_faucet_path(@faucet), alert: 'Erreur dans l\'activation du robinet.'
       end
     end
   end
