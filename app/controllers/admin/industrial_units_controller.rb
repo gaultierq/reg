@@ -105,6 +105,6 @@ class Admin::IndustrialUnitsController < Admin::BaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def industrial_unit_params
-      params.require(:industrial_unit).permit(:name, :address, :postcode, :city, :country, :additional_information, :process_information, :sign_in_perimeter)
+      params.require(:industrial_unit).permit(:name, :address, :postcode, :city, :country, :additional_information, :process_information, :sign_in_perimeter, :latitude, :longitude)
     end
 end
