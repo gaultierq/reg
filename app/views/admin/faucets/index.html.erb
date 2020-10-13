@@ -40,7 +40,7 @@
         <% end %>
         <td>
           <% if faucet.events.where(seen: false).length > 0 %>
-            <%= image_tag("warning.svg", {:style => "height: 3%;"}) %>
+            <%= image_tag("warning.svg", {:style => "height: 20px;"}) %>
           <% end %>
           <%= link_to admin_faucet_path(faucet) do %>
             <%= faucet.name %>

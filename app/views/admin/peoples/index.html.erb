@@ -78,7 +78,7 @@
           <tr>
             <td>
               <% if user.access_locked? %>
-                <%= image_tag("warning.svg", {:style => "height: 3%;"}) %>
+                <%= image_tag("warning.svg", {:style => "height: 20px;"}) %>
               <% end %>
               <%= link_to admin_user_path(user) do %>
                 <%= user.full_name %>
