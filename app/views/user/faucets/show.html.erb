@@ -352,30 +352,32 @@
                 </td>
               </tr>
 
-              <%= render 'admin/faucets/show_attachement',
-                         attachments: @faucet.attachments.where_kind(:certif_corps),
-                         title: "Documents certificat de matière corps" %>
+              <% if @faucet.material_certificates_required %>
+                <%= render 'admin/faucets/show_attachement',
+                           attachments: @faucet.attachments.where_kind(:certif_corps),
+                           title: "Documents certificat de matière corps" %>
 
-              <%= render 'admin/faucets/show_attachement',
-                         attachments: @faucet.attachments.where_kind(:certif_chapeau),
-                         title: "Documents certificat de matière chapeau" %>
+                <%= render 'admin/faucets/show_attachement',
+                           attachments: @faucet.attachments.where_kind(:certif_chapeau),
+                           title: "Documents certificat de matière chapeau" %>
 
-              <%= render 'admin/faucets/show_attachement',
-                         attachments: @faucet.attachments.where_kind(:certif_tige),
-                         title: "Documents certificat de matière tige" %>
+                <%= render 'admin/faucets/show_attachement',
+                           attachments: @faucet.attachments.where_kind(:certif_tige),
+                           title: "Documents certificat de matière tige" %>
 
-              <%= render 'admin/faucets/show_attachement',
-                         attachments: @faucet.attachments.where_kind(:certif_clapet),
-                         title: "Documents certificat de matière clapet" %>
+                <%= render 'admin/faucets/show_attachement',
+                           attachments: @faucet.attachments.where_kind(:certif_clapet),
+                           title: "Documents certificat de matière clapet" %>
 
-              <%= render 'admin/faucets/show_attachement',
-                         attachments: @faucet.attachments.where_kind(:certif_siege),
-                         title: "Documents certificat de matière siège" %>
+                <%= render 'admin/faucets/show_attachement',
+                           attachments: @faucet.attachments.where_kind(:certif_siege),
+                           title: "Documents certificat de matière siège" %>
 
 
-              <%= render 'admin/faucets/show_attachement',
-                         attachments: @faucet.attachments.where_kind(:certif_autre),
-                         title: "Documents certificat de matière autre" %>
+                <%= render 'admin/faucets/show_attachement',
+                           attachments: @faucet.attachments.where_kind(:certif_autre),
+                           title: "Documents certificat de matière autre" %>
+              <% end %>
 
               </tbody>
             </table>

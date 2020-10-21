@@ -388,29 +388,31 @@
                 </td>
               </tr>
 
-              <%= render 'show_attachement',
-                         attachments: @faucet.attachments.where_kind(:certif_corps),
-                         title: t("attachment_title.#{:certif_corps}")
-              %>
-              <%= render 'show_attachement',
-                         attachments: @faucet.attachments.where_kind(:certif_chapeau),
-                         title: t("attachment_title.#{:certif_chapeau}")
-              %>
-              <%= render 'show_attachement', attachments: @faucet.attachments.where_kind(:certif_tige),
-                         title: t("attachment_title.#{:certif_tige}")
-              %>
-              <%= render 'show_attachement',
-                         attachments: @faucet.attachments.where_kind(:certif_clapet),
-                         title: t("attachment_title.#{:certif_clapet}")
-              %>
-              <%= render 'show_attachement',
-                         attachments: @faucet.attachments.where_kind(:certif_siege),
-                         title: t("attachment_title.#{:certif_siege}")
-              %>
-              <%= render 'show_attachement',
-                         attachments: @faucet.attachments.where_kind(:certif_autre),
-                         title: t("attachment_title.#{:certif_autre}")
-              %>
+              <% if @faucet.material_certificates_required %>
+                <%= render 'show_attachement',
+                           attachments: @faucet.attachments.where_kind(:certif_corps),
+                           title: t("attachment_title.#{:certif_corps}")
+                %>
+                <%= render 'show_attachement',
+                           attachments: @faucet.attachments.where_kind(:certif_chapeau),
+                           title: t("attachment_title.#{:certif_chapeau}")
+                %>
+                <%= render 'show_attachement', attachments: @faucet.attachments.where_kind(:certif_tige),
+                           title: t("attachment_title.#{:certif_tige}")
+                %>
+                <%= render 'show_attachement',
+                           attachments: @faucet.attachments.where_kind(:certif_clapet),
+                           title: t("attachment_title.#{:certif_clapet}")
+                %>
+                <%= render 'show_attachement',
+                           attachments: @faucet.attachments.where_kind(:certif_siege),
+                           title: t("attachment_title.#{:certif_siege}")
+                %>
+                <%= render 'show_attachement',
+                           attachments: @faucet.attachments.where_kind(:certif_autre),
+                           title: t("attachment_title.#{:certif_autre}")
+                %>
+              <% end %>
               </tbody>
             </table>
           </div>
