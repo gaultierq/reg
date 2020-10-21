@@ -211,16 +211,18 @@
                          attachments: @tap_template.attachments.where_kind(:instrumentation_position),
                          title: "Documents de détecteur de position" %>
 
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position ouverte</td>
-                <td><%= @tap_template.open_position %></td>
-              </tr>
+              <% if @tap_template.position_detector %>
+                <tr>
+                  <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position ouverte</td>
+                  <td><%= @tap_template.open_position %></td>
+                </tr>
 
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position fermée</td>
-                <td><%= @tap_template.close_position %></td>
-              </tr>
+                <tr>
+                  <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Position fermée</td>
+                  <td><%= @tap_template.close_position %></td>
+                </tr>
 
+              <% end %>
               <tr>
                 <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Pilotage</td>
                 <td><%= @tap_template.piloting %></td>
