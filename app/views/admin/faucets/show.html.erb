@@ -303,11 +303,11 @@
               <% if @faucet.position_detector %>
                 <tr>
                   <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Détecteur de position ouverte</td>
-                  <td><%= @faucet.open_position ? "✔" : ""%></td>
+                  <td><%= @faucet.open_position ? "✔" : "✘"%></td>
                 </tr>
                 <tr>
                   <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Détecteur de position fermée</td>
-                  <td><%= @faucet.close_position ? "✔" : ""%></td>
+                  <td><%= @faucet.close_position ? "✔" : "✘"%></td>
                 </tr>
                 <%= render 'show_attachement',
                            attachments: @faucet.attachments.where_kind(:instrumentation_position),
