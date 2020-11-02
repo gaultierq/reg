@@ -202,10 +202,11 @@
           <div class="uk-overflow-auto">
             <table class="uk-table uk-table-striped">
               <tbody>
-              <tr>
-                <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Détecteur de position</td>
-                <td><%= @tap_template.position_detector %></td>
-              </tr>
+              <% if @tap_template.position_detector %>
+                <tr>
+                  <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Détecteur de position</td>
+                </tr>
+              <% end %>
 
               <%= render 'admin/faucets/show_attachement',
                          attachments: @tap_template.attachments.where_kind(:instrumentation_position),
