@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'contact', to: 'contact#index'
+  post 'contact/send_email'
+
   devise_for :admins
   devise_for :users
 

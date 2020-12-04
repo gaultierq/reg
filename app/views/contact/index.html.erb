@@ -1,0 +1,45 @@
+<%= image_tag("logo.png", {:style => "width: 35%; padding-bottom: 2%"}) %>
+
+<div class="uk-width-large uk-text-center">
+  <%= render 'shared/notice' %>
+</div>
+
+
+<%= form_tag(contact_send_email_path, :method => "post", html: { class: 'uk-width-large' }) do %>
+
+  <div class="uk-margin">
+    <%= label_tag(:first_name, "Prénom:") %>
+    <%= text_field_tag(:first_name, '', class: 'uk-input') %>
+  </div>
+
+  <div class="uk-margin">
+    <%= label_tag(:name, "Nom:") %>
+    <%= text_field_tag(:name, '', class: 'uk-input') %>
+  </div>
+
+
+  <div class="uk-margin">
+    <%= label_tag(:email, "Email:") %>
+    <%= text_field_tag(:email, '', class: 'uk-input') %>
+  </div>
+
+  <div class="uk-margin">
+    <%= label_tag(:reg_referal, "Référent chez REG-Technology") %>
+    <%= text_field_tag(:reg_referal, '', class: 'uk-input') %>
+  </div>
+
+  <div class="uk-margin">
+    <%= label_tag(:entreprise, "Entreprise") %>
+    <%= text_field_tag(:entreprise, '', class: 'uk-input') %>
+  </div>
+
+  <div class="uk-margin">
+    <%= label_tag(:message, "Message") %>
+    <%= text_area_tag(:message, '', class: 'uk-textarea') %>
+  </div>
+
+  <div class="uk-margin">
+    <%= submit_tag("Envoyer", class: 'uk-button uk-button-primary') %>
+  </div>
+<% end %>
+
