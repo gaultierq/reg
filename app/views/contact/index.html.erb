@@ -9,18 +9,18 @@
 
   <div class="uk-margin">
     <%= label_tag(:first_name, "Prénom:") %>
-    <%= text_field_tag(:first_name, '', class: 'uk-input') %>
+    <%= text_field_tag(:first_name, @user&.first_name, class: 'uk-input') %>
   </div>
 
   <div class="uk-margin">
-    <%= label_tag(:name, "Nom:") %>
-    <%= text_field_tag(:name, '', class: 'uk-input') %>
+    <%= label_tag(:last_name, "Nom:") %>
+    <%= text_field_tag(:last_name, @user&.last_name, class: 'uk-input') %>
   </div>
 
 
   <div class="uk-margin">
     <%= label_tag(:email, "Email:") %>
-    <%= text_field_tag(:email, '', class: 'uk-input') %>
+    <%= text_field_tag(:email, @user&.email, class: 'uk-input') %>
   </div>
 
   <div class="uk-margin">

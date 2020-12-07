@@ -14,7 +14,7 @@ class RegistrationController < ApplicationController
 
       puts(email).inspect
       puts(@registration.admin).inspect
-      RegistrationMailer.registration_email(@registration, email).deliver_later
+      RegistrationMailer.registration_email(@registration, email).deliver_now
 
       redirect_to new_user_session_path, notice: "Demande envoyée."
     else
