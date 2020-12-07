@@ -1,8 +1,8 @@
 class ContactMailer < ApplicationMailer
 
-  def send_query(params)
+  def send_query(to, params, copy)
+    @copy = copy
     @params = params
-    Rails.logger.debug "contact: sending message #{@params}"
-    mail(to: ENV["FORM_CONTACT_EMAIL"], subject: "Message d'un utilisateur")
+    mail(to: to, subject: "Formulaire de contact")
   end
 end

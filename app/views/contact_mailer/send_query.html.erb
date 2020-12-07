@@ -4,7 +4,14 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-<p>Un client a pris contact avec les informations suivantes :</p>
+<% if @copy %>
+  <p>
+    Merci pour votre message, nous allons vous répondre aussi vite que possible.
+    Pour rappel, les détails de votre message sont rappelés ci-dssous :
+  </p>
+<% else %>
+  <p>Un client a pris contact avec les informations suivantes :</p>
+<% end %>
 <p>
   Nom: <%= @params[:last_name] %><br/>
   Prénom: <%= @params[:first_name] %><br/>

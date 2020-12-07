@@ -10,7 +10,10 @@ class ContactController < ApplicationController
   end
 
   def send_email
-    ContactMailer.send_query(params).deliver_now
+    mail = ENV["FORM_CONTACT_EMAIL"]
+
+    ContactMailer.send_query(mail, params, false).deliver_now
+    ContactMailer.send_query(params[:email], params, true).deliver_now
     redirect_to contact_sent_url, notice: "Merci pour votre message"
   end
 
