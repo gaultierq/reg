@@ -15,11 +15,16 @@ class InquiriesController < ApplicationController
   # GET /inquiries/new
   def new
     @inquiry = Inquiry.new
+
     user = current_user || current_admin
     @inquiry.attributes = user.attributes.slice(*Inquiry.attribute_names) if user
 
     invited_by_id = user&.invited_by_id
     @inquiry.admin = Admin.find(invited_by_id) if invited_by_id
+
+    @inquiry.theme = params[:theme]
+
+    puts @inquiry.attributes
 
   end
 
@@ -64,7 +69,8 @@ class InquiriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
+  # Use callbacks to share common setup or constraints between actions.
     def set_inquiry
       @inquiry = Inquiry.find(params[:id])
     end

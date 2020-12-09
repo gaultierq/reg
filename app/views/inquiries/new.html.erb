@@ -1,4 +1,5 @@
-<h2>Demande d'aide</h2>
+<%= image_tag("logo.png", {:style => "width: 35%; padding-bottom: 2%"}) %>
+
 
 <%= form_with(model: @inquiry, local: true, url: inquiries_path, data: { controller: 'form' }, html: { class: 'uk-width-large' }) do |f| %>
 
