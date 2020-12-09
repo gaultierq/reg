@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<% if @inquiry.theme == 1 %>
+  <p>Un client a fait une demande de compte avec les informations suivantes :</p>
+<% else %>
+  <p>Un client a envoyé une demande d'information:</p>
+<% end %>
+
+<p>
+  Nom : <%= @inquiry.last_name %><br/>
+  Prénom : <%= @inquiry.first_name %><br/>
+  Adresse email : <%= @inquiry.email %><br/>
+  Téléphone : <%= @inquiry.phone_number %><br/>
+</p>
+
+Message: <br/>
+<p>
+  <%= @inquiry.message %>
+</p>
+</body>
+</html>

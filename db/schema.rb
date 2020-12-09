@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_13_125117) do
+ActiveRecord::Schema.define(version: 2020_12_09_101127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -200,6 +200,19 @@ ActiveRecord::Schema.define(version: 2020_10_13_125117) do
     t.integer "sign_in_perimeter", default: 10
   end
 
+  create_table "inquiries", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "phone_number"
+    t.string "message"
+    t.bigint "admin_id"
+    t.integer "theme", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_inquiries_on_admin_id"
+  end
+
   create_table "registrations", force: :cascade do |t|
     t.string "last_name"
     t.string "first_name"
@@ -315,6 +328,7 @@ ActiveRecord::Schema.define(version: 2020_10_13_125117) do
   add_foreign_key "faucet_attachments", "attachments"
   add_foreign_key "faucet_attachments", "faucets"
   add_foreign_key "faucets", "industrial_units"
+  add_foreign_key "inquiries", "admins"
   add_foreign_key "registrations", "admins"
   add_foreign_key "tap_template_attachments", "attachments"
   add_foreign_key "tap_template_attachments", "tap_templates"

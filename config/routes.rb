@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'contact', to: 'contact#index'
   get 'contact/sent', to: 'contact#congrats'
   post 'contact/send_email'
@@ -57,6 +58,7 @@ Rails.application.routes.draw do
     root 'faucets#index'
   end
 
+  resources :inquiries
   resources :registration, only: %i[new create]
 
   root 'admin/industrial_units#index'
