@@ -21,4 +21,6 @@
   <% end -%>
 <% end -%>
 
-<%= link_to "Inscription", "/inquiries/new?theme=inscription" %><br />
+<% if resource_name == :user %>
+  <%= link_to "Inscription", "/inquiries/new?theme=inscription" %><br />
+<% end %>
