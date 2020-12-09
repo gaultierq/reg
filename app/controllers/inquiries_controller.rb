@@ -47,7 +47,12 @@ class InquiriesController < ApplicationController
       # sending a copy to the person making the query
       InquiryMailer.inquiry_email(@inquiry.email, @inquiry, true).deliver_now
 
-      redirect_to new_user_session_path, notice: "Demande envoyée."
+      if @inquiry.theme == 'inscription'
+        redirect_to new_user_session_path, notice: "Demande d'inscription envoyée."
+      else
+        redirect_to root_path, notice: "Demande d'information envoyée."
+      end
+
     else
       render :new
     end

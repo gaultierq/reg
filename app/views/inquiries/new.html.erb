@@ -22,36 +22,38 @@
   <% end %>
 
 
-  <div class="uk-margin">
+  <div class="uk-margin" style="display: none">
     <%= f.label :theme, "Motif", class: 'uk-form-label' %>
-    <%= f.select :theme, [ ['Inscription', 'inscription'], ['Autre', 'other'] ], { include_blank: true }, { class: 'uk-select', data: { target: 'form.input' } } %>
+    <%= f.select :theme, [ ['Inscription', 'inscription'], ['Autre', 'other'] ], { include_blank: true}, { class: 'uk-select', data: { target: 'form.input' } } %>
   </div>
 
   <div class="uk-margin">
     <%= f.label :last_name, "Nom", class: 'uk-form-label' %>
-    <%= f.text_field :last_name, autofocus: true, class: 'uk-input' %>
+    <%= f.text_field :last_name, autofocus: true, class: 'uk-input', readonly: is_readonly(:last_name)%>
   </div>
 
   <div class="uk-margin">
     <%= f.label :first_name, "Prénom", class: 'uk-form-label' %>
-    <%= f.text_field :first_name, autofocus: true, class: 'uk-input' %>
+    <%= f.text_field :first_name, autofocus: true, class: 'uk-input', readonly: is_readonly(:first_name) %>
   </div>
 
   <div class="uk-margin">
     <%= f.label :email, "Adresse email", class: 'uk-form-label' %>
-    <%= f.email_field :email, autofocus: true, class: 'uk-input' %>
+    <%= f.email_field :email, autofocus: true, class: 'uk-input', readonly: is_readonly(:email) %>
   </div>
 
   <div class="uk-margin">
     <%= f.label :phone_number, "Téléphone", class: 'uk-form-label' %>
-    <%= f.text_field :phone_number, autofocus: true, class: 'uk-input' %>
+    <%= f.text_field :phone_number, autofocus: true, class: 'uk-input', readonly: is_readonly(:phone_number) %>
   </div>
 
-  <div class="uk-margin">
-    <%= f.label :admin_id, "Destinataire", class: 'uk-form-label' %>
-    <%= f.select :admin_id, Admin.all.collect {|admin| [admin.full_name, admin.id]},
-                 {include_blank: true}, {class: 'uk-select', data: {target: 'form.input'}} %>
-  </div>
+  <% unless is_logged %>
+    <div class="uk-margin">
+      <%= f.label :admin_id, "Destinataire", class: 'uk-form-label' %>
+      <%= f.select :admin_id, Admin.all.collect {|admin| [admin.full_name, admin.id]},
+                   {include_blank: true}, {class: 'uk-select', data: {target: 'form.input'}} %>
+    </div>
+  <% end %>
 
   <div class="uk-margin">
     <%= f.label :message, "Message", class: 'uk-form-label' %>
