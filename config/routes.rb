@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root :to => 'application#root'
+
   get 'contact', to: 'contact#index'
   get 'contact/sent', to: 'contact#congrats'
   post 'contact/send_email'
@@ -61,5 +63,5 @@ Rails.application.routes.draw do
   resources :inquiries
   resources :registration, only: %i[new create]
 
-  root 'admin/industrial_units#index'
+
 end
