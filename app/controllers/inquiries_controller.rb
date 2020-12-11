@@ -19,9 +19,6 @@ class InquiriesController < ApplicationController
     user = current_user || current_admin
     @inquiry.attributes = user.attributes.slice(*Inquiry.attribute_names) if user
 
-
-    @inquiry.user = current_user
-
     # TODO: confusion, change "admin" in "referral"
     invited_by_id = user&.invited_by_id
     @inquiry.admin = Admin.find(invited_by_id) if invited_by_id
@@ -39,21 +36,16 @@ class InquiriesController < ApplicationController
   # POST /inquiries
   def create
     @inquiry = Inquiry.new(inquiry_params)
+    @inquiry.user = current_user
 
     if @inquiry.save
 
-      emails = @inquiry.user&.industrial_units.flat_map { |iu|  iu.admins.map(&:email) }
-      emails += [ENV["FORM_CONTACT_EMAIL"], @inquiry.admin&.email]
-      emails = emails.compact.uniq
-      puts "sending emails to #{emails}"
-
-      # sending a copy to the main address
-      InquiryMailer.inquiry_email(ENV["FORM_CONTACT_EMAIL"], @inquiry, false).deliver_now
-
-      InquiryMailer.inquiry_email(@inquiry.admin&.email, @inquiry, false).deliver_now
+      get_emails.each do |email|
+        InquiryMailer.inquiry_email(email, @inquiry, false).deliver_later
+      end
 
       # sending a copy to the person making the query
-      InquiryMailer.inquiry_email(@inquiry.email, @inquiry, true).deliver_now
+      InquiryMailer.inquiry_email(@inquiry.email, @inquiry, true).deliver_later
 
       if @inquiry.theme == 'inscription'
         redirect_to new_user_session_path, notice: "Demande d'inscription envoyée."
@@ -83,13 +75,20 @@ class InquiriesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-    def set_inquiry
-      @inquiry = Inquiry.find(params[:id])
-    end
+  def get_emails
+    emails = [ENV["FORM_CONTACT_EMAIL"]]
+    emails << @inquiry.admin.email if @inquiry.admin
+    emails += current_user.industrial_units.flat_map { |iu| iu.admins.map(&:email) } if current_user
+    emails.compact.uniq
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def inquiry_params
-      params.require(:inquiry).permit(:first_name, :last_name, :email, :phone_number, :admin_id, :theme, :message)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_inquiry
+    @inquiry = Inquiry.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def inquiry_params
+    params.require(:inquiry).permit(:first_name, :last_name, :email, :phone_number, :admin_id, :theme, :message)
+  end
 end

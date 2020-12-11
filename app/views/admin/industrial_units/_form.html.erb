@@ -43,8 +43,8 @@
     </div>
 
     <div class="uk-margin">
-      <%= form.label :admin_id, "Commercial", class: 'uk-form-label' %>
-      <%= form.select :admin_id, Admin.salesman.collect { |salesman| [ salesman.full_name, salesman.id ] },
+      <%= form.label :admin_id, "Gestionnaire", class: 'uk-form-label' %>
+      <%= form.select :admin_id, Admin.all.collect { |salesman| [ salesman.full_name, salesman.id ] },
                       {selected: @industrial_unit.admins.ids, hidden_field: false},
                       {multiple: true, class: 'uk-select', data: {target: 'form.input'}} %>
     </div>
