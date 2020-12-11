@@ -19,6 +19,10 @@ class InquiriesController < ApplicationController
     user = current_user || current_admin
     @inquiry.attributes = user.attributes.slice(*Inquiry.attribute_names) if user
 
+
+    @inquiry.user = current_user
+
+    # TODO: confusion, change "admin" in "referral"
     invited_by_id = user&.invited_by_id
     @inquiry.admin = Admin.find(invited_by_id) if invited_by_id
 
@@ -38,8 +42,10 @@ class InquiriesController < ApplicationController
 
     if @inquiry.save
 
-
-      emails = [ENV["FORM_CONTACT_EMAIL"], @inquiry.admin&.email]
+      emails = @inquiry.user&.industrial_units.flat_map { |iu|  iu.admins.map(&:email) }
+      emails += [ENV["FORM_CONTACT_EMAIL"], @inquiry.admin&.email]
+      emails = emails.compact.uniq
+      puts "sending emails to #{emails}"
 
       # sending a copy to the main address
       InquiryMailer.inquiry_email(ENV["FORM_CONTACT_EMAIL"], @inquiry, false).deliver_now

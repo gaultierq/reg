@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_09_101127) do
+ActiveRecord::Schema.define(version: 2020_12_11_105804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -210,7 +210,9 @@ ActiveRecord::Schema.define(version: 2020_12_09_101127) do
     t.integer "theme", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["admin_id"], name: "index_inquiries_on_admin_id"
+    t.index ["user_id"], name: "index_inquiries_on_user_id"
   end
 
   create_table "registrations", force: :cascade do |t|
@@ -329,6 +331,7 @@ ActiveRecord::Schema.define(version: 2020_12_09_101127) do
   add_foreign_key "faucet_attachments", "faucets"
   add_foreign_key "faucets", "industrial_units"
   add_foreign_key "inquiries", "admins"
+  add_foreign_key "inquiries", "users"
   add_foreign_key "registrations", "admins"
   add_foreign_key "tap_template_attachments", "attachments"
   add_foreign_key "tap_template_attachments", "tap_templates"
