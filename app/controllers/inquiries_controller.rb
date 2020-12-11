@@ -39,6 +39,8 @@ class InquiriesController < ApplicationController
     if @inquiry.save
 
 
+      emails = [ENV["FORM_CONTACT_EMAIL"], @inquiry.admin&.email]
+
       # sending a copy to the main address
       InquiryMailer.inquiry_email(ENV["FORM_CONTACT_EMAIL"], @inquiry, false).deliver_now
 
