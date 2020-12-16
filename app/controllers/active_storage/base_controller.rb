@@ -16,5 +16,4 @@ class ActiveStorage::BaseController < ActionController::Base
     end
   end
 
-
 end
