@@ -49,10 +49,15 @@
 
   <% unless is_logged %>
     <div class="uk-margin">
-      <%= f.label :admin_id, "Destinataire", class: 'uk-form-label' %>
-      <%= f.select :admin_id, Admin.all.collect {|admin| [admin.full_name, admin.id]},
-                   {include_blank: true}, {class: 'uk-select', data: {target: 'form.input'}} %>
+      <%= f.label :to, "Votre contact chez REG-Technology", class: 'uk-form-label' %>
+      <%= f.text_field :to, autofocus: true, class: 'uk-input', readonly: is_readonly(:to) %>
     </div>
+
+    <div class="uk-margin">
+      <%= f.label :to, "Nom de l'entreprise", class: 'uk-form-label' %>
+      <%= f.text_field :company_name, autofocus: true, class: 'uk-input', readonly: is_readonly(:company_name) %>
+    </div>
+
   <% end %>
 
   <div class="uk-margin">
