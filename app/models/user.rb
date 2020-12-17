@@ -22,9 +22,11 @@ class User < ApplicationRecord
     1.hours
   end
 
-
   def inactive
     sign_in_count == 0 && invitation_sent_at.present? && !invitation_accepted_at.present?
   end
 
+  def is_locked?
+    access_locked?
+  end
 end

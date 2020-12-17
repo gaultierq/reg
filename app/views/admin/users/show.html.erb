@@ -9,7 +9,7 @@
       <div class="uk-width-auto@m">
         <%= link_to 'Modifier', edit_admin_user_path(@user), class: 'uk-button uk-button-primary' %>
         <%= link_to 'Supprimer', admin_user_path(@user), method: :delete, data: { confirm: 'Êtes-vous sûr ?' }, class: 'uk-button uk-button-danger' %>
-        <% if @user.access_locked? %>
+        <% if @user.is_locked? %>
           <%= link_to 'Débloquer', unlock_admin_user_path(@user), method: :post, class: 'uk-button uk-button-primary' %>
         <% end %>
       </div>

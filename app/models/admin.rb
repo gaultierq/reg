@@ -32,8 +32,12 @@ class Admin < ApplicationRecord
     sign_in_count == 0 && invitation_sent_at.present? && !invitation_accepted_at.present?
   end
 
-  def need_two_factor_authentication?(request)
-    request.ip != '127.0.0.1'
+  # def need_two_factor_authentication?(request)
+  #   request.ip != '127.0.0.1'
+  # end
+
+  def is_locked?
+    access_locked? || max_login_attempts?
   end
 
 end

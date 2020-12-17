@@ -51,7 +51,10 @@ class Admin::AdminsController < Admin::BaseController
   end
 
   def unlock
-    if @admin.unlock_access!
+    unlocked = @admin.unlock_access!
+    unlocked |= @admin.update_attribute(:second_factor_attempts_count, 0)
+
+    if unlocked
       redirect_to admin_peoples_url, notice: 'Admin débloqué.'
     else
       redirect_to admin_peoples_path, alert: "Admin n'a pas pu être débloqué."

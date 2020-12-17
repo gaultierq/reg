@@ -28,7 +28,7 @@
         <% @admins.each do |admin| %>
           <tr>
             <td>
-              <% if admin.access_locked? %>
+              <% if admin.is_locked? %>
                 <%= image_tag("warning.svg", {:style => "height: 20px;"}) %>
               <% end %>
               <% if admin.inactive %>
@@ -83,7 +83,7 @@
         <% @users.each do |user| %>
           <tr>
             <td>
-              <% if user.access_locked? %>
+              <% if user.is_locked? %>
                 <%= image_tag("warning.svg", {:style => "height: 20px;"}) %>
               <% end %>
               <% if user.inactive%>
