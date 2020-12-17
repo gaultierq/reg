@@ -4,18 +4,20 @@ class User::FaucetsController < User::BaseController
   # GET /user/faucets
   def index
     if params[:rfid_number].present?
-      @faucet = Faucet.find_by(rfid_number: params[:rfid_number])
+      @faucet = current_user.faucets.find_by(rfid_number: params[:rfid_number])
       if @faucet.present?
         redirect_to user_faucet_path(@faucet)
       else
-        @faucets = current_user.faucets.all
+        flash.now[:alert] = 'Impossible de trouver ce robinet'
+        # @faucets = current_user.faucets.all
       end
     elsif params[:serial_number].present?
-      @faucet = Faucet.find_by(serial_number: params[:serial_number])
+      @faucet = current_user.faucets.find_by(serial_number: params[:serial_number])
       if @faucet.present?
         redirect_to user_faucet_path(@faucet)
       else
-        @faucets = current_user.faucets.all
+        flash.now[:alert] = 'Impossible de trouver ce robinet'
+        # @faucets = current_user.faucets.all
       end
     else
       @faucets = current_user.faucets.all
