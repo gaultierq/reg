@@ -32,9 +32,14 @@
       <%= form.text_field :first_name, class: 'uk-input', data: {target: 'form.input'} %>
     </div>
 
+    <% if @user == current_user %>
+      <%= link_to "Changer votre mot de passe", edit_user_registration_path %>
+    <% end %>
+
     <div class="uk-margin-medium">
       <%= link_to 'Retour', user_faucets_path, class: 'uk-button uk-button-default' %>
       <%= form.submit "Enregistrer", class: 'uk-button uk-button-primary' %>
     </div>
+
   </fieldset>
 <% end %>

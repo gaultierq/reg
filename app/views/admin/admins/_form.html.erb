@@ -32,19 +32,9 @@
       <%= form.text_field :phone_number, class: 'uk-input', data: {target: 'form.input'} %>
     </div>
 
-    <% if @admin.persisted? %>
-      <div class="uk-margin">
-        <%= form.label :password, "Mot de passe", class: 'uk-form-label' %>
-        <%= form.password_field :password, class: 'uk-input', data: { target: 'form.input' } %>
-      </div>
-
-      <div class="uk-margin">
-        <%= form.label :password_confirmation, "Confirmation du mot de passe", class: 'uk-form-label' %>
-        <%= form.password_field :password_confirmation, class: 'uk-input', data: { target: 'form.input' } %>
-      </div>
+    <% if @admin == current_admin %>
+      <%= link_to "Changer votre mot de passe", edit_admin_registration_path %>
     <% end %>
-
-
 
     <div class="uk-margin-medium">
       <%= link_to 'Retour', admin_peoples_path, class: 'uk-button uk-button-default' %>

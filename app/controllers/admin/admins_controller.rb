@@ -25,10 +25,6 @@ class Admin::AdminsController < Admin::BaseController
 
   # PATCH/PUT /admins/1
   def update
-    if params[:admin][:password].blank? && params[:admin][:password_confirmation].blank?
-      params[:admin].delete(:password)
-      params[:admin].delete(:password_confirmation)
-    end
     if @admin.update(admin_params)
       add_industrial_unit
       redirect_to admin_admin_path(@admin), notice: 'Admin modifié avec succès.'

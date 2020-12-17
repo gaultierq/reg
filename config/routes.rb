@@ -2,12 +2,15 @@ Rails.application.routes.draw do
 
   root :to => 'application#root'
 
-  get 'contact', to: 'contact#index'
-  get 'contact/sent', to: 'contact#congrats'
-  post 'contact/send_email'
+  devise_for :users
+
 
   devise_for :admins
-  devise_for :users
+  as :admin do
+    get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'
+    put 'admins' => 'devise/registrations#update', :as => 'admin_registration'
+  end
+
 
   namespace :admin do
     resources :faucets do
@@ -61,7 +64,6 @@ Rails.application.routes.draw do
   end
 
   resources :inquiries
-  resources :registration, only: %i[new create]
 
 
 end

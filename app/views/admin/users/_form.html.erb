@@ -38,18 +38,6 @@
                       {selected: @user.industrial_units.ids}, {multiple: true, id: 'industrial_units', data: {target: 'form.input'}} %>
     </div>
 
-    <% if @user.persisted? %>
-      <div class="uk-margin">
-        <%= form.label :password, "Mot de passe", class: 'uk-form-label' %>
-        <%= form.password_field :password, class: 'uk-input', data: {target: 'form.input'} %>
-      </div>
-
-      <div class="uk-margin">
-        <%= form.label :password_confirmation, "Confirmation du mot de passe", class: 'uk-form-label' %>
-        <%= form.password_field :password_confirmation, class: 'uk-input', data: {target: 'form.input'} %>
-      </div>
-    <% end %>
-
     <div class="uk-margin-medium">
       <%= link_to 'Retour', admin_peoples_path, class: 'uk-button uk-button-default' %>
       <%= form.submit "Enregistrer", class: 'uk-button uk-button-primary' %>
