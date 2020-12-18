@@ -1,13 +1,12 @@
-<% if notice %>
+
+<% if alert %>
+  <div class="uk-alert-error" uk  -alert>
+    <a class="uk-alert-close" uk-close></a>
+    <p id="alert"><%= alert %></p>
+  </div>
+<% elsif notice %>
   <div class="uk-alert-success" uk-alert>
     <a class="uk-alert-close" uk-close></a>
     <p id="notice"><%= notice %></p>
-  </div>
-<% end %>
-
-<% if alert %>
-  <div class="uk-alert-error" uk-alert>
-    <a class="uk-alert-close" uk-close></a>
-    <p id="alert"><%= alert %></p>
   </div>
 <% end %>

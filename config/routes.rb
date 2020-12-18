@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root :to => 'application#root'
 
-  devise_for :users
+  devise_for :users, controllers: {sessions: "user/sessions"}
 
 
   devise_for :admins

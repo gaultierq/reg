@@ -99,4 +99,12 @@ class IndustrialUnit < ApplicationRecord
   def full_address
     "#{address}, #{postcode} #{city}, #{country}"
   end
+
+  def has_in_range?(lat, lng)
+    left = Geokit::LatLng.new(latitude, longitude)
+    right = Geokit::LatLng.new(lat, lng)
+    dist = left.distance_to(right)
+    puts "dist=#{dist}"
+    dist < sign_in_perimeter
+  end
 end

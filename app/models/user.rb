@@ -29,4 +29,8 @@ class User < ApplicationRecord
   def is_locked?
     access_locked?
   end
+
+  def is_in_range?(lat, lng)
+    industrial_units.any? { |iu| iu.has_in_range?(lat, lng) }
+  end
 end

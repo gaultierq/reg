@@ -1,9 +1,5 @@
-
+<%  browser = Browser.new(request.env['HTTP_USER_AGENT']) %>
 <%= render 'shared/logo' %>
-
-<div class="uk-width-large uk-text-center">
-  <%= render 'shared/notice' %>
-</div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'uk-width-large' }) do |f| %>
 
@@ -15,12 +11,12 @@
 
   <div class="uk-margin">
     <%= f.label :email, "Adresse email", class: 'uk-form-label' %>
-    <%= f.email_field :email, autofocus: true, class: 'uk-input' %>
+    <%= f.email_field :email, value: "quentin.gaultier@gmail.com", autofocus: true, class: 'uk-input' %>
   </div>
 
   <div class="uk-margin">
     <%= f.label :password, "Mot de passe", class: 'uk-form-label' %>
-    <%= f.password_field :password, autocomplete: "off", class: 'uk-input' %>
+    <%= f.password_field :password, value: "password", autocomplete: "off", class: 'uk-input' %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
@@ -30,9 +26,37 @@
     </div>
   <% end -%>
 
+  <%  if browser.platform.android_app? || browser.platform.ios_app? -%>
+    <%= f.hidden_field :latitude, id: 'latitude-field', :value => ""  %>
+    <%= f.hidden_field :longitude, id: 'longitude-field', :value => ""  %>
+  <% end -%>
+
   <div class="uk-margin">
     <%= f.submit "Se connecter", class: 'uk-button uk-button-primary uk-width-1-1' %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<script>
+
+    const latitudeInput = document.getElementById("latitude-field");
+    const longitudeInput = document.getElementById("longitude-field");
+    document.addEventListener("message", function(event) {
+        if (!event.data) return
+        let data = null;
+        try {
+            data = JSON.parse(event.data);
+        }
+        catch(e) {}
+        if (!data) return
+        const {type, payload} = data;
+        if (type !== "position") return
+        const coords = payload['coords']
+        if (!coords) return;
+        const { latitude, longitude } = coords;
+        latitudeInput.value = latitude
+        longitudeInput.value = longitude
+
+    }, false);
+</script>
