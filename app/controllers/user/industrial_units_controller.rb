@@ -16,6 +16,7 @@ class User::IndustrialUnitsController < User::BaseController
     respond_to do |format|
       format.html
       format.csv { send_data @industrial_units.to_csv, filename: "Unités industrielles #{Date.today}.csv" }
+      format.json {send_data @industrial_units.as_json }
     end
   end
 

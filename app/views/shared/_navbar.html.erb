@@ -59,7 +59,7 @@
     </div>
 
     <div class="uk-navbar-right">
-      <%= link_to "/inquiries/new?theme=other" do %>
+      <%= link_to "/inquiries/new?theme=other", class: 'uk-visible@m' do %>
         <span class="uk-margin-small-right">Contacter REG-Technology</span>
       <% end %>
       <% if admin_signed_in? %>
@@ -175,6 +175,12 @@
           </li>
           <li class="uk-nav-divider"></li>
         <% end %>
+        <li>
+          <%= link_to "/inquiries/new?theme=other" do %>
+            <span class="uk-margin-small-right">Contacter REG-Technology</span>
+          <% end %>
+        </li>
+        <li class="uk-nav-divider"></li>
         <li>
           <%= link_to destroy_admin_session_path, method: :delete do %>
             Déconnexion

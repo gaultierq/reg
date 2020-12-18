@@ -1,5 +1,4 @@
-<%= image_tag("logo.png", {:style => "width: 35%; padding-bottom: 2%"}) %>
-
+<%= render 'shared/logo' %>
 
 <%= form_with(model: @inquiry, local: true, url: inquiries_path, data: { controller: 'form' }, html: { class: 'uk-width-large' }) do |f| %>
 
