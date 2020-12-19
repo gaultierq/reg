@@ -11,12 +11,12 @@
 
   <div class="uk-margin">
     <%= f.label :email, "Adresse email", class: 'uk-form-label' %>
-    <%= f.email_field :email, value: "quentin.gaultier@gmail.com", autofocus: true, class: 'uk-input' %>
+    <%= f.email_field :email, autofocus: true, class: 'uk-input' %>
   </div>
 
   <div class="uk-margin">
     <%= f.label :password, "Mot de passe", class: 'uk-form-label' %>
-    <%= f.password_field :password, value: "password", autocomplete: "off", class: 'uk-input' %>
+    <%= f.password_field :password, autocomplete: "off", class: 'uk-input' %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
