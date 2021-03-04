@@ -182,9 +182,15 @@
         </li>
         <li class="uk-nav-divider"></li>
         <li>
+        <% if admin_signed_in? %>
           <%= link_to destroy_admin_session_path, method: :delete do %>
             Déconnexion
           <% end %>
+        <% elsif user_signed_in? %>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            Déconnexion
+          <% end %>
+        <% end %>
         </li>
       </ul>
     </div>
