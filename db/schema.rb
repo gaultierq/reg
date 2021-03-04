@@ -217,17 +217,6 @@ ActiveRecord::Schema.define(version: 2020_12_16_153739) do
     t.index ["user_id"], name: "index_inquiries_on_user_id"
   end
 
-  create_table "registrations", force: :cascade do |t|
-    t.string "last_name"
-    t.string "first_name"
-    t.string "email"
-    t.string "phone_number"
-    t.bigint "admin_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["admin_id"], name: "index_registrations_on_admin_id"
-  end
-
   create_table "tap_template_attachments", force: :cascade do |t|
     t.bigint "tap_template_id"
     t.bigint "attachment_id"
@@ -334,7 +323,6 @@ ActiveRecord::Schema.define(version: 2020_12_16_153739) do
   add_foreign_key "faucets", "industrial_units"
   add_foreign_key "inquiries", "admins"
   add_foreign_key "inquiries", "users"
-  add_foreign_key "registrations", "admins"
   add_foreign_key "tap_template_attachments", "attachments"
   add_foreign_key "tap_template_attachments", "tap_templates"
   add_foreign_key "user_industrial_units", "industrial_units"
