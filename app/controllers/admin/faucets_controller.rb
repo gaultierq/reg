@@ -5,6 +5,8 @@ class Admin::FaucetsController < Admin::BaseController
 
   # GET /faucets
   def index
+
+
     if params[:rfid_number].present?
       @faucet = Faucet.find_by(rfid_number: params[:rfid_number])
       if @faucet.present?
@@ -17,13 +19,15 @@ class Admin::FaucetsController < Admin::BaseController
         redirect_to admin_faucet_path(@faucet)
         return
       end
+    elsif params[:serial_number].present?
+      @faucet = current_admin.faucets.find_by(serial_number: params[:serial_number])
+      if @faucet.present?
+        redirect_to admin_faucet_path(@faucet)
+      else
+        flash.now[:alert] = 'Impossible de trouver ce robinet'
+      end
     end
 
-    browser = Browser.new(request.env['HTTP_USER_AGENT'])
-    if browser.platform.android_app? || browser.platform.ios_app?
-      redirect_to index_mobile_admin_industrial_units_path
-      return
-    end
 
     @faucets = Faucet.includes(:industrial_unit).where(industrial_unit: nil).all
 
