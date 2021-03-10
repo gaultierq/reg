@@ -80,15 +80,28 @@
 </div>
 
 <script>
-    document.getElementById("nfc").onclick = function () {
-        console.log("Send post message");
+  document.getElementById("nfc").onclick = function () {
+      console.log("Send post message");
 
-        window.postMessage("Post message from web", "*");
+      window.postMessage("Post message from web", "*");
     };
+
 
     let showInput = document.getElementById("rfid_number");
     document.addEventListener("message", function(event) {
         console.log("Received post message", event);
-        showInput.value = event.data;
-    }, false);
+        if (!event.data) return
+        let data = null;
+        try {
+            data = JSON.parse(event.data);
+          }
+        catch(e) {}
+        if (!data) return
+        const {type, payload} = data;
+        if (type !== "nfc") return
+
+        showInput.value = payload;
+      }, false);
+
+
 </script>
