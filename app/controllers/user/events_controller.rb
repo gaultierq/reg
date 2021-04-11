@@ -1,5 +1,6 @@
 class User::EventsController < User::BaseController
   before_action :set_event, only: %i[show edit update destroy]
+  helper_method :selected_attachment
 
   # GET /events
   def index
@@ -25,6 +26,7 @@ class User::EventsController < User::BaseController
     @event = current_user.present? ? current_user.events.new(event_params) : current_admin.events.new(event_params)
 
     if @event.save
+      add_attachments
       redirect_to user_event_path(@event), notice: 'Évènement créé avec succès.'
     else
       render :new
@@ -34,6 +36,7 @@ class User::EventsController < User::BaseController
   # PATCH/PUT /events/1
   def update
     if @event.update(event_params)
+      add_attachments
       redirect_to user_event_path(@event), notice: 'Évènement modifié avec succès.'
     else
       render :edit
@@ -48,6 +51,19 @@ class User::EventsController < User::BaseController
   end
 
   private
+
+  def add_attachments
+    attachments = Attachment.prepare_attach(
+        params[:event],
+        EventAttachment.kinds
+    )
+    @event.attachments.delete_all
+    @event.attachments << attachments
+  end
+
+  def selected_attachment(kind)
+    @event.attachments.where_kind(kind).ids
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_event

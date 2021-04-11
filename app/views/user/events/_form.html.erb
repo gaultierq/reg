@@ -12,9 +12,15 @@
       </div>
     <% end %>
 
-    <div class="uk-margin uk-hidden">
+    <div class="uk-margin">
       <%= form.label :faucet_id, "Robinet", class: 'uk-form-label' %>
-      <%= form.select :faucet_id, [@event.faucet].collect { |faucet| [faucet.name, faucet.id ] }, {}, {class: 'uk-select', data: {target: 'form.input' } } %>
+      <% if @event.faucet.present? %>
+        <%= form.select :faucet_id, [@event.faucet].collect { |faucet| [faucet.name, faucet.id ] }, {}, {class: 'uk-select', data: {target: 'form.input' } } %>
+      <% else %>
+        <%= form.select :faucet_id, options_for_select(Faucet.with_serial_number.collect { |faucet| ["#{faucet.name} - ##{faucet.serial_number} ", faucet.id ] }, disabled: Faucet.without_industrial_unit.ids),
+                                                       {},
+                        {class: 'uk-select', data: {target: 'form.input' } } %>
+      <% end %>
     </div>
 
     <div class="uk-margin">
@@ -26,6 +32,10 @@
       <%= form.label :comment, "Commentaire", class: 'uk-form-label' %>
       <%= form.text_area :comment, class: 'uk-textarea', data: { target: 'form.input' } %>
     </div>
+
+
+    <%= render 'admin/faucets/form_attachment', form: form, kind: :incident_maintenance %>
+
 
     <div class="uk-margin-medium">
       <%= link_to 'Retour', user_faucet_path(@event.faucet), class: 'uk-button uk-button-default' %>

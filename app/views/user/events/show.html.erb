@@ -57,6 +57,10 @@
           <td class="uk-text-bold uk-text-uppercase uk-text-small uk-width-medium">Auteur</td>
           <%= @event.author %>
         </tr>
+
+        <%= render 'admin/faucets/show_attachement',
+                   attachments: @event.attachments.where_kind(:incident_maintenance),
+                   title: "Documents" %>
         </tbody>
       </table>
     </div>
