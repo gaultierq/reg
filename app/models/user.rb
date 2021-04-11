@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   include DeviseInvitable::Inviter
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable,
+  devise :two_factor_authenticatable, :database_authenticatable, :registerable, :recoverable, :rememberable,
          :timeoutable, :trackable, :validatable, :invitable, :lockable
 
   has_many :user_industrial_units
@@ -10,11 +10,17 @@ class User < ApplicationRecord
 
   enum kind: { technician: 0, client: 1 }
 
+  has_one_time_password(encrypted: true)
+
   scope :technician, -> { where(kind: :technician) }
   scope :client, -> { where(kind: :client) }
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def send_two_factor_authentication_code(code)
+    UserMailer.otp_email(self, code).deliver_now
   end
 
   # after 30min without activity
