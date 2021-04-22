@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.4.4'
+ruby '2.7.2'
 
-gem 'mini_racer', '~> 0.2.6', platforms: :ruby
+gem 'mini_racer', platforms: :ruby
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.0.rc1'
 gem 'sass-rails', '~> 5.0'
@@ -28,6 +28,8 @@ gem 'two_factor_authentication'
 gem 'figaro'
 gem 'geokit'
 gem 'geokit-rails'
+gem 'activestorage-sftp'
+gem 'activestorage-openstack', '1.0'
 
 group :production do
   gem 'aws-sdk-s3', require: false
