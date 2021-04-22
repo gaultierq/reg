@@ -28,7 +28,6 @@ gem 'two_factor_authentication'
 gem 'figaro'
 gem 'geokit'
 gem 'geokit-rails'
-gem 'activestorage-sftp'
 gem 'activestorage-openstack', '1.0'
 
 group :production do
