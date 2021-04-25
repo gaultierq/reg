@@ -7,19 +7,19 @@ services:
     image: postgres:13.1
     environment:
       POSTGRES_PASSWORD: notneeded
-      POSTGRES_USER: delir_user 
+      POSTGRES_USER: reg_user 
       #POSTGRES_DB: web
     ports: 
       - '5432:5432'
     volumes:
-      - delir_postgres1:/var/lib/postgresql/data
+      - reg_postgres1:/var/lib/postgresql/data
 
   redis:
     image: redis:5.0.7
     ports:
       - '6379:6379'
     volumes:
-      - delir_redis:/var/lib/redis/data
+      - reg_redis:/var/lib/redis/data
 
   web:
     build:
@@ -52,7 +52,7 @@ services:
     environment:
       RAILS_ENV: development
       # Notice that this is the DB we'll use:
-      DATABASE_URL: postgres://delir_user:notneeded@db:5432/web
+      DATABASE_URL: postgres://reg_user:notneeded@db:5432/web
       # We'll use this env variable to make the log output gets directed
       # to Docker:
       RAILS_LOG_TO_STDOUT: "true"
@@ -61,35 +61,35 @@ services:
       #BUNDLE_JOBS: 15
       #BUNDLE_RETRY: 3
       #BUNDLE_PATH: /bundle/vendor
-  #webpacker:
-    #build:
-      #context: .
-      #args:
-        #USER_ID: "${USER_ID:-1000}"
-        #GROUP_ID: "${GROUP_ID:-1000}"
-    #command: ["./bin/webpack-dev-server"]
-    #volumes:
-      #- type: bind
-        #source: .
-        #target: /usr/src/app
-    #ports:
-      #- 3035:3035
-    #environment:
-      #- WEBPACKER_DEV_SERVER_HOST=0.0.0.0
-  #sidekiq:
-    #build:
-      #context: .
-      #args:
-        #USER_ID: "${USER_ID:-1000}"
-        #GROUP_ID: "${GROUP_ID:-1000}"
-    #command: bundle exec sidekiq 
-    #depends_on:
-      #- postgres
-      #- redis
-    #volumes:
-      #- type: bind
-        #source: .
-        #target: /usr/src/app
+  webpacker:
+    build:
+      context: .
+      args:
+        USER_ID: "${USER_ID:-1000}"
+        GROUP_ID: "${GROUP_ID:-1000}"
+    command: ["./bin/webpack-dev-server"]
+    volumes:
+      - type: bind
+        source: .
+        target: /usr/src/app
+    ports:
+      - 3035:3035
+    environment:
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+  sidekiq:
+    build:
+      context: .
+      args:
+        USER_ID: "${USER_ID:-1000}"
+        GROUP_ID: "${GROUP_ID:-1000}"
+    command: bundle exec sidekiq 
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - type: bind
+        source: .
+        target: /usr/src/app
   # used to cache gems 
   box:
     image: busybox
@@ -107,6 +107,6 @@ services:
     #volumes:
       #- .:/usr/src/app  # or however you configured your Rails root volume
 volumes:
-  delir_postgres1:
-  delir_redis:
+  reg_postgres1:
+  reg_redis:
   bundle_path:
