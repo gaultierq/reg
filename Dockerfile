@@ -44,4 +44,7 @@ ENV RAILS_ENV=production
 # 5: Install the current project gems - they can be safely changed later
 # during development via `bundle install` or `bundle update`:
 ADD Gemfile* $APP_HOME
+ADD package.json $APP_HOME
+ADD yarn.lock $APP_HOME
 RUN set -ex && bundle install
+RUN set -ex && yarn install --pure-lockfile
