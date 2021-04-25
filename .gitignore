@@ -46,3 +46,4 @@ coverage/
 .env
 
 dump.rdb
+data/

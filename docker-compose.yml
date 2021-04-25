@@ -1,0 +1,74 @@
+
+version: "3.7"
+ 
+services:
+
+  postgres:
+    image: postgres:13.1
+    environment:
+      POSTGRES_PASSWORD: notneeded
+      POSTGRES_USER: postgres_user
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+  redis:
+    image: redis:5.0.7
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis:/var/lib/redis/data
+
+  app:
+    build:
+      context: .
+      args:
+        USER_ID: "${USER_ID:-1000}"
+        GROUP_ID: "${GROUP_ID:-1000}"
+      dockerfile: docker/app/production.Dockerfile
+    depends_on:
+      - postgres
+      - redis
+    links:
+      - postgres:db
+    ports:
+      - '3000:3000'
+    entrypoint: /usr/src/app/bin/start
+    env_file:
+      - .env
+    environment:
+      RAILS_ENV: production
+      RAILS_SERVE_STATIC_FILES: "true"
+      DATABASE_URL: postgres://postgres_user:notneeded@db:5432/app
+      RAILS_LOG_TO_STDOUT: "true"
+    volumes:
+      - public:/usr/src/app/public
+      - ../storage:/usr/src/app/storage
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/web/production.Dockerfile
+    volumes_from:
+    - app
+    volumes:
+    - ./data/certbot/conf:/etc/letsencrypt
+    - ./data/certbot/www:/var/www/certbot
+    depends_on:
+    - app
+    ports:
+      - 80:80
+      - 443:443
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+  certbot:
+    image: certbot/certbot
+    restart: unless-stopped
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+volumes:
+  postgres:
+  redis:
+  public:
+    external: false
