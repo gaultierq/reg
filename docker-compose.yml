@@ -30,7 +30,7 @@ services:
     depends_on:
       - postgres
       - redis
-      #- webpacker
+      - webpacker
     links:
       - postgres:db
     volumes:
@@ -50,7 +50,7 @@ services:
     # Allows us to send signals (CTRL+C, CTRL+P + CTRL+Q) into the container:
     tty: true
     environment:
-      RAILS_ENV: development
+      RAILS_ENV: production
       # Notice that this is the DB we'll use:
       DATABASE_URL: postgres://reg_user:notneeded@db:5432/web
       # We'll use this env variable to make the log output gets directed

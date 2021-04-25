@@ -39,7 +39,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends nodejs yarn
 ENV BUNDLE_GEMFILE=$APP_HOME/Gemfile \
   BUNDLE_JOBS=2 \
   BUNDLE_PATH=/bundle
-
+ENV RAILS_ENV=production
 
 # 5: Install the current project gems - they can be safely changed later
 # during development via `bundle install` or `bundle update`:
