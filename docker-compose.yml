@@ -44,6 +44,7 @@ services:
       RAILS_LOG_TO_STDOUT: "true"
     volumes:
       - public:/usr/src/app/public
+      - ../storage:/usr/src/app/storage
   web:
     build:
       context: .
