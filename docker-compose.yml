@@ -7,19 +7,18 @@ services:
     image: postgres:13.1
     environment:
       POSTGRES_PASSWORD: notneeded
-      POSTGRES_USER: reg_user 
-      #POSTGRES_DB: web
-    ports: 
+      POSTGRES_USER: postgres_user
+    ports:
       - '5432:5432'
     volumes:
-      - reg_postgres1:/var/lib/postgresql/data
+      - postgres:/var/lib/postgresql/data
 
   redis:
     image: redis:5.0.7
     ports:
       - '6379:6379'
     volumes:
-      - reg_redis:/var/lib/redis/data
+      - redis:/var/lib/redis/data
 
   web:
     build:
@@ -27,17 +26,12 @@ services:
       args:
         USER_ID: "${USER_ID:-1000}"
         GROUP_ID: "${GROUP_ID:-1000}"
+      dockerfile: production.Dockerfile
     depends_on:
       - postgres
       - redis
     links:
       - postgres:db
-    volumes:
-      - type: bind
-        source: .
-        target: /usr/src/app
-    volumes_from:
-      - box
     ports:
       - '8010:3000'
     entrypoint: /usr/src/app/bin/start
@@ -50,33 +44,8 @@ services:
     tty: true
     environment:
       RAILS_ENV: production
-      # Notice that this is the DB we'll use:
-      DATABASE_URL: postgres://reg_user:notneeded@db:5432/web
-      # We'll use this env variable to make the log output gets directed
-      # to Docker:
+      DATABASE_URL: postgres://postgres_user:notneeded@db:5432/web
       RAILS_LOG_TO_STDOUT: "true"
-      # we do not need to alter the webpack.config file 
-      WEBPACKER_DEV_SERVER_HOST: webpacker
-      #BUNDLE_JOBS: 15
-      #BUNDLE_RETRY: 3
-      #BUNDLE_PATH: /bundle/vendor
-  # used to cache gems 
-  box:
-    image: busybox
-    volumes:
-      - /box 
-  #livereload:
-    #build:
-      #context: .
-      #args:
-        #USER_ID: "${USER_ID:-1000}"
-        #GROUP_ID: "${GROUP_ID:-1000}"
-    #command: guard -i -P livereload
-    #ports:
-      #- 35729:35729
-    #volumes:
-      #- .:/usr/src/app  # or however you configured your Rails root volume
 volumes:
-  reg_postgres1:
-  reg_redis:
-  bundle_path:
+  postgres:
+  redis:

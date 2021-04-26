@@ -1,6 +1,6 @@
 # Dockerfile - Development environment
 FROM ruby:2.7.2
-MAINTAINER delir@canonic.fr
+MAINTAINER qg@canonic.fr
 
 ARG USER_ID
 ARG GROUP_ID
@@ -15,11 +15,7 @@ RUN apt-get install -y libpq-dev
 # for nokogiri
 RUN apt-get install -y libxml2-dev libxslt1-dev
 
-# for capybara-webkit
-#RUN apt-get install -y libqt4-webkit libqt4-dev xvfb
-
 ENV APP_HOME /usr/src/app/
-
 
 # 2: We'll set the application path as the working directory
 WORKDIR $APP_HOME
@@ -37,14 +33,17 @@ RUN apt-get update && apt-get install -y --no-install-recommends nodejs yarn
 
 # For bundle caching
 ENV BUNDLE_GEMFILE=$APP_HOME/Gemfile \
-  BUNDLE_JOBS=2 \
+  BUNDLE_JOBS=${nproc} \
   BUNDLE_PATH=/bundle
-ENV RAILS_ENV=production
+
+ADD package.json $APP_HOME
+ADD yarn.lock $APP_HOME
+RUN set -ex && yarn install --pure-lockfile
 
 # 5: Install the current project gems - they can be safely changed later
 # during development via `bundle install` or `bundle update`:
 ADD Gemfile* $APP_HOME
-ADD package.json $APP_HOME
-ADD yarn.lock $APP_HOME
-RUN set -ex && bundle install
-RUN set -ex && yarn install --pure-lockfile
+RUN set -ex && bundle install --retry 5
+
+COPY . .
+
