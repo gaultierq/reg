@@ -46,4 +46,6 @@ ADD Gemfile* $APP_HOME
 RUN set -ex && bundle install --retry 5
 
 COPY . .
+RUN bundle exec rails assets:precompile
+VOLUME "$APP_HOME/public"
 
