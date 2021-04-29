@@ -45,7 +45,7 @@ services:
     volumes:
       - public:/usr/src/app/public
       - ../storage:/usr/src/app/storage
-  web:
+  nginx:
     build:
       context: .
       dockerfile: docker/web/production.Dockerfile
