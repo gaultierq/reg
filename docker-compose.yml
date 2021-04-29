@@ -49,8 +49,6 @@ services:
     build:
       context: .
       dockerfile: docker/web/production.Dockerfile
-    volumes_from:
-    - app
     volumes:
     - ./data/certbot/conf:/etc/letsencrypt
     - ./data/certbot/www:/var/www/certbot
