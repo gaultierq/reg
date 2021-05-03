@@ -1,5 +1,5 @@
 # Dockerfile - Development environment
-FROM ruby:2.7.2
+FROM ruby:2.4.4
 MAINTAINER qg@canonic.fr
 
 ARG USER_ID
@@ -23,13 +23,17 @@ WORKDIR $APP_HOME
 # 3: We'll add the app's binaries path to $PATH:
 ENV HOME=/usr/src/app PATH=/usr/src/app/bin:$PATH
 
+RUN apt-get update && apt-get install -y apt-transport-https
+
 # 4: Install node as a javascript runtime for asset compilation. Blatantly
 # ripped off from the official Node Docker image's Dockerfile. GPG keys
 # listed at https://github.com/nodejs/node
 
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get install -y nodejs
+
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg -o /root/yarn-pubkey.gpg && apt-key add /root/yarn-pubkey.gpg
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
-RUN apt-get update && apt-get install -y --no-install-recommends nodejs yarn
+RUN apt-get update && apt-get install -y --no-install-recommends yarn
 
 # For bundle caching
 ENV BUNDLE_GEMFILE=$APP_HOME/Gemfile \
