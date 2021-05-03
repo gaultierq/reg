@@ -9,12 +9,22 @@ class Admin::IndustrialUnitsController < Admin::BaseController
         redirect_to admin_industrial_unit_path(@industrial_unit)
         return
       end
+
     end
+
+    if params[:industrial_unit].present?
+      @faucets = Faucet.where(industrial_unit_id: params[:industrial_unit]).all
+    else
+      @faucets = Faucet.where.not(industrial_unit_id: nil).all
+    end
+    
 
     browser = Browser.new(request.env['HTTP_USER_AGENT'])
     request.variant = :mobile if browser.platform.android_app? || browser.platform.ios_app?
 
     @industrial_units = IndustrialUnit.all
+
+
 
     respond_to do |format|
       format.html
