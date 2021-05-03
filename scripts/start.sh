@@ -5,6 +5,5 @@ PROJ_ROOT="$(dirname "$HERE")"
 
 
 echo "\
-redis-server
 cd $PROJ_ROOT && ./bin/rails server
 cd $PROJ_ROOT && bundle exec sidekiq 2>&1 | logger -t sidekiq" | $HERE/__multi
