@@ -38,7 +38,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends yarn
 # For bundle caching
 ENV BUNDLE_GEMFILE=$APP_HOME/Gemfile \
   BUNDLE_JOBS=${nproc} \
-  BUNDLE_PATH=/bundle
+  BUNDLE_PATH=/bundle \
+  BUNDLER_VERSION=2.1.4
+
+
 
 ADD package.json $APP_HOME
 ADD yarn.lock $APP_HOME
@@ -47,6 +50,9 @@ RUN set -ex && yarn install --pure-lockfile
 # 5: Install the current project gems - they can be safely changed later
 # during development via `bundle install` or `bundle update`:
 ADD Gemfile* $APP_HOME
+
+RUN gem install bundler -v 2.1.4
+RUN bundle -v
 RUN set -ex && bundle install --retry 5
 
 COPY . .
