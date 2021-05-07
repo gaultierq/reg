@@ -32,14 +32,14 @@
               <% end %>
             </li>
             <li>
-              <%= link_to admin_industrial_unit_path(@industrial_unit, format: :csv) do %>
+              <%= link_to user_industrial_unit_path(@industrial_unit, format: :csv) do %>
                 <span uk-icon="icon: download;" uk-tooltip="Exporter en CSV"></span>
               <% end %>
             </li>
           <% end %>
           <% if @industrial_unit.blank? %>
             <li>
-              <%= link_to admin_industrial_units_path(format: :csv) do %>
+              <%= link_to user_industrial_units_path(format: :csv) do %>
                 <span uk-icon="icon: download;" uk-tooltip="Exporter en CSV"></span>
               <% end %>
             </li>
