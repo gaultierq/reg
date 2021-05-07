@@ -63,39 +63,41 @@
         </thead>
 
         <tbody>
-        <% @faucets.each do |faucet| %>
-          <% if faucet.archived %>
-            <tr class="row-disabled">
-          <% else %>
-            <tr>
-          <% end %>
-          <td>
-            <% if faucet.events.length > 0 %>
-              <%= image_tag("warning.svg", {:style => "height: 20px;"}) %>
+        <% @industrial_units.each do |industrial_unit| %>
+          <% industrial_unit.faucets.filter(params.slice(:industrial_unit)).each do |faucet| %>
+            <% if faucet.archived %>
+              <tr class="row-disabled">
+            <% else %>
+              <tr>
             <% end %>
-            <%= link_to user_faucet_path(faucet) do %>
-              <%= faucet.name %>
-            <% end %>
-          </td>
-          <td><%= faucet.article_number %></td>
-          <td><%= faucet.serial_number %></td>
-          <td><%= faucet.sales_number %></td>
-          <td><%= faucet.dn %></td>
-          <% if faucet.manufacturing_date.present? %>
-            <td><%= faucet.manufacturing_date.strftime('%d/%m') %></td>
-          <% else %>
-            <td></td>
-          <% end %>
-          <td class="uk-flex uk-flex-center">
-            <ul class="uk-iconnav">
-              <li>
-                <%= link_to user_faucet_path(faucet) do %>
-                  <span uk-icon="search", uk-tooltip="Détails"></span>
+              <td>
+                <% if faucet.events.length > 0 %>
+                  <%= image_tag("warning.svg", {:style => "height: 20px;"}) %>
                 <% end %>
-              </li>
-            </ul>
-          </td>
-          </tr>
+                <%= link_to user_faucet_path(faucet) do %>
+                  <%= faucet.name %>
+                <% end %>
+              </td>
+              <td><%= faucet.article_number %></td>
+              <td><%= faucet.serial_number %></td>
+              <td><%= faucet.sales_number %></td>
+              <td><%= faucet.dn %></td>
+              <% if faucet.manufacturing_date.present? %>
+                <td><%= faucet.manufacturing_date.strftime('%d/%m') %></td>
+              <% else %>
+                <td></td>
+              <% end %>
+              <td class="uk-flex uk-flex-center">
+                <ul class="uk-iconnav">
+                  <li>
+                    <%= link_to user_faucet_path(faucet) do %>
+                      <span uk-icon="search", uk-tooltip="Détails"></span>
+                    <% end %>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          <% end %>
         <% end %>
         </tbody>
       <% end %>
